@@ -144,19 +144,15 @@ input:focus{border-color:var(--blue)}
 </style>
 
 <script>
-(async function forceFreshVersion17(){
-  const FLAG='leefkracht-force-refresh-v17';
+(async()=>{
   try{
-    if(!sessionStorage.getItem(FLAG)){
-      sessionStorage.setItem(FLAG,'1');
-      if('serviceWorker' in navigator){
-        const regs=await navigator.serviceWorker.getRegistrations();
-        await Promise.all(regs.map(r=>r.unregister()));
-      }
-      if('caches' in window){
-        const keys=await caches.keys();
-        await Promise.all(keys.map(k=>caches.delete(k)));
-      }
+    if('serviceWorker' in navigator){
+      const regs=await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(r=>r.unregister()));
+    }
+    if('caches' in window){
+      const keys=await caches.keys();
+      await Promise.all(keys.map(k=>caches.delete(k)));
     }
   }catch(e){}
 })();
@@ -382,7 +378,7 @@ input:focus{border-color:var(--blue)}
 const KEY='vitaal-logboek-v1', GOAL_KEY='vitaal-logboek-goal-v1', START=98.2, HEIGHT=1.825;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const today=()=>new Date().toISOString().slice(0,10); $('#date').value=today();
-function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
 function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
 function n(v){const x=parseFloat(v);return Number.isFinite(x)?x:null}
 function fmt(v,d=1){return Number(v).toFixed(d).replace('.',',')}
@@ -393,7 +389,12 @@ function goal(){const g=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Nu
 function bpCat(s,d){if(s>=140||d>=90)return['Hoog','bad'];if(s>=130||d>=85)return['Verhoogd','warn'];return['Normaal','good']}
 function heartCat(h){if(h==null)return['—',''];if(h<50)return['Laag','warn'];if(h<=100)return['Normaal','good'];return['Hoog','bad']}
 function page(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo(0,0);render()}
-$$('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-page]');
+  if(!b)return;
+  e.preventDefault();
+  page(b.dataset.page);
+});
 
 function svgLine(points, colors){
  if(points.length<2)return '<div class="chartEmpty">Nog te weinig metingen voor een grafiek.</div>';
@@ -471,7 +472,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:17,
+    version:18,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -503,13 +504,7 @@ $('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','
 render();
 </script>
 
-<script>
-window.addEventListener('load',()=>{
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js?v=17').catch(()=>{});
-  }
-});
-</script>
+
 
 </body>
 </html>

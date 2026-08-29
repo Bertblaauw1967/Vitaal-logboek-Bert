@@ -1,7 +1,7 @@
 {
   "name": "LeefKracht",
   "short_name": "LeefKracht",
-  "start_url": "./?v=17",
+  "start_url": "./index.html?v=18",
   "display": "standalone",
   "background_color": "#041525",
   "theme_color": "#061827",
@@ -17,5 +17,5 @@
       "type": "image/png"
     }
   ],
-  "id": "./?app=leefkracht-v17"
+  "id": "./leefkracht-v18"
 }
