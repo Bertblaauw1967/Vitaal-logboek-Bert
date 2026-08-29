@@ -1,4 +1,4 @@
-const CACHE='vitaal-v8';
+const CACHE='vitaal-v9';
 const STATIC=['./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
