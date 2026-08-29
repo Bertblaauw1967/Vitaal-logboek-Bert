@@ -1,4 +1,4 @@
-const CACHE='leefkracht-v11';
+const CACHE='leefkracht-v13';
 const STATIC=['./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 
 self.addEventListener('install',event=>{
