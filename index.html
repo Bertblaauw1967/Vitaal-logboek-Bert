@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f6f2f8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Vitaal Logboek" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <title>Vitaal Logboek</title>
+  <style>
+    :root{--bg:#f8f5fa;--panel:#fff;--ink:#30263c;--muted:#81768e;--line:#efe8f3;--accent:#cf587b;--accent2:#8b6c9f;--good:#4f7c67;--warn:#c48727;--bad:#b84a5a;--shadow:0 10px 28px rgba(58,35,75,.08)}
+    *{box-sizing:border-box}html{background:#fff}body{margin:0;background:#fff;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    .app{max-width:860px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top)) 18px calc(40px + env(safe-area-inset-bottom));background:linear-gradient(180deg,#faf7fb 0%,#f7f2f8 100%);min-height:100vh}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(40px,7vw,60px);margin:14px 12px 8px;letter-spacing:-1.5px}.subtitle{margin:0 12px 22px;color:var(--muted);font-size:clamp(17px,3vw,24px)}
+    .pulse{height:26px;margin:6px 10px 28px;position:relative}.pulse:before,.pulse:after{content:"";position:absolute;top:13px;height:3px;background:var(--accent)}.pulse:before{left:0;width:38%}.pulse:after{right:0;width:48%}.beat{position:absolute;left:38%;right:48%;top:1px;height:25px;border-bottom:3px solid var(--accent);transform:skewX(-38deg)}.beat2{position:absolute;left:44%;width:7%;top:1px;height:23px;border-left:3px solid var(--accent);border-bottom:3px solid var(--accent);transform:rotate(-42deg)}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);margin-bottom:26px}.card h2{font-family:Georgia,"Times New Roman",serif;font-size:30px;margin:0 0 24px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px}.section-title small{color:var(--muted);font-size:13px;margin-bottom:28px}
+    label{display:block;color:var(--muted);font-size:16px;letter-spacing:.05em;margin:0 0 8px}input{width:100%;font-size:22px;padding:17px 18px;border:2px solid #e8e0ec;border-radius:18px;background:#fbf9fc;color:var(--ink);outline:none}input:focus{border-color:#c8b6d0;background:#fff}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.full{grid-column:1/-1}
+    button{width:100%;border:0;border-radius:18px;padding:18px 20px;font-size:22px;font-weight:700;background:#30263c;color:white;cursor:pointer}button:active{transform:scale(.995)}
+    .dashboard{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.stat{background:#faf7fb;border:1px solid var(--line);border-radius:20px;padding:18px}.stat .label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}.stat .value{font-size:27px;font-weight:800;margin-top:7px}.stat .sub{font-size:13px;color:var(--muted);margin-top:4px}.progress{height:9px;background:#eee8f1;border-radius:999px;overflow:hidden;margin-top:10px}.progress>span{display:block;height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:inherit;width:0}.bp-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:800;margin-top:7px}.bp-good{background:#e8f3ed;color:#3c6a54}.bp-warn{background:#fbf1df;color:#946514}.bp-bad{background:#f8e5e9;color:#9d3446}.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px}.summary-box{background:#faf7fb;border:1px solid var(--line);border-radius:20px;padding:18px}.summary-box h3{margin:0 0 12px;font-size:17px}.summary-row{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-top:1px solid #eee8f1}.summary-row:first-of-type{border-top:0}.summary-row span{color:var(--muted);font-size:13px}.summary-row b{font-size:14px;text-align:right}
+    .charts{display:grid;gap:22px}.chart-box{background:#fcfafc;border:1px solid var(--line);border-radius:20px;padding:14px}.chart-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 2px 8px}.chart-head b{font-size:17px}.chart-head span{font-size:12px;color:var(--muted)}canvas{display:block;width:100%;height:190px}
+    .empty{text-align:center;color:var(--muted);font-size:22px;padding:50px 20px;line-height:1.45}.entries{display:grid;gap:14px}.entry{border:1px solid var(--line);border-radius:20px;padding:18px;background:#fff}.entry-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.entry-date{font-weight:800;font-size:18px}.delete{width:auto;background:transparent;color:#9c879f;font-size:14px;padding:6px 8px}.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.metric{background:#faf7fb;border-radius:14px;padding:12px}.metric b{display:block;font-size:18px}.metric span{font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:10px;margin-top:16px}.toolbar button{font-size:15px;padding:12px;background:#6e6079}.toolbar button.secondary{background:#eee8f1;color:#4a3e53}.hint{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.45}
+    @media(max-width:600px){.summary-grid{grid-template-columns:1fr}.app{padding-left:14px;padding-right:14px}.card{padding:22px 18px;border-radius:24px}.grid{gap:14px}.metrics{grid-template-columns:1fr 1fr}.dashboard{grid-template-columns:1fr 1fr}input{font-size:19px}button{font-size:18px}h1{margin-top:8px}.section-title{display:block}.section-title small{display:block;margin:-18px 0 20px}.metric:last-child{grid-column:1/-1}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <h1>Vitaal Logboek</h1>
+  <p class="subtitle">Gewicht, buikomtrek, bloeddruk en stappen — eenvoudig bijgehouden</p>
+  <div class="pulse"><span class="beat"></span><span class="beat2"></span></div>
+
+  <section class="card">
+    <div class="section-title"><h2>Overzicht</h2><small>Doelgewicht: 85 kg</small></div>
+    <div class="dashboard">
+      <div class="stat"><div class="label">Laatste gewicht</div><div class="value" id="statWeight">—</div><div class="sub" id="statWeightSub">Nog geen meting</div><div class="progress"><span id="weightProgress"></span></div></div>
+      <div class="stat"><div class="label">BMI</div><div class="value" id="statBMI">—</div><div class="sub" id="statBMISub">Lengte: 1,825 m</div></div>
+      <div class="stat"><div class="label">Afgevallen sinds start</div><div class="value" id="statLoss">—</div><div class="sub">Startgewicht: 97,5 kg</div></div>
+      <div class="stat"><div class="label">Buikomtrek</div><div class="value" id="statWaist">—</div><div class="sub" id="statWaistSub">Nog geen meting</div></div>
+      <div class="stat"><div class="label">Gem. stappen 7 dagen</div><div class="value" id="statSteps">—</div><div class="sub">Doel: 8.000 per dag</div></div>
+      <div class="stat"><div class="label">Laatste bloeddruk</div><div class="value" id="statBP">—</div><div class="sub" id="statBPSub">Nog geen meting</div><div id="bpBadge"></div></div>
+    </div>
+  </section>
+
+
+  <section class="card">
+    <div class="section-title"><h2>Week & maand</h2><small>Automatisch berekend uit je metingen</small></div>
+    <div class="summary-grid">
+      <div class="summary-box"><h3>Laatste 7 dagen</h3><div id="weekSummary"></div></div>
+      <div class="summary-box"><h3>Laatste 30 dagen</h3><div id="monthSummary"></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Nieuwe meting</h2>
+    <form id="form" class="grid">
+      <div class="full"><label for="date">DATUM</label><input id="date" type="date" required></div>
+      <div><label for="weight">GEWICHT (KG)</label><input id="weight" inputmode="decimal" type="number" step="0.1" min="20" max="300" placeholder="95.8"></div>
+      <div><label for="waist">BUIKOMTREK (CM)</label><input id="waist" inputmode="decimal" type="number" step="0.1" min="40" max="250" placeholder="112"></div>
+      <div><label for="steps">STAPPEN</label><input id="steps" inputmode="numeric" type="number" min="0" max="100000" placeholder="8000"></div>
+      <div><label for="sys">SYSTOLISCH (MMHG)</label><input id="sys" inputmode="numeric" type="number" min="60" max="260" placeholder="120"></div>
+      <div><label for="dia">DIASTOLISCH (MMHG)</label><input id="dia" inputmode="numeric" type="number" min="30" max="180" placeholder="80"></div>
+      <div class="full"><button type="submit">+ Meting opslaan</button></div>
+    </form>
+    <div class="hint">Je hoeft niet bij elke invoer alles in te vullen. Alleen de datum is verplicht.</div>
+  </section>
+
+  <section class="card">
+    <h2>Voortgang</h2>
+    <div class="charts">
+      <div class="chart-box"><div class="chart-head"><b>Gewicht</b><span>laatste 12 metingen</span></div><canvas id="weightChart"></canvas></div>
+      <div class="chart-box"><div class="chart-head"><b>Bloeddruk</b><span>systolisch / diastolisch</span></div><canvas id="bpChart"></canvas></div>
+      <div class="chart-box"><div class="chart-head"><b>Buikomtrek</b><span>laatste 12 metingen</span></div><canvas id="waistChart"></canvas></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Metingen</h2>
+    <div id="entries"></div>
+    <div class="toolbar"><button id="exportBtn" type="button">Exporteer CSV</button><button id="clearBtn" class="secondary" type="button">Wis alles</button></div>
+  </section>
+</main>
+<script>
+const KEY='vitaal-logboek-v1', GOAL_WEIGHT=85, STEP_GOAL=8000, START_WEIGHT=97.5, HEIGHT_M=1.825;
+const $=s=>document.querySelector(s); const today=()=>new Date().toISOString().slice(0,10); $('#date').value=today();
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}function save(v){localStorage.setItem(KEY,JSON.stringify(v))}
+function fmtDate(s){return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
+function num(v){const n=parseFloat(v);return Number.isFinite(n)?n:null}
+function latestWith(data,key){return [...data].sort((a,b)=>b.date.localeCompare(a.date)).find(e=>num(e[key])!==null)}
+function bpClass(sys,dia){
+  if(sys==null||dia==null)return null;
+  if(sys>=180||dia>=120)return {text:'Zeer hoog',cls:'bp-bad'};
+  if(sys>=140||dia>=90)return {text:'Hoog',cls:'bp-bad'};
+  if(sys>=130||dia>=85)return {text:'Verhoogd',cls:'bp-warn'};
+  return {text:'Binnen normale zone',cls:'bp-good'};
+}
+function summaryRows(data,days){
+  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-(days-1));cutoff.setHours(0,0,0,0);
+  const recent=data.filter(e=>new Date(e.date+'T12:00:00')>=cutoff);
+  const weights=recent.map(e=>num(e.weight)).filter(v=>v!==null), steps=recent.map(e=>num(e.steps)).filter(v=>v!==null), waists=recent.map(e=>num(e.waist)).filter(v=>v!==null);
+  const bp=recent.filter(e=>num(e.sys)!==null&&num(e.dia)!==null);
+  const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
+  const sortedW=[...recent].filter(e=>num(e.weight)!==null).sort((a,b)=>a.date.localeCompare(b.date));
+  const delta=sortedW.length>=2?num(sortedW.at(-1).weight)-num(sortedW[0].weight):null;
+  return [
+    ['Gewicht', avg(weights)!==null?`${avg(weights).toFixed(1)} kg gem.`:'—'],
+    ['Verandering', delta!==null?`${delta>0?'+':''}${delta.toFixed(1)} kg`:'—'],
+    ['Stappen', avg(steps)!==null?`${Math.round(avg(steps)).toLocaleString('nl-NL')} gem.`:'—'],
+    ['Buikomtrek', avg(waists)!==null?`${avg(waists).toFixed(1)} cm gem.`:'—'],
+    ['Bloeddruk', bp.length?`${Math.round(avg(bp.map(e=>num(e.sys))))}/${Math.round(avg(bp.map(e=>num(e.dia))))} gem.`:'—']
+  ];
+}
+function renderSummary(data){
+  const fill=(id,rows)=>{$(id).innerHTML=rows.map(([a,b])=>`<div class="summary-row"><span>${a}</span><b>${b}</b></div>`).join('')};
+  fill('#weekSummary',summaryRows(data,7));fill('#monthSummary',summaryRows(data,30));
+}
+function renderDashboard(data){
+  const w=latestWith(data,'weight'), waist=latestWith(data,'waist'), bp=[...data].sort((a,b)=>b.date.localeCompare(a.date)).find(e=>num(e.sys)!==null&&num(e.dia)!==null);
+  if(w){
+    const ww=num(w.weight), bmi=ww/(HEIGHT_M*HEIGHT_M), loss=START_WEIGHT-ww;
+    $('#statWeight').textContent=`${ww.toFixed(1)} kg`;$('#statWeightSub').textContent=`${Math.max(0,ww-GOAL_WEIGHT).toFixed(1)} kg tot doel`;
+    const p=Math.max(0,Math.min(100,(START_WEIGHT-ww)/(START_WEIGHT-GOAL_WEIGHT)*100));$('#weightProgress').style.width=p+'%';
+    $('#statBMI').textContent=bmi.toFixed(1).replace('.',',');$('#statBMISub').textContent=bmi<25?'BMI binnen normale zone':bmi<30?'BMI: overgewicht':'BMI: obesitas-zone';
+    $('#statLoss').textContent=`${loss>=0?'−':'+'}${Math.abs(loss).toFixed(1)} kg`; 
+  }else{$('#statWeight').textContent='—';$('#statWeightSub').textContent='Nog geen meting';$('#weightProgress').style.width='0';$('#statBMI').textContent='—';$('#statBMISub').textContent='Lengte: 1,825 m';$('#statLoss').textContent='—'}
+  if(waist){$('#statWaist').textContent=`${num(waist.waist).toFixed(1)} cm`;$('#statWaistSub').textContent=fmtDate(waist.date)}else{$('#statWaist').textContent='—';$('#statWaistSub').textContent='Nog geen meting'}
+  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-6);cutoff.setHours(0,0,0,0);const recent=data.filter(e=>num(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);const avg=recent.length?Math.round(recent.reduce((s,e)=>s+num(e.steps),0)/recent.length):null;$('#statSteps').textContent=avg!==null?avg.toLocaleString('nl-NL'):'—';
+  if(bp){const s=num(bp.sys),d=num(bp.dia),cat=bpClass(s,d);$('#statBP').textContent=`${s}/${d}`;$('#statBPSub').textContent=`mmHg · ${fmtDate(bp.date)}`;$('#bpBadge').innerHTML=`<span class="bp-badge ${cat.cls}">${cat.text}</span>`}else{$('#statBP').textContent='—';$('#statBPSub').textContent='Nog geen meting';$('#bpBadge').innerHTML=''}
+  renderSummary(data);
+}
+function setupCanvas(c){const dpr=window.devicePixelRatio||1,rect=c.getBoundingClientRect();c.width=Math.max(1,rect.width*dpr);c.height=Math.max(1,190*dpr);const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);return {ctx,w:rect.width,h:190}}
+function drawChart(id, series, opts={}){
+ const c=$(id),{ctx,w,h}=setupCanvas(c);ctx.clearRect(0,0,w,h);const all=series.flatMap(s=>s.values.filter(v=>v.y!==null));if(!all.length){ctx.fillStyle='#81768e';ctx.font='15px system-ui';ctx.textAlign='center';ctx.fillText('Nog niet genoeg gegevens',w/2,h/2);return}
+ let min=Math.min(...all.map(v=>v.y)),max=Math.max(...all.map(v=>v.y));if(opts.goal!=null){min=Math.min(min,opts.goal);max=Math.max(max,opts.goal)}if(max===min){max+=1;min-=1}const pad={l:38,r:14,t:14,b:28};const iw=w-pad.l-pad.r,ih=h-pad.t-pad.b;min-=Math.max(1,(max-min)*.12);max+=Math.max(1,(max-min)*.12);
+ ctx.strokeStyle='#eee8f1';ctx.lineWidth=1;ctx.fillStyle='#81768e';ctx.font='11px system-ui';ctx.textAlign='right';for(let i=0;i<4;i++){const y=pad.t+ih*i/3;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();const val=max-(max-min)*i/3;ctx.fillText(Math.round(val),pad.l-6,y+4)}
+ const labels=series.find(s=>s.values.length)?.values||[];ctx.textAlign='center';if(labels.length){[0,Math.floor((labels.length-1)/2),labels.length-1].filter((v,i,a)=>a.indexOf(v)===i).forEach(i=>{const x=pad.l+(labels.length===1?iw/2:iw*i/(labels.length-1));ctx.fillText(labels[i].label,x,h-7)})}
+ if(opts.goal!=null){const y=pad.t+(max-opts.goal)/(max-min)*ih;ctx.save();ctx.setLineDash([5,5]);ctx.strokeStyle='#b8a9c0';ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.restore()}
+ series.forEach((s,si)=>{const vals=s.values;ctx.strokeStyle=si===0?'#cf587b':'#8b6c9f';ctx.fillStyle=ctx.strokeStyle;ctx.lineWidth=2.5;ctx.beginPath();let started=false;vals.forEach((v,i)=>{if(v.y===null)return;const x=pad.l+(vals.length===1?iw/2:iw*i/(vals.length-1)),y=pad.t+(max-v.y)/(max-min)*ih;if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y)});ctx.stroke();vals.forEach((v,i)=>{if(v.y===null)return;const x=pad.l+(vals.length===1?iw/2:iw*i/(vals.length-1)),y=pad.t+(max-v.y)/(max-min)*ih;ctx.beginPath();ctx.arc(x,y,3.5,0,Math.PI*2);ctx.fill()})})
+}
+function renderCharts(data){const d=[...data].sort((a,b)=>a.date.localeCompare(b.date)).slice(-12);const vals=key=>d.map(e=>({label:new Date(e.date+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'numeric'}),y:num(e[key])}));drawChart('#weightChart',[{values:vals('weight')}],{goal:GOAL_WEIGHT});drawChart('#waistChart',[{values:vals('waist')}]);drawChart('#bpChart',[{values:vals('sys')},{values:vals('dia')}])}
+function render(){
+ const data=load();renderDashboard(data);renderCharts(data);const sorted=[...data].sort((a,b)=>b.date.localeCompare(a.date));const host=$('#entries');
+ if(!sorted.length){host.innerHTML='<div class="empty">Nog geen metingen. Voeg hierboven je eerste meting toe.</div>';return}
+ host.innerHTML='<div class="entries">'+sorted.map((e,i)=>`<article class="entry"><div class="entry-top"><div class="entry-date">${fmtDate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="metrics"><div class="metric"><span>Gewicht</span><b>${e.weight||'—'}${e.weight?' kg':''}</b></div><div class="metric"><span>Buikomtrek</span><b>${e.waist||'—'}${e.waist?' cm':''}</b></div><div class="metric"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="metric"><span>Systolisch</span><b>${e.sys||'—'}</b></div><div class="metric"><span>Diastolisch</span><b>${e.dia||'—'}</b></div></div></article>`).join('')+'</div>';
+ [...document.querySelectorAll('.delete')].forEach(btn=>btn.onclick=()=>{const s=[...load()].sort((a,b)=>b.date.localeCompare(a.date));s.splice(Number(btn.dataset.i),1);save(s);render()})
+}
+$('#form').addEventListener('submit',e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weight').value,waist:$('#waist').value,steps:$('#steps').value,sys:$('#sys').value,dia:$('#dia').value};const data=load();data.push(entry);save(data);render();e.target.reset();$('#date').value=today();window.scrollTo({top:0,behavior:'smooth'})});
+$('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
+$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)};
+window.addEventListener('resize',()=>renderCharts(load()));if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}render();
+</script>
+</body></html>
