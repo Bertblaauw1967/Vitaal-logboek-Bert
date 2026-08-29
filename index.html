@@ -1,312 +1,261 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#071b2d">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Vitaal Logboek">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icon-192.png">
-  <title>Vitaal Logboek</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#061827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Vitaal Logboek">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Vitaal Logboek</title>
 <style>
 :root{
-  --bg:#061827;--bg2:#092741;--panel:#0b2d4d;--panel2:#0a2440;
-  --line:#315b7c;--ink:#f7fbff;--muted:#a9c4db;--pink:#ff5b87;
-  --blue:#4d8dff;--green:#70e37c;--orange:#ffb020;--red:#ff7f8d;
+ --bg:#041525; --bg2:#07243d; --card:#0a2b4a; --card2:#0b3154;
+ --line:#1e5078; --white:#f8fbff; --muted:#a8c3da; --pink:#ff5e8b;
+ --blue:#4b8cff; --green:#65df7c; --teal:#39d6c5; --amber:#ffc13b;
+ --purple:#a869ff; --red:#ff8796;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,sans-serif}
 body{min-height:100vh}
 button,input{font:inherit}
-.app{max-width:860px;margin:auto;min-height:100vh;background:
-radial-gradient(circle at 85% 0%,#0c3559 0,transparent 34%),
-linear-gradient(180deg,#061827,#04131f);padding:calc(24px + env(safe-area-inset-top)) 20px calc(100px + env(safe-area-inset-bottom))}
-.top{display:flex;align-items:flex-start;gap:18px;justify-content:space-between}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8vw,64px);line-height:.95;margin:8px 0 14px;letter-spacing:-2px}
-.subtitle{color:#b8d1e6;font-size:clamp(17px,3.4vw,23px);line-height:1.42;margin:0}
-.history-btn{width:132px;min-width:132px;border:1px solid #2d5d88;background:#08233d;color:#fff;border-radius:18px;padding:14px 10px;font-weight:700;box-shadow:none}
-.history-btn .ico{display:block;font-size:25px;color:var(--pink);margin-bottom:5px}
-.pulse{height:42px;position:relative;margin:22px 0 28px}
-.pulse:before,.pulse:after{content:"";position:absolute;top:20px;height:3px;background:var(--pink);border-radius:2px}
-.pulse:before{left:0;width:43%}.pulse:after{right:0;width:47%}
-.zig{position:absolute;left:42.5%;top:7px;width:10%;height:27px;border-left:4px solid var(--pink);border-bottom:4px solid var(--pink);transform:skewX(-34deg) rotate(-2deg)}
-.card{background:linear-gradient(180deg,rgba(13,49,82,.98),rgba(8,35,60,.98));border:1px solid var(--line);border-radius:24px;box-shadow:0 14px 30px rgba(0,0,0,.18)}
-.latest{padding:24px 24px 22px;margin-bottom:18px}
-.latest-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}
-.latest-title{display:flex;gap:12px;align-items:center}
-.clock{font-size:28px;width:46px;height:46px;border:2px solid #c9e0f2;border-radius:50%;display:grid;place-items:center}
-.latest h2{margin:0;font-size:25px}
-.date{color:#9fc5ea;margin-top:4px}
-.new-btn{width:auto;border:1px solid var(--pink);background:transparent;color:var(--pink);padding:12px 16px;border-radius:999px;font-weight:800}
-.latest-grid{display:grid;grid-template-columns:1.15fr 1.15fr 1fr}
-.latest-metric{padding:0 20px;border-left:1px solid #2a5678}
-.latest-metric:first-child{border-left:0;padding-left:10px}
-.kicker{font-size:14px;letter-spacing:.04em;color:#9fc5ea;text-transform:uppercase}
-.big{font-size:40px;font-weight:850;line-height:1.05;margin:9px 0 6px}
-.big.green{color:var(--green)}
-.sub{color:#aac3d8;font-size:15px;line-height:1.4}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.stat{padding:22px;min-height:174px;display:flex;align-items:center;gap:18px}
-.stat-icon{width:58px;height:58px;min-width:58px;border-radius:50%;display:grid;place-items:center;font-size:27px;border:1px solid #2e6db8;background:#0b2743}
-.stat-icon.pink{color:var(--pink);border-color:#7d3451}.stat-icon.blue{color:#4e91ff}.stat-icon.teal{color:#36d6c1;border-color:#257568}.stat-icon.amber{color:#ffc234;border-color:#866819}
-.stat-content{min-width:0}.stat .label{color:#9eb9d1;text-transform:uppercase;letter-spacing:.04em;font-size:15px;line-height:1.25}
-.stat .value{font-size:34px;font-weight:850;margin-top:8px;white-space:nowrap}
-.badge{display:inline-flex;padding:7px 11px;border-radius:999px;font-weight:800;font-size:14px;margin-left:8px}
-.badge.bad{background:#762a3b;color:#ffb0ba}.badge.warn{background:#5d4919;color:#ffdc7b}.badge.good{background:#184c3d;color:#89e5b9}
-.goodbox{margin-top:18px;padding:20px 22px;display:flex;align-items:center;gap:18px}
-.goodbox .info{font-size:28px;color:#4d8dff}.goodbox h3{margin:0 0 4px;font-size:20px}.goodbox p{margin:0;color:#aac3d8;line-height:1.45}
-.spark{margin-left:auto;min-width:100px;color:var(--pink);font-size:32px;letter-spacing:-4px}
+button{cursor:pointer}
+.app{max-width:760px;margin:auto;min-height:100vh;padding:calc(22px + env(safe-area-inset-top)) 16px calc(92px + env(safe-area-inset-bottom));background:
+radial-gradient(circle at 88% 0%,#0d3b64 0,transparent 31%),linear-gradient(180deg,#061827 0%,#03111d 100%)}
+.header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.brand h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8.7vw,64px);line-height:.95;margin:8px 0 12px;letter-spacing:-2px}
+.brand p{margin:0;color:#a9c5de;font-size:clamp(16px,3.5vw,22px);line-height:1.4}
+.historyShortcut{width:128px;min-width:128px;border:1px solid #24537d;background:#08213a;color:#fff;border-radius:17px;padding:12px 8px;font-weight:700}
+.historyShortcut b{display:block;color:var(--pink);font-size:27px;line-height:1;margin-bottom:5px}
+.pulse{height:44px;position:relative;margin:20px 0 24px}
+.pulse:before,.pulse:after{content:"";position:absolute;top:21px;height:3px;background:var(--pink);border-radius:5px}
+.pulse:before{left:0;width:44%}.pulse:after{right:0;width:45%}
+.pulse i{position:absolute;left:43%;top:7px;width:12%;height:28px;border-bottom:4px solid var(--pink);transform:skewX(-38deg)}
+.page{display:none}.page.active{display:block}
+.card{background:linear-gradient(180deg,rgba(12,48,82,.98),rgba(7,34,58,.98));border:1px solid var(--line);border-radius:22px;box-shadow:0 12px 26px rgba(0,0,0,.16)}
+.latest{padding:20px;margin-bottom:14px}
+.latestHead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
+.latestTitle{display:flex;align-items:center;gap:12px}.clock{width:42px;height:42px;border:2px solid #c7e0f4;border-radius:50%;display:grid;place-items:center;font-size:25px}
+.latestTitle h2{font-size:23px;margin:0}.latestTitle small{display:block;color:#9fc3e2;margin-top:3px}
+.newMeasure{border:1px solid var(--pink);background:transparent;color:var(--pink);border-radius:999px;padding:10px 13px;font-weight:800}
+.latestGrid{display:grid;grid-template-columns:1fr 1fr 1fr}
+.metric{padding:0 16px;border-left:1px solid #285575}.metric:first-child{border-left:0;padding-left:6px}
+.label{color:#9db9d1;text-transform:uppercase;letter-spacing:.045em;font-size:13px;line-height:1.3}
+.value{font-size:35px;font-weight:850;line-height:1.08;margin:8px 0 5px}.green{color:var(--green)}
+.sub{color:#adc6da;font-size:14px;line-height:1.38}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{padding:17px;min-height:150px;display:flex;gap:12px;align-items:center}
+.icon{width:48px;height:48px;min-width:48px;border-radius:50%;display:grid;place-items:center;background:#0a2744;border:1px solid #2b67a3;font-size:22px;color:var(--blue)}
+.icon.pink{color:var(--pink);border-color:#7a3552}.icon.teal{color:var(--teal);border-color:#2c766f}.icon.purple{color:var(--purple);border-color:#64499c}.icon.amber{color:var(--amber);border-color:#80691e}
+.tile .value{font-size:30px}.badge{display:inline-block;margin-top:7px;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:800}.bad{background:#7a2a3c;color:#ffb1ba}.warn{background:#66521d;color:#ffdc80}.good{background:#184b3d;color:#8de7bd}
+.message{margin-top:14px;padding:17px 19px;display:flex;gap:14px;align-items:center}.message strong{font-size:19px}.message p{margin:3px 0 0;color:#abc4d9}.message .info{font-size:28px;color:var(--blue)}
+.sectionTitle{font-family:Georgia,"Times New Roman",serif;font-size:34px;margin:4px 0 16px}
+.panel{padding:20px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.back{border:0;background:transparent;color:#9fc6ec;font-weight:700;padding:5px 0}
+.summaryRow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.summary{padding:16px}.summary .value{font-size:30px}
+.chart{height:210px;position:relative;margin-top:12px;background:linear-gradient(180deg,#08233c,#061b2f);border:1px solid #214a69;border-radius:18px;overflow:hidden}
+.chart svg{width:100%;height:100%}.chartEmpty{height:100%;display:grid;place-items:center;color:#86a8c4;text-align:center;padding:20px}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}
+form label,.settings label{display:block;color:#9eb9d0;font-size:12px;letter-spacing:.05em;margin:0 0 6px}
+input{width:100%;background:#061d31;color:#fff;border:1px solid #2c5574;border-radius:14px;padding:14px 15px;font-size:18px;outline:none}
+input:focus{border-color:var(--blue)}
+.primary{width:100%;border:0;background:linear-gradient(135deg,#2c6fdd,#4b8cff);color:#fff;border-radius:15px;padding:15px;font-weight:800}
+.settings{display:grid;gap:14px}.setting{padding:17px}.settingRow{display:grid;grid-template-columns:1fr auto;gap:10px}.settingRow .primary{width:auto;padding:0 16px}
+.historyList{display:grid;gap:10px}.historyItem{padding:15px}.historyTop{display:flex;justify-content:space-between;gap:10px;align-items:center}.historyDate{font-weight:800}.delete{border:0;background:transparent;color:#ff9cac}
+.historyData{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}.hmini{background:#08243e;border-radius:11px;padding:9px}.hmini span{display:block;color:#8faec7;font-size:10px}.hmini b{display:block;margin-top:3px;font-size:14px}
+.empty{padding:35px;text-align:center;color:#91afc8}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.secondary{border:0;border-radius:14px;padding:13px;background:#214d6e;color:#fff;font-weight:700}
 
-.view{display:none}.view.active{display:block}
-.panel{padding:22px;margin-top:18px}
-.panel h2{font-family:Georgia,"Times New Roman",serif;font-size:32px;margin:0 0 18px}
-.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.formgrid .full{grid-column:1/-1}
-label{display:block;color:#9eb9d1;font-size:13px;letter-spacing:.05em;margin:0 0 7px}
-input{width:100%;background:#061c30;color:#fff;border:1px solid #2e5572;border-radius:15px;padding:15px 16px;font-size:19px;outline:none}
-input:focus{border-color:#4d8dff}
-.primary{width:100%;border:0;border-radius:16px;background:linear-gradient(135deg,#2c6edc,#4d8dff);color:white;padding:16px;font-size:18px;font-weight:800}
-.note{color:#91afc8;font-size:13px;margin-top:10px}
-.history-list{display:grid;gap:12px}
-.history-item{background:#08233d;border:1px solid #284e6d;border-radius:18px;padding:16px}
-.history-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
-.history-date{font-weight:800;font-size:17px}
-.delete{width:auto;background:transparent;border:0;color:#ff9aaa}
-.history-metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.hm{background:#0c2d4a;border-radius:12px;padding:10px}.hm span{display:block;color:#91afc8;font-size:11px}.hm b{display:block;margin-top:3px;font-size:15px}
-.empty{text-align:center;padding:38px 10px;color:#9bb7cd}
-.toolbar{display:flex;gap:10px;margin-top:16px}.toolbar button{flex:1;border:0;border-radius:14px;padding:13px;font-weight:700;background:#214e70;color:#fff}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(3,17,29,.96);border-top:1px solid #1a4768;padding:8px 10px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(16px);z-index:20}
+.bottomInner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.nav{border:0;background:transparent;color:#b4cadb;padding:5px 2px;font-size:12px}.nav span{display:block;font-size:24px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
 
-.bottom{position:fixed;z-index:20;left:0;right:0;bottom:0;background:rgba(4,20,34,.96);border-top:1px solid #1d4869;padding:9px 12px calc(9px + env(safe-area-inset-bottom));backdrop-filter:blur(16px)}
-.bottom-inner{max-width:860px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.nav{background:transparent;border:0;color:#b5caDB;padding:7px 3px;font-size:12px}.nav span{display:block;font-size:24px;margin-bottom:3px}.nav.active{color:#4d8dff;font-weight:800}
-
-@media(max-width:620px){
- .app{padding-left:12px;padding-right:12px}.history-btn{width:106px;min-width:106px;font-size:12px;padding:11px 7px}
- .latest{padding:18px 14px}.latest-head{align-items:flex-start}.new-btn{padding:10px 12px;font-size:13px}
- .latest-grid{grid-template-columns:1fr 1fr}.latest-metric{padding:0 10px}.latest-metric:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid #2a5678;margin-top:18px;padding-top:18px}
- .big{font-size:31px}.stats{gap:10px}.stat{padding:16px 14px;min-height:145px;gap:10px}.stat-icon{width:42px;height:42px;min-width:42px;font-size:21px}
- .stat .label{font-size:12px}.stat .value{font-size:28px}.goodbox{padding:16px}.spark{display:none}.formgrid{gap:10px}
- .history-metrics{grid-template-columns:1fr 1fr}.history-metrics .hm:last-child{grid-column:1/-1}
+@media(max-width:560px){
+ .app{padding-left:11px;padding-right:11px}.historyShortcut{width:102px;min-width:102px;font-size:11px;padding:10px 6px}
+ .latest{padding:16px 13px}.latestHead{align-items:flex-start}.newMeasure{font-size:12px;padding:9px 10px}
+ .latestGrid{grid-template-columns:1fr 1fr}.metric{padding:0 9px}.metric:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid #285575;margin-top:16px;padding-top:16px}
+ .value{font-size:30px}.tiles{gap:9px}.tile{padding:14px 12px;min-height:138px;gap:9px}.icon{width:40px;height:40px;min-width:40px;font-size:18px}
+ .tile .value{font-size:27px}.label{font-size:11px}.sub{font-size:13px}.historyData{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 <main class="app">
-  <section id="overview" class="view active">
-    <div class="top">
-      <div>
+  <section id="overview" class="page active">
+    <div class="header">
+      <div class="brand">
         <h1>Vitaal Logboek</h1>
-        <p class="subtitle">Gewicht, buikomtrek, bloeddruk en stappen<br>— eenvoudig bijgehouden</p>
+        <p>Gewicht, buikomtrek, bloeddruk en stappen<br>— eenvoudig bijgehouden</p>
       </div>
-      <button class="history-btn" data-view="history"><span class="ico">⌁</span>Meetgeschiedenis</button>
+      <button class="historyShortcut" data-page="history"><b>⌁</b>Meetgeschiedenis</button>
     </div>
-    <div class="pulse"><span class="zig"></span></div>
+    <div class="pulse"><i></i></div>
 
-    <section class="card latest">
-      <div class="latest-head">
-        <div class="latest-title">
-          <div class="clock">◷</div>
-          <div><h2>Laatste meting</h2><div class="date" id="latestDate">Nog geen meting</div></div>
-        </div>
-        <button class="new-btn" data-view="new">▣ Nieuw meten</button>
+    <div class="card latest">
+      <div class="latestHead">
+        <div class="latestTitle"><div class="clock">◷</div><div><h2>Laatste meting</h2><small id="latestDate">Nog geen meting</small></div></div>
+        <button class="newMeasure" data-page="new">▣ Nieuw meten</button>
       </div>
-      <div class="latest-grid">
-        <div class="latest-metric">
-          <div class="kicker">Gewicht</div><div class="big" id="latestWeight">—</div><div class="sub" id="latestBMI">Nog geen gewicht</div>
-        </div>
-        <div class="latest-metric">
-          <div class="kicker">Afgevallen sinds start</div><div class="big green" id="latestLoss">—</div><div class="sub">Startgewicht: 98,2 kg</div>
-        </div>
-        <div class="latest-metric">
-          <div class="kicker">Buikomtrek</div><div class="big" id="latestWaist">—</div><div class="sub" id="latestWaistSub">Nog geen meting</div>
-        </div>
+      <div class="latestGrid">
+        <div class="metric"><div class="label">Gewicht</div><div class="value" id="latestWeight">—</div><div class="sub" id="latestBMI">Nog geen gewicht</div></div>
+        <div class="metric"><div class="label">Afgevallen sinds start</div><div class="value green" id="loss">—</div><div class="sub">Startgewicht: 98,2 kg</div></div>
+        <div class="metric"><div class="label">Buikomtrek</div><div class="value" id="latestWaist">—</div><div class="sub" id="latestWaistDate">Nog geen meting</div></div>
       </div>
-    </section>
+    </div>
 
-    <section class="stats">
-      <div class="card stat"><div class="stat-icon blue">👟</div><div class="stat-content"><div class="label">Gem. stappen<br>7 dagen</div><div class="value" id="steps7">—</div><div class="sub">Doel: 8.000 per dag</div></div></div>
-      <div class="card stat"><div class="stat-icon pink">♥</div><div class="stat-content"><div class="label">Laatste<br>bloeddruk</div><div class="value" id="lastBP">—</div><div class="sub" id="lastBPDate">Nog geen meting</div><span id="bpBadge"></span></div></div>
-      <div class="card stat"><div class="stat-icon teal">⌁</div><div class="stat-content"><div class="label">Buikomtrek</div><div class="value" id="waistCard">—</div><div class="sub" id="waistDate">Nog geen meting</div></div></div>
-      <div class="card stat"><div class="stat-icon amber">◎</div><div class="stat-content"><div class="label">Doelgericht</div><div class="value" id="goalCard">—</div><div class="sub" id="goalSub">Stel je doel in bij Meer</div></div></div>
-      <div class="card stat"><div class="stat-icon amber">BMI</div><div class="stat-content"><div class="label">BMI</div><div class="value" id="bmiCard">—</div><div class="sub" id="bmiText">Lengte: 1,825 m</div></div></div>
-    </section>
+    <div class="tiles">
+      <div class="card tile"><div class="icon">👟</div><div><div class="label">Gem. stappen 7 dagen</div><div class="value" id="steps7">—</div><div class="sub">Doel: 8.000 per dag</div></div></div>
+      <div class="card tile"><div class="icon pink">♥</div><div><div class="label">Laatste bloeddruk</div><div class="value" id="bp">—</div><div class="sub" id="bpDate">Nog geen meting</div><span id="bpBadge"></span></div></div>
+      <div class="card tile"><div class="icon teal">⌁</div><div><div class="label">Buikomtrek</div><div class="value" id="waistTile">—</div><div class="sub" id="waistTileDate">Nog geen meting</div></div></div>
+      <div class="card tile"><div class="icon purple">◉</div><div><div class="label">Startgewicht</div><div class="value">98,2 kg</div><div class="sub">Startpunt</div></div></div>
+      <div class="card tile"><div class="icon amber">BMI</div><div><div class="label">BMI</div><div class="value" id="bmiTile">—</div><div class="sub" id="bmiClass">Lengte 1,825 m</div></div></div>
+      <div class="card tile"><div class="icon amber">◎</div><div><div class="label">Doelgewicht</div><div class="value" id="goalTile">—</div><div class="sub" id="goalSub">Instellen bij Meer</div></div></div>
+    </div>
 
-    <section class="card goodbox">
-      <div class="info">ⓘ</div>
-      <div><h3 id="encourageTitle">Klaar om te beginnen</h3><p id="encourageText">Voeg je eerste meting toe om je voortgang te volgen.</p></div>
-      <div class="spark">⌁⌁⌁</div>
-    </section>
+    <div class="card message"><div class="info">ⓘ</div><div><strong id="msgTitle">Klaar om te beginnen</strong><p id="msgText">Voeg een meting toe om je voortgang te volgen.</p></div></div>
   </section>
 
-  <section id="new" class="view">
-    <section class="card panel">
-      <h2>Nieuwe meting</h2>
+  <section id="weight" class="page">
+    <h2 class="sectionTitle">Gewicht</h2>
+    <div class="summaryRow">
+      <div class="card summary"><div class="label">Laatste gewicht</div><div class="value" id="weightNow">—</div><div class="sub" id="weightNowDate"></div></div>
+      <div class="card summary"><div class="label">Sinds start</div><div class="value green" id="weightLoss">—</div><div class="sub">Vanaf 98,2 kg</div></div>
+    </div>
+    <div class="card panel">
+      <div class="label">Gewichtsverloop</div>
+      <div class="chart" id="weightChart"></div>
+    </div>
+  </section>
+
+  <section id="blood" class="page">
+    <h2 class="sectionTitle">Bloeddruk</h2>
+    <div class="summaryRow">
+      <div class="card summary"><div class="label">Laatste bloeddruk</div><div class="value" id="bloodNow">—</div><div class="sub" id="bloodNowDate"></div></div>
+      <div class="card summary"><div class="label">Status</div><div id="bloodStatus" style="margin-top:12px"></div><div class="sub">Op basis van laatste meting</div></div>
+    </div>
+    <div class="card panel">
+      <div class="label">Bloeddrukverloop</div>
+      <div class="chart" id="bloodChart"></div>
+    </div>
+  </section>
+
+  <section id="more" class="page">
+    <h2 class="sectionTitle">Meer</h2>
+    <div class="settings">
+      <div class="card setting">
+        <label>DOELGEWICHT (KG)</label>
+        <div class="settingRow"><input id="goalInput" type="number" inputmode="decimal" step="0.1" placeholder="85"><button class="primary" id="saveGoal">Opslaan</button></div>
+        <div class="sub" style="margin-top:8px">Je kunt dit doel altijd aanpassen of leegmaken.</div>
+      </div>
+      <div class="card setting"><div class="label">Vaste gegevens</div><div class="sub" style="margin-top:8px">Startgewicht: <b style="color:white">98,2 kg</b><br>Lengte BMI: <b style="color:white">1,825 m</b><br>Stappendoel: <b style="color:white">8.000 per dag</b></div></div>
+      <button class="secondary" data-page="history">Meetgeschiedenis openen</button>
+    </div>
+  </section>
+
+  <section id="new" class="page">
+    <div class="topbar"><button class="back" data-page="overview">← Terug</button></div>
+    <div class="card panel">
+      <h2 class="sectionTitle">Nieuwe meting</h2>
       <form id="form" class="formgrid">
         <div class="full"><label>DATUM</label><input id="date" type="date" required></div>
-        <div><label>GEWICHT (KG)</label><input id="weight" type="number" inputmode="decimal" step="0.1" placeholder="96.4"></div>
-        <div><label>BUIKOMTREK (CM)</label><input id="waist" type="number" inputmode="decimal" step="0.1" placeholder="112"></div>
-        <div><label>STAPPEN</label><input id="steps" type="number" inputmode="numeric" placeholder="8000"></div>
-        <div><label>SYSTOLISCH</label><input id="sys" type="number" inputmode="numeric" placeholder="120"></div>
-        <div><label>DIASTOLISCH</label><input id="dia" type="number" inputmode="numeric" placeholder="80"></div>
+        <div><label>GEWICHT (KG)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1"></div>
+        <div><label>BUIKOMTREK (CM)</label><input id="waistInput" type="number" inputmode="decimal" step="0.1"></div>
+        <div><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
+        <div><label>SYSTOLISCH</label><input id="sysInput" type="number" inputmode="numeric"></div>
+        <div><label>DIASTOLISCH</label><input id="diaInput" type="number" inputmode="numeric"></div>
         <div class="full"><button class="primary" type="submit">Meting opslaan</button></div>
       </form>
-      <div class="note">Je hoeft niet alles tegelijk in te vullen. Alleen de datum is verplicht.</div>
-    </section>
+      <div class="sub" style="margin-top:9px">Je hoeft niet alles tegelijk in te vullen.</div>
+    </div>
   </section>
 
-  <section id="history" class="view">
-    <section class="card panel">
-      <h2>Meetgeschiedenis</h2>
+  <section id="history" class="page">
+    <div class="topbar"><button class="back" data-page="overview">← Overzicht</button></div>
+    <div class="card panel">
+      <h2 class="sectionTitle">Meetgeschiedenis</h2>
       <div id="historyList"></div>
-      <div class="toolbar"><button id="exportBtn">Exporteer CSV</button><button id="clearBtn">Wis alles</button></div>
-    </section>
-  </section>
-
-  <section id="more" class="view">
-    <section class="card panel">
-      <h2>Meer</h2>
-      <p class="sub">Startgewicht: <b style="color:white">98,2 kg</b></p>
-      <p class="sub">Lengte voor BMI: <b style="color:white">1,825 m</b></p>
-      <p class="sub">Stappendoel: <b style="color:white">8.000 per dag</b></p>
-      <div style="margin-top:18px">
-        <label>DOELGEWICHT (KG)</label>
-        <div style="display:grid;grid-template-columns:1fr auto;gap:10px">
-          <input id="goalWeight" type="number" inputmode="decimal" step="0.1" placeholder="85">
-          <button id="saveGoal" class="primary" style="width:auto;padding:0 18px">Opslaan</button>
-        </div>
-        <div class="note">Je kunt dit doel altijd wijzigen of leegmaken.</div>
-      </div>
-      <p class="sub" style="margin-top:18px">Je gegevens blijven lokaal op dit apparaat opgeslagen.</p>
-    </section>
+      <div class="actions"><button class="secondary" id="exportBtn">Exporteer CSV</button><button class="secondary" id="clearBtn">Wis alles</button></div>
+    </div>
   </section>
 </main>
 
 <nav class="bottom">
-  <div class="bottom-inner">
-    <button class="nav active" data-view="overview"><span>⌂</span>Overzicht</button>
-    <button class="nav" data-view="new"><span>⊕</span>Meten</button>
-    <button class="nav" data-view="history"><span>▤</span>Geschiedenis</button>
-    <button class="nav" data-view="more"><span>•••</span>Meer</button>
+  <div class="bottomInner">
+    <button class="nav active" data-page="overview"><span>⌂</span>Overzicht</button>
+    <button class="nav" data-page="weight"><span>▣</span>Gewicht</button>
+    <button class="nav" data-page="blood"><span>♡</span>Bloeddruk</button>
+    <button class="nav" data-page="more"><span>•••</span>Meer</button>
   </div>
 </nav>
 
 <script>
-const KEY='vitaal-logboek-v1', GOAL_KEY='vitaal-logboek-goal-v1', START_WEIGHT=98.2, HEIGHT_M=1.825, STEP_GOAL=8000;
+const KEY='vitaal-logboek-v1', GOAL_KEY='vitaal-logboek-goal-v1', START=98.2, HEIGHT=1.825;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const today=()=>new Date().toISOString().slice(0,10); $('#date').value=today();
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
-function save(v){localStorage.setItem(KEY,JSON.stringify(v))}
-function getGoal(){const n=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Number.isFinite(n)?n:null}
-function setGoal(v){if(v===null){localStorage.removeItem(GOAL_KEY)}else{localStorage.setItem(GOAL_KEY,String(v))}}
-function num(v){const n=parseFloat(v);return Number.isFinite(n)?n:null}
-function fmt(n,d=1){return n.toFixed(d).replace('.',',')}
-function fmtDate(s){return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
-function sorted(data){return [...data].sort((a,b)=>b.date.localeCompare(a.date))}
-function latestWith(data,key){return sorted(data).find(e=>num(e[key])!==null)}
-function bpClass(sys,dia){
- if(sys==null||dia==null)return null;
- if(sys>=140||dia>=90)return {text:'Hoog',cls:'bad'};
- if(sys>=130||dia>=85)return {text:'Verhoogd',cls:'warn'};
- return {text:'Normaal',cls:'good'};
+function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
+function n(v){const x=parseFloat(v);return Number.isFinite(x)?x:null}
+function fmt(v,d=1){return Number(v).toFixed(d).replace('.',',')}
+function fdate(s){return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
+function sorted(d){return [...d].sort((a,b)=>b.date.localeCompare(a.date))}
+function lastWith(d,k){return sorted(d).find(x=>n(x[k])!==null)}
+function goal(){const g=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Number.isFinite(g)?g:null}
+function bpCat(s,d){if(s>=140||d>=90)return['Hoog','bad'];if(s>=130||d>=85)return['Verhoogd','warn'];return['Normaal','good']}
+function page(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));$$('.nav').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0);render()}
+$$('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
+
+function svgLine(points, colors){
+ if(points.length<2)return '<div class="chartEmpty">Nog te weinig metingen voor een grafiek.</div>';
+ const W=600,H=190,pad=22, vals=points.flatMap(p=>p.vals), min=Math.min(...vals),max=Math.max(...vals), span=(max-min)||1;
+ const x=i=>pad+i*(W-pad*2)/(points.length-1), y=v=>H-pad-(v-min)*(H-pad*2)/span;
+ let out=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
+ colors.forEach((c,series)=>{
+   const pts=points.map((p,i)=>`${x(i)},${y(p.vals[series])}`).join(' ');
+   out+=`<polyline fill="none" stroke="${c}" stroke-width="4" points="${pts}" />`;
+ });
+ out+='</svg>';return out;
 }
-function showView(id){
- $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
- $$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.view===id));
- window.scrollTo({top:0,behavior:'smooth'});
-}
-$$('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
-
-function renderOverview(data){
- const latest=sorted(data)[0];
- $('#latestDate').textContent=latest?fmtDate(latest.date):'Nog geen meting';
-
- const w=latestWith(data,'weight');
- if(w){
-   const ww=num(w.weight), bmi=ww/(HEIGHT_M*HEIGHT_M), loss=START_WEIGHT-ww;
-   $('#latestWeight').textContent=`${fmt(ww)} kg`;
-   $('#latestBMI').textContent=`BMI: ${fmt(bmi)} (${bmi<25?'normaal':bmi<30?'overgewicht':'hoog'})`;
-   $('#latestLoss').textContent=loss>=0?`↓ ${fmt(Math.abs(loss))} kg`:`↑ ${fmt(Math.abs(loss))} kg`;
-   $('#bmiCard').textContent=fmt(bmi);
-   $('#bmiText').textContent=bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI';
-   $('#encourageTitle').textContent=loss>0?'Goed bezig!':'Blijf meten';
-   $('#encourageText').textContent=loss>0?`Je bent ${fmt(loss)} kg afgevallen sinds je startgewicht van 98,2 kg.`:'Je voortgang wordt hier automatisch bijgehouden.';
- }else{
-   $('#latestWeight').textContent='—';$('#latestBMI').textContent='Nog geen gewicht';$('#latestLoss').textContent='—';$('#bmiCard').textContent='—';$('#bmiText').textContent='Lengte: 1,825 m';
-   $('#encourageTitle').textContent='Klaar om te beginnen';$('#encourageText').textContent='Voeg je eerste meting toe om je voortgang te volgen.';
- }
-
- const goal=getGoal();
- const goalInput=document.querySelector('#goalWeight');
- if(goalInput && document.activeElement!==goalInput) goalInput.value=goal??'';
- const goalCard=document.querySelector('#goalCard'), goalSub=document.querySelector('#goalSub');
- if(goalCard && goalSub){
-   if(goal!==null){
-     goalCard.textContent=`${fmt(goal)} kg`;
-     if(w){
-       const diff=num(w.weight)-goal;
-       goalSub.textContent=diff>0?`${fmt(diff)} kg te gaan`:diff===0?'Doel bereikt!':`${fmt(Math.abs(diff))} kg onder doel`;
-     }else{
-       goalSub.textContent='Doelgewicht';
-     }
-   }else{
-     goalCard.textContent='—'; goalSub.textContent='Stel je doel in bij Meer';
-   }
- }
-
- const waist=latestWith(data,'waist');
- if(waist){
-   const v=`${fmt(num(waist.waist))} cm`;
-   $('#latestWaist').textContent=v;$('#latestWaistSub').textContent=fmtDate(waist.date);
-   $('#waistCard').textContent=v;$('#waistDate').textContent=fmtDate(waist.date);
- }else{
-   $('#latestWaist').textContent='—';$('#latestWaistSub').textContent='Nog geen meting';$('#waistCard').textContent='—';$('#waistDate').textContent='Nog geen meting';
- }
-
- const cutoff=new Date();cutoff.setDate(cutoff.getDate()-6);cutoff.setHours(0,0,0,0);
- const recent=data.filter(e=>num(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);
- $('#steps7').textContent=recent.length?Math.round(recent.reduce((s,e)=>s+num(e.steps),0)/recent.length).toLocaleString('nl-NL'):'—';
-
- const bp=sorted(data).find(e=>num(e.sys)!==null&&num(e.dia)!==null);
- if(bp){
-   const s=num(bp.sys),d=num(bp.dia),cat=bpClass(s,d);
-   $('#lastBP').textContent=`${s}/${d}`;$('#lastBPDate').textContent=fmtDate(bp.date);
-   $('#bpBadge').innerHTML=`<span class="badge ${cat.cls}">${cat.text}</span>`;
- }else{
-   $('#lastBP').textContent='—';$('#lastBPDate').textContent='Nog geen meting';$('#bpBadge').innerHTML='';
- }
+function renderCharts(data){
+ const weights=[...data].filter(e=>n(e.weight)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.weight)]}));
+ $('#weightChart').innerHTML=svgLine(weights,['#65df7c']);
+ const bps=[...data].filter(e=>n(e.sys)!==null&&n(e.dia)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.sys),n(e.dia)]}));
+ $('#bloodChart').innerHTML=svgLine(bps,['#ff5e8b','#4b8cff']);
 }
 function renderHistory(data){
- const host=$('#historyList'), items=sorted(data);
+ const items=sorted(data),host=$('#historyList');
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
- host.innerHTML='<div class="history-list">'+items.map((e,i)=>`
-  <div class="history-item">
-   <div class="history-top"><div class="history-date">${fmtDate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div>
-   <div class="history-metrics">
-    <div class="hm"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div>
-    <div class="hm"><span>Buikomtrek</span><b>${e.waist?e.waist+' cm':'—'}</b></div>
-    <div class="hm"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div>
-    <div class="hm"><span>Systolisch</span><b>${e.sys||'—'}</b></div>
-    <div class="hm"><span>Diastolisch</span><b>${e.dia||'—'}</b></div>
-   </div>
-  </div>`).join('')+'</div>';
- $$('.delete').forEach(btn=>btn.onclick=()=>{const s=sorted(load());s.splice(Number(btn.dataset.i),1);save(s);render()});
+ host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="historyData">
+ <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div></div></div>`).join('')+'</div>';
+ $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
 }
-function render(){const data=load();renderOverview(data);renderHistory(data)}
-$('#form').addEventListener('submit',e=>{
- e.preventDefault();
- const entry={date:$('#date').value,weight:$('#weight').value,waist:$('#waist').value,steps:$('#steps').value,sys:$('#sys').value,dia:$('#dia').value};
- const data=load();data.push(entry);save(data);e.target.reset();$('#date').value=today();render();showView('overview');
-});
+function render(){
+ const data=load(), latest=sorted(data)[0], w=lastWith(data,'weight'), waist=lastWith(data,'waist'), bp=sorted(data).find(e=>n(e.sys)!==null&&n(e.dia)!==null);
+ $('#latestDate').textContent=latest?fdate(latest.date):'Nog geen meting';
+ if(w){
+   const ww=n(w.weight), bmi=ww/(HEIGHT*HEIGHT), loss=START-ww;
+   $('#latestWeight').textContent=fmt(ww)+' kg';$('#latestBMI').textContent='BMI: '+fmt(bmi)+' ('+(bmi<25?'normaal':bmi<30?'overgewicht':'hoog')+')';
+   $('#loss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
+   $('#bmiTile').textContent=fmt(bmi);$('#bmiClass').textContent=bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI';
+   $('#weightNow').textContent=fmt(ww)+' kg';$('#weightNowDate').textContent=fdate(w.date);$('#weightLoss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
+   $('#msgTitle').textContent=loss>0?'Goed bezig!':'Blijf meten';$('#msgText').textContent=loss>0?`Je bent ${fmt(loss)} kg afgevallen sinds je start.`:'Je voortgang wordt automatisch bijgehouden.';
+ } else {
+   $('#latestWeight').textContent='—';$('#latestBMI').textContent='Nog geen gewicht';$('#loss').textContent='—';$('#bmiTile').textContent='—';$('#bmiClass').textContent='Lengte 1,825 m';$('#weightNow').textContent='—';$('#weightNowDate').textContent='';$('#weightLoss').textContent='—';
+ }
+ if(waist){const t=fmt(n(waist.waist))+' cm';$('#latestWaist').textContent=t;$('#latestWaistDate').textContent=fdate(waist.date);$('#waistTile').textContent=t;$('#waistTileDate').textContent=fdate(waist.date)} else {$('#latestWaist').textContent='—';$('#latestWaistDate').textContent='Nog geen meting';$('#waistTile').textContent='—';$('#waistTileDate').textContent='Nog geen meting'}
+ const cutoff=new Date();cutoff.setDate(cutoff.getDate()-6);cutoff.setHours(0,0,0,0);const recent=data.filter(e=>n(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);
+ $('#steps7').textContent=recent.length?Math.round(recent.reduce((s,e)=>s+n(e.steps),0)/recent.length).toLocaleString('nl-NL'):'—';
+ if(bp){const s=n(bp.sys),d=n(bp.dia),c=bpCat(s,d);$('#bp').textContent=`${s}/${d}`;$('#bpDate').textContent=fdate(bp.date);$('#bpBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#bloodNow').textContent=`${s}/${d}`;$('#bloodNowDate').textContent=fdate(bp.date);$('#bloodStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#bp').textContent='—';$('#bpDate').textContent='Nog geen meting';$('#bpBadge').innerHTML='';$('#bloodNow').textContent='—';$('#bloodNowDate').textContent='';$('#bloodStatus').innerHTML=''}
+ const g=goal();$('#goalInput').value=g??'';if(g!==null){$('#goalTile').textContent=fmt(g)+' kg';if(w){const diff=n(w.weight)-g;$('#goalSub').textContent=diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel'}else $('#goalSub').textContent='Doelgewicht'}else{$('#goalTile').textContent='—';$('#goalSub').textContent='Instellen bij Meer'}
+ renderCharts(data);renderHistory(data);
+}
+$('#saveGoal').onclick=()=>{const raw=$('#goalInput').value.trim();if(!raw)localStorage.removeItem(GOAL_KEY);else{const g=parseFloat(raw.replace(',','.'));if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig doelgewicht in.');localStorage.setItem(GOAL_KEY,String(g))}render()};
+$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
-$('#saveGoal').onclick=()=>{const raw=$('#goalWeight').value.trim();if(raw===''){setGoal(null)}else{const g=parseFloat(raw.replace(',','.'));if(!Number.isFinite(g)||g<=0){alert('Vul een geldig doelgewicht in.');return}setGoal(g)}render()};
-$('#exportBtn').onclick=()=>{
- const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia])];
- const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
- const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)
-};
+$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
 render();
 </script>
 </body>

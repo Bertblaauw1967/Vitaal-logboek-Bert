@@ -1,10 +1,10 @@
 {
   "name": "Vitaal Logboek",
   "short_name": "Vitaal",
-  "start_url": "./?v=6",
+  "start_url": "./?v=7",
   "display": "standalone",
-  "background_color": "#061827",
-  "theme_color": "#071b2d",
+  "background_color": "#041525",
+  "theme_color": "#061827",
   "icons": [
     {
       "src": "icon-192.png",
