@@ -73,7 +73,7 @@ input:focus{border-color:var(--blue)}
 
 .bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(3,17,29,.96);border-top:1px solid #1a4768;padding:8px 10px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(16px);z-index:20}
 .bottomInner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}
-.nav{border:0;background:transparent;color:#b4cadb;padding:5px 2px;font-size:12px}.nav span{display:block;font-size:24px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
+.nav{border:0;background:transparent;color:#b4cadb;padding:5px 1px;font-size:11px}.nav span{display:block;font-size:24px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
 
 @media(max-width:560px){
  .app{padding-left:11px;padding-right:11px}.historyShortcut{width:102px;min-width:102px;font-size:11px;padding:10px 6px}
@@ -85,8 +85,8 @@ input:focus{border-color:var(--blue)}
 </style>
 
 <script>
-(async function forceFreshVersion9(){
-  const FLAG='vitaal-force-refresh-v9';
+(async function forceFreshVersion10(){
+  const FLAG='vitaal-force-refresh-v10';
   try{
     if(!sessionStorage.getItem(FLAG)){
       sessionStorage.setItem(FLAG,'1');
@@ -285,7 +285,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'Vitaal Logboek',
-    version:9,
+    version:10,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -320,7 +320,7 @@ render();
 <script>
 window.addEventListener('load',()=>{
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js?v=9').catch(()=>{});
+    navigator.serviceWorker.register('./sw.js?v=10').catch(()=>{});
   }
 });
 </script>
