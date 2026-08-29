@@ -7,10 +7,10 @@
 <meta name="app-version" content="9.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Vitaal Logboek">
+<meta name="apple-mobile-web-app-title" content="LeefKracht">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>Vitaal Logboek</title>
+<title>LeefKracht</title>
 <style>
 :root{
  --bg:#041525; --bg2:#07243d; --card:#0a2b4a; --card2:#0b3154;
@@ -25,7 +25,7 @@ button,input{font:inherit}
 button{cursor:pointer}
 .app{max-width:760px;margin:auto;min-height:100vh;padding:calc(22px + env(safe-area-inset-top)) 16px calc(92px + env(safe-area-inset-bottom));background:
 radial-gradient(circle at 88% 0%,#0d3b64 0,transparent 31%),linear-gradient(180deg,#061827 0%,#03111d 100%)}
-.header{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+.header{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:8px}
 .brand h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,8.7vw,64px);line-height:.95;margin:8px 0 12px;letter-spacing:-2px}
 .brand p{margin:0;color:#a9c5de;font-size:clamp(16px,3.5vw,22px);line-height:1.4}
 .historyShortcut{width:128px;min-width:128px;border:1px solid #24537d;background:#08213a;color:#fff;border-radius:17px;padding:12px 8px;font-weight:700}
@@ -72,8 +72,8 @@ input:focus{border-color:var(--blue)}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.secondary{border:0;border-radius:14px;padding:13px;background:#214d6e;color:#fff;font-weight:700}
 
 .bottom{position:fixed;left:0;right:0;bottom:0;background:rgba(3,17,29,.96);border-top:1px solid #1a4768;padding:8px 10px calc(8px + env(safe-area-inset-bottom));backdrop-filter:blur(16px);z-index:20}
-.bottomInner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}
-.nav{border:0;background:transparent;color:#b4cadb;padding:5px 1px;font-size:11px}.nav span{display:block;font-size:24px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
+.bottomInner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(6,1fr)}
+.nav{border:0;background:transparent;color:#b4cadb;padding:5px 0;font-size:9.5px}.nav span{display:block;font-size:21px;margin-bottom:3px}.nav.active{color:var(--blue);font-weight:800}
 
 @media(max-width:560px){
  .app{padding-left:11px;padding-right:11px}.historyShortcut{width:102px;min-width:102px;font-size:11px;padding:10px 6px}
@@ -85,8 +85,8 @@ input:focus{border-color:var(--blue)}
 </style>
 
 <script>
-(async function forceFreshVersion10(){
-  const FLAG='vitaal-force-refresh-v10';
+(async function forceFreshVersion11(){
+  const FLAG='leefkracht-force-refresh-v11';
   try{
     if(!sessionStorage.getItem(FLAG)){
       sessionStorage.setItem(FLAG,'1');
@@ -109,8 +109,8 @@ input:focus{border-color:var(--blue)}
   <section id="overview" class="page active">
     <div class="header">
       <div class="brand">
-        <h1>Vitaal Logboek</h1>
-        <p>Gewicht, buikomtrek, bloeddruk en stappen<br>— eenvoudig bijgehouden</p>
+        <h1>Leef<span style="color:var(--pink)">Kracht</span></h1>
+        <p>Jouw gezondheid. Jouw regie.</p>
       </div>
     </div>
     <div class="pulse"><i></i></div>
@@ -130,6 +130,7 @@ input:focus{border-color:var(--blue)}
     <div class="tiles">
       <div class="card tile"><div class="icon">👟</div><div><div class="label">Gem. stappen 7 dagen</div><div class="value" id="steps7">—</div><div class="sub">Doel: 8.000 per dag</div></div></div>
       <div class="card tile"><div class="icon pink">♥</div><div><div class="label">Laatste bloeddruk</div><div class="value" id="bp">—</div><div class="sub" id="bpDate">Nog geen meting</div><span id="bpBadge"></span></div></div>
+      <div class="card tile"><div class="icon purple">♡</div><div><div class="label">Hartslag rust (laatste)</div><div class="value" id="heartTile">—</div><div class="sub" id="heartDate">Nog geen meting</div><span id="heartBadge"></span></div></div>
       <div class="card tile"><div class="icon teal">⌁</div><div><div class="label">Buikomtrek</div><div class="value" id="waistTile">—</div><div class="sub" id="waistTileDate">Nog geen meting</div></div></div>
       <div class="card tile"><div class="icon purple">◉</div><div><div class="label">Startgewicht</div><div class="value">98,2 kg</div><div class="sub">Startpunt</div></div></div>
       <div class="card tile"><div class="icon amber">BMI</div><div><div class="label">BMI</div><div class="value" id="bmiTile">—</div><div class="sub" id="bmiClass">Lengte 1,825 m</div></div></div>
@@ -163,6 +164,19 @@ input:focus{border-color:var(--blue)}
     </div>
   </section>
 
+  
+  <section id="heart" class="page">
+    <h2 class="sectionTitle">Hartslag</h2>
+    <div class="summaryRow">
+      <div class="card summary"><div class="label">Laatste rusthartslag</div><div class="value" id="heartNow">—</div><div class="sub" id="heartNowDate"></div></div>
+      <div class="card summary"><div class="label">Status</div><div id="heartStatus" style="margin-top:12px"></div><div class="sub">Op basis van laatste rustmeting</div></div>
+    </div>
+    <div class="card panel">
+      <div class="label">Hartslagverloop</div>
+      <div class="chart" id="heartChart"></div>
+    </div>
+  </section>
+
   <section id="more" class="page">
     <h2 class="sectionTitle">Meer</h2>
     <div class="settings">
@@ -192,6 +206,7 @@ input:focus{border-color:var(--blue)}
         <div><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
         <div><label>SYSTOLISCH</label><input id="sysInput" type="number" inputmode="numeric"></div>
         <div><label>DIASTOLISCH</label><input id="diaInput" type="number" inputmode="numeric"></div>
+        <div class="full"><label>HARTSLAG IN RUST (BPM)</label><input id="heartInput" type="number" inputmode="numeric" placeholder="58"></div>
         <div class="full"><button class="primary" type="submit">Meting opslaan</button></div>
       </form>
       <div class="sub" style="margin-top:9px">Je hoeft niet alles tegelijk in te vullen.</div>
@@ -213,6 +228,7 @@ input:focus{border-color:var(--blue)}
     <button class="nav active" data-page="overview"><span>⌂</span>Overzicht</button>
     <button class="nav" data-page="weight"><span>▣</span>Gewicht</button>
     <button class="nav" data-page="blood"><span>♡</span>Bloeddruk</button>
+    <button class="nav" data-page="heart"><span>♡</span>Hartslag</button>
     <button class="nav" data-page="history"><span>⌁</span>Metingen</button>
     <button class="nav" data-page="more"><span>•••</span>Meer</button>
   </div>
@@ -231,6 +247,7 @@ function sorted(d){return [...d].sort((a,b)=>b.date.localeCompare(a.date))}
 function lastWith(d,k){return sorted(d).find(x=>n(x[k])!==null)}
 function goal(){const g=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Number.isFinite(g)?g:null}
 function bpCat(s,d){if(s>=140||d>=90)return['Hoog','bad'];if(s>=130||d>=85)return['Verhoogd','warn'];return['Normaal','good']}
+function heartCat(h){if(h==null)return['—',''];if(h<50)return['Laag','warn'];if(h<=100)return['Normaal','good'];return['Hoog','bad']}
 function page(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));$$('.nav').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0);render()}
 $$('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
 
@@ -250,16 +267,18 @@ function renderCharts(data){
  $('#weightChart').innerHTML=svgLine(weights,['#65df7c']);
  const bps=[...data].filter(e=>n(e.sys)!==null&&n(e.dia)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.sys),n(e.dia)]}));
  $('#bloodChart').innerHTML=svgLine(bps,['#ff5e8b','#4b8cff']);
+ const hearts=[...data].filter(e=>n(e.heart)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.heart)]}));
+ $('#heartChart').innerHTML=svgLine(hearts,['#a869ff']);
 }
 function renderHistory(data){
  const items=sorted(data),host=$('#historyList');
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
  host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="historyData">
- <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div></div></div>`).join('')+'</div>';
+ <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div></div></div>`).join('')+'</div>';
  $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
 }
 function render(){
- const data=load(), latest=sorted(data)[0], w=lastWith(data,'weight'), waist=lastWith(data,'waist'), bp=sorted(data).find(e=>n(e.sys)!==null&&n(e.dia)!==null);
+ const data=load(), latest=sorted(data)[0], w=lastWith(data,'weight'), waist=lastWith(data,'waist'), bp=sorted(data).find(e=>n(e.sys)!==null&&n(e.dia)!==null), heart=lastWith(data,'heart');
  $('#latestDate').textContent=latest?fdate(latest.date):'Nog geen meting';
  if(w){
    const ww=n(w.weight), bmi=ww/(HEIGHT*HEIGHT), loss=START-ww;
@@ -275,17 +294,18 @@ function render(){
  const cutoff=new Date();cutoff.setDate(cutoff.getDate()-6);cutoff.setHours(0,0,0,0);const recent=data.filter(e=>n(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);
  $('#steps7').textContent=recent.length?Math.round(recent.reduce((s,e)=>s+n(e.steps),0)/recent.length).toLocaleString('nl-NL'):'—';
  if(bp){const s=n(bp.sys),d=n(bp.dia),c=bpCat(s,d);$('#bp').textContent=`${s}/${d}`;$('#bpDate').textContent=fdate(bp.date);$('#bpBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#bloodNow').textContent=`${s}/${d}`;$('#bloodNowDate').textContent=fdate(bp.date);$('#bloodStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#bp').textContent='—';$('#bpDate').textContent='Nog geen meting';$('#bpBadge').innerHTML='';$('#bloodNow').textContent='—';$('#bloodNowDate').textContent='';$('#bloodStatus').innerHTML=''}
+ if(heart){const h=n(heart.heart),c=heartCat(h);$('#heartTile').textContent=`${h} bpm`;$('#heartDate').textContent=fdate(heart.date);$('#heartBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#heartNow').textContent=`${h} bpm`;$('#heartNowDate').textContent=fdate(heart.date);$('#heartStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#heartTile').textContent='—';$('#heartDate').textContent='Nog geen meting';$('#heartBadge').innerHTML='';$('#heartNow').textContent='—';$('#heartNowDate').textContent='';$('#heartStatus').innerHTML=''}
  const g=goal();$('#goalInput').value=g??'';if(g!==null){$('#goalTile').textContent=fmt(g)+' kg';if(w){const diff=n(w.weight)-g;$('#goalSub').textContent=diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel'}else $('#goalSub').textContent='Doelgewicht'}else{$('#goalTile').textContent='—';$('#goalSub').textContent='Instellen bij Meer'}
  renderCharts(data);renderHistory(data);
 }
 $('#saveGoal').onclick=()=>{const raw=$('#goalInput').value.trim();if(!raw)localStorage.removeItem(GOAL_KEY);else{const g=parseFloat(raw.replace(',','.'));if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig doelgewicht in.');localStorage.setItem(GOAL_KEY,String(g))}render()};
-$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
+$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
   const payload={
-    app:'Vitaal Logboek',
-    version:10,
+    app:'LeefKracht',
+    version:11,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -313,14 +333,14 @@ $('#backupBtn').onclick=makeBackup;
 $('#restoreBtn').onclick=()=>$('#restoreFile').click();
 $('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
 
-$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
+$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
 render();
 </script>
 
 <script>
 window.addEventListener('load',()=>{
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js?v=10').catch(()=>{});
+    navigator.serviceWorker.register('./sw.js?v=11').catch(()=>{});
   }
 });
 </script>
