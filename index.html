@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
+<meta name="app-version" content="8.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Vitaal Logboek">
@@ -82,6 +83,26 @@ input:focus{border-color:var(--blue)}
  .tile .value{font-size:27px}.label{font-size:11px}.sub{font-size:13px}.historyData{grid-template-columns:1fr 1fr}
 }
 </style>
+
+<script>
+(async function forceFreshVersion8(){
+  const FLAG='vitaal-force-refresh-v8';
+  try{
+    if(!sessionStorage.getItem(FLAG)){
+      sessionStorage.setItem(FLAG,'1');
+      if('serviceWorker' in navigator){
+        const regs=await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r=>r.unregister()));
+      }
+      if('caches' in window){
+        const keys=await caches.keys();
+        await Promise.all(keys.map(k=>caches.delete(k)));
+      }
+    }
+  }catch(e){}
+})();
+</script>
+
 </head>
 <body>
 <main class="app">
@@ -258,5 +279,14 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 $('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
 render();
 </script>
+
+<script>
+window.addEventListener('load',()=>{
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('./sw.js?v=8').catch(()=>{});
+  }
+});
+</script>
+
 </body>
 </html>

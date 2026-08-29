@@ -1,7 +1,7 @@
 {
   "name": "Vitaal Logboek",
   "short_name": "Vitaal",
-  "start_url": "./?v=7",
+  "start_url": "./?v=8",
   "display": "standalone",
   "background_color": "#041525",
   "theme_color": "#061827",
@@ -16,5 +16,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "id": "./?app=vitaal-logboek-v8"
 }
