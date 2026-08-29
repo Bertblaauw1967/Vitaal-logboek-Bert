@@ -259,11 +259,85 @@ input:focus{border-color:var(--blue)}
   .tile .sub{font-size:12px !important}
 }
 
+
+/* v16 approved visual layout */
+.heroHeader{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  padding-top:8px !important;
+}
+.brandRow{display:flex;align-items:center;gap:14px;min-width:0}
+.brandIcon{
+  width:58px;height:58px;min-width:58px;border:2px solid var(--pink);
+  border-radius:18px;display:grid;place-items:center;color:var(--pink);
+  font-size:29px;background:#071e34;
+}
+.heroHeader .brand h1{font-size:clamp(38px,8vw,56px);margin:0 0 6px;line-height:.95}
+.heroHeader .brand p{font-size:15px;white-space:nowrap}
+.heroNew{flex:0 0 auto}
+.approvedGrid{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+.approvedGrid .tile{
+  min-height:220px !important;
+  padding:18px 16px !important;
+  display:grid !important;
+  grid-template-columns:52px minmax(0,1fr) !important;
+  column-gap:14px !important;
+  align-items:start !important;
+  border-radius:22px !important;
+}
+.approvedGrid .tile .icon{
+  width:48px !important;height:48px !important;min-width:48px !important;
+}
+.approvedGrid .tileBody{display:flex !important;flex-direction:column !important;align-items:flex-start !important;min-width:0}
+.approvedGrid .label{min-height:0 !important;font-size:14px !important;font-weight:800 !important;letter-spacing:.02em}
+.approvedGrid .sub{font-size:13px !important}
+.approvedGrid .value{font-size:34px !important;margin:18px 0 8px !important}
+.greenProgress{color:var(--green);font-size:23px;font-weight:850;margin:0 0 6px}
+.goalRemaining{color:#ff9f1a;font-size:14px;margin-top:3px}
+.bmiStatus{color:#ffb000;font-size:14px;margin-top:2px}
+.progressTrack{width:100%;height:9px;background:#183d5c;border-radius:999px;margin-top:18px;overflow:hidden}
+.progressFill{height:100%;width:0;background:var(--blue);border-radius:999px}
+.moreOnly{height:100%;justify-content:center !important;align-items:center !important}
+.moreTitle{font-size:24px;font-weight:850;text-transform:uppercase;letter-spacing:.03em;margin:auto 0}
+.tileWeight{border-color:#1c73b9 !important;background:linear-gradient(180deg,#0a3052,#082741) !important}
+.tileBlood{border-color:#8a304e !important;background:linear-gradient(180deg,#2a1624,#221521) !important}
+.tileHeart{border-color:#6340a2 !important;background:linear-gradient(180deg,#201739,#19162f) !important}
+.tileWaist{border-color:#277a64 !important;background:linear-gradient(180deg,#0d392f,#0d302a) !important}
+.tileSteps{border-color:#1d7fa9 !important;background:linear-gradient(180deg,#0a3049,#082a42) !important}
+.tileGoal{border-color:#8c6417 !important;background:linear-gradient(180deg,#302713,#29220f) !important}
+.tileBmi{border-color:#8d6f19 !important;background:linear-gradient(180deg,#302c17,#272514) !important}
+.tileMore{border-color:#2c5f95 !important;background:linear-gradient(180deg,#101c38,#101b35) !important}
+@media(max-width:560px){
+  .heroHeader{align-items:flex-start !important}
+  .brandIcon{width:52px;height:52px;min-width:52px}
+  .heroHeader .brand p{font-size:13px;white-space:normal}
+  .heroNew{font-size:12px;padding:10px 11px}
+  .approvedGrid{gap:10px !important}
+  .approvedGrid .tile{
+    min-height:205px !important;
+    padding:15px 13px !important;
+    grid-template-columns:44px minmax(0,1fr) !important;
+    column-gap:10px !important;
+  }
+  .approvedGrid .tile .icon{width:40px !important;height:40px !important;min-width:40px !important}
+  .approvedGrid .label{font-size:12px !important}
+  .approvedGrid .sub{font-size:12px !important}
+  .approvedGrid .value{font-size:29px !important}
+  .greenProgress{font-size:20px}
+  .moreTitle{font-size:21px}
+}
+
 </style>
 
 <script>
-(async function forceFreshVersion15(){
-  const FLAG='leefkracht-force-refresh-v15';
+(async function forceFreshVersion16(){
+  const FLAG='leefkracht-force-refresh-v16';
   try{
     if(!sessionStorage.getItem(FLAG)){
       sessionStorage.setItem(FLAG,'1');
@@ -284,337 +358,102 @@ input:focus{border-color:var(--blue)}
 <body>
 <main class="app">
   <section id="overview" class="page active">
-    <div class="header">
-      <div class="brand">
-        <h1>Leef<span style="color:var(--pink)">Kracht</span></h1>
-        <p>Jouw gezondheid. Jouw regie.</p>
+    <div class="header heroHeader">
+      <div class="brandRow">
+        <div class="brandIcon">♡</div>
+        <div class="brand">
+          <h1>Leef<span style="color:var(--pink)">Kracht</span></h1>
+          <p>Jouw gezondheid. Jouw regie.</p>
+        </div>
       </div>
+      <button class="newMeasure heroNew" data-page="new">⊕ Nieuw meten</button>
     </div>
+
     <div class="pulse"><i></i></div>
 
-    <div class="card latest">
-      <div class="latestHead">
-        <div class="latestTitle"><div class="clock">◷</div><div><h2>Laatste meting</h2><small id="latestDate">Nog geen meting</small></div></div>
-        <button class="newMeasure" data-page="new">▣ Nieuw meten</button>
-      </div>
-      <div class="latestGrid">
-        <button type="button" class="metric clickable" data-page="weight" style="background:transparent;color:inherit;border-top:0;border-right:0;border-bottom:0;text-align:left"><div class="label">Gewicht</div><div class="value" id="latestWeight">—</div><div class="sub" id="latestBMI">Nog geen gewicht</div></button>
-        <div class="metric"><div class="label">Afgevallen sinds start</div><div class="value green" id="loss">—</div><div class="sub">Startgewicht: 98,2 kg</div></div>
-        <div class="metric"><div class="label">Buikomtrek</div><div class="value" id="latestWaist">—</div><div class="sub" id="latestWaistDate">Nog geen meting</div></div>
-      </div>
-    </div>
-
-    <div class="tiles">
-      <button type="button" class="card tile clickable" data-page="steps">
-        <div class="icon">👟</div>
+    <div class="tiles approvedGrid">
+      <button type="button" class="card tile clickable tileWeight" data-page="weight">
+        <div class="icon blue">▣</div>
         <div class="tileBody">
-          <div class="label">Gem. stappen<br>7 dagen</div>
-          <div class="value" id="steps7">—</div>
-          <div class="sub">Doel: 8.000 per dag</div>
+          <div class="label">Gewicht</div>
+          <div class="sub">Laatste meting</div>
+          <div class="value" id="latestWeight">—</div>
+          <div class="greenProgress" id="loss">—</div>
+          <div class="sub">Startgewicht: 98,2 kg</div>
+          <div class="sub" id="latestDate">Nog geen meting</div>
         </div>
       </button>
 
-      <button type="button" class="card tile clickable" data-page="blood">
+      <button type="button" class="card tile clickable tileBlood" data-page="blood">
         <div class="icon pink">♥</div>
         <div class="tileBody">
-          <div class="label">Laatste<br>bloeddruk</div>
+          <div class="label">Bloeddruk</div>
+          <div class="sub">Laatste meting</div>
           <div class="value" id="bp">—</div>
-          <div class="sub" id="bpDate">Nog geen meting</div>
           <span id="bpBadge"></span>
+          <div class="sub" id="bpDate">Nog geen meting</div>
         </div>
       </button>
 
-      <button type="button" class="card tile clickable" data-page="heart">
+      <button type="button" class="card tile clickable tileHeart" data-page="heart">
         <div class="icon purple">♡</div>
         <div class="tileBody">
-          <div class="label">Hartslag rust<br>(laatste)</div>
+          <div class="label">Hartslag rust</div>
+          <div class="sub">Laatste meting</div>
           <div class="value" id="heartTile">—</div>
-          <div class="sub" id="heartDate">Nog geen meting</div>
           <span id="heartBadge"></span>
+          <div class="sub" id="heartDate">Nog geen meting</div>
         </div>
       </button>
 
-      <button type="button" class="card tile clickable" data-page="waist">
+      <button type="button" class="card tile clickable tileWaist" data-page="waist">
         <div class="icon teal">⌁</div>
         <div class="tileBody">
-          <div class="label">Buikomtrek<br>(laatste)</div>
+          <div class="label">Buikomtrek</div>
+          <div class="sub">Laatste meting</div>
           <div class="value" id="waistTile">—</div>
           <div class="sub" id="waistTileDate">Nog geen meting</div>
         </div>
       </button>
 
-      <div class="card tile staticTile">
-        <div class="icon purple">◉</div>
+      <button type="button" class="card tile clickable tileSteps" data-page="steps">
+        <div class="icon blue">👟</div>
         <div class="tileBody">
-          <div class="label">Startgewicht</div>
-          <div class="value">98,2 kg</div>
-          <div class="sub">Startpunt</div>
-        </div>
-      </div>
-
-      <button type="button" class="card tile clickable" data-page="weight">
-        <div class="icon amber">BMI</div>
-        <div class="tileBody">
-          <div class="label">BMI<br>(laatste)</div>
-          <div class="value" id="bmiTile">—</div>
-          <div class="sub" id="bmiClass">Lengte 1,825 m</div>
+          <div class="label">Gem. stappen</div>
+          <div class="sub">7 dagen</div>
+          <div class="value" id="steps7">—</div>
+          <div class="sub">Doel: 8.000 per dag</div>
+          <div class="progressTrack"><div class="progressFill" id="stepsProgress"></div></div>
         </div>
       </button>
 
-      <button type="button" class="card tile clickable" data-page="goal">
+      <button type="button" class="card tile clickable tileGoal" data-page="goal">
         <div class="icon amber">◎</div>
         <div class="tileBody">
           <div class="label">Doelgewicht</div>
+          <div class="sub">Doel</div>
           <div class="value" id="goalTile">—</div>
-          <div class="sub" id="goalSub">Instellen bij Meer</div>
+          <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
         </div>
       </button>
 
-      <button type="button" class="card tile clickable" data-page="more">
-        <div class="icon blue">•••</div>
+      <button type="button" class="card tile clickable tileBmi" data-page="weight">
+        <div class="icon amber">BMI</div>
         <div class="tileBody">
-          <div class="label">Meer</div>
-          <div class="value smallValue">Instellingen</div>
-          <div class="sub">Doel, geschiedenis en back-up</div>
+          <div class="label">BMI</div>
+          <div class="sub">Laatste meting</div>
+          <div class="value" id="bmiTile">—</div>
+          <div class="bmiStatus" id="bmiClass">Lengte 1,825 m</div>
+        </div>
+      </button>
+
+      <button type="button" class="card tile clickable tileMore" data-page="more">
+        <div class="icon blue">•••</div>
+        <div class="tileBody moreOnly">
+          <div class="moreTitle">Meer</div>
         </div>
       </button>
     </div>
-
-    <div class="card message"><div class="info">ⓘ</div><div><strong id="msgTitle">Klaar om te beginnen</strong><p id="msgText">Voeg een meting toe om je voortgang te volgen.</p></div></div>
-  
-      <div class="card summary"><div class="label">Sinds start</div><div class="value green" id="weightLoss">—</div><div class="sub">Vanaf 98,2 kg</div></div>
-    </div>
-    <div class="card panel">
-      <div class="label">Gewichtsverloop</div>
-      <div class="chart" id="weightChart"></div>
-    </div>
   </section>
 
-  <section id="blood" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Bloeddruk</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="summaryRow">
-      <div class="card summary"><div class="label">Laatste bloeddruk</div><div class="value" id="bloodNow">—</div><div class="sub" id="bloodNowDate"></div></div>
-      <div class="card summary"><div class="label">Status</div><div id="bloodStatus" style="margin-top:12px"></div><div class="sub">Op basis van laatste meting</div></div>
-    </div>
-    <div class="card panel">
-      <div class="label">Bloeddrukverloop</div>
-      <div class="chart" id="bloodChart"></div>
-    </div>
-  </section>
-
-  
-  <section id="heart" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Hartslag</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="summaryRow">
-      <div class="card summary"><div class="label">Laatste rusthartslag</div><div class="value" id="heartNow">—</div><div class="sub" id="heartNowDate"></div></div>
-      <div class="card summary"><div class="label">Status</div><div id="heartStatus" style="margin-top:12px"></div><div class="sub">Op basis van laatste rustmeting</div></div>
-    </div>
-    <div class="card panel">
-      <div class="label">Hartslagverloop</div>
-      <div class="chart" id="heartChart"></div>
-    </div>
-  </section>
-
-  
-  <section id="steps" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Stappen</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="detailHero">
-      <div class="card summary"><div class="label">Gemiddeld 7 dagen</div><div class="value" id="stepsNow">—</div><div class="sub">Doel: 8.000 per dag</div></div>
-      <div class="card summary"><div class="label">Doelstatus</div><div class="value" id="stepsGoalStatus">—</div><div class="sub">Laatste 7 dagen</div></div>
-    </div>
-    <div class="card panel"><div class="label">Stappenverloop</div><div class="chart" id="stepsChart"></div></div>
-  </section>
-
-  <section id="waist" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Buikomtrek</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="detailHero">
-      <div class="card summary"><div class="label">Laatste meting</div><div class="value" id="waistNow">—</div><div class="sub" id="waistNowDate"></div></div>
-      <div class="card summary"><div class="label">Verandering</div><div class="value" id="waistChange">—</div><div class="sub">Sinds eerste buikmeting</div></div>
-    </div>
-    <div class="card panel"><div class="label">Buikomtrekverloop</div><div class="chart" id="waistChart"></div></div>
-  </section>
-
-  <section id="goal" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Doelgericht</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="detailHero">
-      <div class="card summary"><div class="label">Huidig gewicht</div><div class="value" id="goalCurrent">—</div><div class="sub">Startgewicht: 98,2 kg</div></div>
-      <div class="card summary"><div class="label">Doelgewicht</div><div class="value" id="goalDetail">—</div><div class="sub" id="goalRemaining">Stel een doel in via Meer</div></div>
-    </div>
-    <div class="card panel"><div class="label">Voortgang richting doel</div><div class="chart" id="goalChart"></div></div>
-  </section>
-
-<section id="more" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="settings">
-      <div class="card setting">
-        <label>DOELGEWICHT (KG)</label>
-        <div class="settingRow"><input id="goalInput" type="number" inputmode="decimal" step="0.1" placeholder="85"><button class="primary" id="saveGoal">Opslaan</button></div>
-        <div class="sub" style="margin-top:8px">Je kunt dit doel altijd aanpassen of leegmaken.</div>
-      </div>
-      <div class="moreLinks">
-        <button type="button" class="moreLink" data-page="history"><span>Meetgeschiedenis<small>Bekijk, beheer en exporteer je metingen</small></span><span class="arrow">›</span></button>
-        <button type="button" class="moreLink" id="backupBtn"><span>Back-up maken<small>Bewaar je gegevens op je iPhone of iCloud Drive</small></span><span class="arrow">›</span></button>
-        <button type="button" class="moreLink" id="restoreBtn"><span>Back-up terugzetten<small>Zet een eerder gemaakte back-up terug</small></span><span class="arrow">›</span></button>
-      </div>
-      <input id="restoreFile" type="file" accept=".json,application/json" style="display:none">
-      <div class="card setting"><div class="label">Vaste gegevens</div><div class="sub" style="margin-top:8px">Startgewicht: <b style="color:white">98,2 kg</b><br>Lengte BMI: <b style="color:white">1,825 m</b><br>Stappendoel: <b style="color:white">8.000 per dag</b></div></div>
-    </div>
-  </section>
-
-  <section id="new" class="page">
-    <div class="card panel">
-      <div class="detailTop"><h2 class="sectionTitle">Nieuwe meting</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-      <form id="form" class="formgrid">
-        <div class="full"><label>DATUM</label><input id="date" type="date" required></div>
-        <div><label>GEWICHT (KG)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1"></div>
-        <div><label>BUIKOMTREK (CM)</label><input id="waistInput" type="number" inputmode="decimal" step="0.1"></div>
-        <div><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
-        <div><label>SYSTOLISCH</label><input id="sysInput" type="number" inputmode="numeric"></div>
-        <div><label>DIASTOLISCH</label><input id="diaInput" type="number" inputmode="numeric"></div>
-        <div class="full"><label>HARTSLAG IN RUST (BPM)</label><input id="heartInput" type="number" inputmode="numeric" placeholder="58"></div>
-        <div class="full"><button class="primary" type="submit">Meting opslaan</button></div>
-      </form>
-      <div class="sub" style="margin-top:9px">Je hoeft niet alles tegelijk in te vullen.</div>
-    </div>
-  </section>
-
-  <section id="history" class="page">
-    <div class="card panel">
-      <div class="detailTop"><h2 class="sectionTitle">Meetgeschiedenis</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-      <div id="historyList"></div>
-      <div class="actions"><button class="secondary" id="exportBtn">Exporteer CSV</button><button class="secondary" id="clearBtn">Wis alles</button></div>
-    </div>
-  </section>
-</main>
-<script>
-const KEY='vitaal-logboek-v1', GOAL_KEY='vitaal-logboek-goal-v1', START=98.2, HEIGHT=1.825;
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const today=()=>new Date().toISOString().slice(0,10); $('#date').value=today();
-function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
-function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
-function n(v){const x=parseFloat(v);return Number.isFinite(x)?x:null}
-function fmt(v,d=1){return Number(v).toFixed(d).replace('.',',')}
-function fdate(s){return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'))}
-function sorted(d){return [...d].sort((a,b)=>b.date.localeCompare(a.date))}
-function lastWith(d,k){return sorted(d).find(x=>n(x[k])!==null)}
-function goal(){const g=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Number.isFinite(g)?g:null}
-function bpCat(s,d){if(s>=140||d>=90)return['Hoog','bad'];if(s>=130||d>=85)return['Verhoogd','warn'];return['Normaal','good']}
-function heartCat(h){if(h==null)return['—',''];if(h<50)return['Laag','warn'];if(h<=100)return['Normaal','good'];return['Hoog','bad']}
-function page(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));$$('.nav').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo(0,0);render()}
-$$('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
-
-function svgLine(points, colors){
- if(points.length<2)return '<div class="chartEmpty">Nog te weinig metingen voor een grafiek.</div>';
- const W=600,H=190,pad=22, vals=points.flatMap(p=>p.vals), min=Math.min(...vals),max=Math.max(...vals), span=(max-min)||1;
- const x=i=>pad+i*(W-pad*2)/(points.length-1), y=v=>H-pad-(v-min)*(H-pad*2)/span;
- let out=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
- colors.forEach((c,series)=>{
-   const pts=points.map((p,i)=>`${x(i)},${y(p.vals[series])}`).join(' ');
-   out+=`<polyline fill="none" stroke="${c}" stroke-width="4" points="${pts}" />`;
- });
- out+='</svg>';return out;
-}
-function renderCharts(data){
- const weights=[...data].filter(e=>n(e.weight)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.weight)]}));
- $('#weightChart').innerHTML=svgLine(weights,['#65df7c']);
- const bps=[...data].filter(e=>n(e.sys)!==null&&n(e.dia)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.sys),n(e.dia)]}));
- $('#bloodChart').innerHTML=svgLine(bps,['#ff5e8b','#4b8cff']);
- const hearts=[...data].filter(e=>n(e.heart)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.heart)]}));
- $('#heartChart').innerHTML=svgLine(hearts,['#a869ff']);
- const steps=[...data].filter(e=>n(e.steps)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.steps)]}));
- $('#stepsChart').innerHTML=svgLine(steps,['#4b8cff']);
- const waists=[...data].filter(e=>n(e.waist)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.waist)]}));
- $('#waistChart').innerHTML=svgLine(waists,['#39d6c5']);
- const goalPts=[...data].filter(e=>n(e.weight)!==null).sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).map(e=>({vals:[n(e.weight)]}));
- $('#goalChart').innerHTML=svgLine(goalPts,['#ffb020']);
-}
-function renderHistory(data){
- const items=sorted(data),host=$('#historyList');
- if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
- host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="historyData">
- <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div></div></div>`).join('')+'</div>';
- $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
-}
-function render(){
- const data=load(), latest=sorted(data)[0], w=lastWith(data,'weight'), waist=lastWith(data,'waist'), bp=sorted(data).find(e=>n(e.sys)!==null&&n(e.dia)!==null), heart=lastWith(data,'heart');
- $('#latestDate').textContent=latest?fdate(latest.date):'Nog geen meting';
- if(w){
-   const ww=n(w.weight), bmi=ww/(HEIGHT*HEIGHT), loss=START-ww;
-   $('#latestWeight').textContent=fmt(ww)+' kg';$('#latestBMI').textContent='BMI: '+fmt(bmi)+' ('+(bmi<25?'normaal':bmi<30?'overgewicht':'hoog')+')';
-   $('#loss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
-   $('#bmiTile').textContent=fmt(bmi);$('#bmiClass').textContent=bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI';
-   $('#weightNow').textContent=fmt(ww)+' kg';$('#weightNowDate').textContent=fdate(w.date);$('#weightLoss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
-   $('#msgTitle').textContent=loss>0?'Goed bezig!':'Blijf meten';$('#msgText').textContent=loss>0?`Je bent ${fmt(loss)} kg afgevallen sinds je start.`:'Je voortgang wordt automatisch bijgehouden.';
- } else {
-   $('#latestWeight').textContent='—';$('#latestBMI').textContent='Nog geen gewicht';$('#loss').textContent='—';$('#bmiTile').textContent='—';$('#bmiClass').textContent='Lengte 1,825 m';$('#weightNow').textContent='—';$('#weightNowDate').textContent='';$('#weightLoss').textContent='—';
- }
- if(waist){const t=fmt(n(waist.waist))+' cm';$('#latestWaist').textContent=t;$('#latestWaistDate').textContent=fdate(waist.date);$('#waistTile').textContent=t;$('#waistTileDate').textContent=fdate(waist.date)} else {$('#latestWaist').textContent='—';$('#latestWaistDate').textContent='Nog geen meting';$('#waistTile').textContent='—';$('#waistTileDate').textContent='Nog geen meting'}
- const waistAsc=[...data].filter(e=>n(e.waist)!==null).sort((a,b)=>a.date.localeCompare(b.date));
- if(waist){$('#waistNow').textContent=fmt(n(waist.waist))+' cm';$('#waistNowDate').textContent=fdate(waist.date);
-   if(waistAsc.length>=2){const delta=n(waist.waist)-n(waistAsc[0].waist);$('#waistChange').textContent=(delta<=0?'↓ ':'↑ ')+fmt(Math.abs(delta))+' cm'}else $('#waistChange').textContent='—';
- }else{$('#waistNow').textContent='—';$('#waistNowDate').textContent='';$('#waistChange').textContent='—';}
-
- const cutoff=new Date();cutoff.setDate(cutoff.getDate()-6);cutoff.setHours(0,0,0,0);const recent=data.filter(e=>n(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);
- $('#steps7').textContent=recent.length?Math.round(recent.reduce((s,e)=>s+n(e.steps),0)/recent.length).toLocaleString('nl-NL'):'—';
- const stepsAvg=recent.length?Math.round(recent.reduce((s,e)=>s+n(e.steps),0)/recent.length):null;
- $('#stepsNow').textContent=stepsAvg!==null?stepsAvg.toLocaleString('nl-NL'):'—';
- $('#stepsGoalStatus').textContent=stepsAvg===null?'—':stepsAvg>=8000?'Doel gehaald':'Nog '+(8000-stepsAvg).toLocaleString('nl-NL');
-
- if(bp){const s=n(bp.sys),d=n(bp.dia),c=bpCat(s,d);$('#bp').textContent=`${s}/${d}`;$('#bpDate').textContent=fdate(bp.date);$('#bpBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#bloodNow').textContent=`${s}/${d}`;$('#bloodNowDate').textContent=fdate(bp.date);$('#bloodStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#bp').textContent='—';$('#bpDate').textContent='Nog geen meting';$('#bpBadge').innerHTML='';$('#bloodNow').textContent='—';$('#bloodNowDate').textContent='';$('#bloodStatus').innerHTML=''}
- if(heart){const h=n(heart.heart),c=heartCat(h);$('#heartTile').textContent=`${h} bpm`;$('#heartDate').textContent=fdate(heart.date);$('#heartBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#heartNow').textContent=`${h} bpm`;$('#heartNowDate').textContent=fdate(heart.date);$('#heartStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#heartTile').textContent='—';$('#heartDate').textContent='Nog geen meting';$('#heartBadge').innerHTML='';$('#heartNow').textContent='—';$('#heartNowDate').textContent='';$('#heartStatus').innerHTML=''}
- const g=goal();$('#goalInput').value=g??'';
- if(w){$('#goalCurrent').textContent=fmt(n(w.weight))+' kg'}else{$('#goalCurrent').textContent='—'}
- $('#goalDetail').textContent=g!==null?fmt(g)+' kg':'—';
- if(g!==null && w){const rem=n(w.weight)-g;$('#goalRemaining').textContent=rem>0?fmt(rem)+' kg te gaan':rem===0?'Doel bereikt!':fmt(Math.abs(rem))+' kg onder doel'}else{$('#goalRemaining').textContent='Stel een doel in via Meer'}
-if(g!==null){$('#goalTile').textContent=fmt(g)+' kg';if(w){const diff=n(w.weight)-g;$('#goalSub').textContent=diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel'}else $('#goalSub').textContent='Doelgewicht'}else{$('#goalTile').textContent='—';$('#goalSub').textContent='Instellen bij Meer'}
- renderCharts(data);renderHistory(data);
-}
-$('#saveGoal').onclick=()=>{const raw=$('#goalInput').value.trim();if(!raw)localStorage.removeItem(GOAL_KEY);else{const g=parseFloat(raw.replace(',','.'));if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig doelgewicht in.');localStorage.setItem(GOAL_KEY,String(g))}render()};
-$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
-$('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
-
-function makeBackup(){
-  const payload={
-    app:'LeefKracht',
-    version:15,
-    exportedAt:new Date().toISOString(),
-    measurements:load(),
-    goal:goal()
-  };
-  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download='vitaal-logboek-backup-'+today()+'.json';
-  document.body.appendChild(a);a.click();a.remove();
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-async function restoreBackup(file){
-  try{
-    const txt=await file.text(), payload=JSON.parse(txt);
-    if(!payload || !Array.isArray(payload.measurements)) throw new Error('Ongeldige back-up');
-    save(payload.measurements);
-    if(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined') localStorage.removeItem(GOAL_KEY);
-    else localStorage.setItem(GOAL_KEY,String(payload.goal));
-    render();
-    alert('Back-up is teruggezet.');
-  }catch(e){ alert('Deze back-up kon niet worden teruggezet.'); }
-}
-$('#backupBtn').onclick=makeBackup;
-$('#restoreBtn').onclick=()=>$('#restoreFile').click();
-$('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
-
-$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
-render();
-</script>
-
-<script>
-window.addEventListener('load',()=>{
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('./sw.js?v=15').catch(()=>{});
-  }
-});
-</script>
-
-</body>
-</html>
+  >
