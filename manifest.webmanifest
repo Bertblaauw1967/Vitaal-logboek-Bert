@@ -1,7 +1,7 @@
 {
   "name": "LeefKracht",
   "short_name": "LeefKracht",
-  "start_url": "./index.html?v=30.3",
+  "start_url": "./index.html?v=30.4",
   "display": "standalone",
   "background_color": "#041525",
   "theme_color": "#061827",

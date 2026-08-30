@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.3">
+<meta name="app-version" content="30.4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.3";
+const LEEFKRACHT_VERSION = "30.4";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.3</div>
+<div class="v291Indicator">v30.4</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -312,20 +312,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           <div class="sub" id="heartDate">Nog geen meting</div>
         </div>
       </button>
-
-      <button type="button" class="card tile clickable tileWaist" data-page="waist">
-        <div class="icon teal">⌁</div>
-        <div class="tileBody">
-          <div class="label">Buikomtrek</div>
-          <div class="sub">Laatste meting</div>
-          <div class="value" id="waistTile">—</div>
-          <div class="sub" id="waistTileDate">Nog geen meting</div>
-          <div id="latestWaist" style="display:none"></div>
-          <div id="latestWaistDate" style="display:none"></div>
-        </div>
-      </button>
-
-      <button type="button" class="card tile clickable tileSteps" data-page="steps">
+<button type="button" class="card tile clickable tileSteps" data-page="steps">
         <div class="icon blue">👟</div>
         <div class="tileBody">
           <div class="label">Gem. stappen</div>
@@ -339,8 +326,8 @@ document.addEventListener("DOMContentLoaded",()=>{
       <button type="button" class="card tile clickable tileGoal" data-page="goal">
         <div class="icon amber">◎</div>
         <div class="tileBody">
-          <div class="label">Doelgewicht</div>
-          <div class="sub">Doel</div>
+          <div class="label">Streefgewicht</div>
+          <div class="sub">Jouw doel</div>
           <div class="value" id="goalTile">—</div>
           <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
         </div>
@@ -402,8 +389,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Nieuwe gewichtsmeting</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
       <div><label for="quickWeightDate">Datum</label><input id="quickWeightDate" type="date"></div>
-      <div><label>Heupomtrek (cm)<input id="hip" inputmode="decimal"></label>
-<label>Borstomtrek (cm)<input id="chest" inputmode="decimal"></label>
+      <div>
 <label for="quickWeightInput">Gewicht (kg)</label><input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8"></div>
     </div>
     <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
@@ -640,7 +626,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 30.3</strong>
+      <strong>LeefKracht · Versie 30.4</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -1204,7 +1190,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.3",
+    version:"30.4",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
