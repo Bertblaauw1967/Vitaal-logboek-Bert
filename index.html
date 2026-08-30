@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v21Indicator{
+.v22Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -207,7 +207,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v21Indicator">v21</div>
+<div class="v22Indicator">v22</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -368,23 +368,11 @@ input:focus{border-color:var(--blue)}
 <section id="more" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
   <div class="version20Badge">
-    <strong>LeefKracht · Versie 21</strong>
+    <strong>LeefKracht · Versie 22</strong>
     <span>Nieuwe versie actief ✓</span>
   </div>
 
     <div class="settings">
-      <div class="card setting">
-        <label>DOELGEWICHT (KG)</label>
-        <div class="settingRow"><input id="goalInput" type="number" inputmode="decimal" step="0.1" placeholder="85"><button class="primary" id="saveGoal">Opslaan</button></div>
-        <div class="sub" style="margin-top:8px">Je kunt dit doel altijd aanpassen of leegmaken.</div>
-      </div>
-      <div class="moreLinks">
-        <button type="button" class="moreLink" data-page="history"><span>Meetgeschiedenis<small>Bekijk, beheer en exporteer je metingen</small></span><span class="arrow">›</span></button>
-        <button type="button" class="moreLink" id="backupBtn"><span>Back-up maken<small>Bewaar je gegevens op je iPhone of iCloud Drive</small></span><span class="arrow">›</span></button>
-        <button type="button" class="moreLink" id="restoreBtn"><span>Back-up terugzetten<small>Zet een eerder gemaakte back-up terug</small></span><span class="arrow">›</span></button>
-      </div>
-      <input id="restoreFile" type="file" accept=".json,application/json" style="display:none">
-      <div class="card setting"><div class="label">Vaste gegevens</div><div class="sub" style="margin-top:8px">Startgewicht: <b style="color:white">98,2 kg</b><br>Lengte BMI: <b style="color:white">1,825 m</b><br>Stappendoel: <b style="color:white">8.000 per dag</b></div></div>
     </div>
   
     <div class="card settingsCard">
@@ -592,7 +580,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:21,
+    version:22,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -734,10 +722,10 @@ function makeHealthReport(){
   h2.section{font-size:20px;margin:30px 0 12px;color:#0b3558}.chartBox{border:1px solid #dbe4eb;border-radius:14px;padding:14px;margin:12px 0;break-inside:avoid}
   .chartHead{display:flex;justify-content:space-between;gap:12px;color:#667788;margin-bottom:6px}.chartHead b{color:#183b57}.chartBox svg{width:100%;height:auto}
   table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa;color:#536575}
-  .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}
+  .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}.closePdf{position:fixed;right:18px;top:18px;width:46px;height:46px;border-radius:50%;border:1px solid #9fb5c6;background:#0b3558;color:white;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px #0002;z-index:99}
   @media print{body{background:white}.sheet{margin:0;max-width:none;padding:10mm;box-shadow:none;border-radius:0}.noPrint{display:none}.chartBox{break-inside:avoid}}
   @media(max-width:700px){.sheet{margin:0;padding:20px;border-radius:0}.grid{grid-template-columns:1fr 1fr}.chartHead{font-size:12px}}
-  </style></head><body><main class="sheet">
+  </style></head><body><button class="closePdf noPrint" onclick="window.close()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
