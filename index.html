@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.7">
+<meta name="app-version" content="30.9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.7";
+const LEEFKRACHT_VERSION = "30.9";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -264,7 +264,17 @@ document.addEventListener("DOMContentLoaded",()=>{
 .scorePanel{text-align:center}.scoreRing{width:150px;height:150px;margin:8px auto 14px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(#58e39b 0deg,#58e39b var(--scoreDeg,0deg),rgba(255,255,255,.1) var(--scoreDeg,0deg))}
 .scoreRing:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#0b2237}.scoreRing>div{z-index:1;display:flex;align-items:baseline;gap:4px}.scoreRing strong{font-size:46px;color:#fff}.scoreRing span{color:#a9c5da}
 .scoreStatus{font-size:20px;font-weight:800;color:#58e39b}.scoreRows>div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08)}.scoreRows>div:last-child{border:0}.scoreFoot{font-size:13px}
-</style></head>
+</style>
+<style>
+.heroNew,
+.heroNew:hover,
+.heroNew:focus,
+.heroNew:active {
+  color:#fff !important;
+}
+</style>
+
+</head>
 <body>
 <main class="app">
   <section id="overview" class="page active">
@@ -280,7 +290,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.7</div>
+<div class="v291Indicator">v30.9</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -400,16 +410,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       <div><span>Nog te gaan</span><strong id="weightDetailToGoal">—</strong></div>
     </div>
   </div>
-  <div class="card panel">
-    <div class="label">Nieuwe gewichtsmeting</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-      <div><label for="quickWeightDate">Datum</label><input id="quickWeightDate" type="date"></div>
-      <div>
-<label for="quickWeightInput">Gewicht (kg)</label><input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8"></div>
-    </div>
-    <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
-    <small id="quickWeightStatus" class="muted"></small>
-  </div>
+
   <div class="card panel">
     <div class="label">Gewichtsverloop</div>
     <div class="muted chartIntro">Je gewichtsmetingen door de tijd. De stippellijn is je streefgewicht.</div>
@@ -1205,7 +1206,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.7",
+    version:"30.9",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
