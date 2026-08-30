@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.6">
+<meta name="app-version" content="30.7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.6";
+const LEEFKRACHT_VERSION = "30.7";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -259,7 +259,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 })();
 </script>
 
-</head>
+<style>
+.tileScore{border-color:#2a9d73;background:linear-gradient(145deg,rgba(17,82,64,.72),rgba(8,35,45,.92))}
+.scorePanel{text-align:center}.scoreRing{width:150px;height:150px;margin:8px auto 14px;border-radius:50%;display:grid;place-items:center;position:relative;background:conic-gradient(#58e39b 0deg,#58e39b var(--scoreDeg,0deg),rgba(255,255,255,.1) var(--scoreDeg,0deg))}
+.scoreRing:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#0b2237}.scoreRing>div{z-index:1;display:flex;align-items:baseline;gap:4px}.scoreRing strong{font-size:46px;color:#fff}.scoreRing span{color:#a9c5da}
+.scoreStatus{font-size:20px;font-weight:800;color:#58e39b}.scoreRows>div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08)}.scoreRows>div:last-child{border:0}.scoreFoot{font-size:13px}
+</style></head>
 <body>
 <main class="app">
   <section id="overview" class="page active">
@@ -275,7 +280,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.6</div>
+<div class="v291Indicator">v30.7</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -357,18 +362,12 @@ document.addEventListener("DOMContentLoaded",()=>{
         <div class="tileValue" id="bodyTile">—</div>
         <div class="tileSub" id="bodyTileSub">Buik · heup · borst</div>
       </button>
+<button type="button" class="card tile clickable tileScore" data-page="score">
+<div class="icon green">♡</div><div class="tileBody"><div class="label">LeefKracht-score</div>
+<div class="value" id="scoreTile">—</div><div class="sub" id="scoreTileSub">Totale ontwikkeling</div></div></button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
-        <div class="icon blue" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="27" height="27" fill="none">
-            <circle cx="16" cy="10.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-            <path d="M7.5 27c.8-6 4-9 8.5-9s7.7 3 8.5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="tileBody">
-          <div class="label">Basisgegevens</div>
-          <div class="sub">Instellingen &amp; gegevens</div>
-        </div>
-      </button>
+<div class="icon blue" aria-hidden="true">⚙</div><div class="tileBody"><div class="label">Instellingen</div>
+<div class="sub">Gegevens &amp; voorkeuren</div></div></button>
     </div>
 
     <div id="msgTitle" style="display:none"></div>
@@ -377,7 +376,17 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   
 
-<section id="weight" class="page">
+<section id="score" class="page">
+<div class="detailTop"><div><div class="eyebrow">Ontwikkeling</div><h2 class="sectionTitle">LeefKracht-score</h2></div>
+<button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
+<div class="card panel scorePanel"><div class="scoreRing" id="scoreRing"><div><strong id="scoreDetailValue">—</strong><span>/100</span></div></div>
+<div class="scoreStatus" id="scoreStatus">Nog onvoldoende gegevens</div>
+<p class="muted" id="scoreExplain">Vul je metingen in om je totale ontwikkeling te volgen.</p></div>
+<div class="card panel"><h3>Score per onderdeel</h3><div class="scoreRows">
+<div><span>Gewicht</span><strong id="scoreWeight">—</strong></div><div><span>Bloeddruk</span><strong id="scoreBp">—</strong></div>
+<div><span>Rusthartslag</span><strong id="scoreHeart">—</strong></div><div><span>Lichaamsmaten</span><strong id="scoreBody">—</strong></div>
+<div><span>Stappen</span><strong id="scoreSteps">—</strong></div></div>
+<p class="muted scoreFoot">Eenvoudige voortgangsindicator, geen medische beoordeling.</p></div></section><section id="weight" class="page">
   <div class="detailTop">
     <div><div class="eyebrow">Voortgang</div><h2 class="sectionTitle">Gewicht</h2></div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -632,8 +641,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div>
-      <div class="eyebrow">Instellingen</div>
-      <h2 class="sectionTitle">Basisgegevens</h2>
+      <div class="eyebrow">LeefKracht</div>
+      <h2 class="sectionTitle">Instellingen</h2>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
   </div>
@@ -1196,7 +1205,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.6",
+    version:"30.7",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -1713,5 +1722,31 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 })();
 </script>
 
-</body>
+<script>
+(function(){
+function N(v){var n=Number(String(v==null?"":v).replace(",","."));return Number.isFinite(n)?n:null}
+function last(a,k){if(!Array.isArray(a))return null;for(var i=a.length-1;i>=0;i--){var n=N(a[i]&&a[i][k]);if(n!==null)return n}return null}
+function clamp(n){return Math.max(0,Math.min(100,Math.round(n)))}
+function draw(){
+var d={};try{d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"{}")||{}}catch(e){}
+var a=d.measurements||d.entries||d.items||[];
+var w=last(a,"weight"),sy=last(a,"systolic"),di=last(a,"diastolic"),hr=last(a,"heart"),wa=last(a,"waist");
+var vals=[];for(var i=Math.max(0,a.length-7);i<a.length;i++){var s=N(a[i]&&a[i].steps);if(s!==null)vals.push(s)}
+var sw=w===null?null:clamp(100-Math.abs(w-85)*3);
+var sb=(sy===null||di===null)?null:(sy<120&&di<80?100:sy<130&&di<85?90:sy<140&&di<90?75:sy<160&&di<100?55:35);
+var sh=hr===null?null:(hr>=55&&hr<=75?100:hr>=50&&hr<=85?85:hr>=45&&hr<=95?70:50);
+var sc=wa===null?null:clamp(100-Math.max(0,wa-90)*2);
+var ss=vals.length?clamp(vals.reduce(function(x,y){return x+y},0)/vals.length/8000*100):null;
+var x=[["scoreWeight",sw],["scoreBp",sb],["scoreHeart",sh],["scoreBody",sc],["scoreSteps",ss]], av=x.map(function(q){return q[1]}).filter(function(q){return q!==null});
+var total=av.length?Math.round(av.reduce(function(x,y){return x+y},0)/av.length):null;
+x.forEach(function(q){var e=document.getElementById(q[0]);if(e)e.textContent=q[1]===null?"—":q[1]+"/100"});
+["scoreTile","scoreDetailValue"].forEach(function(id){var e=document.getElementById(id);if(e)e.textContent=total===null?"—":(id==="scoreTile"?total+"/100":total)});
+var r=document.getElementById("scoreRing");if(r)r.style.setProperty("--scoreDeg",((total||0)*3.6)+"deg");
+var st=total===null?"Nog onvoldoende gegevens":total>=85?"Heel goed bezig":total>=70?"Goed bezig":total>=55?"Redelijk op weg":"Aandacht gewenst";
+var e=document.getElementById("scoreStatus");if(e)e.textContent=st;e=document.getElementById("scoreTileSub");if(e)e.textContent=total===null?"Totale ontwikkeling":st;
+e=document.getElementById("scoreExplain");if(e)e.textContent=total===null?"Vul je metingen in om je totale ontwikkeling te volgen.":"Je score vat je belangrijkste metingen eenvoudig samen.";
+}
+window.addEventListener("load",draw);document.addEventListener("click",function(e){if(e.target.closest('[data-page="score"]'))setTimeout(draw,0)});
+})();
+</script></body>
 </html>
