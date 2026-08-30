@@ -159,6 +159,21 @@ input:focus{border-color:var(--blue)}
 .smallNote{font-size:12px;margin-top:12px}
 @media(max-width:560px){.checkGrid{grid-template-columns:1fr}}
 
+
+/* v20 visible version check */
+.version20Badge{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:13px 16px;margin:0 0 16px;border:1px solid #2e9b72;
+  border-radius:16px;background:rgba(25,116,83,.18);
+}
+.version20Badge strong{color:#fff}
+.version20Badge span{color:var(--green);font-size:13px;font-weight:800}
+.v20Indicator{
+  display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
+  background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
+  font-size:11px;font-weight:800;letter-spacing:.08em
+}
+
 </style>
 
 <script>
@@ -192,6 +207,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
+<div class="v20Indicator">v20</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -351,6 +367,11 @@ input:focus{border-color:var(--blue)}
 
 <section id="more" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
+  <div class="version20Badge">
+    <strong>LeefKracht · Versie 20</strong>
+    <span>Nieuwe versie actief ✓</span>
+  </div>
+
     <div class="settings">
       <div class="card setting">
         <label>DOELGEWICHT (KG)</label>
@@ -571,7 +592,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:19,
+    version:20,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -659,7 +680,22 @@ function makeHealthReport(){
   table{width:100%;border-collapse:collapse;margin-top:24px;font-size:12px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa}
   .foot{margin-top:22px;color:#788997;font-size:11px}
   @media print{body{margin:12mm}.noPrint{display:none}} @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}body{margin:18px}}
-  </style></head><body>
+  
+/* v20 visible version check */
+.version20Badge{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:13px 16px;margin:0 0 16px;border:1px solid #2e9b72;
+  border-radius:16px;background:rgba(25,116,83,.18);
+}
+.version20Badge strong{color:#fff}
+.version20Badge span{color:var(--green);font-size:13px;font-weight:800}
+.v20Indicator{
+  display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
+  background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
+  font-size:11px;font-weight:800;letter-spacing:.08em
+}
+
+</style></head><body>
   <h1>Leef<span class="pink">Kracht</span></h1>
   <div class="meta">Rapport voor arts / coach${name?' · '+lkEsc(name):''}<br>${periodText} · gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div>
   <div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
