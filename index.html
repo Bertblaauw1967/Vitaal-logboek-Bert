@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="29.1">
+<meta name="app-version" content="30.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v29.1</div>
+<div class="v291Indicator">v30.0</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -324,7 +324,14 @@ document.addEventListener("DOMContentLoaded",()=>{
         </div>
       </button>
 
-      <button type="button" class="card tile clickable tileMore" data-page="more">
+      
+      <button class="metricTile" data-page="body">
+        <div class="tileIcon">↔</div>
+        <div class="tileLabel">Lichaamsmaten</div>
+        <div class="tileValue" id="bodyTile">—</div>
+        <div class="tileSub" id="bodyTileSub">Buik · heup · borst</div>
+      </button>
+<button type="button" class="card tile clickable tileMore" data-page="more">
         <div class="icon blue">•••</div>
         <div class="tileBody moreOnly">
           <div class="moreTitle">Meer</div>
@@ -356,7 +363,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Nieuwe gewichtsmeting</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
       <div><label for="quickWeightDate">Datum</label><input id="quickWeightDate" type="date"></div>
-      <div><label for="quickWeightInput">Gewicht (kg)</label><input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8"></div>
+      <div><label>Heupomtrek (cm)<input id="hip" inputmode="decimal"></label>
+<label>Borstomtrek (cm)<input id="chest" inputmode="decimal"></label>
+<label for="quickWeightInput">Gewicht (kg)</label><input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8"></div>
     </div>
     <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
     <small id="quickWeightStatus" class="muted"></small>
@@ -544,10 +553,55 @@ document.addEventListener("DOMContentLoaded",()=>{
 </section>
 
 
+
+<section id="body" class="page">
+  <div class="detailTop">
+    <div><div class="eyebrow">Voortgang</div><h2 class="sectionTitle">Lichaamsmaten</h2></div>
+    <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Laatste lichaamsmaten</div>
+    <div class="miniGrid" style="margin-top:12px">
+      <div><span>Buik</span><strong id="bodyWaist">—</strong></div>
+      <div><span>Heup</span><strong id="bodyHip">—</strong></div>
+      <div><span>Borst</span><strong id="bodyChest">—</strong></div>
+      <div><span>Lengte</span><strong id="bodyHeight">—</strong></div>
+    </div>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Verhoudingen</div>
+    <div class="miniGrid" style="margin-top:12px">
+      <div><span>WHR · buik/heup</span><strong id="whrValue">—</strong></div>
+      <div><span>WHtR · buik/lengte</span><strong id="whtrValue">—</strong></div>
+    </div>
+    <div id="ratioStatus" class="muted" style="margin-top:12px">—</div>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Lichaamsmaten-verloop</div>
+    <div class="muted chartIntro">Buik, heup en borst door de tijd.</div>
+    <div class="chartWrap"><svg id="bodyChartV30" viewBox="0 0 720 260"></svg></div>
+    <div id="bodyChartV30Empty" class="muted chartEmpty">Minimaal twee lichaamsmetingen nodig.</div>
+  </div>
+
+  <div class="card panel rangeCard">
+    <div class="label">WHR · taille-heupverhouding</div>
+    <div id="whrInfo" class="rangeText">Kies man/vrouw bij Persoonsgegevens voor de passende indicatie.</div>
+    <small class="muted">WHR = buikomtrek ÷ heupomtrek. Een hogere verhouding wijst globaal op relatief meer buikvet.</small>
+  </div>
+
+  <div class="card panel rangeCard">
+    <div class="label">WHtR · taille-lengteverhouding</div>
+    <div class="rangeText">Onder 0,40 · relatief laag<br>0,40–0,49 · gebruikelijke zone<br>0,50–0,59 · verhoogd<br>0,60 of hoger · hoog</div>
+    <small class="muted">WHtR = buikomtrek ÷ lengte. Dit is een algemene gezondheidsindicator en geen diagnose.</small>
+  </div>
+</section>
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 29.1</strong>
+      <strong>LeefKracht · Versie 30.0</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -884,6 +938,7 @@ function render(){
 
   lkRenderRanges();
   lkRenderV28Charts();
+  lkRenderBody();
   try{renderHistory(data)}catch(e){}
 }
 
@@ -1023,13 +1078,92 @@ function lkRenderV28Charts(){
 }
 
 
+function lkLastMetric(data,key){
+  return data.slice().sort((a,b)=>b.date.localeCompare(a.date)).find(e=>n(e[key])!==null);
+}
+function lkRatioLabel(v,type,sex){
+  if(v==null || !Number.isFinite(v)) return '—';
+  if(type==='whtr'){
+    if(v<0.40) return 'Relatief laag';
+    if(v<0.50) return 'Gebruikelijke zone';
+    if(v<0.60) return 'Verhoogd';
+    return 'Hoog';
+  }
+  if(type==='whr'){
+    if(sex==='man') return v<0.90?'Lager risico':v<1.00?'Verhoogd':'Hoog';
+    if(sex==='vrouw') return v<0.80?'Lager risico':v<0.85?'Verhoogd':'Hoog';
+    return 'Vul man/vrouw in';
+  }
+  return '—';
+}
+function lkRenderBody(){
+  try{
+    const data=load();
+    const wa=lkLastMetric(data,'waist'), hi=lkLastMetric(data,'hip'), ch=lkLastMetric(data,'chest');
+    const waist=wa?n(wa.waist):null, hip=hi?n(hi.hip):null, chest=ch?n(ch.chest):null;
+    const hcm=lkGetHeightCm();
+    const profile=lkLoadProfile(), sex=profile.sex||'';
+    const whr=(waist!==null&&hip!==null&&hip>0)?waist/hip:null;
+    const whtr=(waist!==null&&hcm>0)?waist/hcm:null;
+
+    lkSafeText('bodyTile',waist!==null?fmt(waist)+' cm':'—');
+    lkSafeText('bodyTileSub',`Heup ${hip!==null?fmt(hip):'—'} · borst ${chest!==null?fmt(chest):'—'}`);
+    lkSafeText('bodyWaist',waist!==null?fmt(waist)+' cm':'—');
+    lkSafeText('bodyHip',hip!==null?fmt(hip)+' cm':'—');
+    lkSafeText('bodyChest',chest!==null?fmt(chest)+' cm':'—');
+    lkSafeText('bodyHeight',fmt(hcm/100,3)+' m');
+    lkSafeText('whrValue',whr!==null?fmt(whr,2):'—');
+    lkSafeText('whtrValue',whtr!==null?fmt(whtr,2):'—');
+    lkSafeText('ratioStatus',
+      `WHR: ${lkRatioLabel(whr,'whr',sex)} · WHtR: ${lkRatioLabel(whtr,'whtr',sex)}`
+    );
+
+    const wi=document.getElementById('whrInfo');
+    if(wi){
+      if(sex==='man') wi.innerHTML='Mannen: onder 0,90 · lager risico<br>0,90–0,99 · verhoogd<br>1,00 of hoger · hoog';
+      else if(sex==='vrouw') wi.innerHTML='Vrouwen: onder 0,80 · lager risico<br>0,80–0,84 · verhoogd<br>0,85 of hoger · hoog';
+      else wi.textContent='Kies man/vrouw bij Persoonsgegevens voor de passende indicatie.';
+    }
+    lkRenderBodyChart(data);
+  }catch(e){console.warn('Lichaamsmaten',e);}
+}
+function lkRenderBodyChart(data){
+  const svg=document.getElementById('bodyChartV30'), empty=document.getElementById('bodyChartV30Empty');
+  if(!svg)return;
+  const rows=data.slice().sort((a,b)=>a.date.localeCompare(b.date))
+    .filter(e=>n(e.waist)!==null||n(e.hip)!==null||n(e.chest)!==null);
+  if(rows.length<2){svg.innerHTML='';svg.style.display='none';if(empty)empty.style.display='block';return;}
+  svg.style.display='block';if(empty)empty.style.display='none';
+  const vals=rows.flatMap(e=>[n(e.waist),n(e.hip),n(e.chest)]).filter(v=>v!==null);
+  const W=720,H=260,L=50,R=18,T=30,B=40;
+  let lo=Math.min(...vals),hi=Math.max(...vals),span=Math.max(hi-lo,5);lo-=span*.12;hi+=span*.12;
+  const X=i=>L+(i/(rows.length-1))*(W-L-R),Y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+  let s='';
+  for(let i=0;i<4;i++){const yy=T+i*((H-T-B)/3);s+=`<line x1="${L}" y1="${yy}" x2="${W-R}" y2="${yy}" stroke="rgba(255,255,255,.08)"/>`;}
+  const specs=[['waist','#4b8cff','Buik'],['hip','#b06cff','Heup'],['chest','#32c6a6','Borst']];
+  let lx=L;
+  specs.forEach(([key,color,label])=>{
+    s+=`<circle cx="${lx}" cy="14" r="4" fill="${color}"/><text x="${lx+9}" y="18" class="chartLegend">${label}</text>`; lx+=70;
+    const valid=rows.map((e,i)=>({i,v:n(e[key])})).filter(q=>q.v!==null);
+    if(valid.length>=2){
+      const pts=valid.map(q=>`${X(q.i)},${Y(q.v)}`).join(' ');
+      s+=`<polyline fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="${pts}"/>`;
+      valid.forEach(q=>s+=`<circle cx="${X(q.i)}" cy="${Y(q.v)}" r="4.5" fill="${color}"/>`);
+    }
+  });
+  s+=`<text x="${L}" y="${H-10}" class="chartLegend">${fdate(rows[0].date)}</text>`;
+  s+=`<text x="${W-R}" y="${H-10}" text-anchor="end" class="chartLegend">${fdate(rows[rows.length-1].date)}</text>`;
+  svg.innerHTML=s;
+}
+
+
 $('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"29.1",
+    version:"30.0",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
