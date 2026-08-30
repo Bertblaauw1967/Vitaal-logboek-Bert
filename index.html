@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v22Indicator{
+.v23Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -207,7 +207,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v22Indicator">v22</div>
+<div class="v23Indicator">v23</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -366,9 +366,20 @@ input:focus{border-color:var(--blue)}
   </section>
 
 <section id="more" class="page">
+<div class="card">
+  <h3>Lengte &amp; BMI</h3>
+  <p class="muted">Je lengte wordt gebruikt om je BMI automatisch te berekenen.</p>
+  <label for="heightCm">Lengte in cm</label>
+  <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+    <input id="heightCm" type="number" inputmode="decimal" min="100" max="230" step="0.5" placeholder="182,5" style="flex:1">
+    <button id="saveHeightBtn" type="button">Opslaan</button>
+  </div>
+  <small id="heightStatus" class="muted"></small>
+</div>
+
     <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
   <div class="version20Badge">
-    <strong>LeefKracht · Versie 22</strong>
+    <strong>LeefKracht · Versie 23</strong>
     <span>Nieuwe versie actief ✓</span>
   </div>
 
@@ -483,6 +494,24 @@ input:focus{border-color:var(--blue)}
   </section>
 </main>
 <script>
+
+const LK_DEFAULT_HEIGHT_CM = 182.5;
+function lkGetHeightCm(){
+  const v = Number(localStorage.getItem('leefkracht-height-cm'));
+  return Number.isFinite(v) && v >= 100 && v <= 230 ? v : LK_DEFAULT_HEIGHT_CM;
+}
+function lkSetHeightCm(v){
+  const n = Number(v);
+  if(Number.isFinite(n) && n >= 100 && n <= 230){
+    localStorage.setItem('leefkracht-height-cm', String(n));
+    return true;
+  }
+  return false;
+}
+function lkBmiFromWeight(weight){
+  const w = Number(weight), m = lkGetHeightCm()/100;
+  return Number.isFinite(w) && w > 0 ? w/(m*m) : null;
+}
 const KEY='vitaal-logboek-v1', GOAL_KEY='vitaal-logboek-goal-v1', START=98.2, HEIGHT=1.825;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const today=()=>new Date().toISOString().slice(0,10); $('#date').value=today();
@@ -580,7 +609,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:22,
+    version:23,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -685,7 +714,7 @@ function makeHealthReport(){
         hearts=vals('heart'), sys=vals('systolic'), dia=vals('diastolic');
   const firstW=weights.length?Number(weights[0]):null,lastW=weights.length?Number(weights[weights.length-1]):null;
   const firstWaist=waists.length?Number(waists[0]):null,lastWaist=waists.length?Number(waists[waists.length-1]):null;
-  const bmi=lastW?lastW/(1.825*1.825):null;
+  const bmi=lastW?lkBmiFromWeight(lastW):null;
 
   let cards='';
   if(use.weight) cards+=`<div class="kpi"><b>Gewicht</b><strong>${lkFmt1(lastW)} kg</strong><small>${firstW!=null&&lastW!=null?lkFmt1(lastW-firstW)+' kg in periode':'Geen trend'} · BMI ${lkFmt1(bmi)}</small></div>`;
@@ -702,7 +731,7 @@ function makeHealthReport(){
   if(use.heart) charts+=lkChart(rows,'heart','Rusthartslag','bpm','#7252b8');
 
   const tableRows=rows.slice().reverse().map(x=>{
-    const rowBmi=x.weight?Number(x.weight)/(1.825*1.825):null;
+    const rowBmi=x.weight?lkBmiFromWeight(x.weight):null;
     return `<tr><td>${lkEsc(x.date||'')}</td>
       ${use.weight?`<td>${x.weight?lkFmt1(x.weight):'—'}</td><td>${rowBmi?lkFmt1(rowBmi):'—'}</td>`:''}
       ${use.waist?`<td>${x.waist?lkFmt1(x.waist):'—'}</td>`:''}
@@ -746,7 +775,7 @@ function exportHealthCsv(){
   const rows=lkReportRows(days);
   const lines=[['datum','gewicht_kg','bmi','buikomtrek_cm','stappen','systolisch','diastolisch','rusthartslag_bpm'].join(';')];
   rows.forEach(x=>{
-    const bmi=x.weight?Number(x.weight)/(1.825*1.825):'';
+    const bmi=x.weight?lkBmiFromWeight(x.weight):'';
     lines.push([x.date||'',x.weight||'',bmi?Number(bmi).toFixed(1).replace('.',','):'',x.waist||'',x.steps||'',x.systolic||'',x.diastolic||'',x.heart||'']
       .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';'));
   });
@@ -761,6 +790,46 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#makeReport')) makeHealthReport();
   if(e.target.closest('#exportCsv')) exportHealthCsv();
 });
+
+function lkRefreshHome(){
+  try{ 
+    try{
+      const active=document.querySelector('.page.active');
+      if(active && active.id==='overview'){
+        document.querySelectorAll('[data-page]').forEach(()=>{});
+      }
+    }catch(e){}
+     }catch(e){ console.warn('LeefKracht refresh',e); }
+}
+document.addEventListener('DOMContentLoaded',()=>setTimeout(lkRefreshHome,0));
+window.addEventListener('pageshow',()=>setTimeout(lkRefreshHome,0));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')setTimeout(lkRefreshHome,0);});
+window.addEventListener('focus',()=>setTimeout(lkRefreshHome,0));
+
+function lkInitHeightUi(){
+  const inp=document.getElementById('heightCm');
+  const btn=document.getElementById('saveHeightBtn');
+  const st=document.getElementById('heightStatus');
+  if(inp){
+    const h=lkGetHeightCm();
+    inp.value=String(h).replace('.',',');
+  }
+  if(btn && !btn.dataset.lkBound){
+    btn.dataset.lkBound='1';
+    btn.addEventListener('click',()=>{
+      const raw=(inp?.value||'').replace(',','.');
+      if(lkSetHeightCm(raw)){
+        if(st) st.textContent='Lengte opgeslagen ✓';
+        lkRefreshHome();
+        setTimeout(()=>{ if(st) st.textContent=''; },1800);
+      }else{
+        if(st) st.textContent='Vul een geldige lengte in tussen 100 en 230 cm.';
+      }
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded',lkInitHeightUi);
+window.addEventListener('pageshow',lkInitHeightUi);
 </script>
 
 
