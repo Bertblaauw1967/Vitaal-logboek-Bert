@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v25Indicator{
+.v26Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -212,10 +212,10 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v25Indicator">v25</div>
+<div class="v26Indicator">v26</div>
 
     <div class="tiles approvedGrid">
-      <button type="button" class="card tile clickable tileWeight" data-page="weight">
+      <button type="button" class="card tile clickable tileWeight" data-page="bmi">
         <div class="icon blue">▣</div>
         <div class="tileBody">
           <div class="label">Gewicht</div>
@@ -283,7 +283,7 @@ input:focus{border-color:var(--blue)}
         </div>
       </button>
 
-      <button type="button" class="card tile clickable tileBmi" data-page="weight">
+      <button type="button" class="card tile clickable tileBmi" data-page="bmi">
         <div class="icon amber">BMI</div>
         <div class="tileBody">
           <div class="label">BMI</div>
@@ -388,10 +388,49 @@ input:focus{border-color:var(--blue)}
 
 
 
+
+<section id="bmi" class="page">
+  <div class="detailTop">
+    <div>
+      <div class="eyebrow">Voortgang</div>
+      <h2 class="sectionTitle">BMI</h2>
+    </div>
+    <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Huidige BMI</div>
+    <div class="bigValue" id="bmiDetailValue">—</div>
+    <div id="bmiDetailStatus" class="muted">—</div>
+    <div class="miniGrid" style="margin-top:14px">
+      <div><span>Lengte</span><strong id="bmiDetailHeight">—</strong></div>
+      <div><span>Gewicht</span><strong id="bmiDetailWeight">—</strong></div>
+    </div>
+  </div>
+
+  <div class="card panel">
+    <div class="label">BMI-verloop</div>
+    <div class="muted" style="margin-bottom:10px">Automatisch berekend uit je gewichtsmetingen en ingestelde lengte.</div>
+    <div class="chartWrap"><svg id="bmiChart" viewBox="0 0 720 260" role="img" aria-label="BMI verloop"></svg></div>
+    <div id="bmiChartEmpty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee gewichtsmetingen in om de grafiek te zien.</div>
+  </div>
+
+  <div class="card panel">
+    <div class="label">BMI-indeling</div>
+    <div class="muted" style="line-height:1.65">
+      Onder 18,5 · ondergewicht<br>
+      18,5–24,9 · normaal gewicht<br>
+      25,0–29,9 · overgewicht<br>
+      30,0 of hoger · obesitas
+    </div>
+    <small class="muted" style="display:block;margin-top:10px">BMI is een algemene indicatie en zegt niet alles over je gezondheid of lichaamssamenstelling.</small>
+  </div>
+</section>
+
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 25</strong>
+      <strong>LeefKracht · Versie 26</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -670,7 +709,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:25,
+    version:26,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -932,6 +971,7 @@ function lkRenderDashboardOnly(){
   }
 }
 function lkStartupRefresh(){
+  lkRenderBmiPage();
   lkRenderDashboardOnly();
   try{render();}catch(e){}
   lkInitProfileUi();
@@ -1066,6 +1106,79 @@ if(document.readyState==='loading'){
 window.addEventListener('pageshow',lkRunStartupSequence);
 window.addEventListener('focus',lkRunStartupSequence);
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lkRunStartupSequence();});
+
+
+function lkBmiCategory(v){
+  if(v==null || !Number.isFinite(Number(v))) return '—';
+  v=Number(v);
+  if(v<18.5) return 'Ondergewicht';
+  if(v<25) return 'Normaal gewicht';
+  if(v<30) return 'Overgewicht';
+  return 'Obesitas';
+}
+function lkRenderBmiPage(){
+  try{
+    const data=load();
+    const w=lastWith(data,'weight');
+    const h=lkGetHeightCm();
+    const val=w?lkBmiFromWeight(n(w.weight)):null;
+    lkSafeText('bmiDetailValue',val!=null?fmt(val):'—');
+    lkSafeText('bmiDetailStatus',val!=null?lkBmiCategory(val):'Nog geen gewichtsmeting');
+    lkSafeText('bmiDetailHeight',fmt(h/100,3)+' m');
+    lkSafeText('bmiDetailWeight',w?fmt(n(w.weight))+' kg':'—');
+
+    const svg=document.getElementById('bmiChart');
+    const empty=document.getElementById('bmiChartEmpty');
+    if(!svg) return;
+
+    const pts=data.filter(e=>n(e.weight)!==null)
+      .slice()
+      .sort((a,b)=>a.date.localeCompare(b.date))
+      .map(e=>({date:e.date,bmi:lkBmiFromWeight(n(e.weight))}))
+      .filter(e=>Number.isFinite(e.bmi));
+
+    if(pts.length<2){
+      svg.innerHTML='';
+      svg.style.display='none';
+      if(empty) empty.style.display='block';
+      return;
+    }
+    svg.style.display='block';
+    if(empty) empty.style.display='none';
+
+    const W=720,H=260,L=48,R=18,T=20,B=38;
+    const vals=pts.map(p=>p.bmi);
+    let lo=Math.min(...vals,18.5,25), hi=Math.max(...vals,30);
+    lo=Math.floor(lo-1); hi=Math.ceil(hi+1);
+    if(hi-lo<8){hi=lo+8;}
+
+    const x=i=>L+(i/(pts.length-1))*(W-L-R);
+    const y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+
+    let out='';
+    [18.5,25,30].forEach(v=>{
+      if(v>=lo&&v<=hi){
+        out+=`<line x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}" stroke="rgba(255,255,255,.18)" stroke-dasharray="7 7"/>`;
+        out+=`<text x="${L+4}" y="${y(v)-5}" font-size="12" fill="rgba(255,255,255,.55)">${String(v).replace('.',',')}</text>`;
+      }
+    });
+    out+=`<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="rgba(255,255,255,.22)"/>`;
+    const poly=pts.map((p,i)=>`${x(i)},${y(p.bmi)}`).join(' ');
+    out+=`<polyline fill="none" stroke="#4b8cff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="${poly}"/>`;
+    pts.forEach((p,i)=>{
+      out+=`<circle cx="${x(i)}" cy="${y(p.bmi)}" r="5" fill="#4b8cff"/>`;
+    });
+    const first=pts[0],last=pts[pts.length-1];
+    out+=`<text x="${L}" y="${H-10}" font-size="12" fill="rgba(255,255,255,.6)">${fdate(first.date)}</text>`;
+    out+=`<text x="${W-R}" y="${H-10}" text-anchor="end" font-size="12" fill="rgba(255,255,255,.6)">${fdate(last.date)}</text>`;
+    svg.innerHTML=out;
+  }catch(e){console.warn('BMI pagina',e);}
+}
+
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-page="bmi"]');
+  if(el) setTimeout(lkRenderBmiPage,0);
+});
 </script>
 
 
