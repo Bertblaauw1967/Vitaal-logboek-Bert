@@ -168,12 +168,17 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v24Indicator{
+.v25Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
 }
 
+
+.versionTop{display:flex;flex-direction:column;gap:2px}
+.versionTop strong{font-size:16px;color:var(--text)}
+.versionTop span{font-size:12px;color:#65df7c}
+.settingsCard input,.settingsCard select{box-sizing:border-box}
 </style>
 
 <script>
@@ -207,7 +212,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v24Indicator">v24</div>
+<div class="v25Indicator">v25</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -382,33 +387,45 @@ input:focus{border-color:var(--blue)}
   </section>
 
 
+
 <section id="more" class="page">
   <div class="detailTop">
-    <h2 class="sectionTitle">Meer</h2>
+    <div class="versionTop">
+      <strong>LeefKracht · Versie 25</strong>
+      <span>Nieuwe versie actief ✓</span>
+    </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
   </div>
 
-  <div class="version20Badge">
-    <strong>LeefKracht · Versie 24</strong>
-    <span>Nieuwe versie actief ✓</span>
-  </div>
-
   <div class="card settingsCard">
-    <h3>Vaste gegevens</h3>
-    <p class="muted">Deze gegevens gebruik ik voor je doelen en BMI.</p>
+    <h3>Persoonsgegevens</h3>
+    <p class="muted">Deze gegevens worden gebruikt voor je voortgang, doelen en BMI.</p>
 
-    <label for="goalInput">Streefgewicht (kg)</label>
-    <div style="display:flex;gap:10px;align-items:center;margin-top:8px;margin-bottom:16px">
-      <input id="goalInput" type="number" inputmode="decimal" min="30" max="250" step="0.1" placeholder="bijv. 85,0" style="flex:1">
-      <button id="saveGoal" type="button">Opslaan</button>
-    </div>
+    <label for="sexInput">Man / vrouw</label>
+    <select id="sexInput" style="width:100%;margin-top:8px;margin-bottom:16px">
+      <option value="">Kies</option>
+      <option value="man">Man</option>
+      <option value="vrouw">Vrouw</option>
+    </select>
+
+    <label for="ageInput">Leeftijd</label>
+    <input id="ageInput" type="number" inputmode="numeric" min="1" max="120" step="1"
+           placeholder="bijv. 59" style="width:100%;margin-top:8px;margin-bottom:16px">
 
     <label for="heightCm">Lengte (cm)</label>
-    <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-      <input id="heightCm" type="number" inputmode="decimal" min="100" max="230" step="0.5" placeholder="bijv. 182,5" style="flex:1">
-      <button id="saveHeightBtn" type="button">Opslaan</button>
-    </div>
-    <small id="heightStatus" class="muted"></small>
+    <input id="heightCm" type="number" inputmode="decimal" min="100" max="230" step="0.5"
+           placeholder="bijv. 182,5" style="width:100%;margin-top:8px;margin-bottom:16px">
+
+    <label for="currentWeightInput">Huidig gewicht (kg)</label>
+    <input id="currentWeightInput" type="number" inputmode="decimal" min="30" max="300" step="0.1"
+           placeholder="bijv. 95,8" style="width:100%;margin-top:8px;margin-bottom:16px">
+
+    <label for="goalInput">Streefgewicht (kg)</label>
+    <input id="goalInput" type="number" inputmode="decimal" min="30" max="250" step="0.1"
+           placeholder="bijv. 85,0" style="width:100%;margin-top:8px;margin-bottom:16px">
+
+    <button id="saveProfileBtn" type="button" class="primary wideBtn">Gegevens opslaan</button>
+    <small id="profileStatus" class="muted"></small>
   </div>
 
   <div class="card settingsCard">
@@ -433,6 +450,7 @@ input:focus{border-color:var(--blue)}
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
   </div>
 </section>
+
 
 
   
@@ -531,6 +549,14 @@ input:focus{border-color:var(--blue)}
 <script>
 
 const LK_DEFAULT_HEIGHT_CM = 182.5;
+const LK_PROFILE_KEY='leefkracht-profile-v1';
+function lkLoadProfile(){
+  try{return JSON.parse(localStorage.getItem(LK_PROFILE_KEY)||'{}')||{}}catch(e){return {}}
+}
+function lkSaveProfile(p){
+  localStorage.setItem(LK_PROFILE_KEY,JSON.stringify(p||{}));
+}
+
 function lkGetHeightCm(){
   const v = Number(localStorage.getItem('leefkracht-height-cm'));
   return Number.isFinite(v) && v >= 100 && v <= 230 ? v : LK_DEFAULT_HEIGHT_CM;
@@ -637,25 +663,14 @@ function render(){
 if(g!==null){$('#goalTile').textContent=fmt(g)+' kg';if(w){const diff=n(w.weight)-g;$('#goalSub').textContent=diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel'}else $('#goalSub').textContent='Doelgewicht'}else{$('#goalTile').textContent='—';$('#goalSub').textContent='Instellen bij Meer'}
  renderCharts(data);renderHistory(data);
 }
-const saveGoalBtn=$('#saveGoal');
-if(saveGoalBtn) saveGoalBtn.onclick=()=>{
-  const el=$('#goalInput');
-  const raw=(el?.value||'').trim();
-  if(!raw){localStorage.removeItem(GOAL_KEY);}
-  else{
-    const g=parseFloat(raw.replace(',','.'));
-    if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig streefgewicht in.');
-    localStorage.setItem(GOAL_KEY,String(g));
-  }
-  render();
-};
+
 $('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:24,
+    version:25,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -675,6 +690,8 @@ async function restoreBackup(file){
     save(payload.measurements);
     if(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined') localStorage.removeItem(GOAL_KEY);
     else localStorage.setItem(GOAL_KEY,String(payload.goal));
+    if(payload.heightCm) lkSetHeightCm(payload.heightCm);
+    if(payload.profile) lkSaveProfile(payload.profile);
     render();
     alert('Back-up is teruggezet.');
   }catch(e){ alert('Deze back-up kon niet worden teruggezet.'); }
@@ -837,42 +854,98 @@ document.addEventListener('click',e=>{
   if(e.target.closest('#exportCsv')) exportHealthCsv();
 });
 
-function lkRefreshHome(){
+
+function lkSafeText(id, value){
+  const el=document.getElementById(id);
+  if(el) el.textContent=value;
+}
+function lkRenderDashboardOnly(){
   try{
-    render();
-    lkInitHeightUi();
-  }catch(e){ console.warn('LeefKracht refresh',e); }
+    const data=load();
+    const ordered=sorted(data);
+    const latest=ordered[0];
+    const w=lastWith(data,'weight');
+    const waist=lastWith(data,'waist');
+    const bp=ordered.find(e=>n(e.sys)!==null&&n(e.dia)!==null);
+    const heart=lastWith(data,'heart');
+
+    lkSafeText('latestDate',latest?fdate(latest.date):'Nog geen meting');
+
+    if(w){
+      const ww=n(w.weight), bmi=lkBmiFromWeight(ww), loss=START-ww;
+      lkSafeText('latestWeight',fmt(ww)+' kg');
+      lkSafeText('loss',(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg');
+      lkSafeText('bmiTile',fmt(bmi));
+      lkSafeText('bmiClass',(bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI')+' · '+fmt(lkGetHeightCm()/100,3)+' m');
+    }else{
+      lkSafeText('latestWeight','—'); lkSafeText('loss','—');
+      lkSafeText('bmiTile','—'); lkSafeText('bmiClass','Lengte '+fmt(lkGetHeightCm()/100,3)+' m');
+    }
+
+    if(waist){
+      lkSafeText('waistTile',fmt(n(waist.waist))+' cm');
+      lkSafeText('waistTileDate',fdate(waist.date));
+    }else{
+      lkSafeText('waistTile','—'); lkSafeText('waistTileDate','Nog geen meting');
+    }
+
+    const cutoff=new Date();
+    cutoff.setDate(cutoff.getDate()-6); cutoff.setHours(0,0,0,0);
+    const recent=data.filter(e=>n(e.steps)!==null&&new Date(e.date+'T12:00:00')>=cutoff);
+    const avg=recent.length?Math.round(recent.reduce((s,e)=>s+n(e.steps),0)/recent.length):null;
+    lkSafeText('steps7',avg!==null?avg.toLocaleString('nl-NL'):'—');
+    const bar=document.getElementById('stepsProgress');
+    if(bar) bar.style.width=(avg===null?0:Math.min(100,(avg/8000)*100))+'%';
+
+    if(bp){
+      const s=n(bp.sys),d=n(bp.dia),c=bpCat(s,d);
+      lkSafeText('bp',`${s}/${d}`); lkSafeText('bpDate',fdate(bp.date));
+      const b=document.getElementById('bpBadge');
+      if(b) b.innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;
+    }else{
+      lkSafeText('bp','—'); lkSafeText('bpDate','Nog geen meting');
+      const b=document.getElementById('bpBadge'); if(b) b.innerHTML='';
+    }
+
+    if(heart){
+      const h=n(heart.heart),c=heartCat(h);
+      lkSafeText('heartTile',`${h} bpm`); lkSafeText('heartDate',fdate(heart.date));
+      const b=document.getElementById('heartBadge');
+      if(b) b.innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;
+    }else{
+      lkSafeText('heartTile','—'); lkSafeText('heartDate','Nog geen meting');
+      const b=document.getElementById('heartBadge'); if(b) b.innerHTML='';
+    }
+
+    const g=goal();
+    if(g!==null){
+      lkSafeText('goalTile',fmt(g)+' kg');
+      if(w){
+        const diff=n(w.weight)-g;
+        lkSafeText('goalSub',diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel');
+      }else lkSafeText('goalSub','Doelgewicht');
+    }else{
+      lkSafeText('goalTile','—'); lkSafeText('goalSub','Instellen bij Meer');
+    }
+  }catch(e){
+    console.warn('Dashboard kon niet worden geladen',e);
+  }
+}
+function lkStartupRefresh(){
+  lkRenderDashboardOnly();
+  try{render();}catch(e){}
+  lkInitProfileUi();
+}
+
+function lkRefreshHome(){
+  lkRenderDashboardOnly();
+  try{render();}catch(e){}
+  lkInitProfileUi();
 }
 document.addEventListener('DOMContentLoaded',()=>setTimeout(lkRefreshHome,0));
 window.addEventListener('pageshow',()=>setTimeout(lkRefreshHome,0));
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')setTimeout(lkRefreshHome,0);});
 window.addEventListener('focus',()=>setTimeout(lkRefreshHome,0));
-
-function lkInitHeightUi(){
-  const inp=document.getElementById('heightCm');
-  const btn=document.getElementById('saveHeightBtn');
-  const st=document.getElementById('heightStatus');
-  if(inp){
-    const h=lkGetHeightCm();
-    inp.value=String(h).replace('.',',');
-  }
-  if(btn && !btn.dataset.lkBound){
-    btn.dataset.lkBound='1';
-    btn.addEventListener('click',()=>{
-      const raw=(inp?.value||'').replace(',','.');
-      if(lkSetHeightCm(raw)){
-        if(st) st.textContent='Lengte opgeslagen ✓';
-        render();
-        setTimeout(()=>{ if(st) st.textContent=''; },1800);
-      }else{
-        if(st) st.textContent='Vul een geldige lengte in tussen 100 en 230 cm.';
-      }
-    });
-  }
-}
-document.addEventListener('DOMContentLoaded',lkInitHeightUi);
-window.addEventListener('pageshow',lkInitHeightUi);
-
 
 function lkInitQuickWeight(){
   const d=document.getElementById('quickWeightDate');
@@ -903,7 +976,96 @@ function lkInitQuickWeight(){
 document.addEventListener('DOMContentLoaded',lkInitQuickWeight);
 window.addEventListener('pageshow',lkInitQuickWeight);
 
-window.addEventListener('load',()=>setTimeout(()=>{try{render();lkInitHeightUi();lkInitQuickWeight();}catch(e){}},50));
+window.addEventListener('load',()=>setTimeout(()=>{try{render();lkInitProfileUi();lkInitQuickWeight();}catch(e){}},50));
+
+
+function lkLatestWeightValue(){
+  const w=lastWith(load(),'weight');
+  return w && n(w.weight)!==null ? n(w.weight) : null;
+}
+function lkSetCurrentWeight(val){
+  const num=Number(String(val).replace(',','.'));
+  if(!Number.isFinite(num)||num<30||num>300) return false;
+  const data=load();
+  const d=today();
+  let entry=data.find(e=>e.date===d);
+  if(entry) entry.weight=String(num);
+  else data.push({date:d,weight:String(num),waist:'',steps:'',sys:'',dia:'',heart:''});
+  save(data);
+  return true;
+}
+function lkInitProfileUi(){
+  const profile=lkLoadProfile();
+  const sex=document.getElementById('sexInput');
+  const age=document.getElementById('ageInput');
+  const height=document.getElementById('heightCm');
+  const current=document.getElementById('currentWeightInput');
+  const goalEl=document.getElementById('goalInput');
+  const btn=document.getElementById('saveProfileBtn');
+  const status=document.getElementById('profileStatus');
+
+  if(sex) sex.value=profile.sex||'';
+  if(age) age.value=profile.age||'';
+  if(height) height.value=String(lkGetHeightCm()).replace('.',',');
+  const cw=lkLatestWeightValue();
+  if(current) current.value=cw!==null?String(cw).replace('.',','):'';
+  const g=goal();
+  if(goalEl) goalEl.value=g!==null?String(g).replace('.',','):'';
+
+  if(btn && !btn.dataset.lkBound){
+    btn.dataset.lkBound='1';
+    btn.addEventListener('click',()=>{
+      const hRaw=(height?.value||'').replace(',','.');
+      const ageNum=Number(age?.value||0);
+      const goalRaw=(goalEl?.value||'').replace(',','.');
+      const currentRaw=(current?.value||'').replace(',','.');
+
+      if(sex && sex.value!=='' && !['man','vrouw'].includes(sex.value)){
+        if(status) status.textContent='Kies man of vrouw.'; return;
+      }
+      if(age?.value && (!Number.isFinite(ageNum)||ageNum<1||ageNum>120)){
+        if(status) status.textContent='Vul een geldige leeftijd in.'; return;
+      }
+      if(!lkSetHeightCm(hRaw)){
+        if(status) status.textContent='Vul een geldige lengte in.'; return;
+      }
+      if(currentRaw && !lkSetCurrentWeight(currentRaw)){
+        if(status) status.textContent='Vul een geldig huidig gewicht in.'; return;
+      }
+      if(goalRaw){
+        const gv=Number(goalRaw);
+        if(!Number.isFinite(gv)||gv<30||gv>250){
+          if(status) status.textContent='Vul een geldig streefgewicht in.'; return;
+        }
+        localStorage.setItem(GOAL_KEY,String(gv));
+      }else{
+        localStorage.removeItem(GOAL_KEY);
+      }
+
+      lkSaveProfile({sex:sex?.value||'',age:age?.value||''});
+      if(status) status.textContent='Gegevens opgeslagen ✓';
+      lkRenderDashboardOnly();
+      try{render();}catch(e){}
+      setTimeout(()=>{if(status) status.textContent='';},1800);
+    });
+  }
+}
+
+function lkRunStartupSequence(){
+  lkStartupRefresh();
+  requestAnimationFrame(()=>lkStartupRefresh());
+  setTimeout(lkStartupRefresh,100);
+  setTimeout(lkStartupRefresh,350);
+  setTimeout(lkStartupRefresh,1000);
+}
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',lkRunStartupSequence,{once:true});
+}else{
+  lkRunStartupSequence();
+}
+window.addEventListener('pageshow',lkRunStartupSequence);
+window.addEventListener('focus',lkRunStartupSequence);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')lkRunStartupSequence();});
 </script>
 
 
