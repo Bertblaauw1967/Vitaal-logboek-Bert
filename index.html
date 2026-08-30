@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v23Indicator{
+.v24Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -207,7 +207,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v23Indicator">v23</div>
+<div class="v24Indicator">v24</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -306,7 +306,23 @@ input:focus{border-color:var(--blue)}
       <div class="card summary"><div class="label">Laatste gewicht</div><div class="value" id="weightNow">—</div><div class="sub" id="weightNowDate"></div></div>
       <div class="card summary"><div class="label">Sinds start</div><div class="value green" id="weightLoss">—</div><div class="sub">Vanaf 98,2 kg</div></div>
     </div>
+    
     <div class="card panel">
+      <div class="label">Nieuwe gewichtsmeting</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+        <div>
+          <label for="quickWeightDate">Datum</label>
+          <input id="quickWeightDate" type="date">
+        </div>
+        <div>
+          <label for="quickWeightInput">Gewicht (kg)</label>
+          <input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8">
+        </div>
+      </div>
+      <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
+      <small id="quickWeightStatus" class="muted"></small>
+    </div>
+<div class="card panel">
       <div class="label">Gewichtsverloop</div>
       <div class="chart" id="weightChart"></div>
     </div>
@@ -365,40 +381,59 @@ input:focus{border-color:var(--blue)}
     <div class="card panel"><div class="label">Voortgang richting doel</div><div class="chart" id="goalChart"></div></div>
   </section>
 
-<section id="more" class="page">
-<div class="card">
-  <h3>Lengte &amp; BMI</h3>
-  <p class="muted">Je lengte wordt gebruikt om je BMI automatisch te berekenen.</p>
-  <label for="heightCm">Lengte in cm</label>
-  <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
-    <input id="heightCm" type="number" inputmode="decimal" min="100" max="230" step="0.5" placeholder="182,5" style="flex:1">
-    <button id="saveHeightBtn" type="button">Opslaan</button>
-  </div>
-  <small id="heightStatus" class="muted"></small>
-</div>
 
-    <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
+<section id="more" class="page">
+  <div class="detailTop">
+    <h2 class="sectionTitle">Meer</h2>
+    <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+  </div>
+
   <div class="version20Badge">
-    <strong>LeefKracht · Versie 23</strong>
+    <strong>LeefKracht · Versie 24</strong>
     <span>Nieuwe versie actief ✓</span>
   </div>
 
-    <div class="settings">
-    </div>
-  
-    <div class="card settingsCard">
-      <h3>Gezondheid koppelen</h3>
-      <p class="muted">Voor automatische stappen, gewicht, hartslag en bloeddruk.</p>
-      <button type="button" class="primary wideBtn" data-page="health">Apple Health / Health Connect</button>
+  <div class="card settingsCard">
+    <h3>Vaste gegevens</h3>
+    <p class="muted">Deze gegevens gebruik ik voor je doelen en BMI.</p>
+
+    <label for="goalInput">Streefgewicht (kg)</label>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:8px;margin-bottom:16px">
+      <input id="goalInput" type="number" inputmode="decimal" min="30" max="250" step="0.1" placeholder="bijv. 85,0" style="flex:1">
+      <button id="saveGoal" type="button">Opslaan</button>
     </div>
 
-    <div class="card settingsCard">
-      <h3>Rapport voor arts of coach</h3>
-      <p class="muted">Maak een overzicht van je metingen en voortgang.</p>
-      <button type="button" class="primary wideBtn" data-page="report">Rapport maken</button>
+    <label for="heightCm">Lengte (cm)</label>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+      <input id="heightCm" type="number" inputmode="decimal" min="100" max="230" step="0.5" placeholder="bijv. 182,5" style="flex:1">
+      <button id="saveHeightBtn" type="button">Opslaan</button>
     </div>
+    <small id="heightStatus" class="muted"></small>
+  </div>
 
-  </section>
+  <div class="card settingsCard">
+    <h3>Gezondheid koppelen</h3>
+    <p class="muted">Voor automatische stappen, gewicht, hartslag en bloeddruk.</p>
+    <button type="button" class="primary wideBtn" data-page="health">Apple Health / Health Connect</button>
+  </div>
+
+  <div class="card settingsCard">
+    <h3>Rapport voor arts of coach</h3>
+    <p class="muted">Maak een overzicht van je metingen en voortgang.</p>
+    <button type="button" class="primary wideBtn" data-page="report">Rapport maken</button>
+  </div>
+
+  <div class="card settingsCard">
+    <h3>Back-up</h3>
+    <p class="muted">Bewaar of herstel je LeefKracht-gegevens.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button id="backupBtn" type="button">Back-up maken</button>
+      <button id="restoreBtn" type="button">Back-up terugzetten</button>
+    </div>
+    <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
+  </div>
+</section>
+
 
   
 <section id="health" class="page">
@@ -569,14 +604,14 @@ function render(){
  const data=load(), latest=sorted(data)[0], w=lastWith(data,'weight'), waist=lastWith(data,'waist'), bp=sorted(data).find(e=>n(e.sys)!==null&&n(e.dia)!==null), heart=lastWith(data,'heart');
  $('#latestDate').textContent=latest?fdate(latest.date):'Nog geen meting';
  if(w){
-   const ww=n(w.weight), bmi=ww/(HEIGHT*HEIGHT), loss=START-ww;
+   const ww=n(w.weight), bmi=lkBmiFromWeight(ww), loss=START-ww;
    $('#latestWeight').textContent=fmt(ww)+' kg';$('#latestBMI').textContent='BMI: '+fmt(bmi)+' ('+(bmi<25?'normaal':bmi<30?'overgewicht':'hoog')+')';
    $('#loss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
-   $('#bmiTile').textContent=fmt(bmi);$('#bmiClass').textContent=bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI';
+   $('#bmiTile').textContent=fmt(bmi);$('#bmiClass').textContent=(bmi<25?'Normaal gewicht':bmi<30?'Overgewicht':'Hoge BMI')+' · '+fmt(lkGetHeightCm()/100,3)+' m';
    $('#weightNow').textContent=fmt(ww)+' kg';$('#weightNowDate').textContent=fdate(w.date);$('#weightLoss').textContent=(loss>=0?'↓ ':'↑ ')+fmt(Math.abs(loss))+' kg';
    $('#msgTitle').textContent=loss>0?'Goed bezig!':'Blijf meten';$('#msgText').textContent=loss>0?`Je bent ${fmt(loss)} kg afgevallen sinds je start.`:'Je voortgang wordt automatisch bijgehouden.';
  } else {
-   $('#latestWeight').textContent='—';$('#latestBMI').textContent='Nog geen gewicht';$('#loss').textContent='—';$('#bmiTile').textContent='—';$('#bmiClass').textContent='Lengte 1,825 m';$('#weightNow').textContent='—';$('#weightNowDate').textContent='';$('#weightLoss').textContent='—';
+   $('#latestWeight').textContent='—';$('#latestBMI').textContent='Nog geen gewicht';$('#loss').textContent='—';$('#bmiTile').textContent='—';$('#bmiClass').textContent='Lengte '+fmt(lkGetHeightCm()/100,3)+' m';$('#weightNow').textContent='—';$('#weightNowDate').textContent='';$('#weightLoss').textContent='—';
  }
  if(waist){const t=fmt(n(waist.waist))+' cm';$('#latestWaist').textContent=t;$('#latestWaistDate').textContent=fdate(waist.date);$('#waistTile').textContent=t;$('#waistTileDate').textContent=fdate(waist.date)} else {$('#latestWaist').textContent='—';$('#latestWaistDate').textContent='Nog geen meting';$('#waistTile').textContent='—';$('#waistTileDate').textContent='Nog geen meting'}
  const waistAsc=[...data].filter(e=>n(e.waist)!==null).sort((a,b)=>a.date.localeCompare(b.date));
@@ -595,21 +630,32 @@ function render(){
 
  if(bp){const s=n(bp.sys),d=n(bp.dia),c=bpCat(s,d);$('#bp').textContent=`${s}/${d}`;$('#bpDate').textContent=fdate(bp.date);$('#bpBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#bloodNow').textContent=`${s}/${d}`;$('#bloodNowDate').textContent=fdate(bp.date);$('#bloodStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#bp').textContent='—';$('#bpDate').textContent='Nog geen meting';$('#bpBadge').innerHTML='';$('#bloodNow').textContent='—';$('#bloodNowDate').textContent='';$('#bloodStatus').innerHTML=''}
  if(heart){const h=n(heart.heart),c=heartCat(h);$('#heartTile').textContent=`${h} bpm`;$('#heartDate').textContent=fdate(heart.date);$('#heartBadge').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`;$('#heartNow').textContent=`${h} bpm`;$('#heartNowDate').textContent=fdate(heart.date);$('#heartStatus').innerHTML=`<span class="badge ${c[1]}">${c[0]}</span>`}else{$('#heartTile').textContent='—';$('#heartDate').textContent='Nog geen meting';$('#heartBadge').innerHTML='';$('#heartNow').textContent='—';$('#heartNowDate').textContent='';$('#heartStatus').innerHTML=''}
- const g=goal();$('#goalInput').value=g??'';
+ const g=goal(); if($('#goalInput')) $('#goalInput').value=g??''; if($('#heightCm')) $('#heightCm').value=String(lkGetHeightCm()).replace('.',',');
  if(w){$('#goalCurrent').textContent=fmt(n(w.weight))+' kg'}else{$('#goalCurrent').textContent='—'}
  $('#goalDetail').textContent=g!==null?fmt(g)+' kg':'—';
  if(g!==null && w){const rem=n(w.weight)-g;$('#goalRemaining').textContent=rem>0?fmt(rem)+' kg te gaan':rem===0?'Doel bereikt!':fmt(Math.abs(rem))+' kg onder doel'}else{$('#goalRemaining').textContent='Stel een doel in via Meer'}
 if(g!==null){$('#goalTile').textContent=fmt(g)+' kg';if(w){const diff=n(w.weight)-g;$('#goalSub').textContent=diff>0?fmt(diff)+' kg te gaan':diff===0?'Doel bereikt!':fmt(Math.abs(diff))+' kg onder doel'}else $('#goalSub').textContent='Doelgewicht'}else{$('#goalTile').textContent='—';$('#goalSub').textContent='Instellen bij Meer'}
  renderCharts(data);renderHistory(data);
 }
-$('#saveGoal').onclick=()=>{const raw=$('#goalInput').value.trim();if(!raw)localStorage.removeItem(GOAL_KEY);else{const g=parseFloat(raw.replace(',','.'));if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig doelgewicht in.');localStorage.setItem(GOAL_KEY,String(g))}render()};
+const saveGoalBtn=$('#saveGoal');
+if(saveGoalBtn) saveGoalBtn.onclick=()=>{
+  const el=$('#goalInput');
+  const raw=(el?.value||'').trim();
+  if(!raw){localStorage.removeItem(GOAL_KEY);}
+  else{
+    const g=parseFloat(raw.replace(',','.'));
+    if(!Number.isFinite(g)||g<=0)return alert('Vul een geldig streefgewicht in.');
+    localStorage.setItem(GOAL_KEY,String(g));
+  }
+  render();
+};
 $('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:23,
+    version:24,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -633,9 +679,9 @@ async function restoreBackup(file){
     alert('Back-up is teruggezet.');
   }catch(e){ alert('Deze back-up kon niet worden teruggezet.'); }
 }
-$('#backupBtn').onclick=makeBackup;
-$('#restoreBtn').onclick=()=>$('#restoreFile').click();
-$('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
+if($('#backupBtn')) $('#backupBtn').onclick=makeBackup;
+if($('#restoreBtn')) $('#restoreBtn').onclick=()=>$('#restoreFile')?.click();
+if($('#restoreFile')) $('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
 
 $('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
 render();
@@ -792,14 +838,10 @@ document.addEventListener('click',e=>{
 });
 
 function lkRefreshHome(){
-  try{ 
-    try{
-      const active=document.querySelector('.page.active');
-      if(active && active.id==='overview'){
-        document.querySelectorAll('[data-page]').forEach(()=>{});
-      }
-    }catch(e){}
-     }catch(e){ console.warn('LeefKracht refresh',e); }
+  try{
+    render();
+    lkInitHeightUi();
+  }catch(e){ console.warn('LeefKracht refresh',e); }
 }
 document.addEventListener('DOMContentLoaded',()=>setTimeout(lkRefreshHome,0));
 window.addEventListener('pageshow',()=>setTimeout(lkRefreshHome,0));
@@ -820,7 +862,7 @@ function lkInitHeightUi(){
       const raw=(inp?.value||'').replace(',','.');
       if(lkSetHeightCm(raw)){
         if(st) st.textContent='Lengte opgeslagen ✓';
-        lkRefreshHome();
+        render();
         setTimeout(()=>{ if(st) st.textContent=''; },1800);
       }else{
         if(st) st.textContent='Vul een geldige lengte in tussen 100 en 230 cm.';
@@ -830,6 +872,38 @@ function lkInitHeightUi(){
 }
 document.addEventListener('DOMContentLoaded',lkInitHeightUi);
 window.addEventListener('pageshow',lkInitHeightUi);
+
+
+function lkInitQuickWeight(){
+  const d=document.getElementById('quickWeightDate');
+  const w=document.getElementById('quickWeightInput');
+  const b=document.getElementById('saveQuickWeight');
+  const st=document.getElementById('quickWeightStatus');
+  if(d && !d.value) d.value=today();
+  if(b && !b.dataset.lkBound){
+    b.dataset.lkBound='1';
+    b.addEventListener('click',()=>{
+      const raw=(w?.value||'').replace(',','.');
+      const val=Number(raw);
+      if(!Number.isFinite(val) || val<30 || val>300){
+        if(st) st.textContent='Vul een geldig gewicht in.';
+        return;
+      }
+      const entry={date:(d?.value||today()),weight:String(val),waist:'',steps:'',sys:'',dia:'',heart:''};
+      const data=load();
+      data.push(entry);
+      save(data);
+      if(w) w.value='';
+      if(st) st.textContent='Gewicht opgeslagen ✓';
+      render();
+      setTimeout(()=>{if(st) st.textContent='';},1800);
+    });
+  }
+}
+document.addEventListener('DOMContentLoaded',lkInitQuickWeight);
+window.addEventListener('pageshow',lkInitQuickWeight);
+
+window.addEventListener('load',()=>setTimeout(()=>{try{render();lkInitHeightUi();lkInitQuickWeight();}catch(e){}},50));
 </script>
 
 
