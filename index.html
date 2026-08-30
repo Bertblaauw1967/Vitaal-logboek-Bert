@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="31.6">
+<meta name="app-version" content="31.7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "31.6";
+const LEEFKRACHT_VERSION = "31.7";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 31.6 definitieve KISS rapport-opmaak */
+/* 31.7 definitieve KISS rapport-opmaak */
 #report .sectionTitle{font-size:clamp(25px,7vw,36px)!important;line-height:1.08!important;letter-spacing:-.02em;white-space:nowrap;margin-right:10px}
 #report label:has(input[type="checkbox"]){display:flex!important;align-items:center!important;gap:14px!important;width:100%!important;box-sizing:border-box!important;text-align:left!important}
 #report label:has(input[type="checkbox"]) input[type="checkbox"]{flex:0 0 auto!important;margin:0!important}
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 @media(max-width:390px){#report .sectionTitle{font-size:24px!important}}
 </style>
 <style>
-/* 31.6 — iPhone rapport-uitlijning definitief */
+/* 31.7 — iPhone rapport-uitlijning definitief */
 #report{overflow-x:hidden}
 #report .sectionTitle{
   font-size:clamp(23px,6.3vw,32px)!important;
@@ -326,44 +326,39 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 31.6 — uitsluitend Lichaamsmaten + Streefgewicht */
-#overview .tileBodyMeasurementsFix,
-#overview .tileTargetWeightFix{
-  position:relative !important;
+/* 31.7 — uitsluitend de twee tegelcorrecties uit het goedgekeurde voorbeeld */
+#overview .bodyMetricTile .bodyMeasureIcon{
+  background:linear-gradient(135deg,#8d6cff,#42cdbd)!important;
+  color:#fff!important;
+  border-color:#7759c9!important;
+  box-shadow:0 7px 18px rgba(111,89,220,.30);
 }
-#overview .tileBodyMeasurementsFix .tileBody,
-#overview .tileTargetWeightFix .tileBody{
-  min-width:0 !important;
-  width:auto !important;
-  align-self:stretch !important;
-  display:flex !important;
-  flex-direction:column !important;
-  justify-content:flex-start !important;
-  text-align:left !important;
+#overview .bodyMetricTile .bodyMeasureIcon svg{
+  width:27px!important;
+  height:27px!important;
+  display:block!important;
 }
-#overview .tileBodyMeasurementsFix .label,
-#overview .tileTargetWeightFix .label{
-  position:static !important;
-  transform:none !important;
-  margin:0 0 6px 0 !important;
-  padding:0 !important;
-  text-align:left !important;
-  align-self:flex-start !important;
-  max-width:100% !important;
+#overview .bodyMetricTile .bodyMeasureLabel{
+  position:static!important;
+  transform:none!important;
+  margin:0!important;
+  padding:0!important;
+  align-self:flex-start!important;
+  white-space:nowrap!important;
+  color:#9db9d1!important;
 }
-#overview .tileBodyMeasurementsFix .label{
-  color:inherit !important;
-  white-space:nowrap !important;
-  font-size:clamp(15px,4.1vw,18px) !important;
+#overview .tileGoal .goalLabelOneLine{
+  text-transform:none!important;
+  white-space:nowrap!important;
+  font-size:12px!important;
+  letter-spacing:0!important;
+  overflow:visible!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
 }
-#overview .tileTargetWeightFix .label{
-  white-space:nowrap !important;
-  font-size:clamp(14px,3.8vw,17px) !important;
-  letter-spacing:.01em !important;
-  overflow:visible !important;
-  text-overflow:clip !important;
-  word-break:keep-all !important;
-  overflow-wrap:normal !important;
+@media(max-width:390px){
+  #overview .tileGoal .goalLabelOneLine{font-size:11px!important}
+  #overview .bodyMetricTile .bodyMeasureLabel{font-size:11px!important;letter-spacing:0!important}
 }
 </style>
 
@@ -383,7 +378,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v31.6</div>
+<div class="v291Indicator">v31.7</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -431,10 +426,10 @@ document.addEventListener("DOMContentLoaded",()=>{
         </div>
       </button>
 
-      <button type="button" class="tileTargetWeightFix card tile clickable tileGoal" data-page="goal">
+      <button type="button" class="card tile clickable tileGoal" data-page="goal">
         <div class="icon amber">◎</div>
         <div class="tileBody">
-          <div class="label">Streefgewicht</div>
+          <div class="label goalLabelOneLine">Streefgewicht</div>
           <div class="sub">Jouw doel</div>
           <div class="value" id="goalTile">—</div>
           <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
@@ -452,18 +447,20 @@ document.addEventListener("DOMContentLoaded",()=>{
       </button>
 
       
-      <button class="tileBodyMeasurementsFix metricTile bodyMetricTile" data-page="body">
-        <div class="tileIcon" aria-hidden="true">
+      <button type="button" class="card tile clickable bodyMetricTile" data-page="body">
+        <div class="icon bodyMeasureIcon" aria-hidden="true">
 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M7 9.5h14.5a5.5 5.5 0 0 1 0 11H9.5A5.5 5.5 0 0 1 4 15v-2.5A3 3 0 0 1 7 9.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
   <path d="M9 10v4M13 10v2.5M17 10v4M21 10v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
   <circle cx="9.5" cy="15.5" r="2" stroke="currentColor" stroke-width="1.8"/>
   <path d="M21.5 20.5v3H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-</div>
-        <div class="tileLabel">Lichaamsmaten</div>
-        <div class="tileValue" id="bodyTile">—</div>
-        <div class="tileSub" id="bodyTileSub">Buik · heup · borst</div>
+        </div>
+        <div class="tileBody">
+          <div class="label bodyMeasureLabel">Lichaamsmaten</div>
+          <div class="value" id="bodyTile">—</div>
+          <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
+        </div>
       </button>
 <button type="button" class="card tile clickable tileScore" data-page="score">
 <div class="icon green">♡</div><div class="tileBody"><div class="label">LeefKracht-score</div>
@@ -1299,7 +1296,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"31.6",
+    version:"31.7",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
