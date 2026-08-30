@@ -1,10 +1,12 @@
+// LeefKracht 29.1 - cachevrij
 self.addEventListener('install',()=>self.skipWaiting());
 self.addEventListener('activate',event=>{
-  event.waitUntil(
-    caches.keys()
-      .then(keys=>Promise.all(keys.map(k=>caches.delete(k))))
-      .then(()=>self.registration.unregister())
-      .then(()=>self.clients.matchAll())
-      .then(clients=>clients.forEach(c=>c.navigate(c.url)))
-  );
+  event.waitUntil((async()=>{
+    const keys=await caches.keys();
+    await Promise.all(keys.map(k=>caches.delete(k)));
+    await self.registration.unregister();
+    const clientsList=await self.clients.matchAll({type:'window'});
+    clientsList.forEach(c=>c.navigate(c.url));
+  })());
 });
+self.addEventListener('fetch',()=>{});
