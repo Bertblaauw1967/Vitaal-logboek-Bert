@@ -160,7 +160,7 @@ input:focus{border-color:var(--blue)}
 @media(max-width:560px){.checkGrid{grid-template-columns:1fr}}
 
 
-/* v20 visible version check */
+/* v21 professional report */
 .version20Badge{
   display:flex;justify-content:space-between;align-items:center;gap:12px;
   padding:13px 16px;margin:0 0 16px;border:1px solid #2e9b72;
@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v20Indicator{
+.v21Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -207,7 +207,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v20Indicator">v20</div>
+<div class="v21Indicator">v21</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -368,7 +368,7 @@ input:focus{border-color:var(--blue)}
 <section id="more" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Meer</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
   <div class="version20Badge">
-    <strong>LeefKracht · Versie 20</strong>
+    <strong>LeefKracht · Versie 21</strong>
     <span>Nieuwe versie actief ✓</span>
   </div>
 
@@ -592,7 +592,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:20,
+    version:21,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -635,6 +635,52 @@ function lkAvg(arr){const a=arr.filter(v=>v!==''&&v!=null&&Number.isFinite(Numbe
 function lkFmt1(v){return v==null?'—':Number(v).toFixed(1).replace('.',',')}
 function lkFmt0(v){return v==null?'—':Math.round(Number(v)).toLocaleString('nl-NL')}
 
+
+function lkChart(data,key,title,unit,stroke='#1769aa'){
+  const pts=data.filter(x=>x[key]!==''&&x[key]!=null&&Number.isFinite(Number(x[key])));
+  if(pts.length<2)return '';
+  const vals=pts.map(x=>Number(x[key])), min=Math.min(...vals), max=Math.max(...vals);
+  const lo=min===max?min-1:min, hi=min===max?max+1:max, W=700,H=190,pad=28;
+  const xy=pts.map((x,i)=>{
+    const px=pad+(i/(pts.length-1))*(W-pad*2);
+    const py=H-pad-((Number(x[key])-lo)/(hi-lo))*(H-pad*2);
+    return [px,py];
+  });
+  const poly=xy.map(p=>p.join(',')).join(' ');
+  const first=vals[0], last=vals[vals.length-1];
+  return `<div class="chartBox">
+    <div class="chartHead"><b>${title}</b><span>${lkFmt1(first)} → ${lkFmt1(last)} ${unit}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${title} trend">
+      <line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="#dbe4eb"/>
+      <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#dbe4eb"/>
+      <polyline fill="none" stroke="${stroke}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" points="${poly}"/>
+      ${xy.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${stroke}"/>`).join('')}
+      <text x="${pad}" y="18" font-size="11" fill="#71808d">${lkFmt1(hi)} ${unit}</text>
+      <text x="${pad}" y="${H-5}" font-size="11" fill="#71808d">${lkFmt1(lo)} ${unit}</text>
+    </svg>
+  </div>`;
+}
+function lkBloodChart(data){
+  const pts=data.filter(x=>x.systolic&&x.diastolic);
+  if(pts.length<2)return '';
+  const W=700,H=190,pad=28;
+  const all=pts.flatMap(x=>[Number(x.systolic),Number(x.diastolic)]);
+  const lo=Math.min(...all)-5, hi=Math.max(...all)+5;
+  const line=k=>pts.map((x,i)=>{
+    const px=pad+(i/(pts.length-1))*(W-pad*2);
+    const py=H-pad-((Number(x[k])-lo)/(hi-lo))*(H-pad*2);
+    return [px,py];
+  });
+  const a=line('systolic'),b=line('diastolic');
+  return `<div class="chartBox"><div class="chartHead"><b>Bloeddruk</b><span>Systolisch / diastolisch</span></div>
+  <svg viewBox="0 0 ${W} ${H}">
+    <line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="#dbe4eb"/>
+    <polyline fill="none" stroke="#d84072" stroke-width="5" points="${a.map(p=>p.join(',')).join(' ')}"/>
+    <polyline fill="none" stroke="#6d55b8" stroke-width="5" points="${b.map(p=>p.join(',')).join(' ')}"/>
+    ${a.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#d84072"/>`).join('')}
+    ${b.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#6d55b8"/>`).join('')}
+  </svg></div>`;
+}
 function makeHealthReport(){
   const days=document.querySelector('#reportPeriod')?.value||'90';
   const rows=lkReportRows(days);
@@ -649,66 +695,62 @@ function makeHealthReport(){
   const vals=k=>rows.map(x=>x[k]).filter(v=>v!==''&&v!=null);
   const weights=vals('weight'), waists=vals('waist'), steps=vals('steps'),
         hearts=vals('heart'), sys=vals('systolic'), dia=vals('diastolic');
-  const firstW=weights.length?Number(weights[0]):null, lastW=weights.length?Number(weights[weights.length-1]):null;
+  const firstW=weights.length?Number(weights[0]):null,lastW=weights.length?Number(weights[weights.length-1]):null;
+  const firstWaist=waists.length?Number(waists[0]):null,lastWaist=waists.length?Number(waists[waists.length-1]):null;
+  const bmi=lastW?lastW/(1.825*1.825):null;
 
   let cards='';
-  if(use.weight) cards+=`<div class="kpi"><b>Gewicht</b><strong>${lkFmt1(lastW)} kg</strong><small>${firstW!=null&&lastW!=null?lkFmt1(lastW-firstW)+' kg in periode':'Geen trend'}</small></div>`;
-  if(use.waist) cards+=`<div class="kpi"><b>Buikomtrek</b><strong>${lkFmt1(waists.length?waists[waists.length-1]:null)} cm</strong><small>Laatste meting</small></div>`;
-  if(use.steps) cards+=`<div class="kpi"><b>Gem. stappen</b><strong>${lkFmt0(lkAvg(steps))}</strong><small>per dag</small></div>`;
+  if(use.weight) cards+=`<div class="kpi"><b>Gewicht</b><strong>${lkFmt1(lastW)} kg</strong><small>${firstW!=null&&lastW!=null?lkFmt1(lastW-firstW)+' kg in periode':'Geen trend'} · BMI ${lkFmt1(bmi)}</small></div>`;
+  if(use.waist) cards+=`<div class="kpi"><b>Buikomtrek</b><strong>${lkFmt1(lastWaist)} cm</strong><small>${firstWaist!=null&&lastWaist!=null?lkFmt1(lastWaist-firstWaist)+' cm in periode':'Laatste meting'}</small></div>`;
+  if(use.steps) cards+=`<div class="kpi"><b>Gem. stappen</b><strong>${lkFmt0(lkAvg(steps))}</strong><small>per dag · doel 8.000</small></div>`;
   if(use.blood) cards+=`<div class="kpi"><b>Gem. bloeddruk</b><strong>${lkFmt0(lkAvg(sys))}/${lkFmt0(lkAvg(dia))}</strong><small>mmHg</small></div>`;
   if(use.heart) cards+=`<div class="kpi"><b>Gem. rusthartslag</b><strong>${lkFmt0(lkAvg(hearts))}</strong><small>bpm</small></div>`;
 
+  let charts='';
+  if(use.weight) charts+=lkChart(rows,'weight','Gewicht','kg','#1769aa');
+  if(use.waist) charts+=lkChart(rows,'waist','Buikomtrek','cm','#18866d');
+  if(use.steps) charts+=lkChart(rows,'steps','Stappen','', '#137ba5');
+  if(use.blood) charts+=lkBloodChart(rows);
+  if(use.heart) charts+=lkChart(rows,'heart','Rusthartslag','bpm','#7252b8');
+
   const tableRows=rows.slice().reverse().map(x=>{
-    const bmi=x.weight?Number(x.weight)/(1.825*1.825):null;
-    return `<tr>
-      <td>${lkEsc(x.date||'')}</td>
-      ${use.weight?`<td>${x.weight?lkFmt1(x.weight)+' kg':'—'}</td><td>${bmi?lkFmt1(bmi):'—'}</td>`:''}
-      ${use.waist?`<td>${x.waist?lkFmt1(x.waist)+' cm':'—'}</td>`:''}
+    const rowBmi=x.weight?Number(x.weight)/(1.825*1.825):null;
+    return `<tr><td>${lkEsc(x.date||'')}</td>
+      ${use.weight?`<td>${x.weight?lkFmt1(x.weight):'—'}</td><td>${rowBmi?lkFmt1(rowBmi):'—'}</td>`:''}
+      ${use.waist?`<td>${x.waist?lkFmt1(x.waist):'—'}</td>`:''}
       ${use.steps?`<td>${x.steps?lkFmt0(x.steps):'—'}</td>`:''}
       ${use.blood?`<td>${x.systolic&&x.diastolic?lkEsc(x.systolic)+'/'+lkEsc(x.diastolic):'—'}</td>`:''}
-      ${use.heart?`<td>${x.heart?lkEsc(x.heart)+' bpm':'—'}</td>`:''}
-    </tr>`
+      ${use.heart?`<td>${x.heart?lkEsc(x.heart):'—'}</td>`:''}</tr>`;
   }).join('');
 
   const periodText=days==='all'?'Vanaf het begin':`Laatste ${days} dagen`;
   const report=`<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>LeefKracht rapport</title><style>
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#162536;margin:32px;line-height:1.4}
-  h1{margin:0;color:#0b3558}.pink{color:#e9447b}.meta{color:#667788;margin:6px 0 24px}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
-  .kpi{border:1px solid #d7e1ea;border-radius:14px;padding:14px}.kpi b,.kpi small{display:block;color:#657789}.kpi strong{display:block;font-size:25px;margin:7px 0}
-  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:12px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa}
-  .foot{margin-top:22px;color:#788997;font-size:11px}
-  @media print{body{margin:12mm}.noPrint{display:none}} @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}body{margin:18px}}
-  
-/* v20 visible version check */
-.version20Badge{
-  display:flex;justify-content:space-between;align-items:center;gap:12px;
-  padding:13px 16px;margin:0 0 16px;border:1px solid #2e9b72;
-  border-radius:16px;background:rgba(25,116,83,.18);
-}
-.version20Badge strong{color:#fff}
-.version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v20Indicator{
-  display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
-  background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
-  font-size:11px;font-weight:800;letter-spacing:.08em
-}
-
-</style></head><body>
-  <h1>Leef<span class="pink">Kracht</span></h1>
-  <div class="meta">Rapport voor arts / coach${name?' · '+lkEsc(name):''}<br>${periodText} · gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div>
-  <div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
-  <h2>Metingen</h2>
-  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht</th><th>BMI</th>':''}${use.waist?'<th>Buik</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}</tr></thead>
+  <title>LeefKracht gezondheidsrapport</title><style>
+  *{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172a3a;margin:0;background:#eef3f7;line-height:1.4}
+  .sheet{max-width:920px;margin:24px auto;background:white;padding:42px;border-radius:18px;box-shadow:0 8px 35px #0001}
+  .cover{border-bottom:3px solid #e9447b;padding-bottom:22px;margin-bottom:24px}.logo{font-size:38px;font-weight:850;color:#0b3558}.pink{color:#e9447b}
+  .cover h2{font-size:24px;margin:18px 0 4px}.meta{color:#667788}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 30px}
+  .kpi{border:1px solid #d7e1ea;border-radius:14px;padding:15px;background:#fbfdff}.kpi b,.kpi small{display:block;color:#657789}.kpi strong{display:block;font-size:25px;margin:7px 0;color:#153d5d}
+  h2.section{font-size:20px;margin:30px 0 12px;color:#0b3558}.chartBox{border:1px solid #dbe4eb;border-radius:14px;padding:14px;margin:12px 0;break-inside:avoid}
+  .chartHead{display:flex;justify-content:space-between;gap:12px;color:#667788;margin-bottom:6px}.chartHead b{color:#183b57}.chartBox svg{width:100%;height:auto}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa;color:#536575}
+  .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}
+  @media print{body{background:white}.sheet{margin:0;max-width:none;padding:10mm;box-shadow:none;border-radius:0}.noPrint{display:none}.chartBox{break-inside:avoid}}
+  @media(max-width:700px){.sheet{margin:0;padding:20px;border-radius:0}.grid{grid-template-columns:1fr 1fr}.chartHead{font-size:12px}}
+  </style></head><body><main class="sheet">
+  <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
+  <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
+  <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
+  ${charts?'<h2 class="section">Voortgang</h2>'+charts:''}
+  <h2 class="section">Meetgegevens</h2>
+  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}</tr></thead>
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
-  <p class="foot">Dit rapport is een overzicht van geregistreerde gezondheidsmetingen en is geen medische diagnose.</p>
-  <button class="noPrint" onclick="window.print()" style="margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700">Afdrukken / bewaren als PDF</button>
-  </body></html>`;
-
+  <p class="foot">LeefKracht – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
+  <button class="printBtn noPrint" onclick="window.print()">Afdrukken / bewaren als PDF</button>
+  </main></body></html>`;
   const w=window.open('','_blank');
   if(!w){alert('Sta pop-ups toe om het rapport te openen.');return}
-  w.document.open(); w.document.write(report); w.document.close();
+  w.document.open();w.document.write(report);w.document.close();
 }
 
 function exportHealthCsv(){
