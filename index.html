@@ -141,6 +141,24 @@ input:focus{border-color:var(--blue)}
   .moreTitle{font-size:21px}
 }
 
+
+/* v19 health + report */
+.settingsCard{margin-top:14px}
+.wideBtn{width:100%;margin-top:12px}
+.healthIntro{display:flex;align-items:center;gap:16px}
+.healthLogo{width:56px;height:56px;min-width:56px;border-radius:18px;border:2px solid var(--pink);display:grid;place-items:center;color:var(--pink);font-size:30px}
+.healthRows{display:grid;gap:10px;margin-top:12px}
+.healthRows>div{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.healthRows>div:last-child{border-bottom:0}
+.healthRows strong{color:var(--green);font-size:13px}
+.noticeCard{border-color:#32597c!important}
+.input{width:100%;box-sizing:border-box;background:#071f35;color:#fff;border:1px solid #315b7d;border-radius:12px;padding:12px 13px;font:inherit;margin-top:7px}
+.checkGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.checkGrid label{display:flex;gap:8px;align-items:center;background:#0b2741;border:1px solid #294d69;border-radius:12px;padding:11px}
+.reportActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.smallNote{font-size:12px;margin-top:12px}
+@media(max-width:560px){.checkGrid{grid-template-columns:1fr}}
+
 </style>
 
 <script>
@@ -347,9 +365,90 @@ input:focus{border-color:var(--blue)}
       <input id="restoreFile" type="file" accept=".json,application/json" style="display:none">
       <div class="card setting"><div class="label">Vaste gegevens</div><div class="sub" style="margin-top:8px">Startgewicht: <b style="color:white">98,2 kg</b><br>Lengte BMI: <b style="color:white">1,825 m</b><br>Stappendoel: <b style="color:white">8.000 per dag</b></div></div>
     </div>
+  
+    <div class="card settingsCard">
+      <h3>Gezondheid koppelen</h3>
+      <p class="muted">Voor automatische stappen, gewicht, hartslag en bloeddruk.</p>
+      <button type="button" class="primary wideBtn" data-page="health">Apple Health / Health Connect</button>
+    </div>
+
+    <div class="card settingsCard">
+      <h3>Rapport voor arts of coach</h3>
+      <p class="muted">Maak een overzicht van je metingen en voortgang.</p>
+      <button type="button" class="primary wideBtn" data-page="report">Rapport maken</button>
+    </div>
+
   </section>
 
-  <section id="new" class="page">
+  
+<section id="health" class="page">
+  <div class="detailTop">
+    <h2 class="sectionTitle">Gezondheid koppelen</h2>
+    <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card healthIntro">
+    <div class="healthLogo">♡</div>
+    <div>
+      <h3>Automatische gegevens</h3>
+      <p class="muted">LeefKracht is voorbereid op Apple Health en Android Health Connect.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Gegevens die we gaan synchroniseren</h3>
+    <div class="healthRows">
+      <div><span>👟 Stappen</span><strong>Voorbereid</strong></div>
+      <div><span>⚖️ Gewicht</span><strong>Voorbereid</strong></div>
+      <div><span>♡ Rusthartslag</span><strong>Voorbereid</strong></div>
+      <div><span>♥ Bloeddruk</span><strong>Voorbereid</strong></div>
+    </div>
+  </div>
+
+  <div class="card noticeCard">
+    <h3>Waarom nog niet automatisch?</h3>
+    <p>Deze versie van LeefKracht is nog een web-app. Apple Health en Health Connect kunnen pas echt worden uitgelezen zodra we hiervan een native iPhone- en Android-app maken.</p>
+    <p class="muted">Handmatige invoer blijft altijd beschikbaar.</p>
+  </div>
+</section>
+
+<section id="report" class="page">
+  <div class="detailTop">
+    <h2 class="sectionTitle">Rapport arts / coach</h2>
+    <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card">
+    <label>Periode</label>
+    <select id="reportPeriod" class="input">
+      <option value="30">Laatste 30 dagen</option>
+      <option value="90" selected>Laatste 3 maanden</option>
+      <option value="180">Laatste 6 maanden</option>
+      <option value="365">Laatste jaar</option>
+      <option value="all">Vanaf het begin</option>
+    </select>
+
+    <h3 style="margin-top:18px">Opnemen in rapport</h3>
+    <div class="checkGrid">
+      <label><input type="checkbox" id="rWeight" checked> Gewicht & BMI</label>
+      <label><input type="checkbox" id="rWaist" checked> Buikomtrek</label>
+      <label><input type="checkbox" id="rSteps" checked> Stappen</label>
+      <label><input type="checkbox" id="rBlood" checked> Bloeddruk</label>
+      <label><input type="checkbox" id="rHeart" checked> Rusthartslag</label>
+    </div>
+
+    <label style="margin-top:18px">Naam (optioneel)</label>
+    <input id="reportName" class="input" placeholder="Naam voor op rapport">
+
+    <div class="reportActions">
+      <button type="button" class="primary" id="makeReport">Rapport openen</button>
+      <button type="button" class="secondary" id="exportCsv">CSV exporteren</button>
+    </div>
+    <p class="muted smallNote">In het geopende rapport kun je via afdrukken bewaren als PDF.</p>
+  </div>
+</section>
+
+<section id="new" class="page">
     <div class="card panel">
       <div class="detailTop"><h2 class="sectionTitle">Nieuwe meting</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
       <form id="form" class="formgrid">
@@ -472,7 +571,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:18,
+    version:19,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -502,6 +601,100 @@ $('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)re
 
 $('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
 render();
+
+
+function lkEsc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function lkReportRows(days){
+  const data=load().slice().sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(days==='all') return data;
+  const cutoff=new Date(); cutoff.setDate(cutoff.getDate()-Number(days));
+  return data.filter(x=>new Date(x.date)>=cutoff);
+}
+function lkAvg(arr){const a=arr.filter(v=>v!==''&&v!=null&&Number.isFinite(Number(v))).map(Number);return a.length?a.reduce((s,v)=>s+v,0)/a.length:null}
+function lkFmt1(v){return v==null?'—':Number(v).toFixed(1).replace('.',',')}
+function lkFmt0(v){return v==null?'—':Math.round(Number(v)).toLocaleString('nl-NL')}
+
+function makeHealthReport(){
+  const days=document.querySelector('#reportPeriod')?.value||'90';
+  const rows=lkReportRows(days);
+  const name=document.querySelector('#reportName')?.value?.trim()||'';
+  const use={
+    weight:document.querySelector('#rWeight')?.checked,
+    waist:document.querySelector('#rWaist')?.checked,
+    steps:document.querySelector('#rSteps')?.checked,
+    blood:document.querySelector('#rBlood')?.checked,
+    heart:document.querySelector('#rHeart')?.checked
+  };
+  const vals=k=>rows.map(x=>x[k]).filter(v=>v!==''&&v!=null);
+  const weights=vals('weight'), waists=vals('waist'), steps=vals('steps'),
+        hearts=vals('heart'), sys=vals('systolic'), dia=vals('diastolic');
+  const firstW=weights.length?Number(weights[0]):null, lastW=weights.length?Number(weights[weights.length-1]):null;
+
+  let cards='';
+  if(use.weight) cards+=`<div class="kpi"><b>Gewicht</b><strong>${lkFmt1(lastW)} kg</strong><small>${firstW!=null&&lastW!=null?lkFmt1(lastW-firstW)+' kg in periode':'Geen trend'}</small></div>`;
+  if(use.waist) cards+=`<div class="kpi"><b>Buikomtrek</b><strong>${lkFmt1(waists.length?waists[waists.length-1]:null)} cm</strong><small>Laatste meting</small></div>`;
+  if(use.steps) cards+=`<div class="kpi"><b>Gem. stappen</b><strong>${lkFmt0(lkAvg(steps))}</strong><small>per dag</small></div>`;
+  if(use.blood) cards+=`<div class="kpi"><b>Gem. bloeddruk</b><strong>${lkFmt0(lkAvg(sys))}/${lkFmt0(lkAvg(dia))}</strong><small>mmHg</small></div>`;
+  if(use.heart) cards+=`<div class="kpi"><b>Gem. rusthartslag</b><strong>${lkFmt0(lkAvg(hearts))}</strong><small>bpm</small></div>`;
+
+  const tableRows=rows.slice().reverse().map(x=>{
+    const bmi=x.weight?Number(x.weight)/(1.825*1.825):null;
+    return `<tr>
+      <td>${lkEsc(x.date||'')}</td>
+      ${use.weight?`<td>${x.weight?lkFmt1(x.weight)+' kg':'—'}</td><td>${bmi?lkFmt1(bmi):'—'}</td>`:''}
+      ${use.waist?`<td>${x.waist?lkFmt1(x.waist)+' cm':'—'}</td>`:''}
+      ${use.steps?`<td>${x.steps?lkFmt0(x.steps):'—'}</td>`:''}
+      ${use.blood?`<td>${x.systolic&&x.diastolic?lkEsc(x.systolic)+'/'+lkEsc(x.diastolic):'—'}</td>`:''}
+      ${use.heart?`<td>${x.heart?lkEsc(x.heart)+' bpm':'—'}</td>`:''}
+    </tr>`
+  }).join('');
+
+  const periodText=days==='all'?'Vanaf het begin':`Laatste ${days} dagen`;
+  const report=`<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LeefKracht rapport</title><style>
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#162536;margin:32px;line-height:1.4}
+  h1{margin:0;color:#0b3558}.pink{color:#e9447b}.meta{color:#667788;margin:6px 0 24px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  .kpi{border:1px solid #d7e1ea;border-radius:14px;padding:14px}.kpi b,.kpi small{display:block;color:#657789}.kpi strong{display:block;font-size:25px;margin:7px 0}
+  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:12px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa}
+  .foot{margin-top:22px;color:#788997;font-size:11px}
+  @media print{body{margin:12mm}.noPrint{display:none}} @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}body{margin:18px}}
+  </style></head><body>
+  <h1>Leef<span class="pink">Kracht</span></h1>
+  <div class="meta">Rapport voor arts / coach${name?' · '+lkEsc(name):''}<br>${periodText} · gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div>
+  <div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
+  <h2>Metingen</h2>
+  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht</th><th>BMI</th>':''}${use.waist?'<th>Buik</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}</tr></thead>
+  <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
+  <p class="foot">Dit rapport is een overzicht van geregistreerde gezondheidsmetingen en is geen medische diagnose.</p>
+  <button class="noPrint" onclick="window.print()" style="margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700">Afdrukken / bewaren als PDF</button>
+  </body></html>`;
+
+  const w=window.open('','_blank');
+  if(!w){alert('Sta pop-ups toe om het rapport te openen.');return}
+  w.document.open(); w.document.write(report); w.document.close();
+}
+
+function exportHealthCsv(){
+  const days=document.querySelector('#reportPeriod')?.value||'90';
+  const rows=lkReportRows(days);
+  const lines=[['datum','gewicht_kg','bmi','buikomtrek_cm','stappen','systolisch','diastolisch','rusthartslag_bpm'].join(';')];
+  rows.forEach(x=>{
+    const bmi=x.weight?Number(x.weight)/(1.825*1.825):'';
+    lines.push([x.date||'',x.weight||'',bmi?Number(bmi).toFixed(1).replace('.',','):'',x.waist||'',x.steps||'',x.systolic||'',x.diastolic||'',x.heart||'']
+      .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';'));
+  });
+  const blob=new Blob(["\ufeff"+lines.join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download='LeefKracht-rapport.csv';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+}
+
+document.addEventListener('click',e=>{
+  if(e.target.closest('#makeReport')) makeHealthReport();
+  if(e.target.closest('#exportCsv')) exportHealthCsv();
+});
 </script>
 
 
