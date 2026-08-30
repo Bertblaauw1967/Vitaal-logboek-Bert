@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v26Indicator{
+.v27Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -212,7 +212,7 @@ input:focus{border-color:var(--blue)}
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v26Indicator">v26</div>
+<div class="v27Indicator">v27</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="bmi">
@@ -305,33 +305,50 @@ input:focus{border-color:var(--blue)}
     <div id="msgText" style="display:none"></div>
   </section>
 
-  <section id="weight" class="page">
-    <div class="detailTop"><h2 class="sectionTitle">Gewicht</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
-    <div class="summaryRow">
-      <div class="card summary"><div class="label">Laatste gewicht</div><div class="value" id="weightNow">—</div><div class="sub" id="weightNowDate"></div></div>
-      <div class="card summary"><div class="label">Sinds start</div><div class="value green" id="weightLoss">—</div><div class="sub">Vanaf 98,2 kg</div></div>
+  
+<section id="weight" class="page">
+  <div class="detailTop">
+    <div>
+      <div class="eyebrow">Voortgang</div>
+      <h2 class="sectionTitle">Gewicht</h2>
     </div>
-    
-    <div class="card panel">
-      <div class="label">Nieuwe gewichtsmeting</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        <div>
-          <label for="quickWeightDate">Datum</label>
-          <input id="quickWeightDate" type="date">
-        </div>
-        <div>
-          <label for="quickWeightInput">Gewicht (kg)</label>
-          <input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8">
-        </div>
+    <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Huidig gewicht</div>
+    <div class="bigValue" id="weightDetailValue">—</div>
+    <div id="weightDetailDate" class="muted">—</div>
+    <div class="miniGrid" style="margin-top:14px">
+      <div><span>Streefgewicht</span><strong id="weightDetailGoal">—</strong></div>
+      <div><span>Nog te gaan</span><strong id="weightDetailToGoal">—</strong></div>
+    </div>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Nieuwe gewichtsmeting</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+      <div>
+        <label for="quickWeightDate">Datum</label>
+        <input id="quickWeightDate" type="date">
       </div>
-      <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
-      <small id="quickWeightStatus" class="muted"></small>
+      <div>
+        <label for="quickWeightInput">Gewicht (kg)</label>
+        <input id="quickWeightInput" type="number" inputmode="decimal" step="0.1" placeholder="bijv. 95,8">
+      </div>
     </div>
-<div class="card panel">
-      <div class="label">Gewichtsverloop</div>
-      <div class="chart" id="weightChart"></div>
-    </div>
-  </section>
+    <button id="saveQuickWeight" type="button" class="primary wideBtn" style="margin-top:12px">Gewicht opslaan</button>
+    <small id="quickWeightStatus" class="muted"></small>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Gewichtsverloop</div>
+    <div class="muted" style="margin-bottom:10px">Je gewichtsmetingen door de tijd, met je streefgewicht als referentie.</div>
+    <div class="chartWrap"><svg id="weightChartV27" viewBox="0 0 720 260" role="img" aria-label="Gewichtsverloop"></svg></div>
+    <div id="weightChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee gewichtsmetingen in om de grafiek te zien.</div>
+  </div>
+</section>
+
 
   <section id="blood" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Bloeddruk</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
@@ -343,7 +360,14 @@ input:focus{border-color:var(--blue)}
       <div class="label">Bloeddrukverloop</div>
       <div class="chart" id="bloodChart"></div>
     </div>
-  </section>
+  
+  <div class="card panel">
+    <div class="label">Bloeddrukverloop</div>
+    <div class="muted" style="margin-bottom:10px">Systolische en diastolische bloeddruk door de tijd.</div>
+    <div class="chartWrap"><svg id="bloodChartV27" viewBox="0 0 720 260" role="img" aria-label="Bloeddrukverloop"></svg></div>
+    <div id="bloodChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee bloeddrukmetingen in om de grafiek te zien.</div>
+  </div>
+</section>
 
   
   <section id="heart" class="page">
@@ -356,7 +380,14 @@ input:focus{border-color:var(--blue)}
       <div class="label">Hartslagverloop</div>
       <div class="chart" id="heartChart"></div>
     </div>
-  </section>
+  
+  <div class="card panel">
+    <div class="label">Rusthartslagverloop</div>
+    <div class="muted" style="margin-bottom:10px">Je rusthartslag door de tijd.</div>
+    <div class="chartWrap"><svg id="heartChartV27" viewBox="0 0 720 260" role="img" aria-label="Rusthartslagverloop"></svg></div>
+    <div id="heartChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee hartslagmetingen in om de grafiek te zien.</div>
+  </div>
+</section>
 
   
   <section id="steps" class="page">
@@ -365,8 +396,15 @@ input:focus{border-color:var(--blue)}
       <div class="card summary"><div class="label">Gemiddeld 7 dagen</div><div class="value" id="stepsNow">—</div><div class="sub">Doel: 8.000 per dag</div></div>
       <div class="card summary"><div class="label">Doelstatus</div><div class="value" id="stepsGoalStatus">—</div><div class="sub">Laatste 7 dagen</div></div>
     </div>
-    <div class="card panel"><div class="label">Stappenverloop</div><div class="chart" id="stepsChart"></div></div>
-  </section>
+</div>
+  
+  <div class="card panel">
+    <div class="label">Stappenverloop</div>
+    <div class="muted" style="margin-bottom:10px">Je geregistreerde stappen door de tijd.</div>
+    <div class="chartWrap"><svg id="stepsChartV27" viewBox="0 0 720 260" role="img" aria-label="Stappenverloop"></svg></div>
+    <div id="stepsChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee stappenmetingen in om de grafiek te zien.</div>
+  </div>
+</section>
 
   <section id="waist" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Buikomtrek</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
@@ -374,8 +412,15 @@ input:focus{border-color:var(--blue)}
       <div class="card summary"><div class="label">Laatste meting</div><div class="value" id="waistNow">—</div><div class="sub" id="waistNowDate"></div></div>
       <div class="card summary"><div class="label">Verandering</div><div class="value" id="waistChange">—</div><div class="sub">Sinds eerste buikmeting</div></div>
     </div>
-    <div class="card panel"><div class="label">Buikomtrekverloop</div><div class="chart" id="waistChart"></div></div>
-  </section>
+</div>
+  
+  <div class="card panel">
+    <div class="label">Buikomtrekverloop</div>
+    <div class="muted" style="margin-bottom:10px">Je buikomtrek door de tijd.</div>
+    <div class="chartWrap"><svg id="waistChartV27" viewBox="0 0 720 260" role="img" aria-label="Buikomtrekverloop"></svg></div>
+    <div id="waistChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee metingen in om de grafiek te zien.</div>
+  </div>
+</section>
 
   <section id="goal" class="page">
     <div class="detailTop"><h2 class="sectionTitle">Doelgericht</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
@@ -383,8 +428,15 @@ input:focus{border-color:var(--blue)}
       <div class="card summary"><div class="label">Huidig gewicht</div><div class="value" id="goalCurrent">—</div><div class="sub">Startgewicht: 98,2 kg</div></div>
       <div class="card summary"><div class="label">Doelgewicht</div><div class="value" id="goalDetail">—</div><div class="sub" id="goalRemaining">Stel een doel in via Meer</div></div>
     </div>
-    <div class="card panel"><div class="label">Voortgang richting doel</div><div class="chart" id="goalChart"></div></div>
-  </section>
+</div>
+  
+  <div class="card panel">
+    <div class="label">Naar je streefgewicht</div>
+    <div class="muted" style="margin-bottom:10px">Je gewicht ten opzichte van je ingestelde streefgewicht.</div>
+    <div class="chartWrap"><svg id="goalChartV27" viewBox="0 0 720 260" role="img" aria-label="Naar je streefgewicht"></svg></div>
+    <div id="goalChartV27Empty" class="muted" style="display:none;margin-top:10px">Voer minimaal twee gewichtsmetingen in om de grafiek te zien.</div>
+  </div>
+</section>
 
 
 
@@ -430,7 +482,7 @@ input:focus{border-color:var(--blue)}
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 26</strong>
+      <strong>LeefKracht · Versie 27</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -709,7 +761,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:26,
+    version:27,
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -1009,6 +1061,7 @@ function lkInitQuickWeight(){
       if(w) w.value='';
       if(st) st.textContent='Gewicht opgeslagen ✓';
       render();
+      lkRenderV27Charts();
       setTimeout(()=>{if(st) st.textContent='';},1800);
     });
   }
@@ -1179,6 +1232,135 @@ document.addEventListener('click',e=>{
   const el=e.target.closest('[data-page="bmi"]');
   if(el) setTimeout(lkRenderBmiPage,0);
 });
+
+
+function lkTrendChart(svgId, emptyId, points, opts={}){
+  const svg=document.getElementById(svgId);
+  const empty=document.getElementById(emptyId);
+  if(!svg) return;
+  const clean=(points||[]).filter(p=>p && p.date && Number.isFinite(Number(p.value)));
+  if(clean.length<2){
+    svg.innerHTML='';
+    svg.style.display='none';
+    if(empty) empty.style.display='block';
+    return;
+  }
+  svg.style.display='block';
+  if(empty) empty.style.display='none';
+
+  const W=720,H=260,L=48,R=18,T=20,B=38;
+  const vals=clean.map(p=>Number(p.value));
+  const refs=(opts.refs||[]).filter(v=>Number.isFinite(Number(v))).map(Number);
+  let lo=Math.min(...vals,...refs), hi=Math.max(...vals,...refs);
+  const span=Math.max(hi-lo, opts.minSpan||1);
+  lo=lo-span*.14; hi=hi+span*.14;
+  if(opts.floorZero) lo=Math.max(0,lo);
+  const x=i=>L+(i/(clean.length-1))*(W-L-R);
+  const y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+
+  let out='';
+  (opts.refs||[]).forEach((rv,idx)=>{
+    rv=Number(rv);
+    if(!Number.isFinite(rv)||rv<lo||rv>hi) return;
+    out+=`<line x1="${L}" y1="${y(rv)}" x2="${W-R}" y2="${y(rv)}" stroke="rgba(255,255,255,.18)" stroke-dasharray="7 7"/>`;
+    out+=`<text x="${L+4}" y="${y(rv)-5}" font-size="12" fill="rgba(255,255,255,.55)">${opts.refLabels?.[idx]||String(rv).replace('.',',')}</text>`;
+  });
+  out+=`<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="rgba(255,255,255,.22)"/>`;
+  const poly=clean.map((p,i)=>`${x(i)},${y(Number(p.value))}`).join(' ');
+  out+=`<polyline fill="none" stroke="#4b8cff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="${poly}"/>`;
+  clean.forEach((p,i)=>out+=`<circle cx="${x(i)}" cy="${y(Number(p.value))}" r="5" fill="#4b8cff"/>`);
+  out+=`<text x="${L}" y="${H-10}" font-size="12" fill="rgba(255,255,255,.6)">${fdate(clean[0].date)}</text>`;
+  out+=`<text x="${W-R}" y="${H-10}" text-anchor="end" font-size="12" fill="rgba(255,255,255,.6)">${fdate(clean[clean.length-1].date)}</text>`;
+  svg.innerHTML=out;
+}
+
+function lkDualTrendChart(svgId, emptyId, points, opts={}){
+  const svg=document.getElementById(svgId);
+  const empty=document.getElementById(emptyId);
+  if(!svg) return;
+  const clean=(points||[]).filter(p=>p && p.date && Number.isFinite(Number(p.a)) && Number.isFinite(Number(p.b)));
+  if(clean.length<2){
+    svg.innerHTML=''; svg.style.display='none'; if(empty) empty.style.display='block'; return;
+  }
+  svg.style.display='block'; if(empty) empty.style.display='none';
+  const W=720,H=260,L=48,R=18,T=20,B=38;
+  const vals=clean.flatMap(p=>[Number(p.a),Number(p.b)]);
+  let lo=Math.min(...vals),hi=Math.max(...vals);
+  const span=Math.max(hi-lo,10); lo=lo-span*.14; hi=hi+span*.14;
+  const x=i=>L+(i/(clean.length-1))*(W-L-R);
+  const y=v=>T+(hi-v)/(hi-lo)*(H-T-B);
+  let out=`<line x1="${L}" y1="${H-B}" x2="${W-R}" y2="${H-B}" stroke="rgba(255,255,255,.22)"/>`;
+  const pa=clean.map((p,i)=>`${x(i)},${y(Number(p.a))}`).join(' ');
+  const pb=clean.map((p,i)=>`${x(i)},${y(Number(p.b))}`).join(' ');
+  out+=`<polyline fill="none" stroke="#4b8cff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="${pa}"/>`;
+  out+=`<polyline fill="none" stroke="#b06cff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" points="${pb}"/>`;
+  clean.forEach((p,i)=>{
+    out+=`<circle cx="${x(i)}" cy="${y(Number(p.a))}" r="5" fill="#4b8cff"/>`;
+    out+=`<circle cx="${x(i)}" cy="${y(Number(p.b))}" r="5" fill="#b06cff"/>`;
+  });
+  out+=`<text x="${L}" y="16" font-size="12" fill="#4b8cff">Systolisch</text>`;
+  out+=`<text x="${L+78}" y="16" font-size="12" fill="#b06cff">Diastolisch</text>`;
+  out+=`<text x="${L}" y="${H-10}" font-size="12" fill="rgba(255,255,255,.6)">${fdate(clean[0].date)}</text>`;
+  out+=`<text x="${W-R}" y="${H-10}" text-anchor="end" font-size="12" fill="rgba(255,255,255,.6)">${fdate(clean[clean.length-1].date)}</text>`;
+  svg.innerHTML=out;
+}
+
+function lkRenderV27Charts(){
+  const data=load().slice().sort((a,b)=>a.date.localeCompare(b.date));
+  const goalVal=goal();
+
+  // Weight detail: only weight + goal.
+  const latestW=lastWith(data,'weight');
+  if(latestW){
+    const w=n(latestW.weight);
+    lkSafeText('weightDetailValue',fmt(w)+' kg');
+    lkSafeText('weightDetailDate',fdate(latestW.date));
+    lkSafeText('weightDetailGoal',goalVal!==null?fmt(goalVal)+' kg':'—');
+    if(goalVal!==null){
+      const diff=w-goalVal;
+      lkSafeText('weightDetailToGoal',diff>0?fmt(diff)+' kg':diff===0?'Doel bereikt':fmt(Math.abs(diff))+' kg onder doel');
+    }else lkSafeText('weightDetailToGoal','—');
+  }else{
+    lkSafeText('weightDetailValue','—'); lkSafeText('weightDetailDate','Nog geen meting');
+    lkSafeText('weightDetailGoal',goalVal!==null?fmt(goalVal)+' kg':'—'); lkSafeText('weightDetailToGoal','—');
+  }
+  lkTrendChart('weightChartV27','weightChartV27Empty',
+    data.filter(e=>n(e.weight)!==null).map(e=>({date:e.date,value:n(e.weight)})),
+    {refs:goalVal!==null?[goalVal]:[],refLabels:goalVal!==null?['Streefgewicht']:[],minSpan:2}
+  );
+
+  lkDualTrendChart('bloodChartV27','bloodChartV27Empty',
+    data.filter(e=>n(e.sys)!==null&&n(e.dia)!==null).map(e=>({date:e.date,a:n(e.sys),b:n(e.dia)}))
+  );
+
+  lkTrendChart('heartChartV27','heartChartV27Empty',
+    data.filter(e=>n(e.heart)!==null).map(e=>({date:e.date,value:n(e.heart)})),
+    {floorZero:true,minSpan:10}
+  );
+
+  lkTrendChart('stepsChartV27','stepsChartV27Empty',
+    data.filter(e=>n(e.steps)!==null).map(e=>({date:e.date,value:n(e.steps)})),
+    {refs:[8000],refLabels:['Doel 8.000'],floorZero:true,minSpan:2000}
+  );
+
+  lkTrendChart('waistChartV27','waistChartV27Empty',
+    data.filter(e=>n(e.waist)!==null).map(e=>({date:e.date,value:n(e.waist)})),
+    {minSpan:4}
+  );
+
+  lkTrendChart('goalChartV27','goalChartV27Empty',
+    data.filter(e=>n(e.weight)!==null).map(e=>({date:e.date,value:n(e.weight)})),
+    {refs:goalVal!==null?[goalVal]:[],refLabels:goalVal!==null?['Streefgewicht']:[],minSpan:2}
+  );
+}
+
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-page]');
+  if(el) setTimeout(lkRenderV27Charts,0);
+});
+window.addEventListener('pageshow',()=>setTimeout(lkRenderV27Charts,0));
+document.addEventListener('DOMContentLoaded',()=>setTimeout(lkRenderV27Charts,0));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')setTimeout(lkRenderV27Charts,0);});
 </script>
 
 
