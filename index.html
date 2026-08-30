@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.2">
+<meta name="app-version" content="30.3">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -217,10 +217,29 @@ button[data-page="new"].primary:active,
 .bodyMetricTile .tileValue{color:#efeaff!important}
 .bodyMetricTile .tileSub{color:#9fe1d8!important}
 
+
+/* LeefKracht 30.3 — Lichaamsmaten consistent met overige tegels */
+.bodyMetricTile{
+  border-radius:28px!important;
+  overflow:hidden;
+}
+.bodyMetricTile .tileIcon{
+  border-radius:50%!important;
+  width:58px!important;
+  height:58px!important;
+  display:grid!important;
+  place-items:center!important;
+}
+.bodyMetricTile .tileIcon svg{
+  width:30px;
+  height:30px;
+  display:block;
+}
+
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.1";
+const LEEFKRACHT_VERSION = "30.3";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -256,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.2</div>
+<div class="v291Indicator">v30.3</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -339,7 +358,14 @@ document.addEventListener("DOMContentLoaded",()=>{
 
       
       <button class="metricTile bodyMetricTile" data-page="body">
-        <div class="tileIcon">↔</div>
+        <div class="tileIcon" aria-hidden="true">
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7 9.5h14.5a5.5 5.5 0 0 1 0 11H9.5A5.5 5.5 0 0 1 4 15v-2.5A3 3 0 0 1 7 9.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M9 10v4M13 10v2.5M17 10v4M21 10v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="9.5" cy="15.5" r="2" stroke="currentColor" stroke-width="1.8"/>
+  <path d="M21.5 20.5v3H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div>
         <div class="tileLabel">Lichaamsmaten</div>
         <div class="tileValue" id="bodyTile">—</div>
         <div class="tileSub" id="bodyTileSub">Buik · heup · borst</div>
@@ -614,7 +640,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 30.2</strong>
+      <strong>LeefKracht · Versie 30.3</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -1178,7 +1204,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.2",
+    version:"30.3",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
