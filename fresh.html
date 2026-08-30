@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-store,no-cache,must-revalidate,max-age=0">
-<title>LeefKracht 30.4 vernieuwen</title>
+<title>LeefKracht 30.5 vernieuwen</title>
 <style>
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#06182a;color:#fff;display:grid;place-items:center;min-height:100vh;margin:0}
 .card{background:#0d2740;padding:28px;border-radius:22px;text-align:center}
@@ -12,7 +12,10 @@ strong{color:#ff4f8b}
 </style>
 </head>
 <body>
-<div class="card"><h2>LeefKracht</h2><p>Vernieuwen naar <strong>versie 30.4</strong>…</p></div>
+<div class="card">
+<h2>LeefKracht</h2>
+<p>Overstappen naar het nieuwe updatesysteem: <strong>30.5</strong>…</p>
+</div>
 <script>
 (async()=>{
   try{
@@ -25,7 +28,7 @@ strong{color:#ff4f8b}
       await Promise.all(keys.map(k=>caches.delete(k)));
     }
   }catch(e){}
-  location.replace('./index.html?v=30.4&fresh='+Date.now());
+  location.replace('./index.html?migrate=30.5&fresh='+Date.now());
 })();
 </script>
 </body>

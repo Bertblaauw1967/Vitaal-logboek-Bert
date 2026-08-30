@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.4">
+<meta name="app-version" content="30.5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.4";
+const LEEFKRACHT_VERSION = "30.5";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.4</div>
+<div class="v291Indicator">v30.5</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 30.4</strong>
+      <strong>LeefKracht · Versie 30.5</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -1190,7 +1190,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.4",
+    version:"30.5",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -1325,6 +1325,9 @@ function makeHealthReport(){
 
   const periodText=days==='all'?'Vanaf het begin':`Laatste ${days} dagen`;
   const report=`<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
   <title>LeefKracht gezondheidsrapport</title><style>
   *{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172a3a;margin:0;background:#eef3f7;line-height:1.4}
   .sheet{max-width:920px;margin:24px auto;background:white;padding:42px;border-radius:18px;box-shadow:0 8px 35px #0001}
@@ -1674,6 +1677,35 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 </script>
 
 
+
+
+<script>
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+
+  window.addEventListener('load', async function(){
+    try{
+      const reg = await navigator.serviceWorker.register('./sw.js', {
+        scope: './',
+        updateViaCache: 'none'
+      });
+      await reg.update();
+      if(reg.waiting){
+        reg.waiting.postMessage({type:'SKIP_WAITING'});
+      }
+    }catch(e){
+      console.warn('LeefKracht updatecontrole niet beschikbaar', e);
+    }
+  });
+
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(!sessionStorage.getItem('lk-sw-reloaded')){
+      sessionStorage.setItem('lk-sw-reloaded','1');
+      location.reload();
+    }
+  });
+})();
+</script>
 
 </body>
 </html>

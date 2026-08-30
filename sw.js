@@ -1,10 +1,36 @@
-// LeefKracht 30.4 - cachevrij
-self.addEventListener('install',()=>self.skipWaiting());
-self.addEventListener('activate',event=>event.waitUntil((async()=>{
-  try{
-    const keys=await caches.keys();
-    await Promise.all(keys.map(k=>caches.delete(k)));
-    await self.registration.unregister();
-  }catch(e){}
-})()));
-self.addEventListener('fetch',()=>{});
+// LeefKracht - vast updatesysteem
+self.addEventListener('install', event => {
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.map(k => caches.delete(k)));
+    await self.clients.claim();
+  })());
+});
+
+self.addEventListener('message', event => {
+  if(event.data && event.data.type === 'SKIP_WAITING'){
+    self.skipWaiting();
+  }
+});
+
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  if(req.method !== 'GET') return;
+
+  const url = new URL(req.url);
+  if(url.origin !== self.location.origin) return;
+
+  if(
+    req.mode === 'navigate' ||
+    url.pathname.endsWith('/index.html') ||
+    url.pathname.endsWith('/manifest.webmanifest')
+  ){
+    event.respondWith(
+      fetch(req, {cache:'no-store'}).catch(() => fetch(req))
+    );
+  }
+});
