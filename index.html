@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="31.4">
+<meta name="app-version" content="31.5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "31.4";
+const LEEFKRACHT_VERSION = "31.5";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 31.4 definitieve KISS rapport-opmaak */
+/* 31.5 definitieve KISS rapport-opmaak */
 #report .sectionTitle{font-size:clamp(25px,7vw,36px)!important;line-height:1.08!important;letter-spacing:-.02em;white-space:nowrap;margin-right:10px}
 #report label:has(input[type="checkbox"]){display:flex!important;align-items:center!important;gap:14px!important;width:100%!important;box-sizing:border-box!important;text-align:left!important}
 #report label:has(input[type="checkbox"]) input[type="checkbox"]{flex:0 0 auto!important;margin:0!important}
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 @media(max-width:390px){#report .sectionTitle{font-size:24px!important}}
 </style>
 <style>
-/* 31.4 — iPhone rapport-uitlijning definitief */
+/* 31.5 — iPhone rapport-uitlijning definitief */
 #report{overflow-x:hidden}
 #report .sectionTitle{
   font-size:clamp(23px,6.3vw,32px)!important;
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 31.4 — alleen tekstcorrecties; bestaande dashboardlayout behouden */
+/* 31.5 — alleen tekstcorrecties; bestaande dashboardlayout behouden */
 #overview .tile{
   box-sizing:border-box !important;
   overflow:hidden !important;
@@ -359,29 +359,36 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 
+
+
+
 <style>
-/* 31.4 — alleen Lichaamsmaten: kop bovenin de bestaande tegel */
+/* 31.5 — alleen de twee goedgekeurde tegelcorrecties */
 #overview .tileBodyMeasurements{
   position:relative !important;
 }
 #overview .tileBodyMeasurements .tileBody{
-  position:relative !important;
-  height:100% !important;
-  padding-top:0 !important;
+  min-width:0 !important;
 }
 #overview .tileBodyMeasurements .label{
   position:absolute !important;
-  top:14px !important;
-  left:14px !important;
-  right:14px !important;
+  top:16px !important;
+  left:144px !important;
+  right:12px !important;
   margin:0 !important;
-  z-index:2 !important;
-}
-#overview .tileBodyMeasurements .value,
-#overview .tileBodyMeasurements .sub{
-  max-width:100% !important;
+  padding:0 !important;
+  white-space:nowrap !important;
   overflow:hidden !important;
   text-overflow:ellipsis !important;
+  text-align:left !important;
+}
+#overview .tileTargetWeight .label{
+  white-space:nowrap !important;
+  overflow:visible !important;
+  word-break:normal !important;
+  overflow-wrap:normal !important;
+  font-size:clamp(15px,4.2vw,18px) !important;
+  letter-spacing:.02em !important;
 }
 </style>
 
@@ -401,7 +408,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v31.4</div>
+<div class="v291Indicator">v31.5</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -449,7 +456,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         </div>
       </button>
 
-      <button type="button" class="card tile clickable tileGoal" data-page="goal">
+      <button type="button" class="tileTargetWeight card tile clickable tileGoal" data-page="goal">
         <div class="icon amber">◎</div>
         <div class="tileBody">
           <div class="label">Streefgewicht</div>
@@ -1317,7 +1324,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"31.4",
+    version:"31.5",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
