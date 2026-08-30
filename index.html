@@ -168,7 +168,7 @@ input:focus{border-color:var(--blue)}
 }
 .version20Badge strong{color:#fff}
 .version20Badge span{color:var(--green);font-size:13px;font-weight:800}
-.v28Indicator{
+.v29Indicator{
   display:inline-block;margin:0 0 12px;padding:4px 9px;border-radius:999px;
   background:#163c5d;border:1px solid #3976a5;color:#9bc9ef;
   font-size:11px;font-weight:800;letter-spacing:.08em
@@ -187,6 +187,22 @@ input:focus{border-color:var(--blue)}
 .rangeCard{border:1px solid rgba(255,255,255,.11)}
 .rangeText{line-height:1.72;margin:10px 0 8px;color:var(--text)}
 .chartLegend{font-size:12px;fill:rgba(255,255,255,.72)}
+
+
+/* Versie 29: duidelijke primaire knop voor Nieuwe meting */
+button[data-page="new"].primary,
+.newMeasurementBtn{
+  background:linear-gradient(135deg,#ff4f8b,#ff2f72)!important;
+  color:#fff!important;
+  border:1px solid rgba(255,255,255,.16)!important;
+  box-shadow:0 10px 24px rgba(255,47,114,.28)!important;
+  font-weight:800!important;
+  letter-spacing:.01em;
+}
+button[data-page="new"].primary:active,
+.newMeasurementBtn:active{
+  transform:scale(.985);
+}
 
 </style>
 
@@ -217,11 +233,11 @@ input:focus{border-color:var(--blue)}
           <p>Jouw gezondheid. Jouw regie.</p>
         </div>
       </div>
-      <button type="button" class="newMeasure heroNew" data-page="new">⊕ Nieuw meten</button>
+      <button type="button" class="newMeasure heroNew" data-page="new">⊕ Nieuwe meting</button>
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v28Indicator">v28</div>
+<div class="v29Indicator">v29</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -525,7 +541,7 @@ input:focus{border-color:var(--blue)}
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 28</strong>
+      <strong>LeefKracht · Versie 29</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
