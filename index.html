@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.9">
+<meta name="app-version" content="31.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "30.9";
+const LEEFKRACHT_VERSION = "31.0";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -274,6 +274,14 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+<style>
+/* 31.0 definitieve KISS rapport-opmaak */
+#report .sectionTitle{font-size:clamp(25px,7vw,36px)!important;line-height:1.08!important;letter-spacing:-.02em;white-space:nowrap;margin-right:10px}
+#report label:has(input[type="checkbox"]){display:flex!important;align-items:center!important;gap:14px!important;width:100%!important;box-sizing:border-box!important;text-align:left!important}
+#report label:has(input[type="checkbox"]) input[type="checkbox"]{flex:0 0 auto!important;margin:0!important}
+#report label:has(input[type="checkbox"]) span{position:static!important;transform:none!important;margin:0!important;flex:1 1 auto!important;min-width:0!important;text-align:left!important}
+@media(max-width:390px){#report .sectionTitle{font-size:24px!important}}
+</style>
 </head>
 <body>
 <main class="app">
@@ -290,7 +298,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.9</div>
+<div class="v291Indicator">v31.0</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1206,7 +1214,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.9",
+    version:"31.0",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
