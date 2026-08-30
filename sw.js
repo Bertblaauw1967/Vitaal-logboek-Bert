@@ -1,12 +1,4 @@
-// LeefKracht 30.1 - cachevrij
+// LeefKracht 30.2 - cachevrij
 self.addEventListener('install',()=>self.skipWaiting());
-self.addEventListener('activate',event=>{
-  event.waitUntil((async()=>{
-    try{
-      const keys=await caches.keys();
-      await Promise.all(keys.map(k=>caches.delete(k)));
-      await self.registration.unregister();
-    }catch(e){}
-  })());
-});
+self.addEventListener('activate',event=>event.waitUntil((async()=>{try{const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));await self.registration.unregister()}catch(e){}})()));
 self.addEventListener('fetch',()=>{});

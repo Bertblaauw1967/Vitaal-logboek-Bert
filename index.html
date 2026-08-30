@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="30.1">
+<meta name="app-version" content="30.2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -204,6 +204,19 @@ button[data-page="new"].primary:active,
   transform:scale(.985);
 }
 
+
+.bodyMetricTile{
+  background:linear-gradient(180deg,#261b45,#1d1738)!important;
+  border-color:#7759c9!important;
+}
+.bodyMetricTile .tileIcon{
+  background:linear-gradient(135deg,#8d6cff,#42cdbd)!important;
+  color:#fff!important;
+  box-shadow:0 7px 18px rgba(111,89,220,.30);
+}
+.bodyMetricTile .tileValue{color:#efeaff!important}
+.bodyMetricTile .tileSub{color:#9fe1d8!important}
+
 </style>
 
 <script>
@@ -243,7 +256,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v30.1</div>
+<div class="v291Indicator">v30.2</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -325,7 +338,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       </button>
 
       
-      <button class="metricTile" data-page="body">
+      <button class="metricTile bodyMetricTile" data-page="body">
         <div class="tileIcon">↔</div>
         <div class="tileLabel">Lichaamsmaten</div>
         <div class="tileValue" id="bodyTile">—</div>
@@ -601,7 +614,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div class="versionTop">
-      <strong>LeefKracht · Versie 30.1</strong>
+      <strong>LeefKracht · Versie 30.2</strong>
       <span>Nieuwe versie actief ✓</span>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
@@ -738,6 +751,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         <div class="full"><label>DATUM</label><input id="date" type="date" required></div>
         <div><label>GEWICHT (KG)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1"></div>
         <div><label>BUIKOMTREK (CM)</label><input id="waistInput" type="number" inputmode="decimal" step="0.1"></div>
+        <div><label>HEUPOMTREK (CM)</label><input id="hipInput" type="number" inputmode="decimal" step="0.1"></div>
+        <div><label>BORSTOMTREK (CM)</label><input id="chestInput" type="number" inputmode="decimal" step="0.1"></div>
         <div><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
         <div><label>SYSTOLISCH</label><input id="sysInput" type="number" inputmode="numeric"></div>
         <div><label>DIASTOLISCH</label><input id="diaInput" type="number" inputmode="numeric"></div>
@@ -1157,13 +1172,13 @@ function lkRenderBodyChart(data){
 }
 
 
-$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
+$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"30.1",
+    version:"30.2",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
