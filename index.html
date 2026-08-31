@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="32.7">
+<meta name="app-version" content="32.9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.7 — bloeddruktegel beter uitgelijnd */
+/* 32.9 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.7 — professionele einduitlijning dashboardtegels */
+/* 32.9 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.7 — detailpagina's professioneel uitgelijnd */
+/* 32.9 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1024,6 +1024,446 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style>
+/* v32.9 — detailpagina's strakker uitgelijnd */
+.kvList{
+  width:100%;
+  display:grid;
+  gap:0;
+  margin-top:14px !important;
+  border-top:1px solid rgba(157,185,209,.18);
+}
+.kvRow{
+  width:100%;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  column-gap:18px;
+  align-items:baseline;
+  padding:12px 0;
+  border-bottom:1px solid rgba(157,185,209,.14);
+}
+.kvRow:last-child{border-bottom:0}
+.kvKey{
+  color:#f8fbff;
+  font-weight:500;
+  line-height:1.35;
+  min-width:0;
+}
+.kvVal{
+  min-width:102px;
+  text-align:right;
+  color:#f8fbff;
+  font-weight:800;
+  line-height:1.25;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.kvList.compact .kvRow{padding:11px 0}
+.kvList.compact .kvVal{min-width:88px}
+.kvList.bodyList .kvVal{min-width:112px}
+.kvList.ratioList .kvKey{color:#dfeaf4}
+.kvList.ratioList .kvVal{min-width:76px}
+
+.infoList{
+  display:grid;
+  gap:10px;
+  margin:12px 0 8px;
+}
+.infoItem{
+  line-height:1.55;
+}
+.infoItem strong{
+  font-weight:800;
+}
+.rangeText .sep, .chartIntro .sep{opacity:.85}
+
+#weight .rangeText,
+#blood .rangeText,
+#heart .rangeText,
+#steps .rangeText,
+#goal .rangeText,
+#bmi .rangeText,
+#body .rangeText{
+  line-height:1.72 !important;
+}
+
+#ratioStatus{
+  line-height:1.5 !important;
+}
+
+#body .chartIntro,
+#blood .chartIntro,
+#heart .chartIntro,
+#steps .chartIntro,
+#goal .chartIntro,
+#weight .chartIntro,
+#bmi .chartIntro{
+  max-width:32ch;
+}
+
+@media(max-width:560px){
+  .kvRow{column-gap:14px;padding:11px 0}
+  .kvVal{min-width:92px}
+  .kvList.bodyList .kvVal{min-width:104px}
+  .kvList.ratioList .kvVal{min-width:70px}
+}
+</style>
+
+
+<style>
+/* =========================================================
+   LeefKracht 32.9 — totale visuele finetune
+   Doel: één professioneel systeem voor dashboard + details.
+   Geen functionele wijzigingen.
+   ========================================================= */
+
+/* Basisritme */
+:root{
+  --lk-gap:12px;
+  --lk-panel-pad:22px;
+  --lk-hairline:rgba(157,185,209,.16);
+  --lk-hairline-strong:rgba(157,185,209,.24);
+}
+
+#overview .approvedGrid{
+  gap:12px !important;
+}
+
+#overview .approvedGrid .tile{
+  min-height:220px !important;
+  padding:16px 14px !important;
+  grid-template-columns:40px minmax(0,1fr) !important;
+  column-gap:12px !important;
+  align-items:start !important;
+  overflow:hidden !important;
+}
+
+#overview .approvedGrid .tile .icon{
+  width:40px !important;
+  height:40px !important;
+  min-width:40px !important;
+  max-width:40px !important;
+  margin:0 !important;
+}
+
+#overview .approvedGrid .tileBody{
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  overflow:hidden !important;
+}
+
+#overview .approvedGrid .label{
+  margin:0 !important;
+  font-size:11px !important;
+  line-height:1.2 !important;
+  letter-spacing:.018em !important;
+}
+
+#overview .approvedGrid .sub{
+  margin:2px 0 0 !important;
+  font-size:11px !important;
+  line-height:1.28 !important;
+}
+
+#overview .approvedGrid .value{
+  width:100% !important;
+  margin:18px 0 8px !important;
+  font-size:30px !important;
+  line-height:1.03 !important;
+}
+
+#overview .tileWeight .sub:last-child,
+#overview .tileBlood #bpDate,
+#overview .tileHeart #heartDate{
+  margin-top:auto !important;
+}
+
+#overview .tileSteps .tileBody{
+  padding-top:6px !important;
+}
+#overview .tileSteps .value{
+  margin-top:24px !important;
+}
+#overview .tileSteps .progressTrack{
+  display:none !important;
+}
+
+#overview .tileBlood .tileBody{
+  padding-right:20px !important;
+}
+#overview .tileBlood .value{
+  font-size:27px !important;
+  letter-spacing:-.015em !important;
+  margin-top:24px !important;
+}
+
+#overview .tileGoal .value,
+#overview .tileBmi .value,
+#overview .tileScore .value{
+  margin-top:22px !important;
+}
+#overview .tileGoal .goalRemaining,
+#overview .tileBmi .bmiStatus,
+#overview .tileScore #scoreTileSub{
+  margin-top:12px !important;
+  line-height:1.3 !important;
+}
+
+#overview .tileMore .sub{
+  margin-top:14px !important;
+  max-width:120px !important;
+}
+
+#overview .bodyMetricTile .bodyMeasureIcon{
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  max-width:30px !important;
+  flex:0 0 30px !important;
+}
+#overview .bodyMetricTile .bodyMeasureIcon svg{
+  width:15px !important;
+  height:15px !important;
+}
+#overview .bodyMetricTile .bodyMeasureLabel{
+  font-size:10px !important;
+  letter-spacing:.012em !important;
+  white-space:nowrap !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows{
+  width:100% !important;
+  margin-top:18px !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  column-gap:8px !important;
+  align-items:center !important;
+  padding:7px 0 !important;
+  border-bottom:1px solid var(--lk-hairline) !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows>div:last-child{
+  border-bottom:0 !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows span,
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  font-size:9px !important;
+  line-height:1.15 !important;
+  white-space:nowrap !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows span{
+  color:#c6d4e2 !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  min-width:58px !important;
+  text-align:right !important;
+  font-variant-numeric:tabular-nums !important;
+  color:#9ae5d6 !important;
+}
+
+/* Detailheaders allemaal hetzelfde */
+#weight .detailTop,#blood .detailTop,#heart .detailTop,#steps .detailTop,
+#goal .detailTop,#bmi .detailTop,#body .detailTop,#waist .detailTop,
+#score .detailTop,#more .detailTop,#report .detailTop,#health .detailTop{
+  margin-bottom:18px !important;
+  align-items:flex-start !important;
+}
+
+#weight .detailTop .eyebrow,#blood .detailTop .eyebrow,#heart .detailTop .eyebrow,
+#steps .detailTop .eyebrow,#goal .detailTop .eyebrow,#bmi .detailTop .eyebrow,
+#body .detailTop .eyebrow,#waist .detailTop .eyebrow,#score .detailTop .eyebrow,
+#more .detailTop .eyebrow,#report .detailTop .eyebrow,#health .detailTop .eyebrow{
+  margin-bottom:6px !important;
+  line-height:1.2 !important;
+}
+
+#weight .sectionTitle,#blood .sectionTitle,#heart .sectionTitle,#steps .sectionTitle,
+#goal .sectionTitle,#bmi .sectionTitle,#body .sectionTitle,#waist .sectionTitle,
+#score .sectionTitle,#more .sectionTitle,#report .sectionTitle,#health .sectionTitle{
+  margin:0 !important;
+  line-height:1.02 !important;
+}
+
+/* Kaarten overal hetzelfde ritme */
+#weight .panel,#blood .panel,#heart .panel,#steps .panel,#goal .panel,#bmi .panel,
+#body .panel,#waist .panel,#score .panel,#more .panel,#report .panel,#health .panel{
+  padding:22px !important;
+  margin-bottom:12px !important;
+}
+
+#weight .panel>.label,#blood .panel>.label,#heart .panel>.label,#steps .panel>.label,
+#goal .panel>.label,#bmi .panel>.label,#body .panel>.label,#waist .panel>.label,
+#score .panel>.label,#more .panel>.label,#report .panel>.label,#health .panel>.label{
+  margin-bottom:12px !important;
+  line-height:1.2 !important;
+}
+
+.bigValue{
+  margin:0 0 8px !important;
+  line-height:1.04 !important;
+}
+
+/* Key-value rijen: consistent op alle detailpagina's */
+.kvList{
+  margin-top:14px !important;
+  border-top:1px solid var(--lk-hairline-strong) !important;
+}
+.kvRow{
+  column-gap:18px !important;
+  padding:12px 0 !important;
+  border-bottom:1px solid var(--lk-hairline) !important;
+}
+.kvKey{
+  font-size:15px !important;
+  line-height:1.32 !important;
+  color:#eef6fd !important;
+}
+.kvVal{
+  min-width:104px !important;
+  font-size:15px !important;
+  line-height:1.25 !important;
+  text-align:right !important;
+  white-space:nowrap !important;
+  font-variant-numeric:tabular-nums !important;
+}
+.kvList.bodyList .kvVal{min-width:112px !important}
+.kvList.ratioList .kvVal{min-width:76px !important}
+
+/* Grafieken en intro */
+.chartIntro{
+  margin:2px 0 14px !important;
+  line-height:1.45 !important;
+}
+.chartWrap{
+  margin-top:8px !important;
+  border-radius:16px !important;
+}
+.chartWrap svg{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+}
+
+/* Infoblokken en ranges */
+.rangeText{
+  margin:14px 0 10px !important;
+  line-height:1.65 !important;
+}
+.infoList{
+  display:grid !important;
+  gap:10px !important;
+}
+.infoItem{
+  line-height:1.5 !important;
+}
+.rangeCard small{
+  display:block !important;
+  margin-top:14px !important;
+  line-height:1.55 !important;
+  padding-top:12px !important;
+  border-top:1px solid var(--lk-hairline) !important;
+}
+.sep{
+  padding:0 3px !important;
+  opacity:.85 !important;
+}
+
+/* Bloeddruk / hartslag status mooier onder de waarde */
+#blood #bloodStatus,#heart #heartStatus{
+  margin-top:14px !important;
+}
+#blood #bloodNowDate,#heart #heartNowDate{
+  margin-top:4px !important;
+}
+
+/* Body ratios */
+#body #ratioStatus{
+  margin-top:14px !important;
+  padding-top:12px !important;
+  border-top:1px solid var(--lk-hairline) !important;
+  line-height:1.45 !important;
+}
+
+/* Settings / rapport: consistente ruimte */
+.settingsCard,.setting,.noticeCard{
+  box-sizing:border-box !important;
+}
+.settingsCard .settingRow,.setting .settingRow{
+  align-items:center !important;
+}
+.reportActions{
+  gap:10px !important;
+}
+.smallNote{
+  line-height:1.5 !important;
+}
+
+/* iPhone */
+@media(max-width:430px){
+  #overview .approvedGrid .tile{
+    min-height:205px !important;
+    padding:14px 12px !important;
+    grid-template-columns:36px minmax(0,1fr) !important;
+    column-gap:10px !important;
+  }
+  #overview .approvedGrid .tile .icon{
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    max-width:36px !important;
+  }
+  #overview .approvedGrid .value{
+    font-size:28px !important;
+  }
+  #overview .tileBlood .value{
+    font-size:25px !important;
+  }
+  #overview .bodyMetricTile .bodyMeasureIcon{
+    width:28px !important;
+    height:28px !important;
+    min-width:28px !important;
+    max-width:28px !important;
+    flex-basis:28px !important;
+  }
+  #overview .bodyMetricTile .bodyMeasureIcon svg{
+    width:14px !important;
+    height:14px !important;
+  }
+
+  #weight .panel,#blood .panel,#heart .panel,#steps .panel,#goal .panel,#bmi .panel,
+  #body .panel,#waist .panel,#score .panel,#more .panel,#report .panel,#health .panel{
+    padding:20px !important;
+  }
+  .kvRow{
+    column-gap:14px !important;
+    padding:11px 0 !important;
+  }
+  .kvKey,.kvVal{
+    font-size:14px !important;
+  }
+  .kvVal{
+    min-width:92px !important;
+  }
+  .kvList.bodyList .kvVal{
+    min-width:104px !important;
+  }
+}
+
+/* Kleine schermen: nooit buiten kaart vallen */
+@media(max-width:370px){
+  #overview .approvedGrid .label{font-size:10px !important}
+  #overview .approvedGrid .sub{font-size:10px !important}
+  #overview .bodyMetricTile .bodyMeasurementsRows span,
+  #overview .bodyMetricTile .bodyMeasurementsRows strong{font-size:8.5px !important}
+  .kvKey,.kvVal{font-size:13px !important}
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -1040,7 +1480,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v32.7</div>
+<div class="v291Indicator">v32.9</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1157,9 +1597,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Huidig gewicht</div>
     <div class="bigValue" id="weightDetailValue">—</div>
     <div id="weightDetailDate" class="muted">—</div>
-    <div class="miniGrid" style="margin-top:14px">
-      <div><span>Streefgewicht</span><strong id="weightDetailGoal">—</strong></div>
-      <div><span>Nog te gaan</span><strong id="weightDetailToGoal">—</strong></div>
+    <div class="kvList compact">
+      <div class="kvRow"><div class="kvKey">Streefgewicht</div><div class="kvVal" id="weightDetailGoal">—</div></div>
+      <div class="kvRow"><div class="kvKey">Nog te gaan</div><div class="kvVal" id="weightDetailToGoal">—</div></div>
     </div>
   </div>
 
@@ -1198,7 +1638,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   </div>
   <div class="card panel rangeCard">
     <div class="label">Algemene indicatie bij thuismetingen</div>
-    <div class="rangeText">Rond 120/80 mmHg · vaak gunstig<br>120–139 of 80–89 · verhoogd<br>140/90 of hoger · hoog<br>Onder ongeveer 90/60 · laag</div>
+    <div class="rangeText infoList"><div class="infoItem">Rond 120/80 mmHg <span class="sep">·</span> vaak gunstig</div><div class="infoItem">120–139 of 80–89 <span class="sep">·</span> verhoogd</div><div class="infoItem">140/90 of hoger <span class="sep">·</span> hoog</div><div class="infoItem">Onder ongeveer 90/60 <span class="sep">·</span> laag</div></div>
     <small class="muted">Een losse meting is geen diagnose. Bespreek herhaald afwijkende waarden of klachten met een arts.</small>
   </div>
 </section>
@@ -1225,7 +1665,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   </div>
   <div class="card panel rangeCard">
     <div class="label">Algemene indicatie</div>
-    <div class="rangeText">60–100 bpm · gebruikelijke rusthartslag bij volwassenen<br>Onder 60 bpm · laag, maar kan normaal zijn bij fitte mensen<br>Boven 100 bpm · hoog in rust</div>
+    <div class="rangeText infoList"><div class="infoItem">60–100 bpm <span class="sep">·</span> gebruikelijke rusthartslag bij volwassenen</div><div class="infoItem">Onder 60 bpm <span class="sep">·</span> laag, maar kan normaal zijn bij fitte mensen</div><div class="infoItem">Boven 100 bpm <span class="sep">·</span> hoog in rust</div></div>
     <small class="muted">Klachten, medicatie en conditie kunnen de rusthartslag beïnvloeden.</small>
   </div>
 </section>
@@ -1251,7 +1691,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   </div>
   <div class="card panel rangeCard">
     <div class="label">LeefKracht-indeling</div>
-    <div class="rangeText">Onder 5.000 · laag actief<br>5.000–7.999 · redelijk actief<br>8.000–9.999 · doelzone<br>10.000 of meer · zeer actief</div>
+    <div class="rangeText infoList"><div class="infoItem">Onder 5.000 <span class="sep">·</span> laag actief</div><div class="infoItem">5.000–7.999 <span class="sep">·</span> redelijk actief</div><div class="infoItem">8.000–9.999 <span class="sep">·</span> doelzone</div><div class="infoItem">10.000 of meer <span class="sep">·</span> zeer actief</div></div>
     <small class="muted">Dit is een praktische app-indeling, geen medische norm.</small>
   </div>
 </section>
@@ -1295,9 +1735,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   <div class="card panel">
     <div class="label">Jouw doel</div>
     <div class="bigValue" id="goalDetail">—</div>
-    <div class="miniGrid" style="margin-top:14px">
-      <div><span>Huidig gewicht</span><strong id="goalCurrent">—</strong></div>
-      <div><span>Nog te gaan</span><strong id="goalRemaining">—</strong></div>
+    <div class="kvList compact">
+      <div class="kvRow"><div class="kvKey">Huidig gewicht</div><div class="kvVal" id="goalCurrent">—</div></div>
+      <div class="kvRow"><div class="kvKey">Nog te gaan</div><div class="kvVal" id="goalRemaining">—</div></div>
     </div>
   </div>
   <div class="card panel">
@@ -1327,9 +1767,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Huidige BMI</div>
     <div class="bigValue" id="bmiDetailValue">—</div>
     <div id="bmiDetailStatus" class="muted">—</div>
-    <div class="miniGrid" style="margin-top:14px">
-      <div><span>Lengte</span><strong id="bmiDetailHeight">—</strong></div>
-      <div><span>Gewicht</span><strong id="bmiDetailWeight">—</strong></div>
+    <div class="kvList compact">
+      <div class="kvRow"><div class="kvKey">Lengte</div><div class="kvVal" id="bmiDetailHeight">—</div></div>
+      <div class="kvRow"><div class="kvKey">Gewicht</div><div class="kvVal" id="bmiDetailWeight">—</div></div>
     </div>
   </div>
   <div class="card panel">
@@ -1340,7 +1780,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   </div>
   <div class="card panel rangeCard">
     <div class="label">BMI-indeling</div>
-    <div class="rangeText">Onder 18,5 · laag / ondergewicht<br>18,5–24,9 · normaal<br>25,0–29,9 · verhoogd / overgewicht<br>30,0 of hoger · hoog / obesitas</div>
+    <div class="rangeText infoList"><div class="infoItem">Onder 18,5 <span class="sep">·</span> laag · ondergewicht</div><div class="infoItem">18,5–24,9 <span class="sep">·</span> normaal</div><div class="infoItem">25,0–29,9 <span class="sep">·</span> verhoogd · overgewicht</div><div class="infoItem">30,0 of hoger <span class="sep">·</span> hoog · obesitas</div></div>
     <small class="muted">BMI is een algemene indicatie en zegt niet alles over gezondheid of lichaamssamenstelling.</small>
   </div>
 </section>
@@ -1355,21 +1795,21 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   <div class="card panel">
     <div class="label">Laatste lichaamsmaten</div>
-    <div class="miniGrid" style="margin-top:12px">
-      <div><span>Buik</span><strong id="bodyWaist">—</strong></div>
-      <div><span>Heup</span><strong id="bodyHip">—</strong></div>
-      <div><span>Borst</span><strong id="bodyChest">—</strong></div>
-      <div><span>Lengte</span><strong id="bodyHeight">—</strong></div>
+    <div class="kvList bodyList">
+      <div class="kvRow"><div class="kvKey">Buikomtrek</div><div class="kvVal" id="bodyWaist">—</div></div>
+      <div class="kvRow"><div class="kvKey">Heupomtrek</div><div class="kvVal" id="bodyHip">—</div></div>
+      <div class="kvRow"><div class="kvKey">Borstomtrek</div><div class="kvVal" id="bodyChest">—</div></div>
+      <div class="kvRow"><div class="kvKey">Lengte</div><div class="kvVal" id="bodyHeight">—</div></div>
     </div>
   </div>
 
   <div class="card panel">
     <div class="label">Verhoudingen</div>
-    <div class="miniGrid" style="margin-top:12px">
-      <div><span>WHR · buik/heup</span><strong id="whrValue">—</strong></div>
-      <div><span>WHtR · buik/lengte</span><strong id="whtrValue">—</strong></div>
+    <div class="kvList compact ratioList">
+      <div class="kvRow"><div class="kvKey">WHR · buik ÷ heup</div><div class="kvVal" id="whrValue">—</div></div>
+      <div class="kvRow"><div class="kvKey">WHtR · buik ÷ lengte</div><div class="kvVal" id="whtrValue">—</div></div>
     </div>
-    <div id="ratioStatus" class="muted" style="margin-top:12px">—</div>
+    <div id="ratioStatus" class="muted">—</div>
   </div>
 
   <div class="card panel">
@@ -1387,7 +1827,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   <div class="card panel rangeCard">
     <div class="label">WHtR · taille-lengteverhouding</div>
-    <div class="rangeText">Onder 0,40 · relatief laag<br>0,40–0,49 · gebruikelijke zone<br>0,50–0,59 · verhoogd<br>0,60 of hoger · hoog</div>
+    <div class="rangeText infoList"><div class="infoItem">Onder 0,40 <span class="sep">·</span> relatief laag</div><div class="infoItem">0,40–0,49 <span class="sep">·</span> gebruikelijke zone</div><div class="infoItem">0,50–0,59 <span class="sep">·</span> verhoogd</div><div class="infoItem">0,60 of hoger <span class="sep">·</span> hoog</div></div>
     <small class="muted">WHtR = buikomtrek ÷ lengte. Dit is een algemene gezondheidsindicator en geen diagnose.</small>
   </div>
 </section>
