@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="33.5">
+<meta name="app-version" content="34.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.5 — bloeddruktegel beter uitgelijnd */
+/* 34.0 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.5 — professionele einduitlijning dashboardtegels */
+/* 34.0 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.5 — detailpagina's professioneel uitgelijnd */
+/* 34.0 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1026,7 +1026,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v33.5 — detailpagina's strakker uitgelijnd */
+/* v34.0 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1113,7 +1113,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 33.5 — totale visuele finetune
+   LeefKracht 34.0 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1466,7 +1466,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 33.5 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* LeefKracht 34.0 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1553,7 +1553,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.5 — logische tegelvolgorde + persoonlijk compliment */
+/* 34.0 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1569,7 +1569,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.5 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+/* 34.0 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
 #body .ratioRangeTable{
   display:grid !important;
   gap:0 !important;
@@ -1628,7 +1628,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.5 — rustige kleurharmonie per tegelgroep */
+/* 34.0 — rustige kleurharmonie per tegelgroep */
 
 /* Basis: alle tegelachtergronden donker houden */
 #overview .approvedGrid .tile{
@@ -1720,7 +1720,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.5 — randen subtiel duidelijker, verder alles rustig houden */
+/* 34.0 — randen subtiel duidelijker, verder alles rustig houden */
 #overview .approvedGrid .tile{
   border-width:1px !important;
   box-shadow:0 10px 22px rgba(0,0,0,.14), 0 0 0 1px rgba(255,255,255,.03) inset !important;
@@ -1770,7 +1770,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.5 — mini finishing touch: icoontjes strakker + schaduw luxer */
+/* 34.0 — mini finishing touch: icoontjes strakker + schaduw luxer */
 #overview .approvedGrid .tile{
   box-shadow:
     0 14px 28px rgba(0,0,0,.14),
@@ -1822,6 +1822,70 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style>
+/* =========================================================
+   LeefKracht 34.0 — eerste afgeronde productversie
+   Geen redesign: alleen producthiërarchie, motivatie en privacy.
+   ========================================================= */
+
+/* Score: trend moet in één oogopslag leesbaar zijn */
+#overview .tileScore #scoreTileSub{
+  line-height:1.35 !important;
+}
+#score .scoreTrend{
+  display:inline-block !important;
+  margin:12px 0 4px !important;
+  padding:6px 10px !important;
+  border:1px solid rgba(143,215,255,.22) !important;
+  border-radius:999px !important;
+  background:rgba(58,120,158,.10) !important;
+  color:#a9ddff !important;
+  font-size:13px !important;
+  font-weight:800 !important;
+  letter-spacing:.01em !important;
+}
+
+/* Wat valt op? = herkenbaar LeefKracht-moment */
+#insight .insightHero{
+  border-color:#4f9089 !important;
+  background:linear-gradient(180deg,rgba(14,52,57,.98),rgba(9,38,43,.98)) !important;
+}
+#insight .insightHeadline{
+  margin-top:12px !important;
+  font-size:24px !important;
+  line-height:1.18 !important;
+  font-weight:850 !important;
+}
+#insight .insightBody{
+  margin-top:10px !important;
+  max-width:34ch !important;
+}
+#insight .insightReasons{
+  margin-top:14px !important;
+}
+
+/* Privacy: belangrijkste belofte eerst */
+.privacyCard .privacyLead{
+  margin:4px 0 6px !important;
+  color:#f8fbff !important;
+  font-size:19px !important;
+  line-height:1.3 !important;
+  font-weight:800 !important;
+}
+.privacyCard .futureShare strong{
+  color:#a8c3da !important;
+}
+.privacyCard .futureShare{
+  opacity:.92 !important;
+}
+
+/* Kleine extra rust op productniveau */
+#overview .tileInsight .insightMini{
+  line-height:1.4 !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -1838,7 +1902,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v33.5</div>
+<div class="v291Indicator">v34.0</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1949,9 +2013,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   <div class="card panel insightHero">
     <div class="insightSpark">✦</div>
-    <div class="label">Jouw moment</div>
+    <div class="label">Jouw LeefKracht-moment</div>
     <div class="insightHeadline" id="insightHeadline">Nog onvoldoende gegevens</div>
-    <p class="muted insightBody" id="insightBody">Vul je metingen in. LeefKracht laat daarna in één korte boodschap zien wat positief opvalt of aandacht verdient.</p>
+    <p class="muted insightBody" id="insightBody">Vul je metingen in. LeefKracht geeft daarna één korte boodschap over wat positief opvalt of aandacht verdient.</p>
   </div>
 
   <div class="card panel">
@@ -1971,7 +2035,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
 <div class="card panel scorePanel"><div class="scoreRing" id="scoreRing"><div><strong id="scoreDetailValue">—</strong><span>/100</span></div></div>
 <div class="scoreStatus" id="scoreStatus">Nog onvoldoende gegevens</div>
-<div class="scoreTrend" id="scoreTrend">—</div>
+<div class="scoreTrend" id="scoreTrend">Nog geen vergelijking mogelijk</div>
 <p class="muted" id="scoreExplain">Vul je metingen in om je totale ontwikkeling te volgen.</p></div>
 <div class="card panel"><h3>Score per onderdeel</h3><div class="scoreRows">
 <div><span>Gewicht</span><strong id="scoreWeight">—</strong></div><div><span>Bloeddruk</span><strong id="scoreBp">—</strong></div>
@@ -2279,13 +2343,15 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   <div class="card settingsCard privacyCard">
     <h3>🔒 Privacy</h3>
-    <p class="muted">Jouw gezondheidsgegevens zijn van jou. Jij bepaalt wat je deelt.</p>
+    <p class="privacyLead">Jouw gegevens zijn van jou.</p>
+    <p class="muted">LeefKracht deelt niets zonder jouw toestemming.</p>
     <div class="privacyRows">
       <div><span>Opslag</span><strong>Op dit apparaat</strong></div>
-      <div><span>Delen</span><strong>Alleen na jouw keuze</strong></div>
+      <div><span>Delen</span><strong>Alleen met jouw toestemming</strong></div>
       <div><span>Toegang intrekken</span><strong>Altijd mogelijk</strong></div>
+      <div class="futureShare"><span>Arts / coach delen</span><strong>Binnenkort</strong></div>
     </div>
-    <small class="muted">Een toekomstige arts-/coachkoppeling wordt alleen actief na jouw expliciete toestemming.</small>
+    <small class="muted">Als delen met een arts of coach later beschikbaar komt, bepaal jij wie toegang krijgt en kun je die toegang weer intrekken.</small>
   </div>
 
   <div class="card settingsCard">
@@ -3423,6 +3489,9 @@ function draw(){
   }else if(steps!==null && steps>=8000){
     headline="💪 Lekker bezig";
     body="Je gemiddelde aantal stappen ligt op of boven je doel van 8.000 per dag.";
+  }else if(cur.parts.bp!==null && cur.parts.bp>=90 && cur.parts.heart!==null && cur.parts.heart>=85){
+    headline="👍 Mooi stabiel";
+    body="Je bloeddruk en rusthartslag liggen in een rustige zone. Dat is een fijne basis om vast te houden.";
   }else if(trend!==null && trend>0){
     headline="👍 Je gaat de goede kant op";
     body="Je LeefKracht-score is hoger dan in de vorige vergelijkingsperiode. Goed volhouden.";
