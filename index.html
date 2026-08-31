@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="33.2">
+<meta name="app-version" content="33.3">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.2 — bloeddruktegel beter uitgelijnd */
+/* 33.3 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.2 — professionele einduitlijning dashboardtegels */
+/* 33.3 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.2 — detailpagina's professioneel uitgelijnd */
+/* 33.3 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1026,7 +1026,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v33.2 — detailpagina's strakker uitgelijnd */
+/* v33.3 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1113,7 +1113,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 33.2 — totale visuele finetune
+   LeefKracht 33.3 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1466,7 +1466,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 33.2 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* LeefKracht 33.3 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1553,7 +1553,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.2 — logische tegelvolgorde + persoonlijk compliment */
+/* 33.3 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1569,7 +1569,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.2 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+/* 33.3 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
 #body .ratioRangeTable{
   display:grid !important;
   gap:0 !important;
@@ -1626,6 +1626,98 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style>
+/* 33.3 — rustige kleurharmonie per tegelgroep */
+
+/* Basis: alle tegelachtergronden donker houden */
+#overview .approvedGrid .tile{
+  background:linear-gradient(180deg,rgba(10,43,74,.98),rgba(7,34,58,.98)) !important;
+  box-shadow:0 10px 22px rgba(0,0,0,.14) !important;
+}
+
+/* Gewichtsgroep: warm amber/paars */
+#overview .tileWeight,
+#overview .tileGoal,
+#overview .tileBmi,
+#overview .bodyMetricTile{
+  border-color:#6e5d8f !important;
+  background:linear-gradient(180deg,rgba(35,29,53,.98),rgba(24,24,41,.98)) !important;
+}
+#overview .tileWeight .icon,
+#overview .tileGoal .icon,
+#overview .tileBmi .icon{
+  border-color:#8069a6 !important;
+  color:#d5c1ff !important;
+}
+#overview .bodyMetricTile .bodyMeasureIcon{
+  border-color:#8069a6 !important;
+  background:linear-gradient(135deg,#6e5aa2,#3b7d82) !important;
+}
+#overview .tileGoal .goalRemaining,
+#overview .tileBmi .bmiStatus,
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  color:#d7c8ef !important;
+}
+
+/* Vitale waarden: rood/roze familie */
+#overview .tileBlood,
+#overview .tileHeart{
+  border-color:#7a3f59 !important;
+  background:linear-gradient(180deg,rgba(42,25,37,.98),rgba(31,22,31,.98)) !important;
+}
+#overview .tileBlood .icon,
+#overview .tileHeart .icon{
+  border-color:#8c4663 !important;
+  color:#ff91b2 !important;
+}
+
+/* Beweging: blauw/turkoois */
+#overview .tileSteps{
+  border-color:#2f6f8d !important;
+  background:linear-gradient(180deg,rgba(11,47,68,.98),rgba(8,39,58,.98)) !important;
+}
+#overview .tileSteps .icon{
+  border-color:#2f7895 !important;
+  color:#72d7e3 !important;
+}
+
+/* Samenvatting/positief: groen-blauw */
+#overview .tileScore,
+#overview .tileInsight{
+  border-color:#3d746f !important;
+  background:linear-gradient(180deg,rgba(16,49,53,.98),rgba(11,38,43,.98)) !important;
+}
+#overview .tileScore .icon,
+#overview .tileInsight .icon{
+  border-color:#468a82 !important;
+  color:#8de7bd !important;
+}
+#overview .tileInsight .label{
+  color:#b9ddd9 !important;
+}
+#overview .tileInsight .insightMini{
+  color:#d8ece9 !important;
+}
+
+/* Instellingen: neutraal donkerblauw */
+#overview .tileMore{
+  border-color:#365c7e !important;
+  background:linear-gradient(180deg,rgba(16,31,52,.98),rgba(12,28,47,.98)) !important;
+}
+#overview .tileMore .icon{
+  border-color:#426a8e !important;
+  color:#a9c8e5 !important;
+}
+
+/* Statuskleuren behouden betekenis */
+#overview .good,
+#overview .badge.good{
+  background:#184b3d !important;
+  color:#8de7bd !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -1642,7 +1734,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v33.2</div>
+<div class="v291Indicator">v33.3</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
