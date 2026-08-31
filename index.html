@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="32.4">
+<meta name="app-version" content="32.6">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -680,6 +680,152 @@ document.addEventListener("DOMContentLoaded",()=>{
   #overview .tileSteps .value{margin-top:24px !important;}
 }
 </style>
+
+<style>
+/* 32.6 — bloeddruktegel beter uitgelijnd */
+#overview .tileBlood .tileBody{
+  padding-top:6px !important;
+  padding-right:24px !important;
+}
+#overview .tileBlood .value{
+  font-size:28px !important;
+  line-height:1.02 !important;
+  margin:26px 0 12px !important;
+  letter-spacing:-0.01em !important;
+  align-self:flex-start !important;
+}
+#overview .tileBlood #bpBadge{
+  align-self:flex-start !important;
+  margin-top:6px !important;
+}
+#overview .tileBlood #bpDate{
+  margin-top:auto !important;
+}
+@media (max-width:390px){
+  #overview .tileBlood .tileBody{ padding-right:28px !important; }
+  #overview .tileBlood .value{ font-size:26px !important; margin-top:24px !important; }
+}
+</style>
+
+<style>
+/* 32.6 — professionele einduitlijning dashboardtegels */
+#overview .approvedGrid{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:12px!important;
+  align-items:stretch!important;
+}
+#overview .approvedGrid .tile{
+  min-height:220px!important;
+  width:100%!important;
+  padding:16px 14px!important;
+  display:grid!important;
+  grid-template-columns:40px minmax(0,1fr)!important;
+  column-gap:12px!important;
+  align-items:start!important;
+  overflow:hidden!important;
+  text-align:left!important;
+}
+#overview .approvedGrid .tile>.icon{
+  width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;
+  margin:0!important;font-size:18px!important;align-self:start!important;
+}
+#overview .approvedGrid .tileBody{
+  width:100%!important;min-width:0!important;height:100%!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+  overflow:hidden!important;padding:0!important;
+}
+#overview .approvedGrid .label{
+  width:100%!important;margin:0!important;padding:0!important;
+  font-size:11.5px!important;line-height:1.15!important;font-weight:800!important;
+  letter-spacing:.015em!important;overflow-wrap:normal!important;word-break:normal!important;
+}
+#overview .approvedGrid .sub{
+  width:100%!important;font-size:11px!important;line-height:1.25!important;margin-top:3px!important;
+}
+#overview .approvedGrid .value{
+  width:100%!important;font-size:29px!important;line-height:1.02!important;
+  margin:24px 0 9px!important;letter-spacing:-.015em!important;
+}
+
+/* Gewicht */
+#overview .tileWeight .value{font-size:28px!important;margin-top:22px!important}
+#overview .tileWeight .greenProgress{font-size:18px!important;line-height:1.15!important;margin:0 0 8px!important}
+#overview .tileWeight .sub:nth-last-of-type(2){margin-top:2px!important}
+#overview .tileWeight #latestDate{margin-top:2px!important}
+
+/* Bloeddruk */
+#overview .tileBlood .tileBody{padding-right:18px!important}
+#overview .tileBlood .value{
+  font-size:27px!important;line-height:1!important;margin:26px 0 12px!important;
+  max-width:100%!important;white-space:nowrap!important;letter-spacing:-.025em!important;
+}
+#overview .tileBlood #bpBadge{align-self:flex-start!important;margin:0!important}
+#overview .tileBlood #bpDate{margin-top:auto!important;padding-top:10px!important}
+
+/* Hartslag */
+#overview .tileHeart .value{font-size:29px!important;margin-top:24px!important}
+#overview .tileHeart #heartBadge{align-self:flex-start!important;margin:0!important}
+#overview .tileHeart #heartDate{margin-top:auto!important;padding-top:10px!important}
+
+/* Stappen */
+#overview .tileSteps .tileBody{padding-top:2px!important}
+#overview .tileSteps .value{font-size:30px!important;margin:32px 0 12px!important}
+#overview .tileSteps .sub:last-of-type{margin-top:0!important;max-width:110px!important}
+#overview .tileSteps .progressTrack{display:none!important}
+
+/* Streefgewicht + BMI */
+#overview .tileGoal .value,#overview .tileBmi .value{font-size:30px!important;margin:30px 0 12px!important}
+#overview .tileGoal .goalRemaining,#overview .tileBmi .bmiStatus{
+  font-size:12px!important;line-height:1.25!important;margin-top:0!important;max-width:120px!important;
+}
+#overview .tileGoal .goalLabelOneLine{font-size:11.5px!important;white-space:nowrap!important}
+
+/* Lichaamsmaten */
+#overview .bodyMetricTile .bodyMeasureIcon{
+  width:32px!important;height:32px!important;min-width:32px!important;max-width:32px!important;
+}
+#overview .bodyMetricTile .bodyMeasureIcon svg{width:16px!important;height:16px!important}
+#overview .bodyMetricTile .bodyMeasureLabel{font-size:10.5px!important;white-space:nowrap!important}
+#overview .bodyMetricTile #bodyTile,#overview .bodyMetricTile #bodyTileSub{display:none!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:24px!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{
+  width:100%!important;display:grid!important;grid-template-columns:minmax(0,1fr) 66px!important;
+  column-gap:8px!important;align-items:center!important;padding:8px 0!important;
+  border-bottom:1px solid rgba(157,185,209,.16)!important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows>div:last-child{border-bottom:0!important}
+#overview .bodyMetricTile .bodyMeasurementsRows span{
+  min-width:0!important;font-size:9.5px!important;line-height:1.15!important;color:#c1d2e1!important;
+  white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  width:66px!important;font-size:9.5px!important;line-height:1.15!important;color:#8fe3d2!important;
+  white-space:nowrap!important;text-align:right!important;font-weight:500!important;
+  font-variant-numeric:tabular-nums!important;
+}
+
+/* LeefKracht-score */
+#overview .tileScore .value{font-size:31px!important;margin:34px 0 12px!important}
+#overview .tileScore #scoreTileSub{font-size:11px!important;line-height:1.25!important;max-width:110px!important}
+
+/* Instellingen */
+#overview .tileMore .sub{font-size:11px!important;line-height:1.3!important;margin-top:24px!important;max-width:115px!important}
+
+@media(max-width:390px){
+  #overview .approvedGrid{gap:10px!important}
+  #overview .approvedGrid .tile{min-height:205px!important;padding:14px 12px!important;grid-template-columns:36px minmax(0,1fr)!important;column-gap:10px!important}
+  #overview .approvedGrid .tile>.icon{width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important;font-size:16px!important}
+  #overview .approvedGrid .label{font-size:10.5px!important}
+  #overview .approvedGrid .sub{font-size:10px!important}
+  #overview .approvedGrid .value{font-size:27px!important}
+  #overview .tileBlood .tileBody{padding-right:20px!important}
+  #overview .tileBlood .value{font-size:25px!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows{margin-top:20px!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows>div{grid-template-columns:minmax(0,1fr) 61px!important;column-gap:6px!important;padding:7px 0!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows span,#overview .bodyMetricTile .bodyMeasurementsRows strong{font-size:8.8px!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows strong{width:61px!important}
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -696,7 +842,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v32.4</div>
+<div class="v291Indicator">v32.6</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
