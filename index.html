@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="32.6">
+<meta name="app-version" content="32.7">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.6 — bloeddruktegel beter uitgelijnd */
+/* 32.7 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.6 — professionele einduitlijning dashboardtegels */
+/* 32.7 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -826,6 +826,204 @@ document.addEventListener("DOMContentLoaded",()=>{
   #overview .bodyMetricTile .bodyMeasurementsRows strong{width:61px!important}
 }
 </style>
+
+<style>
+/* 32.7 — detailpagina's professioneel uitgelijnd */
+#weight .panel,
+#blood .panel,
+#heart .panel,
+#steps .panel,
+#goal .panel,
+#bmi .panel,
+#body .panel{
+  padding:22px !important;
+  margin-bottom:12px !important;
+}
+
+#weight .panel > .label,
+#blood .panel > .label,
+#heart .panel > .label,
+#steps .panel > .label,
+#goal .panel > .label,
+#bmi .panel > .label,
+#body .panel > .label{
+  margin-bottom:14px !important;
+  line-height:1.2 !important;
+}
+
+#weight .bigValue,
+#blood .bigValue,
+#heart .bigValue,
+#steps .bigValue,
+#goal .bigValue,
+#bmi .bigValue{
+  margin:0 0 8px !important;
+  line-height:1.05 !important;
+}
+
+#weight .bigValue + .muted,
+#blood .bigValue + .muted,
+#heart .bigValue + .muted,
+#bmi .bigValue + .muted{
+  margin-top:4px !important;
+  margin-bottom:14px !important;
+}
+
+/* Twee-koloms informatieblokken: labels links, waarden rechts */
+#weight .miniGrid,
+#goal .miniGrid,
+#bmi .miniGrid,
+#body .miniGrid{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:0 !important;
+  margin-top:16px !important;
+  border-top:1px solid rgba(157,185,209,.22) !important;
+}
+
+#weight .miniGrid > div,
+#goal .miniGrid > div,
+#bmi .miniGrid > div,
+#body .miniGrid > div{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) auto !important;
+  column-gap:18px !important;
+  align-items:center !important;
+  padding:12px 0 !important;
+  border-bottom:1px solid rgba(157,185,209,.14) !important;
+}
+
+#weight .miniGrid > div:last-child,
+#goal .miniGrid > div:last-child,
+#bmi .miniGrid > div:last-child,
+#body .miniGrid > div:last-child{
+  border-bottom:0 !important;
+}
+
+#weight .miniGrid span,
+#goal .miniGrid span,
+#bmi .miniGrid span,
+#body .miniGrid span{
+  color:#f8fbff !important;
+  font-weight:400 !important;
+  line-height:1.25 !important;
+  white-space:normal !important;
+}
+
+#weight .miniGrid strong,
+#goal .miniGrid strong,
+#bmi .miniGrid strong,
+#body .miniGrid strong{
+  min-width:84px !important;
+  text-align:right !important;
+  color:#f8fbff !important;
+  font-weight:800 !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  font-variant-numeric:tabular-nums !important;
+}
+
+/* Verhoudingen: iets meer ruimte voor de langere labels */
+#body .panel:nth-of-type(2) .miniGrid > div{
+  grid-template-columns:minmax(0,1fr) 72px !important;
+}
+
+/* Status onder de verhoudingen */
+#body #ratioStatus{
+  margin-top:14px !important;
+  padding-top:14px !important;
+  border-top:1px solid rgba(157,185,209,.14) !important;
+  line-height:1.4 !important;
+}
+
+/* Grafiek-intro's en kaarten */
+#weight .chartIntro,
+#blood .chartIntro,
+#heart .chartIntro,
+#steps .chartIntro,
+#goal .chartIntro,
+#bmi .chartIntro,
+#body .chartIntro{
+  margin:2px 0 14px !important;
+  line-height:1.45 !important;
+}
+
+#weight .chartWrap,
+#blood .chartWrap,
+#heart .chartWrap,
+#steps .chartWrap,
+#goal .chartWrap,
+#bmi .chartWrap,
+#body .chartWrap{
+  margin-top:8px !important;
+}
+
+/* Informatieblokken onder de grafiek */
+#weight .rangeText,
+#blood .rangeText,
+#heart .rangeText,
+#steps .rangeText,
+#goal .rangeText,
+#bmi .rangeText,
+#body .rangeText{
+  margin:14px 0 12px !important;
+  line-height:1.8 !important;
+}
+
+#weight .rangeCard small,
+#blood .rangeCard small,
+#heart .rangeCard small,
+#steps .rangeCard small,
+#goal .rangeCard small,
+#bmi .rangeCard small,
+#body .rangeCard small{
+  display:block !important;
+  margin-top:14px !important;
+  line-height:1.55 !important;
+}
+
+/* Pagina-koppen consistent */
+#weight .detailTop,
+#blood .detailTop,
+#heart .detailTop,
+#steps .detailTop,
+#goal .detailTop,
+#bmi .detailTop,
+#body .detailTop{
+  margin-bottom:18px !important;
+}
+
+/* iPhone */
+@media(max-width:430px){
+  #weight .panel,
+  #blood .panel,
+  #heart .panel,
+  #steps .panel,
+  #goal .panel,
+  #bmi .panel,
+  #body .panel{
+    padding:20px !important;
+  }
+
+  #weight .miniGrid > div,
+  #goal .miniGrid > div,
+  #bmi .miniGrid > div,
+  #body .miniGrid > div{
+    column-gap:14px !important;
+    padding:11px 0 !important;
+  }
+
+  #weight .miniGrid strong,
+  #goal .miniGrid strong,
+  #bmi .miniGrid strong,
+  #body .miniGrid strong{
+    min-width:78px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -842,7 +1040,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v32.6</div>
+<div class="v291Indicator">v32.7</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
