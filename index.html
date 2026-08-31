@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="32.3">
+<meta name="app-version" content="32.4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "32.3";
+const LEEFKRACHT_VERSION = "32.4";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.3 definitieve KISS rapport-opmaak */
+/* 32.4 definitieve KISS rapport-opmaak */
 #report .sectionTitle{font-size:clamp(25px,7vw,36px)!important;line-height:1.08!important;letter-spacing:-.02em;white-space:nowrap;margin-right:10px}
 #report label:has(input[type="checkbox"]){display:flex!important;align-items:center!important;gap:14px!important;width:100%!important;box-sizing:border-box!important;text-align:left!important}
 #report label:has(input[type="checkbox"]) input[type="checkbox"]{flex:0 0 auto!important;margin:0!important}
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 @media(max-width:390px){#report .sectionTitle{font-size:24px!important}}
 </style>
 <style>
-/* 32.3 — iPhone rapport-uitlijning definitief */
+/* 32.4 — iPhone rapport-uitlijning definitief */
 #report{overflow-x:hidden}
 #report .sectionTitle{
   font-size:clamp(23px,6.3vw,32px)!important;
@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 32.3 — uitsluitend de twee tegelcorrecties uit het goedgekeurde voorbeeld */
+/* 32.4 — uitsluitend de twee tegelcorrecties uit het goedgekeurde voorbeeld */
 #overview .bodyMetricTile .bodyMeasureIcon{
   background:linear-gradient(135deg,#8d6cff,#42cdbd)!important;
   color:#fff!important;
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 32.3 — alleen Lichaamsmaten: hele ronde icoon kleiner + meer tekstruimte */
+/* 32.4 — alleen Lichaamsmaten: hele ronde icoon kleiner + meer tekstruimte */
 #overview .bodyMetricTile{
   column-gap:8px !important;
 }
@@ -395,7 +395,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 #overview .bodyMetricTile .bodyMeasurementsRows strong{color:#83e5d2;font-weight:500;white-space:nowrap;text-align:right}
 </style>
 <style>
-/* 32.3 — alleen uitlijning Lichaamsmaten verfijnd */
+/* 32.4 — alleen uitlijning Lichaamsmaten verfijnd */
 #overview .bodyMetricTile .bodyMeasurementsRows{
   width:100% !important;
   margin-top:18px !important;
@@ -419,7 +419,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.3 — alle overzichttegels strakker uitgelijnd */
+/* 32.4 — alle overzichttegels strakker uitgelijnd */
 #overview .approvedGrid{
   gap:12px !important;
   align-items:stretch !important;
@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   max-width:120px !important;
 }
 
-/* 32.3 — Lichaamsmaten rustig en volledig binnen de tegel */
+/* 32.4 — Lichaamsmaten rustig en volledig binnen de tegel */
 #overview .bodyMetricTile .bodyMeasureIcon{
   width:30px !important;
   height:30px !important;
@@ -590,7 +590,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.3 — laatste vijf tegels rustiger, inhoud iets lager/midden */
+/* 32.4 — laatste vijf tegels rustiger, inhoud iets lager/midden */
 #overview .tileGoal .value,
 #overview .tileBmi .value,
 #overview .tileScore .value{
@@ -647,6 +647,39 @@ document.addEventListener("DOMContentLoaded",()=>{
   #overview .tileMore .sub{ margin-top:16px !important; }
 }
 </style>
+
+<style>
+/* 32.4 — uitlijning bloeddruk + stappen rustiger */
+#overview .tileBlood .tileBody{
+  padding-right:10px !important;
+}
+#overview .tileBlood .value{
+  margin-top:20px !important;
+  font-size:31px !important;
+  letter-spacing:-0.02em !important;
+  max-width:100% !important;
+}
+#overview .tileBlood #bpBadge{
+  margin-top:6px !important;
+}
+#overview .tileSteps .tileBody{
+  padding-top:10px !important;
+}
+#overview .tileSteps .value{
+  margin-top:26px !important;
+}
+#overview .tileSteps .sub:last-of-type{
+  margin-top:8px !important;
+}
+#overview .tileSteps .progressTrack{
+  display:none !important;
+}
+@media (max-width:390px){
+  #overview .tileBlood .value{font-size:29px !important;}
+  #overview .tileSteps .tileBody{padding-top:8px !important;}
+  #overview .tileSteps .value{margin-top:24px !important;}
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -663,7 +696,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v32.3</div>
+<div class="v291Indicator">v32.4</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1581,7 +1614,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"32.3",
+    version:"32.4",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
