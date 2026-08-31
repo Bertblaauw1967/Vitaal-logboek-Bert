@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="32.9">
+<meta name="app-version" content="33.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.9 — bloeddruktegel beter uitgelijnd */
+/* 33.0 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.9 — professionele einduitlijning dashboardtegels */
+/* 33.0 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 32.9 — detailpagina's professioneel uitgelijnd */
+/* 33.0 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1026,7 +1026,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v32.9 — detailpagina's strakker uitgelijnd */
+/* v33.0 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1113,7 +1113,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 32.9 — totale visuele finetune
+   LeefKracht 33.0 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1464,6 +1464,93 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style>
+/* LeefKracht 33.0 — KISS: scoretrend, persoonlijk inzicht, privacy */
+.tileInsight{
+  border-color:#3977a8 !important;
+  background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
+}
+.tileInsight .insightIcon{
+  color:#8fd7ff !important;
+  border-color:#3977a8 !important;
+}
+.tileInsight .insightMini{
+  margin-top:22px;
+  color:#d7e8f5;
+  font-size:11px;
+  line-height:1.38;
+  max-width:100%;
+}
+.scoreTrend{
+  margin:10px 0 2px;
+  font-size:14px;
+  font-weight:800;
+  color:#8fd7ff;
+}
+.insightHero{
+  position:relative;
+  overflow:hidden;
+}
+.insightSpark{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#0a2b4a;
+  border:1px solid #3977a8;
+  color:#8fd7ff;
+  font-size:24px;
+  margin-bottom:16px;
+}
+.insightHeadline{
+  margin-top:12px;
+  font-size:24px;
+  line-height:1.18;
+  font-weight:850;
+  letter-spacing:-.01em;
+}
+.insightBody{
+  margin:10px 0 0;
+  line-height:1.5;
+}
+.insightReasons .kvVal{
+  min-width:112px !important;
+}
+.privacyRows{
+  margin-top:14px;
+  border-top:1px solid rgba(157,185,209,.18);
+}
+.privacyRows>div{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:11px 0;
+  border-bottom:1px solid rgba(157,185,209,.14);
+}
+.privacyRows span{
+  color:#d7e8f5;
+}
+.privacyRows strong{
+  text-align:right;
+  color:#8de7bd;
+  font-size:13px;
+  white-space:nowrap;
+}
+.privacyCard small{
+  display:block;
+  margin-top:14px;
+  line-height:1.5;
+}
+@media(max-width:430px){
+  .tileInsight .insightMini{font-size:10px;margin-top:18px}
+  .insightHeadline{font-size:22px}
+  .privacyRows strong{font-size:12px}
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -1480,7 +1567,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v32.9</div>
+<div class="v291Indicator">v33.0</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1567,6 +1654,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 <button type="button" class="card tile clickable tileScore" data-page="score">
 <div class="icon green">♡</div><div class="tileBody"><div class="label">LeefKracht-score</div>
 <div class="value" id="scoreTile">—</div><div class="sub" id="scoreTileSub">Totale ontwikkeling</div></div></button>
+<button type="button" class="card tile clickable tileInsight" data-page="insight">
+  <div class="icon insightIcon" aria-hidden="true">✦</div>
+  <div class="tileBody">
+    <div class="label">Wat valt op?</div>
+    <div class="insightMini" id="insightTileText">Vul metingen in voor een persoonlijk inzicht.</div>
+  </div>
+</button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
 <div class="icon blue" aria-hidden="true">⚙</div><div class="tileBody"><div class="label">Instellingen</div>
 <div class="sub">Gegevens &amp; voorkeuren</div></div></button>
@@ -1578,11 +1672,41 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   
 
+
+<section id="insight" class="page">
+  <div class="detailTop">
+    <div>
+      <div class="eyebrow">Persoonlijk inzicht</div>
+      <h2 class="sectionTitle">Wat valt op?</h2>
+    </div>
+    <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card panel insightHero">
+    <div class="insightSpark">✦</div>
+    <div class="label">Jouw moment</div>
+    <div class="insightHeadline" id="insightHeadline">Nog onvoldoende gegevens</div>
+    <p class="muted insightBody" id="insightBody">Vul je metingen in. LeefKracht laat daarna in één korte boodschap zien wat positief opvalt of aandacht verdient.</p>
+  </div>
+
+  <div class="card panel">
+    <div class="label">Waarom dit inzicht?</div>
+    <div class="kvList compact insightReasons">
+      <div class="kvRow"><div class="kvKey">Gewicht</div><div class="kvVal" id="insightWeight">—</div></div>
+      <div class="kvRow"><div class="kvKey">Stappen</div><div class="kvVal" id="insightSteps">—</div></div>
+      <div class="kvRow"><div class="kvKey">Buikomtrek</div><div class="kvVal" id="insightWaist">—</div></div>
+      <div class="kvRow"><div class="kvKey">LeefKracht-score</div><div class="kvVal" id="insightScore">—</div></div>
+    </div>
+    <small class="muted">LeefKracht geeft een eenvoudige voortgangssamenvatting en geen medische diagnose.</small>
+  </div>
+</section>
+
 <section id="score" class="page">
 <div class="detailTop"><div><div class="eyebrow">Ontwikkeling</div><h2 class="sectionTitle">LeefKracht-score</h2></div>
 <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
 <div class="card panel scorePanel"><div class="scoreRing" id="scoreRing"><div><strong id="scoreDetailValue">—</strong><span>/100</span></div></div>
 <div class="scoreStatus" id="scoreStatus">Nog onvoldoende gegevens</div>
+<div class="scoreTrend" id="scoreTrend">—</div>
 <p class="muted" id="scoreExplain">Vul je metingen in om je totale ontwikkeling te volgen.</p></div>
 <div class="card panel"><h3>Score per onderdeel</h3><div class="scoreRows">
 <div><span>Gewicht</span><strong id="scoreWeight">—</strong></div><div><span>Bloeddruk</span><strong id="scoreBp">—</strong></div>
@@ -1881,6 +2005,17 @@ document.addEventListener("DOMContentLoaded",()=>{
     <h3>▤ Rapport arts / coach</h3>
     <p class="muted">Maak een overzicht van je metingen en voortgang.</p>
     <button type="button" class="primary wideBtn" data-page="report">Rapport maken</button>
+  </div>
+
+  <div class="card settingsCard privacyCard">
+    <h3>🔒 Privacy</h3>
+    <p class="muted">Jouw gezondheidsgegevens zijn van jou. Jij bepaalt wat je deelt.</p>
+    <div class="privacyRows">
+      <div><span>Opslag</span><strong>Op dit apparaat</strong></div>
+      <div><span>Delen</span><strong>Alleen na jouw keuze</strong></div>
+      <div><span>Toegang intrekken</span><strong>Altijd mogelijk</strong></div>
+    </div>
+    <small class="muted">Een toekomstige arts-/coachkoppeling wordt alleen actief na jouw expliciete toestemming.</small>
   </div>
 
   <div class="card settingsCard">
@@ -2918,28 +3053,117 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 <script>
 (function(){
 function N(v){var n=Number(String(v==null?"":v).replace(",","."));return Number.isFinite(n)?n:null}
-function last(a,k){if(!Array.isArray(a))return null;for(var i=a.length-1;i>=0;i--){var n=N(a[i]&&a[i][k]);if(n!==null)return n}return null}
 function clamp(n){return Math.max(0,Math.min(100,Math.round(n)))}
-function draw(){
-var d={};try{d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"{}")||{}}catch(e){}
-var a=d.measurements||d.entries||d.items||[];
-var w=last(a,"weight"),sy=last(a,"systolic"),di=last(a,"diastolic"),hr=last(a,"heart"),wa=last(a,"waist");
-var vals=[];for(var i=Math.max(0,a.length-7);i<a.length;i++){var s=N(a[i]&&a[i].steps);if(s!==null)vals.push(s)}
-var sw=w===null?null:clamp(100-Math.abs(w-85)*3);
-var sb=(sy===null||di===null)?null:(sy<120&&di<80?100:sy<130&&di<85?90:sy<140&&di<90?75:sy<160&&di<100?55:35);
-var sh=hr===null?null:(hr>=55&&hr<=75?100:hr>=50&&hr<=85?85:hr>=45&&hr<=95?70:50);
-var sc=wa===null?null:clamp(100-Math.max(0,wa-90)*2);
-var ss=vals.length?clamp(vals.reduce(function(x,y){return x+y},0)/vals.length/8000*100):null;
-var x=[["scoreWeight",sw],["scoreBp",sb],["scoreHeart",sh],["scoreBody",sc],["scoreSteps",ss]], av=x.map(function(q){return q[1]}).filter(function(q){return q!==null});
-var total=av.length?Math.round(av.reduce(function(x,y){return x+y},0)/av.length):null;
-x.forEach(function(q){var e=document.getElementById(q[0]);if(e)e.textContent=q[1]===null?"—":q[1]+"/100"});
-["scoreTile","scoreDetailValue"].forEach(function(id){var e=document.getElementById(id);if(e)e.textContent=total===null?"—":(id==="scoreTile"?total+"/100":total)});
-var r=document.getElementById("scoreRing");if(r)r.style.setProperty("--scoreDeg",((total||0)*3.6)+"deg");
-var st=total===null?"Nog onvoldoende gegevens":total>=85?"Heel goed bezig":total>=70?"Goed bezig":total>=55?"Redelijk op weg":"Aandacht gewenst";
-var e=document.getElementById("scoreStatus");if(e)e.textContent=st;e=document.getElementById("scoreTileSub");if(e)e.textContent=total===null?"Totale ontwikkeling":st;
-e=document.getElementById("scoreExplain");if(e)e.textContent=total===null?"Vul je metingen in om je totale ontwikkeling te volgen.":"Je score vat je belangrijkste metingen eenvoudig samen.";
+function valAtOrBefore(a,k,end){
+  if(!Array.isArray(a))return null;
+  for(var i=Math.min(end,a.length-1);i>=0;i--){var n=N(a[i]&&a[i][k]);if(n!==null)return n}
+  return null
 }
-window.addEventListener("load",draw);document.addEventListener("click",function(e){if(e.target.closest('[data-page="score"]'))setTimeout(draw,0)});
+function avgSteps(a,end){
+  if(!Array.isArray(a)||end<0)return null;
+  var vals=[],start=Math.max(0,end-6);
+  for(var i=start;i<=end;i++){var s=N(a[i]&&a[i].steps);if(s!==null)vals.push(s)}
+  return vals.length?vals.reduce(function(x,y){return x+y},0)/vals.length:null
+}
+function scoreAt(a,end){
+  if(!Array.isArray(a)||!a.length||end<0)return {total:null,parts:{}};
+  var w=valAtOrBefore(a,"weight",end),
+      sy=valAtOrBefore(a,"systolic",end),
+      di=valAtOrBefore(a,"diastolic",end),
+      hr=valAtOrBefore(a,"heart",end),
+      wa=valAtOrBefore(a,"waist",end),
+      steps=avgSteps(a,end);
+  var sw=w===null?null:clamp(100-Math.abs(w-85)*3);
+  var sb=(sy===null||di===null)?null:(sy<120&&di<80?100:sy<130&&di<85?90:sy<140&&di<90?75:sy<160&&di<100?55:35);
+  var sh=hr===null?null:(hr>=55&&hr<=75?100:hr>=50&&hr<=85?85:hr>=45&&hr<=95?70:50);
+  var sc=wa===null?null:clamp(100-Math.max(0,wa-90)*2);
+  var ss=steps===null?null:clamp(steps/8000*100);
+  var arr=[sw,sb,sh,sc,ss].filter(function(v){return v!==null});
+  return {total:arr.length?Math.round(arr.reduce(function(x,y){return x+y},0)/arr.length):null,
+          parts:{weight:sw,bp:sb,heart:sh,body:sc,steps:ss},
+          raw:{weight:w,waist:wa,steps:steps}}
+}
+function setText(id,t){var e=document.getElementById(id);if(e)e.textContent=t}
+function arrow(d){return d>0?"↑ +"+d:d<0?"↓ "+Math.abs(d):"→ 0"}
+function status(total){
+  return total===null?"Nog onvoldoende gegevens":total>=85?"Heel goed bezig":total>=70?"Goed bezig":total>=55?"Redelijk op weg":"Aandacht gewenst"
+}
+function diffMetric(a,k){
+  if(!Array.isArray(a))return null;
+  var vals=[];
+  for(var i=a.length-1;i>=0&&vals.length<2;i--){var n=N(a[i]&&a[i][k]);if(n!==null)vals.push(n)}
+  return vals.length===2?vals[0]-vals[1]:null
+}
+function draw(){
+  var d={};try{d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"{}")||{}}catch(e){}
+  var a=Array.isArray(d)?d:(d.measurements||d.entries||d.items||[]);
+  if(!Array.isArray(a))a=[];
+
+  var cur=scoreAt(a,a.length-1);
+  var prevIndex=a.length>7?a.length-8:(a.length>1?a.length-2:-1);
+  var prev=scoreAt(a,prevIndex);
+  var trend=(cur.total!==null&&prev.total!==null)?cur.total-prev.total:null;
+
+  [["scoreWeight",cur.parts.weight],["scoreBp",cur.parts.bp],["scoreHeart",cur.parts.heart],
+   ["scoreBody",cur.parts.body],["scoreSteps",cur.parts.steps]].forEach(function(q){
+     setText(q[0],q[1]===null?"—":q[1]+"/100")
+   });
+
+  setText("scoreTile",cur.total===null?"—":cur.total+"/100");
+  setText("scoreDetailValue",cur.total===null?"—":cur.total);
+  var r=document.getElementById("scoreRing");if(r)r.style.setProperty("--scoreDeg",((cur.total||0)*3.6)+"deg");
+
+  var st=status(cur.total);
+  setText("scoreStatus",st);
+  setText("scoreTileSub",cur.total===null?"Totale ontwikkeling":(trend===null?st:arrow(trend)+" · "+st));
+  setText("scoreTrend",trend===null?"Nog geen vergelijking mogelijk":"Sinds vorige periode: "+arrow(trend));
+  setText("scoreExplain",cur.total===null?
+    "Vul je metingen in om je totale ontwikkeling te volgen.":
+    "Je score vat gewicht, bloeddruk, rusthartslag, lichaamsmaten en stappen eenvoudig samen.");
+
+  /* KISS insight engine */
+  var dw=diffMetric(a,"weight"), dwaist=diffMetric(a,"waist");
+  var steps=cur.raw.steps;
+  var headline="Je bouwt aan je overzicht.";
+  var body="Blijf meten; LeefKracht kan je ontwikkeling dan steeds beter samenvatten.";
+
+  if(dw!==null && dw<0 && steps!==null && steps>=8000){
+    headline="Mooi bezig! 👏";
+    body="Je gewicht daalt en je gemiddelde aantal stappen ligt boven je doel. Dat is een sterke combinatie.";
+  }else if(dwaist!==null && dwaist<0){
+    headline="Mooie vooruitgang 👏";
+    body="Je buikomtrek is gedaald ten opzichte van je vorige meting. Dat is een positieve ontwikkeling.";
+  }else if(steps!==null && steps>=8000){
+    headline="Lekker bezig! 👟";
+    body="Je gemiddelde aantal stappen ligt op of boven je doel van 8.000 per dag.";
+  }else if(trend!==null && trend>0){
+    headline="Je ontwikkeling gaat vooruit ↑";
+    body="Je LeefKracht-score is hoger dan in de vorige vergelijkingsperiode. Goed volhouden.";
+  }else if(cur.total!==null && cur.total>=85){
+    headline="Heel goed bezig 🌟";
+    body="Je totale ontwikkeling ziet er sterk uit. Houd vooral vast wat nu goed werkt.";
+  }else if(cur.total!==null && cur.total>=70){
+    headline="Goed bezig 👍";
+    body="Je belangrijkste metingen geven samen een positieve basis. Kleine stappen blijven tellen.";
+  }else if(cur.total!==null){
+    headline="Blijf rustig bouwen";
+    body="Er is nog ruimte voor verbetering. Kijk vooral naar één haalbaar punt tegelijk.";
+  }
+
+  setText("insightTileText",headline);
+  setText("insightHeadline",headline);
+  setText("insightBody",body);
+  setText("insightWeight",dw===null?"—":(dw<0?"↓ "+Math.abs(dw).toFixed(1).replace(".",",")+" kg":dw>0?"↑ "+dw.toFixed(1).replace(".",",")+" kg":"→ gelijk"));
+  setText("insightWaist",dwaist===null?"—":(dwaist<0?"↓ "+Math.abs(dwaist).toFixed(1).replace(".",",")+" cm":dwaist>0?"↑ "+dwaist.toFixed(1).replace(".",",")+" cm":"→ gelijk"));
+  setText("insightSteps",steps===null?"—":Math.round(steps).toLocaleString("nl-NL")+" / dag");
+  setText("insightScore",cur.total===null?"—":cur.total+"/100"+(trend===null?"":" · "+arrow(trend)));
+}
+window.addEventListener("load",draw);
+window.addEventListener("pageshow",draw);
+document.addEventListener("DOMContentLoaded",function(){setTimeout(draw,0)});
+document.addEventListener("click",function(e){
+  if(e.target.closest('[data-page="score"],[data-page="insight"],[data-page="overview"]'))setTimeout(draw,0)
+});
 })();
 </script><script>
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
