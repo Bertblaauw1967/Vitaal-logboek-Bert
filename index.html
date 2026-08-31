@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="31.9">
+<meta name="app-version" content="32.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -239,7 +239,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "31.9";
+const LEEFKRACHT_VERSION = "32.0";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 31.9 definitieve KISS rapport-opmaak */
+/* 32.0 definitieve KISS rapport-opmaak */
 #report .sectionTitle{font-size:clamp(25px,7vw,36px)!important;line-height:1.08!important;letter-spacing:-.02em;white-space:nowrap;margin-right:10px}
 #report label:has(input[type="checkbox"]){display:flex!important;align-items:center!important;gap:14px!important;width:100%!important;box-sizing:border-box!important;text-align:left!important}
 #report label:has(input[type="checkbox"]) input[type="checkbox"]{flex:0 0 auto!important;margin:0!important}
@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 @media(max-width:390px){#report .sectionTitle{font-size:24px!important}}
 </style>
 <style>
-/* 31.9 — iPhone rapport-uitlijning definitief */
+/* 32.0 — iPhone rapport-uitlijning definitief */
 #report{overflow-x:hidden}
 #report .sectionTitle{
   font-size:clamp(23px,6.3vw,32px)!important;
@@ -326,7 +326,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 31.9 — uitsluitend de twee tegelcorrecties uit het goedgekeurde voorbeeld */
+/* 32.0 — uitsluitend de twee tegelcorrecties uit het goedgekeurde voorbeeld */
 #overview .bodyMetricTile .bodyMeasureIcon{
   background:linear-gradient(135deg,#8d6cff,#42cdbd)!important;
   color:#fff!important;
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 31.9 — alleen Lichaamsmaten: hele ronde icoon kleiner + meer tekstruimte */
+/* 32.0 — alleen Lichaamsmaten: hele ronde icoon kleiner + meer tekstruimte */
 #overview .bodyMetricTile{
   column-gap:8px !important;
 }
@@ -386,6 +386,14 @@ document.addEventListener("DOMContentLoaded",()=>{
   white-space:nowrap !important;
 }
 </style>
+<style>
+#overview .bodyMetricTile #bodyTile,#overview .bodyMetricTile #bodyTileSub{display:none!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{width:100%;margin-top:18px}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(157,185,209,.16);font-size:12px}
+#overview .bodyMetricTile .bodyMeasurementsRows>div:last-child{border-bottom:0}
+#overview .bodyMetricTile .bodyMeasurementsRows span{color:#b9cde0;white-space:nowrap}
+#overview .bodyMetricTile .bodyMeasurementsRows strong{color:#83e5d2;font-weight:500;white-space:nowrap;text-align:right}
+</style>
 </head>
 <body>
 <main class="app">
@@ -402,7 +410,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v31.9</div>
+<div class="v291Indicator">v32.0</div>
 
     <div class="tiles approvedGrid">
       <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -484,7 +492,7 @@ document.addEventListener("DOMContentLoaded",()=>{
           <div class="label bodyMeasureLabel">Lichaamsmaten</div>
           <div class="value" id="bodyTile">—</div>
           <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
-        </div>
+        <div class="bodyMeasurementsRows"><div><span>Buikomtrek</span><strong id="bodyWaistRow">—</strong></div><div><span>Heup</span><strong id="bodyHipRow">—</strong></div><div><span>Borst</span><strong id="bodyChestRow">—</strong></div></div></div>
       </button>
 <button type="button" class="card tile clickable tileScore" data-page="score">
 <div class="icon green">♡</div><div class="tileBody"><div class="label">LeefKracht-score</div>
@@ -1320,7 +1328,7 @@ $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.re
 function makeBackup(){
   const payload={
     app:'LeefKracht',
-    version:"31.9",
+    version:"32.0",
     exportedAt:new Date().toISOString(),
     measurements:load(),
     goal:goal()
@@ -1863,5 +1871,7 @@ e=document.getElementById("scoreExplain");if(e)e.textContent=total===null?"Vul j
 }
 window.addEventListener("load",draw);document.addEventListener("click",function(e){if(e.target.closest('[data-page="score"]'))setTimeout(draw,0)});
 })();
+</script><script>
+(function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script></body>
 </html>
