@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="33.1">
+<meta name="app-version" content="33.2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -682,7 +682,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.1 — bloeddruktegel beter uitgelijnd */
+/* 33.2 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +708,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.1 — professionele einduitlijning dashboardtegels */
+/* 33.2 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +828,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 33.1 — detailpagina's professioneel uitgelijnd */
+/* 33.2 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1026,7 +1026,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v33.1 — detailpagina's strakker uitgelijnd */
+/* v33.2 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1113,7 +1113,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 33.1 — totale visuele finetune
+   LeefKracht 33.2 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1466,7 +1466,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 33.1 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* LeefKracht 33.2 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1553,7 +1553,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 33.1 — logische tegelvolgorde + persoonlijk compliment */
+/* 33.2 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1564,6 +1564,65 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 #overview .tileInsight .insightIcon{
   font-size:18px !important;
+}
+</style>
+
+
+<style>
+/* 33.2 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+#body .ratioRangeTable{
+  display:grid !important;
+  gap:0 !important;
+  width:100% !important;
+  margin:16px 0 8px !important;
+}
+#body .ratioRangeRow{
+  display:grid !important;
+  grid-template-columns:148px 18px minmax(0,1fr) !important;
+  column-gap:6px !important;
+  align-items:baseline !important;
+  padding:7px 0 !important;
+  line-height:1.4 !important;
+}
+#body .ratioRange,
+#body .ratioSep,
+#body .ratioMeaning{
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#body .ratioRange{
+  color:#f8fbff !important;
+  white-space:nowrap !important;
+  font-variant-numeric:tabular-nums !important;
+}
+#body .ratioSep{
+  text-align:center !important;
+  color:#c9d9e7 !important;
+}
+#body .ratioMeaning{
+  color:#f8fbff !important;
+  min-width:0 !important;
+}
+
+/* Dynamische WHR-inhoud gebruikt exact hetzelfde raster */
+#body #whrInfo.ratioRangeTable{
+  line-height:normal !important;
+}
+
+@media(max-width:430px){
+  #body .ratioRangeRow{
+    grid-template-columns:126px 16px minmax(0,1fr) !important;
+    column-gap:5px !important;
+    padding:6px 0 !important;
+    font-size:15px !important;
+  }
+}
+@media(max-width:370px){
+  #body .ratioRangeRow{
+    grid-template-columns:116px 14px minmax(0,1fr) !important;
+    font-size:14px !important;
+  }
 }
 </style>
 
@@ -1583,7 +1642,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v33.1</div>
+<div class="v291Indicator">v33.2</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -1961,7 +2020,12 @@ document.addEventListener("DOMContentLoaded",()=>{
 
   <div class="card panel rangeCard">
     <div class="label">WHtR · taille-lengteverhouding</div>
-    <div class="rangeText infoList"><div class="infoItem">Onder 0,40 <span class="sep">·</span> relatief laag</div><div class="infoItem">0,40–0,49 <span class="sep">·</span> gebruikelijke zone</div><div class="infoItem">0,50–0,59 <span class="sep">·</span> verhoogd</div><div class="infoItem">0,60 of hoger <span class="sep">·</span> hoog</div></div>
+    <div class="ratioRangeTable" aria-label="WHtR-indeling">
+      <div class="ratioRangeRow"><span class="ratioRange">Onder 0,40</span><span class="ratioSep">·</span><span class="ratioMeaning">relatief laag</span></div>
+      <div class="ratioRangeRow"><span class="ratioRange">0,40–0,49</span><span class="ratioSep">·</span><span class="ratioMeaning">gebruikelijke zone</span></div>
+      <div class="ratioRangeRow"><span class="ratioRange">0,50–0,59</span><span class="ratioSep">·</span><span class="ratioMeaning">verhoogd</span></div>
+      <div class="ratioRangeRow"><span class="ratioRange">0,60 of hoger</span><span class="ratioSep">·</span><span class="ratioMeaning">hoog</span></div>
+    </div>
     <small class="muted">WHtR = buikomtrek ÷ lengte. Dit is een algemene gezondheidsindicator en geen diagnose.</small>
   </div>
 </section>
@@ -2500,9 +2564,26 @@ function lkRenderBody(){
 
     const wi=document.getElementById('whrInfo');
     if(wi){
-      if(sex==='man') wi.innerHTML='Mannen: onder 0,90 · lager risico<br>0,90–0,99 · verhoogd<br>1,00 of hoger · hoog';
-      else if(sex==='vrouw') wi.innerHTML='Vrouwen: onder 0,80 · lager risico<br>0,80–0,84 · verhoogd<br>0,85 of hoger · hoog';
-      else wi.textContent='Kies man/vrouw bij Persoonsgegevens voor de passende indicatie.';
+      function ratioRows(rows){
+        wi.className='ratioRangeTable';
+        wi.innerHTML=rows.map(function(r){
+          return '<div class="ratioRangeRow"><span class="ratioRange">'+r[0]+'</span><span class="ratioSep">·</span><span class="ratioMeaning">'+r[1]+'</span></div>';
+        }).join('');
+      }
+      if(sex==='man') ratioRows([
+        ['Onder 0,90','lager risico'],
+        ['0,90–0,99','verhoogd'],
+        ['1,00 of hoger','hoog']
+      ]);
+      else if(sex==='vrouw') ratioRows([
+        ['Onder 0,80','lager risico'],
+        ['0,80–0,84','verhoogd'],
+        ['0,85 of hoger','hoog']
+      ]);
+      else{
+        wi.className='rangeText';
+        wi.textContent='Kies man/vrouw bij Persoonsgegevens voor de passende indicatie.';
+      }
     }
     lkRenderBodyChart(data);
   }catch(e){console.warn('Lichaamsmaten',e);}
