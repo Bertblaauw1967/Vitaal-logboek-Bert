@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="38.5.1">
+<meta name="app-version" content="38.8">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -237,7 +237,7 @@ button[data-page="new"].primary:active,
 }
 
 
-/* 38.5.1 — meetformulier logisch gegroepeerd */
+/* 38.8 — meetformulier logisch gegroepeerd */
 .measureGroupTitle{
   margin-top:8px;
   padding-top:14px;
@@ -253,7 +253,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.5.1";
+const LEEFKRACHT_VERSION = "38.8";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -696,7 +696,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.5.1 — bloeddruktegel beter uitgelijnd */
+/* 38.8 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -722,7 +722,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.5.1 — professionele einduitlijning dashboardtegels */
+/* 38.8 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -842,7 +842,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.5.1 — detailpagina's professioneel uitgelijnd */
+/* 38.8 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1040,7 +1040,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v38.5.1 — detailpagina's strakker uitgelijnd */
+/* v38.8 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1127,7 +1127,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 38.5.1 — totale visuele finetune
+   LeefKracht 38.8 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1480,7 +1480,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 38.5.1 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* LeefKracht 38.8 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1567,7 +1567,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — logische tegelvolgorde + persoonlijk compliment */
+/* 38.8 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1583,7 +1583,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+/* 38.8 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
 #body .ratioRangeTable{
   display:grid !important;
   gap:0 !important;
@@ -1642,7 +1642,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — rustige kleurharmonie per tegelgroep */
+/* 38.8 — rustige kleurharmonie per tegelgroep */
 
 /* Basis: alle tegelachtergronden donker houden */
 #overview .approvedGrid .tile{
@@ -1734,7 +1734,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — randen subtiel duidelijker, verder alles rustig houden */
+/* 38.8 — randen subtiel duidelijker, verder alles rustig houden */
 #overview .approvedGrid .tile{
   border-width:1px !important;
   box-shadow:0 10px 22px rgba(0,0,0,.14), 0 0 0 1px rgba(255,255,255,.03) inset !important;
@@ -1784,7 +1784,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — mini finishing touch: icoontjes strakker + schaduw luxer */
+/* 38.8 — mini finishing touch: icoontjes strakker + schaduw luxer */
 #overview .approvedGrid .tile{
   box-shadow:
     0 14px 28px rgba(0,0,0,.14),
@@ -1839,7 +1839,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 38.5.1 — commerciële polishronde
+   LeefKracht 38.8 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -1902,7 +1902,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
+/* 38.8 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
 .profileReadRow{
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
@@ -1932,7 +1932,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — Basisgegevens volledig gelijkgetrokken */
+/* 38.8 — Basisgegevens volledig gelijkgetrokken */
 #more .settingsCard input,
 #more .settingsCard select,
 #more .settingsCard .profileReadField{
@@ -2028,7 +2028,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
+/* 38.8 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
 #overview .tileMore .sub{
   font-size:14px !important;
   line-height:1.35 !important;
@@ -2049,7 +2049,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
+/* 38.8 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
 #overview .bodyMetricTile .bodyMeasurementsRows{
   width:100% !important;
   margin-top:16px !important;
@@ -2096,7 +2096,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — Lichaamsmaten conform goedgekeurde visualisatie */
+/* 38.8 — Lichaamsmaten conform goedgekeurde visualisatie */
 #overview .bodyMetricTile{
   min-height:220px !important;
   display:grid !important;
@@ -2232,7 +2232,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
+/* 38.8 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
 #overview .tileInsight .insightMini{
   font-size:15px !important;
   line-height:1.42 !important;
@@ -2254,7 +2254,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — BMI-indeling professioneel uitgelijnd */
+/* 38.8 — BMI-indeling professioneel uitgelijnd */
 #bmi .bmiRangeTable{
   width:100% !important;
   display:grid !important;
@@ -2319,7 +2319,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
+/* 38.8 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
 #bmi .bmiRangeTable{
   width:auto !important;
   max-width:100% !important;
@@ -2389,7 +2389,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.5.1 — BMI-indeling: compacte kolommen exact onder elkaar */
+/* 38.8 — BMI-indeling: compacte kolommen exact onder elkaar */
 #bmi .bmiRangeTable{
   width:max-content !important;
   max-width:100% !important;
@@ -2458,7 +2458,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="bmi-range-final-fix-35">
-/* 38.5.1 — definitieve BMI-indeling: compacte tabeluitlijning */
+/* 38.8 — definitieve BMI-indeling: compacte tabeluitlijning */
 #bmi .bmiRangeTable{
   display:table !important;
   width:auto !important;
@@ -2532,7 +2532,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="detail-alignment-351">
-/* 38.5.1 — overige detailschermen strak uitgelijnd */
+/* 38.8 — overige detailschermen strak uitgelijnd */
 .lkInfoTable{
   display:table !important;
   width:auto !important;
@@ -2626,7 +2626,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   LeefKracht 38.5.1 — eindpolish / commerciële afwerking
+   LeefKracht 38.8 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -2853,7 +2853,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-361-micro-polish">
-/* 38.5.1 — laatste micro-polish, geen redesign */
+/* 38.8 — laatste micro-polish, geen redesign */
 
 /* Dashboardkoppen en subtitels net consistenter */
 #overview .approvedGrid .label{
@@ -2983,7 +2983,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="health-ready-370">
-/* 38.5.1 — Health-ready instellingen */
+/* 38.8 — Health-ready instellingen */
 .healthReadyCard{
   margin-top:14px !important;
 }
@@ -3050,7 +3050,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="profile-email-373">
-/* 38.5.1 — e-mailadres in Basisgegevens */
+/* 38.8 — e-mailadres in Basisgegevens */
 #more .settingsCard input[type="email"]{
   -webkit-appearance:none !important;
   appearance:none !important;
@@ -3067,7 +3067,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-layout-374">
-/* 38.5.1 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
+/* 38.8 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
 #more .settingsCard{
   margin-bottom:14px !important;
 }
@@ -3088,7 +3088,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-375">
-/* 38.5.1 — Instellingenknoppen exact even breed als Verbinden */
+/* 38.8 — Instellingenknoppen exact even breed als Verbinden */
 #more .settingsCard .primary,
 #more .settingsCard .wideBtn,
 #more #profileSave,
@@ -3106,7 +3106,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-376">
-/* 38.5.1 — Gegevens opslaan en Rapport maken exact als Verbinden */
+/* 38.8 — Gegevens opslaan en Rapport maken exact als Verbinden */
 #more #profileSave,
 #more #reportBtn{
   display:block !important;
@@ -3131,7 +3131,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-377">
-/* 38.5.1 — knopbreedtes nu echt gelijk aan Verbinden */
+/* 38.8 — knopbreedtes nu echt gelijk aan Verbinden */
 #more #saveProfileBtn,
 #more button[data-page="report"]{
   display:block !important;
@@ -3154,7 +3154,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="dashboard-steps-score-align-378">
-/* 38.5.1 — Gem. stappen en LeefKracht-score hoofdwaarde exact gelijk uitgelijnd */
+/* 38.8 — Gem. stappen en LeefKracht-score hoofdwaarde exact gelijk uitgelijnd */
 #overview .tileSteps .tileBody,
 #overview .tileScore .tileBody{
   position:relative !important;
@@ -3217,7 +3217,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="health-connect-380">
-/* 38.5.1 — echte Health Connect status per gegevenssoort */
+/* 38.8 — echte Health Connect status per gegevenssoort */
 #more .healthSyncRows [data-health-metric].isConnected strong{
   color:#9fd7c7 !important;
 }
@@ -3245,6 +3245,29 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style>
+/* 38.8 — Uitslagen & documenten */
+.docsIntro{padding:18px;margin-bottom:14px}
+.docsActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.docsActions .primary{min-height:48px}
+.docsForm{padding:18px;margin-bottom:14px}
+.docsForm label{display:block;margin:12px 0 7px;color:#b9cde0;font-weight:700;font-size:13px}
+.docsForm input,.docsForm select{width:100%;box-sizing:border-box}
+.docsList{display:grid;gap:10px}
+.docItem{padding:15px}
+.docTop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.docTitle{font-weight:800;color:#fff;line-height:1.25}
+.docMeta{font-size:12px;color:#9fc3e2;margin-top:4px}
+.docButtons{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.docButtons button{border:0;border-radius:12px;padding:9px 12px;background:#214d6e;color:#fff;font-weight:700}
+.docButtons .docDelete{background:#5d2940}
+.docsEmpty{padding:18px;color:#9fc3e2;text-align:center}
+.docsPrivacy{font-size:12px;color:#9fc3e2;margin-top:10px}
+.docsSoon{opacity:.7}
+@media(max-width:390px){.docsActions{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -3261,7 +3284,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.5.1</div>
+<div class="v291Indicator">v38.8</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -3350,8 +3373,8 @@ document.addEventListener("DOMContentLoaded",()=>{
   </div>
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
-<div class="icon blue" aria-hidden="true">⚙</div><div class="tileBody"><div class="label">Instellingen</div>
-<div class="sub">Basisgegevens &amp; voorkeuren</div></div></button>
+<div class="icon blue" aria-hidden="true">☰</div><div class="tileBody"><div class="label">Meer</div>
+<div class="sub">Gegevens · rapport · documenten</div></div></button>
     </div>
 
     <div id="msgTitle" style="display:none"></div>
@@ -3678,8 +3701,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 <section id="more" class="page">
   <div class="detailTop">
     <div>
-      <div class="eyebrow">LeefKracht</div>
-      <h2 class="sectionTitle">Instellingen</h2>
+      <div class="eyebrow">Instellingen &amp; documenten</div>
+      <h2 class="sectionTitle">Meer</h2>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
   </div>
@@ -3767,6 +3790,12 @@ document.addEventListener("DOMContentLoaded",()=>{
     <button type="button" class="primary wideBtn" data-page="report">Rapport maken</button>
   </div>
 
+  <div class="card settingsCard">
+    <h3>📄 Uitslagen & documenten</h3>
+    <p class="muted">Maak een foto of bewaar een bloeduitslag, brief of PDF bij je gezondheidsgegevens.</p>
+    <button type="button" class="primary wideBtn" data-page="documents">Foto / document toevoegen</button>
+  </div>
+
   <div class="card settingsCard privacyCard">
     <h3>🔒 Privacy</h3>
     <p class="privacyLead">Jouw gegevens zijn van jou.</p>
@@ -3796,7 +3825,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Over LeefKracht</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.5.1</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.8</strong></div>
       <div><span>Ontwikkelaar</span><strong>LeefKracht</strong></div>
       <div><span>Privacyverklaring</span><strong class="aboutSoon">Binnenkort</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong class="aboutSoon">Binnenkort</strong></div>
@@ -3816,6 +3845,49 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
   
+
+<section id="documents" class="page">
+  <div class="detailTop">
+    <h2 class="sectionTitle">Uitslagen & documenten</h2>
+    <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
+  </div>
+
+  <div class="card docsIntro">
+    <strong>Medische documenten bewaren</strong>
+    <p class="muted">Voeg een foto of bestand toe, bijvoorbeeld een bloeduitslag van huisarts of ziekenhuis.</p>
+    <div class="docsActions">
+      <button type="button" class="primary" id="docPhotoBtn">📷 Foto maken</button>
+      <button type="button" class="primary" id="docFileBtn">📎 Bestand kiezen</button>
+    </div>
+    <button type="button" class="secondary wideBtn docsSoon" id="docQrBtn" style="margin-top:10px">▦ QR-code scannen · binnenkort</button>
+    <input id="docPhotoInput" type="file" accept="image/*" capture="environment" style="display:none">
+    <input id="docFileInput" type="file" accept="image/*,application/pdf,.pdf" style="display:none">
+    <p class="docsPrivacy">Documenten worden lokaal op dit apparaat bewaard en niet automatisch gedeeld.</p>
+  </div>
+
+  <div class="card docsForm" id="docPendingCard" style="display:none">
+    <h3 style="margin-top:0">Document toevoegen</h3>
+    <label for="docTitleInput">Omschrijving</label>
+    <input id="docTitleInput" type="text" placeholder="bijv. Bloedonderzoek huisarts">
+    <label for="docDateInput">Datum</label>
+    <input id="docDateInput" type="date">
+    <label for="docTypeInput">Soort</label>
+    <select id="docTypeInput">
+      <option value="Bloeduitslag">Bloeduitslag</option>
+      <option value="Brief / verslag">Brief / verslag</option>
+      <option value="Onderzoek">Onderzoek</option>
+      <option value="Overig">Overig</option>
+    </select>
+    <div class="docMeta" id="docPendingName" style="margin-top:12px"></div>
+    <div class="docsActions">
+      <button type="button" class="primary" id="docSaveBtn">Opslaan</button>
+      <button type="button" class="secondary" id="docCancelBtn">Annuleren</button>
+    </div>
+  </div>
+
+  <div id="documentsList" class="docsList"></div>
+</section>
+
 <section id="health" class="page">
   <div class="detailTop">
     <h2 class="sectionTitle">Gezondheid koppelen</h2>
@@ -4357,7 +4429,133 @@ function lkRenderBodyChart(data){
 $('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};const d=load();let existing=d.find(x=>x.date===entry.date);if(existing){Object.keys(entry).forEach(k=>{if(k==='date'||(entry[k]!==''&&entry[k]!=null))existing[k]=entry[k];});}else{d.push(entry);}save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
-function makeBackup(){
+
+const LK_DOC_DB='leefkracht-documents-v1';
+const LK_DOC_STORE='documents';
+let lkPendingDocumentFile=null;
+
+function lkDocDb(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open(LK_DOC_DB,1);
+    req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(LK_DOC_STORE))db.createObjectStore(LK_DOC_STORE,{keyPath:'id',autoIncrement:true});};
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function lkDocsAll(){
+  const db=await lkDocDb();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(LK_DOC_STORE,'readonly'),req=tx.objectStore(LK_DOC_STORE).getAll();
+    req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>reject(req.error);
+  });
+}
+async function lkDocAdd(doc){
+  const db=await lkDocDb();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(LK_DOC_STORE,'readwrite'),req=tx.objectStore(LK_DOC_STORE).add(doc);
+    req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
+  });
+}
+async function lkDocDelete(id){
+  const db=await lkDocDb();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(LK_DOC_STORE,'readwrite'),req=tx.objectStore(LK_DOC_STORE).delete(id);
+    req.onsuccess=()=>resolve();req.onerror=()=>reject(req.error);
+  });
+}
+async function lkDocPut(doc){
+  const db=await lkDocDb();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction(LK_DOC_STORE,'readwrite'),req=tx.objectStore(LK_DOC_STORE).put(doc);
+    req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);
+  });
+}
+function lkDocFmtDate(s){
+  if(!s)return 'Geen datum';
+  try{return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'short',year:'numeric'}).format(new Date(s+'T12:00:00'));}catch(e){return s}
+}
+function lkDocEscape(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function lkDocFileToDataUrl(blob){
+  return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.readAsDataURL(blob);});
+}
+function lkDocDataUrlToBlob(dataUrl){
+  const [head,data]=String(dataUrl).split(',');
+  const mime=(head.match(/data:([^;]+)/)||[])[1]||'application/octet-stream';
+  const bin=atob(data),arr=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+  return new Blob([arr],{type:mime});
+}
+async function lkRenderDocuments(){
+  const host=document.getElementById('documentsList');if(!host)return;
+  try{
+    const docs=(await lkDocsAll()).sort((a,b)=>(b.date||'').localeCompare(a.date||'')||(b.createdAt||'').localeCompare(a.createdAt||''));
+    if(!docs.length){host.innerHTML='<div class="card docsEmpty">Nog geen documenten opgeslagen.</div>';return;}
+    host.innerHTML=docs.map(d=>`<div class="card docItem">
+      <div class="docTop"><div><div class="docTitle">${lkDocEscape(d.title||'Document')}</div>
+      <div class="docMeta">${lkDocFmtDate(d.date)} · ${lkDocEscape(d.category||'Overig')} · ${lkDocEscape(d.fileName||'bestand')}</div></div></div>
+      <div class="docButtons"><button type="button" data-doc-open="${d.id}">Bekijken</button><button type="button" class="docDelete" data-doc-delete="${d.id}">Verwijder</button></div>
+    </div>`).join('');
+  }catch(e){host.innerHTML='<div class="card docsEmpty">Documenten konden niet worden geladen.</div>';}
+}
+async function lkOpenDocument(id){
+  const docs=await lkDocsAll(),d=docs.find(x=>Number(x.id)===Number(id));if(!d||!d.blob)return;
+  const url=URL.createObjectURL(d.blob);
+  const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.click();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+}
+function lkPrepareDocument(file){
+  if(!file)return;
+  lkPendingDocumentFile=file;
+  const card=document.getElementById('docPendingCard');if(card)card.style.display='block';
+  const nm=document.getElementById('docPendingName');if(nm)nm.textContent=file.name||'Nieuwe foto';
+  const title=document.getElementById('docTitleInput');
+  if(title&&!title.value)title.value=file.type?.startsWith('image/')?'Bloeduitslag / foto':'Medisch document';
+  const date=document.getElementById('docDateInput');if(date&&!date.value)date.value=today();
+  card?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function lkResetPendingDocument(){
+  lkPendingDocumentFile=null;
+  const card=document.getElementById('docPendingCard');if(card)card.style.display='none';
+  ['docTitleInput','docPendingName'].forEach(id=>{const el=document.getElementById(id);if(el)el.value!==undefined?el.value='':el.textContent='';});
+  const p=document.getElementById('docPhotoInput'),f=document.getElementById('docFileInput');if(p)p.value='';if(f)f.value='';
+}
+async function lkSavePendingDocument(){
+  if(!lkPendingDocumentFile){alert('Kies eerst een foto of bestand.');return;}
+  const title=document.getElementById('docTitleInput')?.value?.trim()||'Medisch document';
+  const date=document.getElementById('docDateInput')?.value||today();
+  const category=document.getElementById('docTypeInput')?.value||'Overig';
+  await lkDocAdd({title,date,category,fileName:lkPendingDocumentFile.name||'foto.jpg',mime:lkPendingDocumentFile.type||'application/octet-stream',blob:lkPendingDocumentFile,createdAt:new Date().toISOString()});
+  lkResetPendingDocument();await lkRenderDocuments();
+}
+function lkInitDocuments(){
+  const photoBtn=document.getElementById('docPhotoBtn'),fileBtn=document.getElementById('docFileBtn');
+  if(photoBtn&&!photoBtn.dataset.bound){photoBtn.dataset.bound='1';photoBtn.onclick=()=>document.getElementById('docPhotoInput')?.click();}
+  if(fileBtn&&!fileBtn.dataset.bound){fileBtn.dataset.bound='1';fileBtn.onclick=()=>document.getElementById('docFileInput')?.click();}
+  const pi=document.getElementById('docPhotoInput'),fi=document.getElementById('docFileInput');
+  if(pi&&!pi.dataset.bound){pi.dataset.bound='1';pi.onchange=e=>lkPrepareDocument(e.target.files?.[0]);}
+  if(fi&&!fi.dataset.bound){fi.dataset.bound='1';fi.onchange=e=>lkPrepareDocument(e.target.files?.[0]);}
+  const saveBtn=document.getElementById('docSaveBtn'),cancelBtn=document.getElementById('docCancelBtn'),qrBtn=document.getElementById('docQrBtn');
+  if(saveBtn&&!saveBtn.dataset.bound){saveBtn.dataset.bound='1';saveBtn.onclick=()=>lkSavePendingDocument().catch(()=>alert('Document kon niet worden opgeslagen.'));}
+  if(cancelBtn&&!cancelBtn.dataset.bound){cancelBtn.dataset.bound='1';cancelBtn.onclick=lkResetPendingDocument;}
+  if(qrBtn&&!qrBtn.dataset.bound){qrBtn.dataset.bound='1';qrBtn.onclick=()=>alert('QR-code scannen voegen we in een volgende stap toe. Foto en PDF werken nu al.');}
+  lkRenderDocuments();
+}
+document.addEventListener('click',e=>{
+  const open=e.target.closest('[data-doc-open]');if(open){e.preventDefault();lkOpenDocument(open.dataset.docOpen).catch(()=>alert('Document kon niet worden geopend.'));return;}
+  const del=e.target.closest('[data-doc-delete]');if(del){e.preventDefault();if(confirm('Dit document verwijderen?'))lkDocDelete(Number(del.dataset.docDelete)).then(lkRenderDocuments);return;}
+});
+document.addEventListener('DOMContentLoaded',lkInitDocuments);
+window.addEventListener('pageshow',lkInitDocuments);
+
+async function makeBackup(){
+  let documents=[];
+  try{
+    const docs=await lkDocsAll();
+    documents=await Promise.all(docs.map(async d=>({
+      title:d.title||'',date:d.date||'',category:d.category||'',fileName:d.fileName||'',mime:d.mime||d.blob?.type||'application/octet-stream',
+      createdAt:d.createdAt||'',dataUrl:d.blob?await lkDocFileToDataUrl(d.blob):''
+    })));
+  }catch(e){}
   const payload={
     app:'LeefKracht',
     version:LEEFKRACHT_VERSION,
@@ -4365,7 +4563,8 @@ function makeBackup(){
     measurements:load(),
     goal:goal(),
     heightCm:lkGetHeightCm(),
-    profile:lkLoadProfile()
+    profile:lkLoadProfile(),
+    documents
   };
   const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
@@ -4384,11 +4583,18 @@ async function restoreBackup(file){
     else localStorage.setItem(GOAL_KEY,String(payload.goal));
     if(payload.heightCm) lkSetHeightCm(payload.heightCm);
     if(payload.profile) lkSaveProfile(payload.profile);
+    if(Array.isArray(payload.documents)){
+      for(const d of payload.documents){
+        if(!d?.dataUrl) continue;
+        await lkDocAdd({title:d.title||'Medisch document',date:d.date||'',category:d.category||'Overig',fileName:d.fileName||'bestand',mime:d.mime||'',createdAt:d.createdAt||new Date().toISOString(),blob:lkDocDataUrlToBlob(d.dataUrl)});
+      }
+    }
     render();
+    lkRenderDocuments();
     alert('Back-up is teruggezet.');
   }catch(e){ alert('Deze back-up kon niet worden teruggezet.'); }
 }
-if($('#backupBtn')) $('#backupBtn').onclick=makeBackup;
+if($('#backupBtn')) $('#backupBtn').onclick=()=>makeBackup().catch(()=>alert('Back-up kon niet worden gemaakt.'));
 if($('#restoreBtn')) $('#restoreBtn').onclick=()=>$('#restoreFile')?.click();
 if($('#restoreFile')) $('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
 
@@ -4508,7 +4714,7 @@ function makeHealthReport(){
       ${use.steps?`<td>${x.steps?lkFmt0(x.steps):'—'}</td>`:''}
       ${use.blood?`<td>${x.systolic&&x.diastolic?lkEsc(x.systolic)+'/'+lkEsc(x.diastolic):'—'}</td>`:''}
       ${use.heart?`<td>${x.heart?lkEsc(x.heart):'—'}</td>`:''}
-      ${use.glucose?`<td>${x.glucose?lkFmt1(x.glucose):'—'}${x.glucoseContext?' · '+lkEsc(x.glucoseContext):''}${x.glucoseTime?' · '+lkEsc(x.glucoseTime):''}</td>`:''}</tr>`;
+      ${use.glucose?`<td class="glucoseCell">${x.glucose?lkFmt1(x.glucose):'—'}${x.glucoseContext?` <span class="glucoseTag">${x.glucoseContext==='nuchter'?'N':x.glucoseContext==='willekeurig'?'W':x.glucoseContext==='na maaltijd'?'NM':lkEsc(x.glucoseContext)}</span>`:''}${x.glucoseTime?` <span class="glucoseTag">${lkEsc(x.glucoseTime)}</span>`:''}</td>`:''}</tr>`;
   }).join('');
 
   const periodText=days==='all'?'Vanaf het begin':`Laatste ${days} dagen`;
@@ -4524,7 +4730,7 @@ function makeHealthReport(){
   .kpi{border:1px solid #d7e1ea;border-radius:14px;padding:15px;background:#fbfdff}.kpi b,.kpi small{display:block;color:#657789}.kpi strong{display:block;font-size:25px;margin:7px 0;color:#153d5d}
   h2.section{font-size:20px;margin:30px 0 12px;color:#0b3558}.chartBox{border:1px solid #dbe4eb;border-radius:14px;padding:14px;margin:12px 0;break-inside:avoid}
   .chartHead{display:flex;justify-content:space-between;gap:12px;color:#667788;margin-bottom:6px}.chartHead b{color:#183b57}.chartBox svg{width:100%;height:auto}
-  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa;color:#536575}
+  table{width:100%;border-collapse:collapse;margin-top:10px;font-size:10px;table-layout:fixed}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:7px 4px;vertical-align:top;overflow-wrap:anywhere}th{background:#f3f7fa;color:#536575}.glucoseCell{white-space:normal}.glucoseTag{display:inline-block;margin-left:3px;font-size:8px;font-weight:800;color:#667788}
   .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}.closePdf{position:fixed;right:18px;top:18px;width:50px;height:50px;touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:50%;border:1px solid #9fb5c6;background:#0b3558;color:white;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px #0002;z-index:99}
   @media print{body{background:white}.sheet{margin:0;max-width:none;padding:10mm;box-shadow:none;border-radius:0}.noPrint{display:none}.chartBox{break-inside:avoid}}
   @media(max-width:700px){.sheet{margin:0;padding:20px;border-radius:0}.grid{grid-template-columns:1fr 1fr}.chartHead{font-size:12px}}
@@ -4534,7 +4740,7 @@ function makeHealthReport(){
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
   ${charts?'<h2 class="section">Voortgang</h2>'+charts:''}
   <h2 class="section">Meetgegevens</h2>
-  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}${use.glucose?'<th>Bloedsuiker mmol/L</th>':''}</tr></thead>
+  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}${use.glucose?'<th>Suiker mmol/L</th>':''}</tr></thead>
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
   <p class="foot">LeefKracht – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
   <button class="printBtn noPrint" onclick="window.print()">Afdrukken / bewaren als PDF</button>
@@ -5071,7 +5277,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* LeefKracht 38.5.1 — Health Connect synchronisatie.
+/* LeefKracht 38.8 — Health Connect synchronisatie.
    Bestaande handmatige waarden worden nooit overschreven.
    Android leest maximaal de recente Health Connect-periode en voegt alleen ontbrekende velden toe. */
 window.LeefKrachtHealth = (function(){
