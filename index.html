@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="37.9">
+<meta name="app-version" content="38.4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -236,10 +236,24 @@ button[data-page="new"].primary:active,
   display:block;
 }
 
+
+/* 38.4 — meetformulier logisch gegroepeerd */
+.measureGroupTitle{
+  margin-top:8px;
+  padding-top:14px;
+  border-top:1px solid rgba(157,185,209,.16);
+  color:#b9cde0;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+#form .measureGroupTitle:first-of-type{margin-top:2px}
+
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "37.9";
+const LEEFKRACHT_VERSION = "38.4";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -682,7 +696,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 37.9 — bloeddruktegel beter uitgelijnd */
+/* 38.4 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -708,7 +722,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 37.9 — professionele einduitlijning dashboardtegels */
+/* 38.4 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -828,7 +842,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 37.9 — detailpagina's professioneel uitgelijnd */
+/* 38.4 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1026,7 +1040,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v37.9 — detailpagina's strakker uitgelijnd */
+/* v38.4 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1113,7 +1127,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 37.9 — totale visuele finetune
+   LeefKracht 38.4 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1466,7 +1480,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 37.9 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* LeefKracht 38.4 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1553,7 +1567,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — logische tegelvolgorde + persoonlijk compliment */
+/* 38.4 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1569,7 +1583,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+/* 38.4 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
 #body .ratioRangeTable{
   display:grid !important;
   gap:0 !important;
@@ -1628,7 +1642,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — rustige kleurharmonie per tegelgroep */
+/* 38.4 — rustige kleurharmonie per tegelgroep */
 
 /* Basis: alle tegelachtergronden donker houden */
 #overview .approvedGrid .tile{
@@ -1720,7 +1734,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — randen subtiel duidelijker, verder alles rustig houden */
+/* 38.4 — randen subtiel duidelijker, verder alles rustig houden */
 #overview .approvedGrid .tile{
   border-width:1px !important;
   box-shadow:0 10px 22px rgba(0,0,0,.14), 0 0 0 1px rgba(255,255,255,.03) inset !important;
@@ -1770,7 +1784,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — mini finishing touch: icoontjes strakker + schaduw luxer */
+/* 38.4 — mini finishing touch: icoontjes strakker + schaduw luxer */
 #overview .approvedGrid .tile{
   box-shadow:
     0 14px 28px rgba(0,0,0,.14),
@@ -1825,7 +1839,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 37.9 — commerciële polishronde
+   LeefKracht 38.4 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -1888,7 +1902,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
+/* 38.4 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
 .profileReadRow{
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
@@ -1918,7 +1932,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — Basisgegevens volledig gelijkgetrokken */
+/* 38.4 — Basisgegevens volledig gelijkgetrokken */
 #more .settingsCard input,
 #more .settingsCard select,
 #more .settingsCard .profileReadField{
@@ -2014,7 +2028,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
+/* 38.4 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
 #overview .tileMore .sub{
   font-size:14px !important;
   line-height:1.35 !important;
@@ -2035,7 +2049,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
+/* 38.4 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
 #overview .bodyMetricTile .bodyMeasurementsRows{
   width:100% !important;
   margin-top:16px !important;
@@ -2082,7 +2096,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — Lichaamsmaten conform goedgekeurde visualisatie */
+/* 38.4 — Lichaamsmaten conform goedgekeurde visualisatie */
 #overview .bodyMetricTile{
   min-height:220px !important;
   display:grid !important;
@@ -2218,7 +2232,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
+/* 38.4 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
 #overview .tileInsight .insightMini{
   font-size:15px !important;
   line-height:1.42 !important;
@@ -2240,7 +2254,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — BMI-indeling professioneel uitgelijnd */
+/* 38.4 — BMI-indeling professioneel uitgelijnd */
 #bmi .bmiRangeTable{
   width:100% !important;
   display:grid !important;
@@ -2305,7 +2319,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
+/* 38.4 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
 #bmi .bmiRangeTable{
   width:auto !important;
   max-width:100% !important;
@@ -2375,7 +2389,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 37.9 — BMI-indeling: compacte kolommen exact onder elkaar */
+/* 38.4 — BMI-indeling: compacte kolommen exact onder elkaar */
 #bmi .bmiRangeTable{
   width:max-content !important;
   max-width:100% !important;
@@ -2444,7 +2458,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="bmi-range-final-fix-35">
-/* 37.9 — definitieve BMI-indeling: compacte tabeluitlijning */
+/* 38.4 — definitieve BMI-indeling: compacte tabeluitlijning */
 #bmi .bmiRangeTable{
   display:table !important;
   width:auto !important;
@@ -2518,7 +2532,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="detail-alignment-351">
-/* 37.9 — overige detailschermen strak uitgelijnd */
+/* 38.4 — overige detailschermen strak uitgelijnd */
 .lkInfoTable{
   display:table !important;
   width:auto !important;
@@ -2612,7 +2626,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   LeefKracht 37.9 — eindpolish / commerciële afwerking
+   LeefKracht 38.4 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -2839,7 +2853,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-361-micro-polish">
-/* 37.9 — laatste micro-polish, geen redesign */
+/* 38.4 — laatste micro-polish, geen redesign */
 
 /* Dashboardkoppen en subtitels net consistenter */
 #overview .approvedGrid .label{
@@ -2969,7 +2983,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="health-ready-370">
-/* 37.9 — Health-ready instellingen */
+/* 38.4 — Health-ready instellingen */
 .healthReadyCard{
   margin-top:14px !important;
 }
@@ -3036,7 +3050,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="profile-email-373">
-/* 37.9 — e-mailadres in Basisgegevens */
+/* 38.4 — e-mailadres in Basisgegevens */
 #more .settingsCard input[type="email"]{
   -webkit-appearance:none !important;
   appearance:none !important;
@@ -3053,7 +3067,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-layout-374">
-/* 37.9 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
+/* 38.4 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
 #more .settingsCard{
   margin-bottom:14px !important;
 }
@@ -3074,7 +3088,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-375">
-/* 37.9 — Instellingenknoppen exact even breed als Verbinden */
+/* 38.4 — Instellingenknoppen exact even breed als Verbinden */
 #more .settingsCard .primary,
 #more .settingsCard .wideBtn,
 #more #profileSave,
@@ -3092,7 +3106,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-376">
-/* 37.9 — Gegevens opslaan en Rapport maken exact als Verbinden */
+/* 38.4 — Gegevens opslaan en Rapport maken exact als Verbinden */
 #more #profileSave,
 #more #reportBtn{
   display:block !important;
@@ -3117,7 +3131,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-377">
-/* 37.9 — knopbreedtes nu echt gelijk aan Verbinden */
+/* 38.4 — knopbreedtes nu echt gelijk aan Verbinden */
 #more #saveProfileBtn,
 #more button[data-page="report"]{
   display:block !important;
@@ -3140,7 +3154,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="dashboard-steps-score-align-378">
-/* 37.9 — Gem. stappen en LeefKracht-score hoofdwaarde exact gelijk uitgelijnd */
+/* 38.4 — Gem. stappen en LeefKracht-score hoofdwaarde exact gelijk uitgelijnd */
 #overview .tileSteps .tileBody,
 #overview .tileScore .tileBody{
   position:relative !important;
@@ -3201,6 +3215,36 @@ document.addEventListener("DOMContentLoaded",()=>{
 }
 </style>
 
+
+<style id="health-connect-380">
+/* 38.4 — echte Health Connect status per gegevenssoort */
+#more .healthSyncRows [data-health-metric].isConnected strong{
+  color:#9fd7c7 !important;
+}
+#more .healthSyncRows [data-health-metric]:not(.isConnected) strong{
+  color:#a8c3da !important;
+}
+</style>
+
+
+<style id="health-sync-381">
+#more .healthAutoSyncLine{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:12px;
+  align-items:center;
+  padding:12px 0 2px;
+  font-size:12.5px;
+}
+#more .healthAutoSyncLine span{color:#c6d7e5}
+#more .healthAutoSyncLine strong{
+  color:#9fd7c7;
+  font-size:12px;
+  font-weight:800;
+  text-align:right;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -3217,7 +3261,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v37.9</div>
+<div class="v291Indicator">v38.4</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -3699,16 +3743,21 @@ document.addEventListener("DOMContentLoaded",()=>{
     </div>
 
     <button type="button" class="primary healthConnectBtn" id="healthConnectBtn">Verbinden</button>
+    <div class="healthAutoSyncLine">
+      <span>Automatisch synchroniseren</span>
+      <strong id="healthLastSync">Nog niet gesynchroniseerd</strong>
+    </div>
 
     <div class="healthSyncRows" aria-label="Automatische synchronisatie">
-      <div><span>Stappen</span><strong>Nog niet verbonden</strong></div>
-      <div><span>Gewicht</span><strong>Nog niet verbonden</strong></div>
-      <div><span>Rusthartslag</span><strong>Nog niet verbonden</strong></div>
-      <div><span>Bloeddruk</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="steps"><span>Stappen</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="weight"><span>Gewicht</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="restingHeartRate"><span>Rusthartslag</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="bloodPressure"><span>Bloeddruk</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="bloodGlucose"><span>Bloedsuiker</span><strong>Nog niet verbonden</strong></div>
     </div>
 
     <small class="muted healthReadyNote">
-      In de native iPhone-app kan LeefKracht met jouw toestemming Apple Health lezen. In Safari blijft Health-toegang uitgeschakeld.
+      LeefKracht leest alleen de gezondheidsgegevens waarvoor jij toestemming geeft.
     </small>
   </div>
 
@@ -3747,7 +3796,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     <div class="label">Over LeefKracht</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">37.9</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.4</strong></div>
       <div><span>Ontwikkelaar</span><strong>LeefKracht</strong></div>
       <div><span>Privacyverklaring</span><strong class="aboutSoon">Binnenkort</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong class="aboutSoon">Binnenkort</strong></div>
@@ -3821,6 +3870,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       <label><input type="checkbox" id="rSteps" checked> Stappen</label>
       <label><input type="checkbox" id="rBlood" checked> Bloeddruk</label>
       <label><input type="checkbox" id="rHeart" checked> Rusthartslag</label>
+      <label><input type="checkbox" id="rGlucose" checked> Bloedsuiker</label>
     </div>
 
     <label style="margin-top:18px">Naam (optioneel)</label>
@@ -3839,14 +3889,26 @@ document.addEventListener("DOMContentLoaded",()=>{
       <div class="detailTop"><h2 class="sectionTitle">Nieuwe meting</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
       <form id="form" class="formgrid">
         <div class="full"><label>DATUM</label><input id="date" type="date" required></div>
-        <div><label>GEWICHT (KG)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1"></div>
+
+        <div class="full measureGroupTitle">Gewicht &amp; lichaamsmaten</div>
+        <div class="full"><label>GEWICHT (KG)</label><input id="weightInput" type="number" inputmode="decimal" step="0.1"></div>
         <div><label>BUIKOMTREK (CM)</label><input id="waistInput" type="number" inputmode="decimal" step="0.1"></div>
         <div><label>HEUPOMTREK (CM)</label><input id="hipInput" type="number" inputmode="decimal" step="0.1"></div>
-        <div><label>BORSTOMTREK (CM)</label><input id="chestInput" type="number" inputmode="decimal" step="0.1"></div>
-        <div><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
+        <div class="full"><label>BORSTOMTREK (CM)</label><input id="chestInput" type="number" inputmode="decimal" step="0.1"></div>
+
+        <div class="full measureGroupTitle">Bloeddruk &amp; hartslag</div>
         <div><label>SYSTOLISCH</label><input id="sysInput" type="number" inputmode="numeric"></div>
         <div><label>DIASTOLISCH</label><input id="diaInput" type="number" inputmode="numeric"></div>
         <div class="full"><label>HARTSLAG IN RUST (BPM)</label><input id="heartInput" type="number" inputmode="numeric" placeholder="58"></div>
+
+        <div class="full measureGroupTitle">Bloedsuiker</div>
+        <div><label>BLOEDSUIKER (MMOL/L)</label><input id="glucoseInput" type="number" inputmode="decimal" min="0.1" max="50" step="0.1" placeholder="5.4"></div>
+        <div><label>MOMENT BLOEDSUIKER</label><select id="glucoseContext" class="input"><option value="">Niet gekozen</option><option value="nuchter">Nuchter</option><option value="na-maaltijd">Na maaltijd</option><option value="willekeurig">Willekeurig</option></select></div>
+        <div class="full"><label>TIJD BLOEDSUIKER (OPTIONEEL)</label><input id="glucoseTime" type="time"></div>
+
+        <div class="full measureGroupTitle">Beweging</div>
+        <div class="full"><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
+
         <div class="full"><button class="primary" type="submit">Meting opslaan</button></div>
       </form>
       <div class="sub" style="margin-top:9px">Je hoeft niet alles tegelijk in te vullen.</div>
@@ -3938,7 +4000,7 @@ function renderHistory(data){
  const items=sorted(data),host=$('#historyList');
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
  host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="historyData">
- <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div></div></div>`).join('')+'</div>';
+ <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
  $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
 }
 function render(){
@@ -4292,7 +4354,7 @@ function lkRenderBodyChart(data){
 }
 
 
-$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
+$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};const d=load();d.push(entry);save(d);e.target.reset();$('#date').value=today();page('overview')};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 function makeBackup(){
@@ -4400,11 +4462,12 @@ function makeHealthReport(){
     waist:document.querySelector('#rWaist')?.checked,
     steps:document.querySelector('#rSteps')?.checked,
     blood:document.querySelector('#rBlood')?.checked,
-    heart:document.querySelector('#rHeart')?.checked
+    heart:document.querySelector('#rHeart')?.checked,
+    glucose:document.querySelector('#rGlucose')?.checked
   };
   const vals=k=>rows.map(x=>x[k]).filter(v=>v!==''&&v!=null);
   const weights=vals('weight'), waists=vals('waist'), steps=vals('steps'),
-        hearts=vals('heart'), sys=vals('systolic'), dia=vals('diastolic');
+        hearts=vals('heart'), glucose=vals('glucose'), sys=vals('systolic'), dia=vals('diastolic');
   const firstW=weights.length?Number(weights[0]):null,lastW=weights.length?Number(weights[weights.length-1]):null;
   const firstWaist=waists.length?Number(waists[0]):null,lastWaist=waists.length?Number(waists[waists.length-1]):null;
   const bmi=lastW?lkBmiFromWeight(lastW):null;
@@ -4415,6 +4478,7 @@ function makeHealthReport(){
   if(use.steps) cards+=`<div class="kpi"><b>Gem. stappen</b><strong>${lkFmt0(lkAvg(steps))}</strong><small>per dag · doel 8.000</small></div>`;
   if(use.blood) cards+=`<div class="kpi"><b>Gem. bloeddruk</b><strong>${lkFmt0(lkAvg(sys))}/${lkFmt0(lkAvg(dia))}</strong><small>mmHg</small></div>`;
   if(use.heart) cards+=`<div class="kpi"><b>Gem. rusthartslag</b><strong>${lkFmt0(lkAvg(hearts))}</strong><small>bpm</small></div>`;
+  if(use.glucose) cards+=`<div class="kpi"><b>Gem. bloedsuiker</b><strong>${lkFmt1(lkAvg(glucose))}</strong><small>mmol/L · geregistreerde waarden</small></div>`;
 
   let charts='';
   if(use.weight) charts+=lkChart(rows,'weight','Gewicht','kg','#1769aa');
@@ -4422,6 +4486,7 @@ function makeHealthReport(){
   if(use.steps) charts+=lkChart(rows,'steps','Stappen','', '#137ba5');
   if(use.blood) charts+=lkBloodChart(rows);
   if(use.heart) charts+=lkChart(rows,'heart','Rusthartslag','bpm','#7252b8');
+  if(use.glucose) charts+=lkChart(rows,'glucose','Bloedsuiker','mmol/L','#1769aa');
 
   const tableRows=rows.slice().reverse().map(x=>{
     const rowBmi=x.weight?lkBmiFromWeight(x.weight):null;
@@ -4430,7 +4495,8 @@ function makeHealthReport(){
       ${use.waist?`<td>${x.waist?lkFmt1(x.waist):'—'}</td>`:''}
       ${use.steps?`<td>${x.steps?lkFmt0(x.steps):'—'}</td>`:''}
       ${use.blood?`<td>${x.systolic&&x.diastolic?lkEsc(x.systolic)+'/'+lkEsc(x.diastolic):'—'}</td>`:''}
-      ${use.heart?`<td>${x.heart?lkEsc(x.heart):'—'}</td>`:''}</tr>`;
+      ${use.heart?`<td>${x.heart?lkEsc(x.heart):'—'}</td>`:''}
+      ${use.glucose?`<td>${x.glucose?lkFmt1(x.glucose):'—'}${x.glucoseContext?' · '+lkEsc(x.glucoseContext):''}${x.glucoseTime?' · '+lkEsc(x.glucoseTime):''}</td>`:''}</tr>`;
   }).join('');
 
   const periodText=days==='all'?'Vanaf het begin':`Laatste ${days} dagen`;
@@ -4447,16 +4513,16 @@ function makeHealthReport(){
   h2.section{font-size:20px;margin:30px 0 12px;color:#0b3558}.chartBox{border:1px solid #dbe4eb;border-radius:14px;padding:14px;margin:12px 0;break-inside:avoid}
   .chartHead{display:flex;justify-content:space-between;gap:12px;color:#667788;margin-bottom:6px}.chartHead b{color:#183b57}.chartBox svg{width:100%;height:auto}
   table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}th,td{border-bottom:1px solid #dfe6ec;text-align:left;padding:8px 6px}th{background:#f3f7fa;color:#536575}
-  .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}.closePdf{position:fixed;right:18px;top:18px;width:46px;height:46px;border-radius:50%;border:1px solid #9fb5c6;background:#0b3558;color:white;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px #0002;z-index:99}
+  .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}.closePdf{position:fixed;right:18px;top:18px;width:50px;height:50px;touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:50%;border:1px solid #9fb5c6;background:#0b3558;color:white;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px #0002;z-index:99}
   @media print{body{background:white}.sheet{margin:0;max-width:none;padding:10mm;box-shadow:none;border-radius:0}.noPrint{display:none}.chartBox{break-inside:avoid}}
   @media(max-width:700px){.sheet{margin:0;padding:20px;border-radius:0}.grid{grid-template-columns:1fr 1fr}.chartHead{font-size:12px}}
-  </style></head><body><button class="closePdf noPrint" onclick="window.close()" aria-label="Sluiten">×</button><main class="sheet">
+  </style></head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
   ${charts?'<h2 class="section">Voortgang</h2>'+charts:''}
   <h2 class="section">Meetgegevens</h2>
-  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}</tr></thead>
+  <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}${use.glucose?'<th>Bloedsuiker mmol/L</th>':''}</tr></thead>
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
   <p class="foot">LeefKracht – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
   <button class="printBtn noPrint" onclick="window.print()">Afdrukken / bewaren als PDF</button>
@@ -4469,10 +4535,10 @@ function makeHealthReport(){
 function exportHealthCsv(){
   const days=document.querySelector('#reportPeriod')?.value||'90';
   const rows=lkReportRows(days);
-  const lines=[['datum','gewicht_kg','bmi','buikomtrek_cm','stappen','systolisch','diastolisch','rusthartslag_bpm'].join(';')];
+  const lines=[['datum','gewicht_kg','bmi','buikomtrek_cm','stappen','systolisch','diastolisch','rusthartslag_bpm','bloedsuiker_mmol_l','bloedsuiker_moment','bloedsuiker_tijd'].join(';')];
   rows.forEach(x=>{
     const bmi=x.weight?lkBmiFromWeight(x.weight):'';
-    lines.push([x.date||'',x.weight||'',bmi?Number(bmi).toFixed(1).replace('.',','):'',x.waist||'',x.steps||'',x.systolic||'',x.diastolic||'',x.heart||'']
+    lines.push([x.date||'',x.weight||'',bmi?Number(bmi).toFixed(1).replace('.',','):'',x.waist||'',x.steps||'',x.systolic||'',x.diastolic||'',x.heart||'',x.glucose||'',x.glucoseContext||'',x.glucoseTime||'']
       .map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';'));
   });
   const blob=new Blob(["\ufeff"+lines.join('\n')],{type:'text/csv;charset=utf-8'});
@@ -4993,10 +5059,15 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* LeefKracht 37.9 — centrale Health-ready synchronisatielaag.
-   In de PWA blijft de provider bewust 'web': geen fake HealthKit/Health Connect. */
+/* LeefKracht 38.4 — Health Connect synchronisatie.
+   Bestaande handmatige waarden worden nooit overschreven.
+   Android leest maximaal de recente Health Connect-periode en voegt alleen ontbrekende velden toe. */
 window.LeefKrachtHealth = (function(){
   const SOURCE_KEY='leefkracht-health-source-v1';
+  const LAST_SYNC_KEY='leefkracht-health-last-sync-v1';
+  const METRICS=['steps','weight','restingHeartRate','bloodPressure','bloodGlucose'];
+  const DATA_KEY='vitaal-logboek-v1';
+
   function platform(){
     const p=(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')?window.Capacitor.getPlatform():'';
     if(p==='ios'||p==='android') return p;
@@ -5005,67 +5076,509 @@ window.LeefKrachtHealth = (function(){
     if(/Android/i.test(ua)) return 'android';
     return 'web';
   }
+
   function nativeBridge(){
-    return !!(window.Capacitor&&typeof window.Capacitor.isNativePlatform==='function'&&window.Capacitor.isNativePlatform());
+    return !!(window.Capacitor &&
+      typeof window.Capacitor.isNativePlatform==='function' &&
+      window.Capacitor.isNativePlatform());
   }
-  function plugin(){
+
+  function androidPlugin(){
+    return window.Capacitor&&window.Capacitor.Plugins ? window.Capacitor.Plugins.Health : null;
+  }
+
+  function iosPlugin(){
     return window.Capacitor&&window.Capacitor.Plugins ? window.Capacitor.Plugins.LeefKrachtHealthKit : null;
   }
+
   function providerName(){
     return platform()==='ios'?'Apple Health':platform()==='android'?'Health Connect':'Gezondheidsgegevens';
   }
+
   function capability(){
-    const p=platform(), hp=plugin(), native=nativeBridge();
-    return {platform:p,provider:providerName(),native,canReadHealth:p==='ios'&&native&&!!hp,
-      metrics:['steps','weight','restingHeartRate','bloodPressure']};
+    const p=platform(), native=nativeBridge();
+    const hp=p==='android'?androidPlugin():p==='ios'?iosPlugin():null;
+    return {
+      platform:p,
+      provider:providerName(),
+      native,
+      canReadHealth:native && !!hp && (p==='android'||p==='ios'),
+      metrics:METRICS.slice()
+    };
   }
+
   function setSource(metric,source){
-    try{const all=JSON.parse(localStorage.getItem(SOURCE_KEY)||'{}');all[metric]=source;localStorage.setItem(SOURCE_KEY,JSON.stringify(all));}catch(e){}
+    try{
+      const all=JSON.parse(localStorage.getItem(SOURCE_KEY)||'{}');
+      all[metric]=source;
+      localStorage.setItem(SOURCE_KEY,JSON.stringify(all));
+    }catch(e){}
   }
-  function getSources(){try{return JSON.parse(localStorage.getItem(SOURCE_KEY)||'{}')}catch(e){return {}}}
+
+  function getSources(){
+    try{return JSON.parse(localStorage.getItem(SOURCE_KEY)||'{}')}
+    catch(e){return {}}
+  }
+
+  function lastSync(){
+    return localStorage.getItem(LAST_SYNC_KEY)||'';
+  }
+
+  function setLastSync(){
+    const iso=new Date().toISOString();
+    localStorage.setItem(LAST_SYNC_KEY,iso);
+    return iso;
+  }
+
+  function loadEntries(){
+    try{
+      const d=JSON.parse(localStorage.getItem(DATA_KEY)||'[]');
+      return Array.isArray(d)?d:[];
+    }catch(e){return []}
+  }
+
+  function saveEntries(d){
+    localStorage.setItem(DATA_KEY,JSON.stringify(d));
+  }
+
+  function localDate(iso){
+    const d=new Date(iso);
+    if(Number.isNaN(d.getTime())) return '';
+    const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+    return `${y}-${m}-${day}`;
+  }
+
+  function empty(v){
+    return v===undefined||v===null||v==='';
+  }
+
+  function entryForDate(entries,date){
+    let e=entries.find(x=>x&&x.date===date);
+    if(!e){
+      e={date,weight:'',waist:'',hip:'',chest:'',steps:'',sys:'',dia:'',heart:'',glucose:'',glucoseContext:'',glucoseTime:''};
+      entries.push(e);
+    }
+    return e;
+  }
+
   async function connect(){
     const c=capability();
-    if(c.platform!=='ios'||!c.native) return {ok:false,nativeRequired:true,message:'Apple Health werkt in de native iPhone-app.'};
-    const hp=plugin();
-    if(!hp) return {ok:false,message:'Apple Health-module niet geladen.'};
-    try{const r=await hp.requestAuthorization();return {ok:!!r.authorized,provider:'Apple Health'};}
-    catch(e){return {ok:false,message:e&&e.message?e.message:String(e)}}
+    if(!c.native){
+      return {ok:false,nativeRequired:true,message:'Open LeefKracht als geïnstalleerde app om gezondheidsgegevens te koppelen.'};
+    }
+
+    if(c.platform==='android'){
+      const hp=androidPlugin();
+      if(!hp) return {ok:false,message:'Health Connect-module is niet geladen.'};
+      try{
+        const availability=await hp.isAvailable();
+        if(!availability || !availability.available){
+          return {ok:false,unavailable:true,message:'Health Connect is niet beschikbaar op dit toestel.'};
+        }
+        const auth=await hp.requestAuthorization({read:METRICS,write:[]});
+        const authorized=Array.isArray(auth&&auth.readAuthorized)?auth.readAuthorized:[];
+        const denied=Array.isArray(auth&&auth.readDenied)?auth.readDenied:[];
+        authorized.forEach(m=>setSource(m,'Health Connect'));
+        return {
+          ok:authorized.length>0,
+          full:METRICS.every(m=>authorized.includes(m)),
+          provider:'Health Connect',
+          authorized,denied
+        };
+      }catch(e){
+        return {ok:false,message:e&&e.message?e.message:String(e)};
+      }
+    }
+
+    if(c.platform==='ios'){
+      const hp=iosPlugin();
+      if(!hp) return {ok:false,message:'Apple Health-module is niet geladen.'};
+      try{
+        const r=await hp.requestAuthorization();
+        return {
+          ok:!!(r&&r.authorized),
+          full:!!(r&&r.authorized),
+          provider:'Apple Health',
+          authorized:(r&&r.authorized)?METRICS.slice():[],
+          denied:(r&&r.authorized)?[]:METRICS.slice()
+        };
+      }catch(e){
+        return {ok:false,message:e&&e.message?e.message:String(e)};
+      }
+    }
+
+    return {ok:false,message:'Gezondheidskoppeling is op dit platform niet beschikbaar.'};
   }
+
+  async function check(){
+    const c=capability();
+    if(!c.native) return {ok:false,authorized:[],denied:METRICS.slice()};
+    if(c.platform==='android'){
+      const hp=androidPlugin();
+      if(!hp) return {ok:false,authorized:[],denied:METRICS.slice()};
+      try{
+        const availability=await hp.isAvailable();
+        if(!availability || !availability.available)
+          return {ok:false,authorized:[],denied:METRICS.slice(),unavailable:true};
+        const auth=await hp.checkAuthorization({read:METRICS,write:[]});
+        const authorized=Array.isArray(auth&&auth.readAuthorized)?auth.readAuthorized:[];
+        const denied=Array.isArray(auth&&auth.readDenied)?auth.readDenied:[];
+        authorized.forEach(m=>setSource(m,'Health Connect'));
+        return {ok:authorized.length>0,authorized,denied};
+      }catch(e){
+        return {ok:false,authorized:[],denied:METRICS.slice()};
+      }
+    }
+    return {ok:false,authorized:[],denied:[]};
+  }
+
+  async function readAndroid(days){
+    const hp=androidPlugin();
+    const end=new Date();
+    const start=new Date(end.getTime()-(Number(days)||30)*86400000);
+    const startDate=start.toISOString(), endDate=end.toISOString();
+
+    const out={steps:[],weight:[],restingHeartRate:[],bloodPressure:[],bloodGlucose:[]};
+
+    /* Dagtotalen voor stappen voorkomen dubbele delta-samples. */
+    try{
+      const r=await hp.queryAggregated({
+        dataType:'steps',startDate,endDate,bucket:'day',aggregation:'sum'
+      });
+      out.steps=Array.isArray(r&&r.samples)?r.samples:[];
+    }catch(e){}
+
+    for(const type of ['weight','restingHeartRate','bloodPressure','bloodGlucose']){
+      try{
+        const r=await hp.readSamples({
+          dataType:type,startDate,endDate,limit:500,ascending:true
+        });
+        out[type]=Array.isArray(r&&r.samples)?r.samples:[];
+      }catch(e){}
+    }
+    return out;
+  }
+
+  function mergeAndroidData(raw){
+    const entries=loadEntries();
+    let addedFields=0, createdDays=0;
+    const created=new Set();
+
+    function getEntry(date){
+      const had=entries.some(x=>x&&x.date===date);
+      const e=entryForDate(entries,date);
+      if(!had && !created.has(date)){created.add(date);createdDays++}
+      return e;
+    }
+
+    /* stappen: één dagtotaal */
+    (raw.steps||[]).forEach(s=>{
+      const date=localDate(s.startDate||s.endDate);
+      const value=Math.round(Number(s.value));
+      if(!date||!Number.isFinite(value)||value<0)return;
+      const e=getEntry(date);
+      if(empty(e.steps)){e.steps=String(value);addedFields++}
+    });
+
+    /* Gewicht: bij meerdere samples op een dag wint de laatste Health-sample,
+       maar alleen als LeefKracht nog geen gewicht voor die dag heeft. */
+    const lastWeightByDay={};
+    (raw.weight||[]).forEach(s=>{
+      const date=localDate(s.startDate||s.endDate);
+      const value=Number(s.value);
+      if(date&&Number.isFinite(value)&&value>0) lastWeightByDay[date]={value,time:s.startDate||s.endDate||''};
+    });
+    Object.entries(lastWeightByDay).forEach(([date,s])=>{
+      const e=getEntry(date);
+      if(empty(e.weight)){e.weight=Number(s.value).toFixed(1);addedFields++}
+    });
+
+    /* Rusthartslag: laatste geldige dagwaarde. */
+    const lastHeartByDay={};
+    (raw.restingHeartRate||[]).forEach(s=>{
+      const date=localDate(s.startDate||s.endDate);
+      const value=Math.round(Number(s.value));
+      if(date&&Number.isFinite(value)&&value>0) lastHeartByDay[date]=value;
+    });
+    Object.entries(lastHeartByDay).forEach(([date,value])=>{
+      const e=getEntry(date);
+      if(empty(e.heart)){e.heart=String(value);addedFields++}
+    });
+
+    /* Bloeddruk: laatste complete meting van de dag. */
+    const lastBpByDay={};
+    (raw.bloodPressure||[]).forEach(s=>{
+      const date=localDate(s.startDate||s.endDate);
+      const sys=Number(s.systolic), dia=Number(s.diastolic);
+      if(date&&Number.isFinite(sys)&&Number.isFinite(dia)&&sys>0&&dia>0)
+        lastBpByDay[date]={sys:Math.round(sys),dia:Math.round(dia)};
+    });
+    Object.entries(lastBpByDay).forEach(([date,bp])=>{
+      const e=getEntry(date);
+      if(empty(e.sys)&&empty(e.dia)){
+        e.sys=String(bp.sys); e.dia=String(bp.dia); addedFields+=2;
+      }
+    });
+
+    /* Bloedsuiker: laatste geldige waarde van de dag, in mmol/L. */
+    const lastGlucoseByDay={};
+    (raw.bloodGlucose||[]).forEach(s=>{
+      const date=localDate(s.startDate||s.endDate);
+      let value=Number(s.value);
+      const unit=String(s.unit||'').toLowerCase();
+      if(unit.includes('mg/dl')) value=value/18.0182;
+      if(date&&Number.isFinite(value)&&value>0) lastGlucoseByDay[date]={value,time:s.startDate||s.endDate||''};
+    });
+    Object.entries(lastGlucoseByDay).forEach(([date,g])=>{
+      const e=getEntry(date);
+      if(empty(e.glucose)){
+        e.glucose=Number(g.value).toFixed(1);
+        e.glucoseContext=e.glucoseContext||'';
+        try{e.glucoseTime=e.glucoseTime||new Date(g.time).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});}catch(err){}
+        addedFields++;
+      }
+    });
+
+    entries.sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+    saveEntries(entries);
+    const iso=setLastSync();
+    return {addedFields,createdDays,lastSync:iso};
+  }
+
+  function mergeIosData(raw){
+    const entries=loadEntries();
+    let addedFields=0, createdDays=0;
+    const created=new Set();
+    function getEntry(date){
+      const had=entries.some(x=>x&&x.date===date);
+      const e=entryForDate(entries,date);
+      if(!had&&!created.has(date)){created.add(date);createdDays++;}
+      return e;
+    }
+    (raw.steps||[]).forEach(s=>{
+      const date=s.date||localDate(s.startDate||s.endDate);
+      const value=Math.round(Number(s.value));
+      if(!date||!Number.isFinite(value)||value<0)return;
+      const e=getEntry(date); if(empty(e.steps)){e.steps=String(value);addedFields++;}
+    });
+    function mergeLatest(obj,key,formatter){
+      if(!obj||!obj.date)return; const date=localDate(obj.date); const value=Number(obj.value);
+      if(!date||!Number.isFinite(value))return; const e=getEntry(date);
+      if(empty(e[key])){e[key]=formatter?formatter(value):String(value);addedFields++;}
+    }
+    mergeLatest(raw.weight,'weight',v=>v.toFixed(1));
+    mergeLatest(raw.restingHeartRate,'heart',v=>String(Math.round(v)));
+    if(raw.bloodPressure&&raw.bloodPressure.date){
+      const date=localDate(raw.bloodPressure.date), sys=Number(raw.bloodPressure.systolic), dia=Number(raw.bloodPressure.diastolic);
+      if(date&&Number.isFinite(sys)&&Number.isFinite(dia)){const e=getEntry(date);if(empty(e.sys)&&empty(e.dia)){e.sys=String(Math.round(sys));e.dia=String(Math.round(dia));addedFields+=2;}}
+    }
+    (raw.bloodGlucose||[]).forEach(g=>{
+      const date=localDate(g.date||g.startDate||g.endDate), value=Number(g.value);
+      if(!date||!Number.isFinite(value)||value<=0)return; const e=getEntry(date);
+      if(empty(e.glucose)){e.glucose=value.toFixed(1);try{e.glucoseTime=new Date(g.date||g.startDate||g.endDate).toLocaleTimeString('nl-NL',{hour:'2-digit',minute:'2-digit'});}catch(err){} addedFields++;}
+    });
+    entries.sort((a,b)=>String(a.date).localeCompare(String(b.date))); saveEntries(entries);
+    const iso=setLastSync(); return {addedFields,createdDays,lastSync:iso};
+  }
+
   async function sync(days){
-    const c=capability(); if(!c.canReadHealth) return {ok:false,nativeRequired:true};
-    try{return Object.assign({ok:true,provider:'Apple Health'},await plugin().syncHealthData({days:Number(days)||30})||{});}
-    catch(e){return {ok:false,message:e&&e.message?e.message:String(e)}}
+    const c=capability();
+    if(!c.canReadHealth) return {ok:false,nativeRequired:true};
+
+    if(c.platform==='android'){
+      try{
+        const auth=await check();
+        if(!auth.ok) return {ok:false,permissionRequired:true};
+        const raw=await readAndroid(Math.min(Number(days)||30,30));
+        const merged=mergeAndroidData(raw);
+        return {
+          ok:true,
+          provider:'Health Connect',
+          ...merged,
+          counts:{
+            steps:(raw.steps||[]).length,
+            weight:(raw.weight||[]).length,
+            restingHeartRate:(raw.restingHeartRate||[]).length,
+            bloodPressure:(raw.bloodPressure||[]).length,
+            bloodGlucose:(raw.bloodGlucose||[]).length
+          }
+        };
+      }catch(e){
+        return {ok:false,message:e&&e.message?e.message:String(e)};
+      }
+    }
+
+    if(c.platform==='ios'){
+      try{
+        const raw=await iosPlugin().syncHealthData({days:Number(days)||30})||{};
+        const merged=mergeIosData(raw);
+        return {ok:true,provider:'Apple Health',...merged};
+      }catch(e){
+        return {ok:false,message:e&&e.message?e.message:String(e)};
+      }
+    }
+
+    return {ok:false};
   }
-  return {capability,connect,sync,setSource,getSources};
+
+  async function autoSync(){
+    const c=capability();
+    if(c.platform!=='android'||!c.canReadHealth) return {ok:false,skipped:true};
+    const a=await check();
+    if(!a.ok) return {ok:false,skipped:true};
+    const last=lastSync();
+    if(last){
+      const age=Date.now()-new Date(last).getTime();
+      if(Number.isFinite(age)&&age<6*60*60*1000) return {ok:true,skipped:true,lastSync:last};
+    }
+    return sync(30);
+  }
+
+  async function openSettings(){
+    if(platform()==='android' && androidPlugin() && androidPlugin().openHealthConnectSettings){
+      try{await androidPlugin().openHealthConnectSettings();return true}catch(e){}
+    }
+    return false;
+  }
+
+  return {
+    capability,connect,check,sync,autoSync,openSettings,setSource,getSources,lastSync,
+    metrics:METRICS.slice()
+  };
 })();
 
 document.addEventListener('DOMContentLoaded', function(){
-  const title = document.getElementById('healthProviderTitle');
-  const status = document.getElementById('healthProviderStatus');
-  const btn = document.getElementById('healthConnectBtn');
-  if(!btn) return;
+  const title=document.getElementById('healthProviderTitle');
+  const status=document.getElementById('healthProviderStatus');
+  const btn=document.getElementById('healthConnectBtn');
+  const note=document.querySelector('#more .healthReadyNote');
+  const lastSyncEl=document.getElementById('healthLastSync');
+  if(!btn)return;
 
-  const cap = window.LeefKrachtHealth.capability();
-  if(title) title.textContent = cap.provider;
-  if(status) status.textContent = cap.canReadHealth ? 'Klaar om te verbinden' : 'Native app nodig voor koppeling';
+  function fmtSync(iso){
+    if(!iso)return 'Nog niet gesynchroniseerd';
+    const d=new Date(iso);
+    if(Number.isNaN(d.getTime()))return 'Nog niet gesynchroniseerd';
+    return 'Laatst: '+new Intl.DateTimeFormat('nl-NL',{
+      day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'
+    }).format(d);
+  }
 
-  btn.addEventListener('click', async function(){
-    const original=btn.textContent; btn.disabled=true; btn.textContent='Verbinden…';
+  function refreshLastSync(){
+    if(lastSyncEl) lastSyncEl.textContent=fmtSync(window.LeefKrachtHealth.lastSync());
+  }
+
+  function setMetricState(metric,text,connected){
+    const row=document.querySelector('#more [data-health-metric="'+metric+'"]');
+    if(!row)return;
+    const strong=row.querySelector('strong');
+    if(strong)strong.textContent=text;
+    row.classList.toggle('isConnected',!!connected);
+  }
+
+  function applyAuthorization(authorized,denied){
+    authorized=Array.isArray(authorized)?authorized:[];
+    denied=Array.isArray(denied)?denied:[];
+    window.LeefKrachtHealth.metrics.forEach(function(metric){
+      if(authorized.includes(metric))setMetricState(metric,'Verbonden',true);
+      else if(denied.includes(metric))setMetricState(metric,'Geen toestemming',false);
+      else setMetricState(metric,'Nog niet verbonden',false);
+    });
+  }
+
+  async function doSync(showMessage){
+    if(lastSyncEl)lastSyncEl.textContent='Synchroniseren…';
+    const r=await window.LeefKrachtHealth.sync(30);
+    refreshLastSync();
+    if(r&&r.ok){
+      try{if(typeof render==='function')render()}catch(e){}
+      try{window.dispatchEvent(new Event('pageshow'))}catch(e){}
+      if(showMessage){
+        if(r.addedFields>0)
+          alert((r.provider||'Gezondheidsgegevens')+' bijgewerkt. '+r.addedFields+' nieuwe waarden toegevoegd.');
+        else
+          alert((r.provider||'Gezondheidsgegevens')+' is bijgewerkt. Er waren geen nieuwe waarden om toe te voegen.');
+      }
+    }else if(showMessage){
+      alert((r&&r.message)||'Synchroniseren is nog niet gelukt.');
+    }
+    return r;
+  }
+
+  const cap=window.LeefKrachtHealth.capability();
+  if(title)title.textContent=cap.provider;
+  refreshLastSync();
+
+  if(cap.platform==='android'){
+    if(status)status.textContent=cap.canReadHealth?'Klaar om te verbinden':'Native app nodig voor koppeling';
+    if(note)note.textContent='Op Android gebruikt LeefKracht Health Connect. Ontbrekende waarden van de afgelopen 30 dagen worden automatisch aangevuld; handmatige metingen blijven altijd staan.';
+  }else if(cap.platform==='ios'){
+    if(status)status.textContent=cap.canReadHealth?'Klaar om te verbinden':'Native app nodig voor koppeling';
+    if(note)note.textContent='Op iPhone gebruikt LeefKracht Apple Health. Jij bepaalt welke gegevens LeefKracht mag lezen.';
+  }else{
+    if(status)status.textContent='Native app nodig voor koppeling';
+    if(note)note.textContent='Gezondheidsgegevens zijn alleen beschikbaar in de geïnstalleerde iPhone- of Android-app.';
+  }
+
+  if(cap.platform==='android'&&cap.canReadHealth){
+    window.LeefKrachtHealth.check().then(async function(r){
+      if(r&&r.ok){
+        applyAuthorization(r.authorized,r.denied);
+        const full=window.LeefKrachtHealth.metrics.every(m=>(r.authorized||[]).includes(m));
+        if(status)status.textContent=full?'Verbonden met Health Connect':'Gedeeltelijk verbonden';
+        btn.textContent=full?'Nu synchroniseren':'Toegang beheren';
+        const auto=await window.LeefKrachtHealth.autoSync();
+        refreshLastSync();
+        if(auto&&auto.ok&&!auto.skipped){
+          try{if(typeof render==='function')render()}catch(e){}
+          try{window.dispatchEvent(new Event('pageshow'))}catch(e){}
+        }
+      }
+    }).catch(function(){});
+  }
+
+  btn.addEventListener('click',async function(){
+    const currentCap=window.LeefKrachtHealth.capability();
+
+    /* Als Android al volledig verbonden is, wordt dezelfde knop een simpele sync-knop. */
+    if(currentCap.platform==='android'){
+      const auth=await window.LeefKrachtHealth.check();
+      const full=auth&&window.LeefKrachtHealth.metrics.every(m=>(auth.authorized||[]).includes(m));
+      if(full){
+        btn.disabled=true;
+        const old=btn.textContent; btn.textContent='Synchroniseren…';
+        try{await doSync(true)}finally{btn.disabled=false;btn.textContent='Nu synchroniseren'}
+        return;
+      }
+    }
+
+    const original=btn.textContent;
+    btn.disabled=true;btn.textContent='Verbinden…';
     try{
       const result=await window.LeefKrachtHealth.connect();
       if(result&&result.ok){
-        if(status) status.textContent='Verbonden met Apple Health';
-        btn.textContent='Verbonden ✓';
+        applyAuthorization(result.authorized,result.denied);
         const card=btn.closest('.healthReadyCard');
-        if(card){
-          card.classList.add('isConnected');
-          card.querySelectorAll('.healthSyncRows strong').forEach(el=>el.textContent='Verbonden');
+        if(card)card.classList.add('isConnected');
+        if(status){
+          status.textContent=result.full
+            ? 'Verbonden met '+result.provider
+            : 'Gedeeltelijk verbonden met '+result.provider;
         }
+        btn.textContent=result.full?'Nu synchroniseren':'Toegang beheren';
+        if(result.full)await doSync(false);
       }else{
-        alert((result&&result.message)||'Koppeling nog niet beschikbaar.');
+        if(result&&result.unavailable&&currentCap.platform==='android'){
+          const opened=await window.LeefKrachtHealth.openSettings();
+          if(!opened)alert(result.message||'Health Connect is niet beschikbaar.');
+        }else{
+          alert((result&&result.message)||'Koppeling nog niet beschikbaar.');
+        }
         btn.textContent=original;
       }
-    }finally{btn.disabled=false;}
+    }finally{
+      btn.disabled=false;
+    }
   });
 });
 </script>
