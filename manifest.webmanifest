@@ -3,8 +3,8 @@
   "short_name": "LeefRitme",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#08111d",
-  "theme_color": "#0a1522",
+  "background_color": "#08110d",
+  "theme_color": "#0b1510",
   "icons": [
     {
       "src": "icon-192.png",

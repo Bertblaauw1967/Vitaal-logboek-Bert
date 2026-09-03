@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#061827">
-<meta name="app-version" content="38.36">
+<meta name="theme-color" content="#0b1510">
+<meta name="app-version" content="38.39">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.36";
+const LEEFKRACHT_VERSION = "38.39";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1115,7 +1115,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v38.36 — detailpagina's strakker uitgelijnd */
+/* v38.39 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.36 — totale visuele finetune
+   Mijn LeefRitme 38.39 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.36 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.39 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.36 — commerciële polishronde
+   Mijn LeefRitme 38.39 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.36 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.39 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -4008,6 +4008,435 @@ input:-webkit-autofill:active{
   box-shadow:0 8px 18px rgba(13,76,160,.22) !important;
 }
 </style>
+
+<style id="mijn-leefritme-3837-final-green-fix">
+/* 38.37 — definitieve groen/zwart harmonisatie */
+:root{
+  --bg:#08110d;
+  --bg2:#0d1711;
+  --card:#131b15;
+  --card2:#18211a;
+  --line:rgba(156,170,121,.38);
+  --white:#f3efe3;
+  --muted:#b7bea9;
+  --pink:#d7af8e;
+  --blue:#a8b984;
+  --green:#c6d89f;
+  --teal:#99bea2;
+  --amber:#cfc381;
+  --purple:#b2bf98;
+  --red:#d59a82;
+  --btn1:#b2c886;
+  --btn2:#7e9160;
+  --btnText:#08110d;
+  --panel1:#162018;
+  --panel2:#101712;
+  --panelBorder:rgba(156,170,121,.44);
+  --panelShadow:0 12px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.02);
+}
+html,body{background:var(--bg)!important;color:var(--white)!important}
+.app{
+  background:
+    radial-gradient(circle at 84% 0%, rgba(178,200,134,.12) 0, transparent 34%),
+    linear-gradient(180deg,#0b1510 0%,#08110d 100%) !important;
+}
+.card,
+.panel,
+.summary,
+.historyItem,
+.measureList .card,
+#overview .heroCard,
+#overview .message,
+#overview .versionPill,
+#overview .approvedGrid .tile,
+#overview .card,
+.detailCard,
+.connectCard,
+.settings .setting,
+.measureCard,
+.listCard,
+.reportCard,
+#more .aboutLeefKrachtCard,
+#more .releaseReadiness,
+#more .privacyRows > div,
+#more .supportTip,
+#more .docsIntro,
+#more .healthReadyCard,
+#more .settingsCard{
+  background:linear-gradient(180deg,var(--panel1),var(--panel2)) !important;
+  border-color:var(--panelBorder) !important;
+  box-shadow:var(--panelShadow) !important;
+}
+#overview .approvedGrid .tile,
+.tileWeight,.tileBlood,.tileHeart,.tileWaist,.tileSteps,.tileGoal,.tileBmi,.tileMore,.tileScore,.tileInsight,.bodyMetricTile{
+  background:linear-gradient(180deg,#162018,#101712) !important;
+  border-color:rgba(156,170,121,.46) !important;
+}
+#overview .approvedGrid .tile:hover,
+#overview .approvedGrid .tile:active{filter:brightness(1.02)}
+.tile .icon,
+.tileIcon,
+.icon,
+.clock,
+.summary .icon,
+.metricIcon,
+.healthLogo,
+.brandIcon{
+  background:rgba(15,22,16,.92) !important;
+  border-color:rgba(156,170,121,.46) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset !important;
+  color:var(--green) !important;
+}
+.icon.blue,.icon.green,.icon.bodyMeasureIcon,.insightIcon,.bodyMeasureIcon{color:var(--green)!important}
+.icon.pink{color:#d9ad90!important;border-color:#74604f!important}
+.icon.purple{color:#bcc79e!important;border-color:#5f6c52!important}
+.icon.teal{color:#9cc7a6!important;border-color:#50715c!important}
+.icon.amber{color:#d4c880!important;border-color:#7a6d38!important}
+.label,
+.sectionTitle,
+.topbar h2,
+.historyDate,
+.brand p,
+.detailTop .eyebrow,
+.formLabel,
+.page h1,.page h2,.page h3,
+strong,
+.title,
+.metricLabel,
+.listTitle,
+#overview .approvedGrid .label,
+#overview .approvedGrid .sub,
+#overview .message p,
+#overview .message strong,
+#more .aboutRows span,
+#more .aboutRows strong,
+#more .privacyRows span,
+#more .privacyRows strong,
+#privacyPolicy .privacyPolicyCard h3,
+.legalTextCard h3,
+#more .releaseReadiness strong{color:var(--white)!important}
+.sub,
+.helper,
+.muted,
+.page p,
+.small,
+.caption,
+.note,
+.meta,
+.brand .sub,
+#overview .approvedGrid .meta,
+#overview .approvedGrid .footer,
+#overview .approvedGrid .date,
+.detailMeta,
+.legalDate,
+.privacyPolicyDate,
+#privacyPolicy .privacyPolicyCard p,
+.legalTextCard p,
+#more .releaseReadiness span,
+#more .backupSafetyNote{color:var(--muted)!important}
+.value,
+.tile .value,
+.approvedGrid .value,
+.bigNumber,
+.summaryValue,
+.metricValue{color:var(--white)!important}
+.green,.greenProgress,.badge.green,.success,.ok,.targetHit,.statGood,.statusGood{color:var(--green)!important}
+.badge,.statusPill,.scoreHint,.goalRemaining,.bmiStatus{
+  background:rgba(156,170,121,.14) !important;
+  border:1px solid rgba(156,170,121,.28) !important;
+  color:var(--white) !important;
+}
+.progressTrack,.track,.rangeTrack,.barBg,.releaseReadiness,.supportTip{background-color:rgba(156,170,121,.09)!important}
+.progressFill,.fill,.rangeFill,.barFill,.scoreBar>i{
+  background:linear-gradient(90deg,var(--btn1),var(--btn2)) !important;
+}
+.primary,
+.secondary,
+button.primary,
+button.secondary,
+.settingRow .primary,
+.heroNew,
+.newMeasure,
+button[data-page="new"].primary,
+.actionBtn,
+.cta,
+.blueBtn,
+.btn,
+button[type="button"],
+button[type="submit"],
+#more .aboutOpenBtn,
+#more .privacyPolicyBtn.lkMainAction,
+#more #restoreOtherBtn,
+#more #backupBtn,
+#more #restoreBtn,
+#more .lkMainAction,
+#more #documentsActionBtn.lkMainAction,
+#more #healthConnectBtn.lkMainAction{
+  border-radius:16px !important;
+  border:1px solid rgba(240,236,220,.16) !important;
+  background:linear-gradient(135deg,var(--btn1),var(--btn2)) !important;
+  color:var(--btnText) !important;
+  box-shadow:0 12px 24px rgba(90,98,69,.22) !important;
+}
+.secondary.ghost,.outline,button.ghost{
+  background:transparent !important;
+  color:var(--white) !important;
+  border:1px solid rgba(156,170,121,.38) !important;
+  box-shadow:none !important;
+}
+.back,
+a,
+.linkBtn,
+.textAccent,
+.nav{color:#aab88a !important}
+.bottom{background:rgba(8,14,11,.96)!important;border-top:1px solid rgba(156,170,121,.18)!important}
+.nav.active{color:var(--white)!important}
+input,select,textarea{
+  background:rgba(12,20,15,.96) !important;
+  color:var(--white) !important;
+  border:1px solid rgba(156,170,121,.34) !important;
+  box-shadow:none !important;
+}
+input::placeholder,textarea::placeholder{color:#909985 !important}
+input:focus,select:focus,textarea:focus{
+  outline:none !important;
+  border-color:rgba(156,170,121,.62) !important;
+  box-shadow:0 0 0 3px rgba(156,170,121,.12) !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-text-fill-color:#f3efe3 !important;
+  caret-color:#f3efe3 !important;
+  -webkit-box-shadow:0 0 0 1000px rgba(12,20,15,.96) inset !important;
+  box-shadow:0 0 0 1000px rgba(12,20,15,.96) inset !important;
+  border-color:rgba(156,170,121,.48) !important;
+  transition:background-color 9999s ease-out 0s;
+}
+.chart{
+  background:linear-gradient(180deg,#111a14,#0c130e) !important;
+  border:1px solid rgba(156,170,121,.24) !important;
+}
+.chartEmpty,.empty,.helper,.caption{color:var(--muted)!important}
+.hmini,
+.historyShortcut,
+.supportTip,
+#overview .metric,
+#overview .latest,
+#overview .summary,
+#overview .latestGrid .metric,
+#overview .v291Indicator,
+#overview .goalRemaining,
+#overview .bmiStatus{
+  border-color:rgba(156,170,121,.28) !important;
+}
+.historyShortcut{
+  background:rgba(14,23,18,.88) !important;
+  color:var(--white) !important;
+}
+.historyShortcut b{color:#d9b08c !important}
+.closeDetail,
+.closeFloating,
+.closeFab,
+.topClose,
+.pageClose,
+#termsPolicy .detailTop,
+#supportPage .detailTop,
+#privacyPolicy .detailTop,
+#more .detailTop{
+  background-color:rgba(8,14,11,.94) !important;
+}
+.closeDetail,
+.closeFloating,
+.closeFab,
+.topClose,
+.pageClose{
+  border:1px solid rgba(156,170,121,.42) !important;
+  background:rgba(14,23,18,.92) !important;
+  color:var(--white) !important;
+}
+hr,.divider,.hairline{border-color:rgba(156,170,121,.18)!important;background:rgba(156,170,121,.18)!important}
+.pulse:before,.pulse:after,.pulse i{background:#d9b08c!important}
+.scoreRing{background:conic-gradient(var(--btn1) 0deg,var(--btn1) var(--scoreDeg,0deg),rgba(255,255,255,.12) var(--scoreDeg,0deg)) !important}
+.scoreRing:after{background:#101712 !important}
+#more .aboutActions,
+#more .docsActions{gap:10px!important}
+</style>
+
+
+<style id="mijn-leefritme-3838-logo-top-dark">
+/* 38.38 — donkere zone boven en rondom hoofdlogo */
+#overview .heroHeader{
+  position:relative;
+  padding-top:2px !important;
+  padding-bottom:2px !important;
+}
+#overview .brandArtworkRow{
+  background:#08110d !important;
+  border:1px solid rgba(156,170,121,.20) !important;
+  border-radius:24px !important;
+  padding:8px !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.18) !important;
+}
+#overview .brandArtwork{
+  display:block !important;
+  margin:0 !important;
+  background:#08110d !important;
+  border-radius:18px !important;
+}
+#overview.page.active{
+  position:relative;
+}
+#overview.page.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:122px;
+  background:linear-gradient(180deg,#08110d 0%, #08110d 72%, rgba(8,17,13,0) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+#overview .heroHeader,
+#overview .pulse,
+#overview .v291Indicator,
+#overview .tiles{
+  position:relative;
+  z-index:1;
+}
+</style>
+
+
+<style id="mijn-leefritme-3839-orange-accent">
+/* 38.39 — oude LeefKracht-opzet behouden; rustige olijf/donkere basis met beperkt oranje accent. */
+:root{
+  --accent-orange:#ee914f;
+  --accent-orange-soft:#d9854c;
+  --olive-bright:#aebf78;
+  --olive-soft:#82915f;
+}
+/* Oranje alleen als herkenningsaccent, niet als hoofdkleur. */
+#overview .pulse:before,
+#overview .pulse:after{
+  background:linear-gradient(90deg,#f0a15f,var(--accent-orange)) !important;
+  height:3px !important;
+  box-shadow:0 0 8px rgba(238,145,79,.10) !important;
+}
+#overview .pulse i{
+  border-bottom-color:var(--accent-orange) !important;
+}
+
+/* Voortgang: rustig antraciet spoor met dunne oranje voortgang. */
+#overview .progressTrack{
+  height:8px !important;
+  background:#3a403b !important;
+  border:1px solid rgba(255,255,255,.035) !important;
+}
+#overview .progressFill,
+#overview .tileScore .scoreProgressFill,
+#overview .tileScore .progressFill{
+  background:linear-gradient(90deg,#f0a15f,#d9783d) !important;
+}
+
+/* Enkele betekenisvolle accenten. */
+#overview .greenProgress,
+#overview .goalRemaining,
+#overview .tileScore .scoreTrend,
+#overview .tileScore #scoreTileSub,
+#overview .tileInsight .insightMini strong,
+#overview .tileInsight .insightHeadline,
+#insight .insightHeadline{
+  color:var(--accent-orange) !important;
+}
+#overview .bmiStatus{
+  color:#b5b883 !important;
+  background:transparent !important;
+  border:0 !important;
+}
+
+/* Tegels: één rustige donkere olijf/zwarte familie. */
+#overview .approvedGrid .tile,
+#overview .tileWeight,
+#overview .tileGoal,
+#overview .tileBmi,
+#overview .bodyMetricTile,
+#overview .tileBlood,
+#overview .tileHeart,
+#overview .tileSteps,
+#overview .tileScore,
+#overview .tileInsight,
+#overview .tileMore{
+  background:linear-gradient(145deg,#182219 0%,#101713 100%) !important;
+  border:1px solid rgba(174,191,120,.46) !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.018) !important;
+}
+#overview .approvedGrid .tile>.icon,
+#overview .approvedGrid .tile .icon,
+#overview .bodyMetricTile .tileIcon{
+  background:#141d16 !important;
+  border:1px solid rgba(174,191,120,.54) !important;
+  color:#d9dda7 !important;
+  box-shadow:none !important;
+}
+
+/* Teksten rustig en helder. */
+#overview .approvedGrid .label{color:#f3f0e7 !important}
+#overview .approvedGrid .sub{color:#b5baad !important}
+#overview .approvedGrid .value{color:#f7f5ef !important}
+#overview .bodyMeasurementsRows span{color:#d7d9d0 !important}
+#overview .bodyMeasurementsRows strong{color:#f2f0e9 !important}
+
+/* Oranje pijl/accent alleen bij Wat valt op, de rest olijf. */
+#overview .tileInsight .insightIcon{color:#d9dda7 !important;border-color:rgba(174,191,120,.54) !important}
+#overview .tileInsight .insightMini{color:#b9beb2 !important}
+#overview .tileInsight .insightMini::first-line{color:var(--accent-orange) !important}
+
+/* Nieuwe meting blijft bewust olijfgroen: primaire actie. */
+#overview .heroNew,
+#overview .newMeasure{
+  background:linear-gradient(135deg,#b2c886,#7e9160) !important;
+  border:1px solid rgba(218,226,183,.35) !important;
+  color:#09110d !important;
+  box-shadow:0 8px 18px rgba(103,119,75,.18) !important;
+}
+
+/* Logo-gebied en hoofdachtergrond volledig donker houden. */
+#overview .brandArtworkRow{
+  background:#08110d !important;
+  border-color:rgba(174,191,120,.16) !important;
+  box-shadow:none !important;
+}
+#overview .brandArtwork{background:#08110d !important;box-shadow:none !important}
+#overview.page.active::before{
+  background:linear-gradient(180deg,#08110d 0%,#08110d 76%,rgba(8,17,13,0) 100%) !important;
+}
+
+/* Versie-label nog subtieler. */
+#overview .v291Indicator{
+  background:rgba(174,191,120,.10) !important;
+  border-color:rgba(174,191,120,.28) !important;
+  color:#c8d09e !important;
+  box-shadow:none !important;
+}
+
+/* Detail-/Meer-knoppen blijven olijfgroen; niets blauw terug laten komen. */
+#more .lkMainAction,
+#more #backupBtn,
+#more #restoreBtn,
+#more #restoreOtherBtn,
+#more .aboutOpenBtn,
+#more .privacyPolicyBtn,
+.primary,.secondary,
+button.primary,button.secondary{
+  background:linear-gradient(135deg,#aebf78,#7e9160) !important;
+  border-color:rgba(218,226,183,.25) !important;
+  color:#09110d !important;
+  box-shadow:0 8px 18px rgba(103,119,75,.16) !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -4020,7 +4449,7 @@ input:-webkit-autofill:active{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.36</div>
+<div class="v291Indicator">v38.39</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -4573,7 +5002,7 @@ input:-webkit-autofill:active{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.36</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.39</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -4611,7 +5040,7 @@ input:-webkit-autofill:active{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.36 · bijgewerkt 3 september 2026</p>
+    <p class="legalDate">Versie 38.39 · bijgewerkt 3 september 2026</p>
     <h3>1. Doel van Mijn LeefRitme</h3>
     <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
@@ -4641,7 +5070,7 @@ input:-webkit-autofill:active{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.36</p>
+    <p class="legalDate">Mijn LeefRitme 38.39</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -4668,7 +5097,7 @@ input:-webkit-autofill:active{
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.36 · bijgewerkt 3 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.39 · bijgewerkt 3 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
     <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
@@ -6126,7 +6555,436 @@ hr,.divider,.hairline{border-color:rgba(163,169,125,.18)!important;background:rg
 .scoreRing:after{background:#0f1814 !important}
 canvas{filter:saturate(.88) brightness(.98)}
 
-</style></head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
+</style>
+<style id="mijn-leefritme-3837-final-green-fix">
+/* 38.37 — definitieve groen/zwart harmonisatie */
+:root{
+  --bg:#08110d;
+  --bg2:#0d1711;
+  --card:#131b15;
+  --card2:#18211a;
+  --line:rgba(156,170,121,.38);
+  --white:#f3efe3;
+  --muted:#b7bea9;
+  --pink:#d7af8e;
+  --blue:#a8b984;
+  --green:#c6d89f;
+  --teal:#99bea2;
+  --amber:#cfc381;
+  --purple:#b2bf98;
+  --red:#d59a82;
+  --btn1:#b2c886;
+  --btn2:#7e9160;
+  --btnText:#08110d;
+  --panel1:#162018;
+  --panel2:#101712;
+  --panelBorder:rgba(156,170,121,.44);
+  --panelShadow:0 12px 28px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.02);
+}
+html,body{background:var(--bg)!important;color:var(--white)!important}
+.app{
+  background:
+    radial-gradient(circle at 84% 0%, rgba(178,200,134,.12) 0, transparent 34%),
+    linear-gradient(180deg,#0b1510 0%,#08110d 100%) !important;
+}
+.card,
+.panel,
+.summary,
+.historyItem,
+.measureList .card,
+#overview .heroCard,
+#overview .message,
+#overview .versionPill,
+#overview .approvedGrid .tile,
+#overview .card,
+.detailCard,
+.connectCard,
+.settings .setting,
+.measureCard,
+.listCard,
+.reportCard,
+#more .aboutLeefKrachtCard,
+#more .releaseReadiness,
+#more .privacyRows > div,
+#more .supportTip,
+#more .docsIntro,
+#more .healthReadyCard,
+#more .settingsCard{
+  background:linear-gradient(180deg,var(--panel1),var(--panel2)) !important;
+  border-color:var(--panelBorder) !important;
+  box-shadow:var(--panelShadow) !important;
+}
+#overview .approvedGrid .tile,
+.tileWeight,.tileBlood,.tileHeart,.tileWaist,.tileSteps,.tileGoal,.tileBmi,.tileMore,.tileScore,.tileInsight,.bodyMetricTile{
+  background:linear-gradient(180deg,#162018,#101712) !important;
+  border-color:rgba(156,170,121,.46) !important;
+}
+#overview .approvedGrid .tile:hover,
+#overview .approvedGrid .tile:active{filter:brightness(1.02)}
+.tile .icon,
+.tileIcon,
+.icon,
+.clock,
+.summary .icon,
+.metricIcon,
+.healthLogo,
+.brandIcon{
+  background:rgba(15,22,16,.92) !important;
+  border-color:rgba(156,170,121,.46) !important;
+  box-shadow:0 0 0 1px rgba(255,255,255,.03) inset !important;
+  color:var(--green) !important;
+}
+.icon.blue,.icon.green,.icon.bodyMeasureIcon,.insightIcon,.bodyMeasureIcon{color:var(--green)!important}
+.icon.pink{color:#d9ad90!important;border-color:#74604f!important}
+.icon.purple{color:#bcc79e!important;border-color:#5f6c52!important}
+.icon.teal{color:#9cc7a6!important;border-color:#50715c!important}
+.icon.amber{color:#d4c880!important;border-color:#7a6d38!important}
+.label,
+.sectionTitle,
+.topbar h2,
+.historyDate,
+.brand p,
+.detailTop .eyebrow,
+.formLabel,
+.page h1,.page h2,.page h3,
+strong,
+.title,
+.metricLabel,
+.listTitle,
+#overview .approvedGrid .label,
+#overview .approvedGrid .sub,
+#overview .message p,
+#overview .message strong,
+#more .aboutRows span,
+#more .aboutRows strong,
+#more .privacyRows span,
+#more .privacyRows strong,
+#privacyPolicy .privacyPolicyCard h3,
+.legalTextCard h3,
+#more .releaseReadiness strong{color:var(--white)!important}
+.sub,
+.helper,
+.muted,
+.page p,
+.small,
+.caption,
+.note,
+.meta,
+.brand .sub,
+#overview .approvedGrid .meta,
+#overview .approvedGrid .footer,
+#overview .approvedGrid .date,
+.detailMeta,
+.legalDate,
+.privacyPolicyDate,
+#privacyPolicy .privacyPolicyCard p,
+.legalTextCard p,
+#more .releaseReadiness span,
+#more .backupSafetyNote{color:var(--muted)!important}
+.value,
+.tile .value,
+.approvedGrid .value,
+.bigNumber,
+.summaryValue,
+.metricValue{color:var(--white)!important}
+.green,.greenProgress,.badge.green,.success,.ok,.targetHit,.statGood,.statusGood{color:var(--green)!important}
+.badge,.statusPill,.scoreHint,.goalRemaining,.bmiStatus{
+  background:rgba(156,170,121,.14) !important;
+  border:1px solid rgba(156,170,121,.28) !important;
+  color:var(--white) !important;
+}
+.progressTrack,.track,.rangeTrack,.barBg,.releaseReadiness,.supportTip{background-color:rgba(156,170,121,.09)!important}
+.progressFill,.fill,.rangeFill,.barFill,.scoreBar>i{
+  background:linear-gradient(90deg,var(--btn1),var(--btn2)) !important;
+}
+.primary,
+.secondary,
+button.primary,
+button.secondary,
+.settingRow .primary,
+.heroNew,
+.newMeasure,
+button[data-page="new"].primary,
+.actionBtn,
+.cta,
+.blueBtn,
+.btn,
+button[type="button"],
+button[type="submit"],
+#more .aboutOpenBtn,
+#more .privacyPolicyBtn.lkMainAction,
+#more #restoreOtherBtn,
+#more #backupBtn,
+#more #restoreBtn,
+#more .lkMainAction,
+#more #documentsActionBtn.lkMainAction,
+#more #healthConnectBtn.lkMainAction{
+  border-radius:16px !important;
+  border:1px solid rgba(240,236,220,.16) !important;
+  background:linear-gradient(135deg,var(--btn1),var(--btn2)) !important;
+  color:var(--btnText) !important;
+  box-shadow:0 12px 24px rgba(90,98,69,.22) !important;
+}
+.secondary.ghost,.outline,button.ghost{
+  background:transparent !important;
+  color:var(--white) !important;
+  border:1px solid rgba(156,170,121,.38) !important;
+  box-shadow:none !important;
+}
+.back,
+a,
+.linkBtn,
+.textAccent,
+.nav{color:#aab88a !important}
+.bottom{background:rgba(8,14,11,.96)!important;border-top:1px solid rgba(156,170,121,.18)!important}
+.nav.active{color:var(--white)!important}
+input,select,textarea{
+  background:rgba(12,20,15,.96) !important;
+  color:var(--white) !important;
+  border:1px solid rgba(156,170,121,.34) !important;
+  box-shadow:none !important;
+}
+input::placeholder,textarea::placeholder{color:#909985 !important}
+input:focus,select:focus,textarea:focus{
+  outline:none !important;
+  border-color:rgba(156,170,121,.62) !important;
+  box-shadow:0 0 0 3px rgba(156,170,121,.12) !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+  -webkit-text-fill-color:#f3efe3 !important;
+  caret-color:#f3efe3 !important;
+  -webkit-box-shadow:0 0 0 1000px rgba(12,20,15,.96) inset !important;
+  box-shadow:0 0 0 1000px rgba(12,20,15,.96) inset !important;
+  border-color:rgba(156,170,121,.48) !important;
+  transition:background-color 9999s ease-out 0s;
+}
+.chart{
+  background:linear-gradient(180deg,#111a14,#0c130e) !important;
+  border:1px solid rgba(156,170,121,.24) !important;
+}
+.chartEmpty,.empty,.helper,.caption{color:var(--muted)!important}
+.hmini,
+.historyShortcut,
+.supportTip,
+#overview .metric,
+#overview .latest,
+#overview .summary,
+#overview .latestGrid .metric,
+#overview .v291Indicator,
+#overview .goalRemaining,
+#overview .bmiStatus{
+  border-color:rgba(156,170,121,.28) !important;
+}
+.historyShortcut{
+  background:rgba(14,23,18,.88) !important;
+  color:var(--white) !important;
+}
+.historyShortcut b{color:#d9b08c !important}
+.closeDetail,
+.closeFloating,
+.closeFab,
+.topClose,
+.pageClose,
+#termsPolicy .detailTop,
+#supportPage .detailTop,
+#privacyPolicy .detailTop,
+#more .detailTop{
+  background-color:rgba(8,14,11,.94) !important;
+}
+.closeDetail,
+.closeFloating,
+.closeFab,
+.topClose,
+.pageClose{
+  border:1px solid rgba(156,170,121,.42) !important;
+  background:rgba(14,23,18,.92) !important;
+  color:var(--white) !important;
+}
+hr,.divider,.hairline{border-color:rgba(156,170,121,.18)!important;background:rgba(156,170,121,.18)!important}
+.pulse:before,.pulse:after,.pulse i{background:#d9b08c!important}
+.scoreRing{background:conic-gradient(var(--btn1) 0deg,var(--btn1) var(--scoreDeg,0deg),rgba(255,255,255,.12) var(--scoreDeg,0deg)) !important}
+.scoreRing:after{background:#101712 !important}
+#more .aboutActions,
+#more .docsActions{gap:10px!important}
+</style>
+
+
+<style id="mijn-leefritme-3838-logo-top-dark">
+/* 38.38 — donkere zone boven en rondom hoofdlogo */
+#overview .heroHeader{
+  position:relative;
+  padding-top:2px !important;
+  padding-bottom:2px !important;
+}
+#overview .brandArtworkRow{
+  background:#08110d !important;
+  border:1px solid rgba(156,170,121,.20) !important;
+  border-radius:24px !important;
+  padding:8px !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.18) !important;
+}
+#overview .brandArtwork{
+  display:block !important;
+  margin:0 !important;
+  background:#08110d !important;
+  border-radius:18px !important;
+}
+#overview.page.active{
+  position:relative;
+}
+#overview.page.active::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:122px;
+  background:linear-gradient(180deg,#08110d 0%, #08110d 72%, rgba(8,17,13,0) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+#overview .heroHeader,
+#overview .pulse,
+#overview .v291Indicator,
+#overview .tiles{
+  position:relative;
+  z-index:1;
+}
+</style>
+
+
+<style id="mijn-leefritme-3839-orange-accent">
+/* 38.39 — oude LeefKracht-opzet behouden; rustige olijf/donkere basis met beperkt oranje accent. */
+:root{
+  --accent-orange:#ee914f;
+  --accent-orange-soft:#d9854c;
+  --olive-bright:#aebf78;
+  --olive-soft:#82915f;
+}
+/* Oranje alleen als herkenningsaccent, niet als hoofdkleur. */
+#overview .pulse:before,
+#overview .pulse:after{
+  background:linear-gradient(90deg,#f0a15f,var(--accent-orange)) !important;
+  height:3px !important;
+  box-shadow:0 0 8px rgba(238,145,79,.10) !important;
+}
+#overview .pulse i{
+  border-bottom-color:var(--accent-orange) !important;
+}
+
+/* Voortgang: rustig antraciet spoor met dunne oranje voortgang. */
+#overview .progressTrack{
+  height:8px !important;
+  background:#3a403b !important;
+  border:1px solid rgba(255,255,255,.035) !important;
+}
+#overview .progressFill,
+#overview .tileScore .scoreProgressFill,
+#overview .tileScore .progressFill{
+  background:linear-gradient(90deg,#f0a15f,#d9783d) !important;
+}
+
+/* Enkele betekenisvolle accenten. */
+#overview .greenProgress,
+#overview .goalRemaining,
+#overview .tileScore .scoreTrend,
+#overview .tileScore #scoreTileSub,
+#overview .tileInsight .insightMini strong,
+#overview .tileInsight .insightHeadline,
+#insight .insightHeadline{
+  color:var(--accent-orange) !important;
+}
+#overview .bmiStatus{
+  color:#b5b883 !important;
+  background:transparent !important;
+  border:0 !important;
+}
+
+/* Tegels: één rustige donkere olijf/zwarte familie. */
+#overview .approvedGrid .tile,
+#overview .tileWeight,
+#overview .tileGoal,
+#overview .tileBmi,
+#overview .bodyMetricTile,
+#overview .tileBlood,
+#overview .tileHeart,
+#overview .tileSteps,
+#overview .tileScore,
+#overview .tileInsight,
+#overview .tileMore{
+  background:linear-gradient(145deg,#182219 0%,#101713 100%) !important;
+  border:1px solid rgba(174,191,120,.46) !important;
+  box-shadow:0 10px 24px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.018) !important;
+}
+#overview .approvedGrid .tile>.icon,
+#overview .approvedGrid .tile .icon,
+#overview .bodyMetricTile .tileIcon{
+  background:#141d16 !important;
+  border:1px solid rgba(174,191,120,.54) !important;
+  color:#d9dda7 !important;
+  box-shadow:none !important;
+}
+
+/* Teksten rustig en helder. */
+#overview .approvedGrid .label{color:#f3f0e7 !important}
+#overview .approvedGrid .sub{color:#b5baad !important}
+#overview .approvedGrid .value{color:#f7f5ef !important}
+#overview .bodyMeasurementsRows span{color:#d7d9d0 !important}
+#overview .bodyMeasurementsRows strong{color:#f2f0e9 !important}
+
+/* Oranje pijl/accent alleen bij Wat valt op, de rest olijf. */
+#overview .tileInsight .insightIcon{color:#d9dda7 !important;border-color:rgba(174,191,120,.54) !important}
+#overview .tileInsight .insightMini{color:#b9beb2 !important}
+#overview .tileInsight .insightMini::first-line{color:var(--accent-orange) !important}
+
+/* Nieuwe meting blijft bewust olijfgroen: primaire actie. */
+#overview .heroNew,
+#overview .newMeasure{
+  background:linear-gradient(135deg,#b2c886,#7e9160) !important;
+  border:1px solid rgba(218,226,183,.35) !important;
+  color:#09110d !important;
+  box-shadow:0 8px 18px rgba(103,119,75,.18) !important;
+}
+
+/* Logo-gebied en hoofdachtergrond volledig donker houden. */
+#overview .brandArtworkRow{
+  background:#08110d !important;
+  border-color:rgba(174,191,120,.16) !important;
+  box-shadow:none !important;
+}
+#overview .brandArtwork{background:#08110d !important;box-shadow:none !important}
+#overview.page.active::before{
+  background:linear-gradient(180deg,#08110d 0%,#08110d 76%,rgba(8,17,13,0) 100%) !important;
+}
+
+/* Versie-label nog subtieler. */
+#overview .v291Indicator{
+  background:rgba(174,191,120,.10) !important;
+  border-color:rgba(174,191,120,.28) !important;
+  color:#c8d09e !important;
+  box-shadow:none !important;
+}
+
+/* Detail-/Meer-knoppen blijven olijfgroen; niets blauw terug laten komen. */
+#more .lkMainAction,
+#more #backupBtn,
+#more #restoreBtn,
+#more #restoreOtherBtn,
+#more .aboutOpenBtn,
+#more .privacyPolicyBtn,
+.primary,.secondary,
+button.primary,button.secondary{
+  background:linear-gradient(135deg,#aebf78,#7e9160) !important;
+  border-color:rgba(218,226,183,.25) !important;
+  color:#09110d !important;
+  box-shadow:0 8px 18px rgba(103,119,75,.16) !important;
+}
+</style>
+
+</head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
@@ -6712,7 +7570,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.36 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.39 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
