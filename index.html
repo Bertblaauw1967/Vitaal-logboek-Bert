@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="38.34">
+<meta name="app-version" content="38.35">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="LeefKracht">
+<meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>LeefKracht</title>
+<title>Mijn LeefRitme</title>
 <style>
 :root{
  --bg:#041525; --bg2:#07243d; --card:#0a2b4a; --card2:#0b3154;
@@ -218,7 +218,7 @@ button[data-page="new"].primary:active,
 .bodyMetricTile .tileSub{color:#9fe1d8!important}
 
 
-/* LeefKracht 30.3 — Lichaamsmaten consistent met overige tegels */
+/* Mijn LeefRitme 30.3 — Lichaamsmaten consistent met overige tegels */
 .bodyMetricTile{
   border-radius:28px!important;
   overflow:hidden;
@@ -237,7 +237,7 @@ button[data-page="new"].primary:active,
 }
 
 
-/* 38.34 — meetformulier logisch gegroepeerd */
+/* 38.35 — meetformulier logisch gegroepeerd */
 .measureGroupTitle{
   margin-top:8px;
   padding-top:14px;
@@ -250,10 +250,85 @@ button[data-page="new"].primary:active,
 }
 #form .measureGroupTitle:first-of-type{margin-top:2px}
 
+
+/* 38.35 — Mijn LeefRitme rebrand.
+   Interne opslag-/plugin-identiteit blijft bewust ongewijzigd voor gegevensbehoud. */
+:root{
+  --bg:#08111d;
+  --bg2:#0d1a28;
+  --card:#111f2e;
+  --card2:#162637;
+  --line:#566052;
+  --white:#f5f1e8;
+  --muted:#b8b7ad;
+  --pink:#e98a68;
+  --blue:#a3a97d;
+  --green:#76d18f;
+  --teal:#86b9b1;
+  --amber:#c7b76e;
+  --purple:#a697b6;
+  --red:#ef8079;
+}
+html,body{background:#08111d;color:var(--white)}
+.app{
+  background:
+    radial-gradient(circle at 88% 0%,rgba(155,164,119,.16) 0,transparent 32%),
+    linear-gradient(180deg,#0a1522 0%,#07101b 100%) !important;
+}
+.heroHeader{
+  align-items:flex-start!important;
+  gap:12px!important;
+}
+.brandArtworkRow{flex:1;min-width:0}
+.brandArtwork{
+  display:block;
+  width:min(100%,460px);
+  height:auto;
+  border-radius:18px;
+  box-shadow:0 12px 28px rgba(0,0,0,.16);
+}
+.brandIcon{display:none!important}
+.pulse:before,.pulse:after,.pulse i{background:var(--pink)!important}
+.heroNew,
+.newMeasure,
+button[data-page="new"].primary,
+.newMeasurementBtn{
+  background:linear-gradient(135deg,#a3a97d,#7e8763)!important;
+  border-color:rgba(232,226,204,.26)!important;
+  color:#08111d!important;
+  box-shadow:0 10px 24px rgba(126,135,99,.22)!important;
+}
+.card,.panel{
+  background:linear-gradient(180deg,#132333,#0f1d2b)!important;
+  border-color:rgba(163,169,125,.34)!important;
+}
+.tile .icon,.tileIcon{
+  border-color:rgba(163,169,125,.48)!important;
+}
+.v291Indicator{
+  background:rgba(163,169,125,.13)!important;
+  border-color:rgba(163,169,125,.48)!important;
+  color:#d8dcc0!important;
+}
+.primary{
+  background:linear-gradient(135deg,#a3a97d,#7e8763)!important;
+  color:#08111d!important;
+}
+.secondary{
+  border-color:rgba(163,169,125,.42)!important;
+}
+a{color:#d4d8b5}
+@media(max-width:620px){
+  .heroHeader{display:block!important}
+  .brandArtwork{width:100%;max-width:420px;margin:0 auto}
+  .heroNew{width:100%!important;margin-top:10px!important}
+  .pulse{margin-top:14px!important}
+}
+
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.34";
+const LEEFKRACHT_VERSION = "38.35";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -696,7 +771,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.34 — bloeddruktegel beter uitgelijnd */
+/* 38.35 — bloeddruktegel beter uitgelijnd */
 #overview .tileBlood .tileBody{
   padding-top:6px !important;
   padding-right:24px !important;
@@ -722,7 +797,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.34 — professionele einduitlijning dashboardtegels */
+/* 38.35 — professionele einduitlijning dashboardtegels */
 #overview .approvedGrid{
   grid-template-columns:repeat(2,minmax(0,1fr))!important;
   gap:12px!important;
@@ -818,7 +893,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   font-variant-numeric:tabular-nums!important;
 }
 
-/* LeefKracht-score */
+/* LeefRitme-score */
 #overview .tileScore .value{font-size:31px!important;margin:34px 0 12px!important}
 #overview .tileScore #scoreTileSub{font-size:11px!important;line-height:1.25!important;max-width:110px!important}
 
@@ -842,7 +917,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 </style>
 
 <style>
-/* 38.34 — detailpagina's professioneel uitgelijnd */
+/* 38.35 — detailpagina's professioneel uitgelijnd */
 #weight .panel,
 #blood .panel,
 #heart .panel,
@@ -1040,7 +1115,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v38.34 — detailpagina's strakker uitgelijnd */
+/* v38.35 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1127,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 38.34 — totale visuele finetune
+   Mijn LeefRitme 38.35 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1480,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* LeefKracht 38.34 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.35 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1567,7 +1642,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — logische tegelvolgorde + persoonlijk compliment */
+/* 38.35 — logische tegelvolgorde + persoonlijk compliment */
 #overview .tileInsight .insightMini{
   font-size:11px !important;
   line-height:1.42 !important;
@@ -1583,7 +1658,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
+/* 38.35 — WHR/WHtR: bereiken, scheidingsteken en omschrijving exact onder elkaar */
 #body .ratioRangeTable{
   display:grid !important;
   gap:0 !important;
@@ -1642,7 +1717,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — rustige kleurharmonie per tegelgroep */
+/* 38.35 — rustige kleurharmonie per tegelgroep */
 
 /* Basis: alle tegelachtergronden donker houden */
 #overview .approvedGrid .tile{
@@ -1734,7 +1809,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — randen subtiel duidelijker, verder alles rustig houden */
+/* 38.35 — randen subtiel duidelijker, verder alles rustig houden */
 #overview .approvedGrid .tile{
   border-width:1px !important;
   box-shadow:0 10px 22px rgba(0,0,0,.14), 0 0 0 1px rgba(255,255,255,.03) inset !important;
@@ -1784,7 +1859,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — mini finishing touch: icoontjes strakker + schaduw luxer */
+/* 38.35 — mini finishing touch: icoontjes strakker + schaduw luxer */
 #overview .approvedGrid .tile{
   box-shadow:
     0 14px 28px rgba(0,0,0,.14),
@@ -1839,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   LeefKracht 38.34 — commerciële polishronde
+   Mijn LeefRitme 38.35 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -1860,7 +1935,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   letter-spacing:.01em !important;
 }
 
-/* Wat valt op? = herkenbaar LeefKracht-moment */
+/* Wat valt op? = herkenbaar LeefRitme-moment */
 #insight .insightHero{
   border-color:#4f9089 !important;
   background:linear-gradient(180deg,rgba(14,52,57,.98),rgba(9,38,43,.98)) !important;
@@ -1902,7 +1977,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
+/* 38.35 — Basisgegevens eenvoudiger: geboortedatum bepaalt leeftijd */
 .profileReadRow{
   display:grid;
   grid-template-columns:minmax(0,1fr) auto;
@@ -1932,7 +2007,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Basisgegevens volledig gelijkgetrokken */
+/* 38.35 — Basisgegevens volledig gelijkgetrokken */
 #more .settingsCard input,
 #more .settingsCard select,
 #more .settingsCard .profileReadField{
@@ -2028,7 +2103,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
+/* 38.35 — Instellingen: hoofdkop blijft groot, subtekst rustiger en iets groter */
 #overview .tileMore .sub{
   font-size:14px !important;
   line-height:1.35 !important;
@@ -2049,7 +2124,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
+/* 38.35 — Lichaamsmaten op dashboard beter leesbaar en strak uitgelijnd */
 #overview .bodyMetricTile .bodyMeasurementsRows{
   width:100% !important;
   margin-top:16px !important;
@@ -2096,7 +2171,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Lichaamsmaten conform goedgekeurde visualisatie */
+/* 38.35 — Lichaamsmaten conform goedgekeurde visualisatie */
 #overview .bodyMetricTile{
   min-height:220px !important;
   display:grid !important;
@@ -2232,7 +2307,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
+/* 38.35 — persoonlijk compliment iets groter, tegelgrootte ongewijzigd */
 #overview .tileInsight .insightMini{
   font-size:15px !important;
   line-height:1.42 !important;
@@ -2254,7 +2329,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — BMI-indeling professioneel uitgelijnd */
+/* 38.35 — BMI-indeling professioneel uitgelijnd */
 #bmi .bmiRangeTable{
   width:100% !important;
   display:grid !important;
@@ -2319,7 +2394,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
+/* 38.35 — BMI-indeling compact en exact zoals goedgekeurde visualisatie */
 #bmi .bmiRangeTable{
   width:auto !important;
   max-width:100% !important;
@@ -2389,7 +2464,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — BMI-indeling: compacte kolommen exact onder elkaar */
+/* 38.35 — BMI-indeling: compacte kolommen exact onder elkaar */
 #bmi .bmiRangeTable{
   width:max-content !important;
   max-width:100% !important;
@@ -2458,7 +2533,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="bmi-range-final-fix-35">
-/* 38.34 — definitieve BMI-indeling: compacte tabeluitlijning */
+/* 38.35 — definitieve BMI-indeling: compacte tabeluitlijning */
 #bmi .bmiRangeTable{
   display:table !important;
   width:auto !important;
@@ -2532,7 +2607,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="detail-alignment-351">
-/* 38.34 — overige detailschermen strak uitgelijnd */
+/* 38.35 — overige detailschermen strak uitgelijnd */
 .lkInfoTable{
   display:table !important;
   width:auto !important;
@@ -2626,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   LeefKracht 38.34 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.35 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -2853,7 +2928,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-361-micro-polish">
-/* 38.34 — laatste micro-polish, geen redesign */
+/* 38.35 — laatste micro-polish, geen redesign */
 
 /* Dashboardkoppen en subtitels net consistenter */
 #overview .approvedGrid .label{
@@ -2983,7 +3058,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="health-ready-370">
-/* 38.34 — Health-ready instellingen */
+/* 38.35 — Health-ready instellingen */
 .healthReadyCard{
   margin-top:14px !important;
 }
@@ -3050,7 +3125,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="profile-email-373">
-/* 38.34 — e-mailadres in Basisgegevens */
+/* 38.35 — e-mailadres in Basisgegevens */
 #more .settingsCard input[type="email"]{
   -webkit-appearance:none !important;
   appearance:none !important;
@@ -3067,7 +3142,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-layout-374">
-/* 38.34 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
+/* 38.35 — Instellingen: logisch, rustig en zonder dubbele Health-kaart */
 #more .settingsCard{
   margin-bottom:14px !important;
 }
@@ -3088,7 +3163,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-375">
-/* 38.34 — Instellingenknoppen exact even breed als Verbinden */
+/* 38.35 — Instellingenknoppen exact even breed als Verbinden */
 #more .settingsCard .primary,
 #more .settingsCard .wideBtn,
 #more #profileSave,
@@ -3106,7 +3181,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-376">
-/* 38.34 — Gegevens opslaan en Rapport maken exact als Verbinden */
+/* 38.35 — Gegevens opslaan en Rapport maken exact als Verbinden */
 #more #profileSave,
 #more #reportBtn{
   display:block !important;
@@ -3131,7 +3206,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-377">
-/* 38.34 — knopbreedtes nu echt gelijk aan Verbinden */
+/* 38.35 — knopbreedtes nu echt gelijk aan Verbinden */
 #more #saveProfileBtn,
 #more button[data-page="report"]{
   display:block !important;
@@ -3154,7 +3229,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="dashboard-steps-score-align-378">
-/* 38.34 — Gem. stappen en LeefKracht-score hoofdwaarde exact gelijk uitgelijnd */
+/* 38.35 — Gem. stappen en LeefRitme-score hoofdwaarde exact gelijk uitgelijnd */
 #overview .tileSteps .tileBody,
 #overview .tileScore .tileBody{
   position:relative !important;
@@ -3217,7 +3292,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="health-connect-380">
-/* 38.34 — echte Health Connect status per gegevenssoort */
+/* 38.35 — echte Health Connect status per gegevenssoort */
 #more .healthSyncRows [data-health-metric].isConnected strong{
   color:#9fd7c7 !important;
 }
@@ -3247,7 +3322,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Uitslagen & documenten */
+/* 38.35 — Uitslagen & documenten */
 .docsIntro{padding:18px;margin-bottom:14px}
 .docsActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
 .docsActions .primary{min-height:48px}
@@ -3270,7 +3345,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Mijn LeefKracht-tegel */
+/* 38.35 — Mijn LeefRitme-tegel */
 #overview .tileMore .label{
   font-size:11px !important;
   line-height:1.2 !important;
@@ -3284,7 +3359,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Mijn LeefKracht rustiger en consistenter */
+/* 38.35 — Mijn LeefRitme rustiger en consistenter */
 #more{
   padding-bottom:24px;
 }
@@ -3351,7 +3426,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — LeefKracht-score tegel één regel lager uitgelijnd */
+/* 38.35 — LeefRitme-score tegel één regel lager uitgelijnd */
 #overview .tileScore .tileBody{
   padding-top:12px !important;
 }
@@ -3359,7 +3434,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — alleen titel LeefKracht-score iets omhoog */
+/* 38.35 — alleen titel LeefRitme-score iets omhoog */
 #overview .tileScore .label{
   transform:translateY(-12px) !important;
 }
@@ -3367,7 +3442,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — blauwe acties in Mijn LeefKracht exact gelijk */
+/* 38.35 — blauwe acties in Mijn LeefRitme exact gelijk */
 #more .settingsCard > .primary,
 #more .settingsCard > .wideBtn,
 #more .settingsCard .healthConnectBtn{
@@ -3397,7 +3472,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* 38.34 — Mijn LeefKracht: definitieve professionele polish */
+/* 38.35 — Mijn LeefRitme: definitieve professionele polish */
 #more{
   max-width:760px;
   margin:0 auto;
@@ -3537,7 +3612,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="settings-button-width-3815">
-/* 38.34 — alle hoofdacties in Mijn LeefKracht exact dezelfde optische breedte */
+/* 38.35 — alle hoofdacties in Mijn LeefRitme exact dezelfde optische breedte */
 #more #saveProfileBtn,
 #more #healthConnectBtn,
 #more button[data-page="report"],
@@ -3566,7 +3641,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-3816-final-actions">
-/* 38.34 — hoofdacties exact één formaat; back-up uitgezonderd */
+/* 38.35 — hoofdacties exact één formaat; back-up uitgezonderd */
 #more .lkMainAction{
   display:flex !important;
   align-items:center !important;
@@ -3639,7 +3714,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-3817-privacy-btn-fix">
-/* 38.34 — privacyverklaring knop exact gelijk aan de andere blauwe hoofdacties */
+/* 38.35 — privacyverklaring knop exact gelijk aan de andere blauwe hoofdacties */
 #more .privacyPolicyBtn.lkMainAction{
   display:flex !important;
   align-items:center !important;
@@ -3672,7 +3747,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style id="leefkracht-3818-steps-tile">
-/* 38.34 — actuele stappen prominent, weekgemiddelde als context */
+/* 38.35 — actuele stappen prominent, weekgemiddelde als context */
 #overview .tileSteps #steps7Sub{
   margin-top:0 !important;
   color:#a9c5da !important;
@@ -3747,7 +3822,7 @@ input:-webkit-autofill:active{
 </style>
 
 <style id="lk-legal-layout-3828">
-/* Over LeefKracht: alles netjes uitgelijnd en in dezelfde donkerblauwe stijl */
+/* Over Mijn LeefRitme: alles netjes uitgelijnd en in dezelfde donkerblauwe stijl */
 #more .aboutLeefKrachtCard{
   background:linear-gradient(180deg,#0a2b4a,#08233d) !important;
   border-color:#24537d !important;
@@ -3877,7 +3952,7 @@ input:-webkit-autofill:active{
 </style>
 
 <style id="lk-more-sticky-close-3829">
-/* Mijn LeefKracht: titel + kruisje blijven zichtbaar tijdens scrollen */
+/* Mijn LeefRitme: titel + kruisje blijven zichtbaar tijdens scrollen */
 #more .detailTop{
   position:sticky !important;
   top:0 !important;
@@ -3938,18 +4013,14 @@ input:-webkit-autofill:active{
 <main class="app">
   <section id="overview" class="page active">
     <div class="header heroHeader">
-      <div class="brandRow">
-        <div class="brandIcon">♡</div>
-        <div class="brand">
-          <h1>Leef<span style="color:var(--pink)">Kracht</span></h1>
-          <p>Jouw gezondheid. Jouw regie.</p>
-        </div>
+      <div class="brandRow brandArtworkRow">
+        <img class="brandArtwork" src="mijn-leefritme-logo.png" alt="Mijn LeefRitme – Jouw ritme. Jouw balans. Jij.">
       </div>
       <button type="button" class="newMeasure heroNew" data-page="new">⊕ Nieuwe meting</button>
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.34</div>
+<div class="v291Indicator">v38.35</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -4029,7 +4100,7 @@ input:-webkit-autofill:active{
         </div>
       </button>
 <button type="button" class="card tile clickable tileScore" data-page="score">
-<div class="icon green">♡</div><div class="tileBody"><div class="label">LeefKracht-score</div>
+<div class="icon green">♡</div><div class="tileBody"><div class="label">LeefRitme-score</div>
 <div class="value" id="scoreTile">—</div><div class="sub" id="scoreTileSub">Totale ontwikkeling</div></div></button>
 <button type="button" class="card tile clickable tileInsight" data-page="insight">
   <div class="icon insightIcon" aria-hidden="true">✦</div>
@@ -4039,7 +4110,7 @@ input:-webkit-autofill:active{
   </div>
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
-<div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefKracht</div>
+<div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
 <div class="sub">Profiel · rapporten · documenten</div></div></button>
     </div>
 
@@ -4061,9 +4132,9 @@ input:-webkit-autofill:active{
 
   <div class="card panel insightHero">
     <div class="insightSpark">✦</div>
-    <div class="label">Jouw LeefKracht-moment</div>
+    <div class="label">Jouw LeefRitme-moment</div>
     <div class="insightHeadline" id="insightHeadline">Nog onvoldoende gegevens</div>
-    <p class="muted insightBody" id="insightBody">Vul je metingen in. LeefKracht geeft daarna één korte boodschap over wat positief opvalt of aandacht verdient.</p>
+    <p class="muted insightBody" id="insightBody">Vul je metingen in. Mijn LeefRitme geeft daarna één korte boodschap over wat positief opvalt of aandacht verdient.</p>
   </div>
 
   <div class="card panel">
@@ -4072,14 +4143,14 @@ input:-webkit-autofill:active{
       <div class="kvRow"><div class="kvKey">Gewicht</div><div class="kvVal" id="insightWeight">—</div></div>
       <div class="kvRow"><div class="kvKey">Stappen</div><div class="kvVal" id="insightSteps">—</div></div>
       <div class="kvRow"><div class="kvKey">Buikomtrek</div><div class="kvVal" id="insightWaist">—</div></div>
-      <div class="kvRow"><div class="kvKey">LeefKracht-score</div><div class="kvVal" id="insightScore">—</div></div>
+      <div class="kvRow"><div class="kvKey">LeefRitme-score</div><div class="kvVal" id="insightScore">—</div></div>
     </div>
-    <small class="muted">LeefKracht geeft een eenvoudige voortgangssamenvatting en geen medische diagnose.</small>
+    <small class="muted">Mijn LeefRitme geeft een eenvoudige voortgangssamenvatting en geen medische diagnose.</small>
   </div>
 </section>
 
 <section id="score" class="page">
-<div class="detailTop"><div><div class="eyebrow">Ontwikkeling</div><h2 class="sectionTitle">LeefKracht-score</h2></div>
+<div class="detailTop"><div><div class="eyebrow">Ontwikkeling</div><h2 class="sectionTitle">LeefRitme-score</h2></div>
 <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
 <div class="card panel scorePanel"><div class="scoreRing" id="scoreRing"><div><strong id="scoreDetailValue">—</strong><span>/100</span></div></div>
 <div class="scoreStatus" id="scoreStatus">Nog onvoldoende gegevens</div>
@@ -4200,7 +4271,7 @@ input:-webkit-autofill:active{
     <div id="stepsChartV28Empty" class="muted chartEmpty">Minimaal twee stappenmetingen nodig.</div>
   </div>
   <div class="card panel rangeCard">
-    <div class="label">LeefKracht-indeling</div>
+    <div class="label">LeefRitme-indeling</div>
     <div class="rangeText lkInfoTable" aria-label="Stappen-indeling">
       <div class="lkInfoRow"><span class="lkInfoRange">Onder 5.000</span><span class="lkInfoSep">·</span><span class="lkInfoMeaning">laag actief</span></div>
       <div class="lkInfoRow"><span class="lkInfoRange">5.000–7.999</span><span class="lkInfoSep">·</span><span class="lkInfoMeaning">redelijk actief</span></div>
@@ -4263,7 +4334,7 @@ input:-webkit-autofill:active{
   </div>
   <div class="card panel rangeCard">
     <div class="label">Over je streefgewicht</div>
-    <div class="rangeText">Een streefgewicht is persoonlijk. LeefKracht vergelijkt je voortgang met het doel dat jij zelf instelt.</div>
+    <div class="rangeText">Een streefgewicht is persoonlijk. Mijn LeefRitme vergelijkt je voortgang met het doel dat jij zelf instelt.</div>
     <small class="muted">Gebruik BMI, buikomtrek en andere metingen samen voor een breder beeld.</small>
   </div>
 </section>
@@ -4369,7 +4440,7 @@ input:-webkit-autofill:active{
     <div>
       <div class="eyebrow">Gegevens &amp; instellingen</div>
           
-<h2 class="sectionTitle">Mijn LeefKracht</h2>
+<h2 class="sectionTitle">Mijn LeefRitme</h2>
     </div>
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
   </div>
@@ -4451,7 +4522,7 @@ input:-webkit-autofill:active{
     </div>
 
     <small class="muted healthReadyNote">
-      LeefKracht leest alleen de gezondheidsgegevens waarvoor jij toestemming geeft. Op Samsung lopen stappen en hartslag via Samsung Health → Health Connect → LeefKracht. LeefKracht leest het dagtotaal en controleert voor vandaag altijd of Samsung Health al een actuele waarde heeft doorgegeven.
+      Mijn LeefRitme leest alleen de gezondheidsgegevens waarvoor jij toestemming geeft. Op Samsung lopen stappen en hartslag via Samsung Health → Health Connect → Mijn LeefRitme. Mijn LeefRitme leest het dagtotaal en controleert voor vandaag altijd of Samsung Health al een actuele waarde heeft doorgegeven.
     </small>
   </div>
 
@@ -4472,7 +4543,7 @@ input:-webkit-autofill:active{
   <div class="card settingsCard privacyCard">
     <h3>🔒 Privacy</h3>
     <p class="privacyLead">Jouw gegevens zijn van jou.</p>
-    <p class="muted">LeefKracht deelt niets zonder jouw toestemming.</p>
+    <p class="muted">Mijn LeefRitme deelt niets zonder jouw toestemming.</p>
     <div class="privacyRows">
       <div><span>Opslag</span><strong>Op dit apparaat</strong></div>
       <div><span>Health-data</span><strong>Alleen met toestemming</strong></div>
@@ -4480,12 +4551,12 @@ input:-webkit-autofill:active{
       <div><span>Toegang intrekken</span><strong>Altijd mogelijk</strong></div>
     </div>
     <button type="button" class="primary wideBtn lkMainAction privacyPolicyBtn" data-page="privacyPolicy">Privacyverklaring bekijken</button>
-    <small class="muted">Hier lees je precies welke gegevens LeefKracht gebruikt, waar ze worden bewaard en hoe je ze kunt verwijderen.</small>
+    <small class="muted">Hier lees je precies welke gegevens Mijn LeefRitme gebruikt, waar ze worden bewaard en hoe je ze kunt verwijderen.</small>
   </div>
 
   <div class="card settingsCard">
     <h3>⇧ Back-up</h3>
-    <p class="muted">LeefKracht maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd.</p>
+    <p class="muted">Mijn LeefRitme maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <button id="backupBtn" class="primary" type="button">Back-up opslaan</button>
       <button id="restoreBtn" class="primary" type="button">Laatste terugzetten</button>
@@ -4493,17 +4564,17 @@ input:-webkit-autofill:active{
     <div id="backupLastInfo" class="muted" style="font-size:12px;margin-top:10px">Nog geen lokale veiligheidskopie gevonden.</div>
     <button id="restoreOtherBtn" class="secondary" type="button" style="width:100%;margin-top:10px">Andere back-up kiezen</button>
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
-    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten LeefKracht.</small>
+    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme.</small>
   </div>
 
   
 
   <div class="card panel settingsCard aboutLeefKrachtCard">
-    <div class="label">Over LeefKracht</div>
+    <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.34</strong></div>
-      <div><span>Ontwikkelaar</span><strong>LeefKracht</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.35</strong></div>
+      <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
       <div><span>Support</span><strong>Beschikbaar</strong></div>
@@ -4515,7 +4586,7 @@ input:-webkit-autofill:active{
     </div>
 
     <div class="aboutDisclaimer">
-      LeefKracht is bedoeld voor inzicht en ondersteuning bij je gezondheid.
+      Mijn LeefRitme is bedoeld voor inzicht en ondersteuning bij je gezondheid.
       De app stelt geen diagnose en vervangt geen medisch advies van een arts of andere zorgprofessional.
     </div>
 
@@ -4523,7 +4594,7 @@ input:-webkit-autofill:active{
       <strong>Publicatiestatus</strong>
       <span>Privacy, gebruiksvoorwaarden en support zijn voorbereid. Alleen het openbare support-/contactadres moet vóór publicatie nog worden ingevuld.</span>
     </div>
-<small class="muted aboutCopyright">© 2026 LeefKracht. Alle rechten voorbehouden.</small>
+<small class="muted aboutCopyright">© 2026 Mijn LeefRitme. Alle rechten voorbehouden.</small>
   </div>
 
 </section>
@@ -4540,27 +4611,27 @@ input:-webkit-autofill:active{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.34 · bijgewerkt 3 september 2026</p>
-    <h3>1. Doel van LeefKracht</h3>
-    <p>LeefKracht is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
+    <p class="legalDate">Versie 38.35 · bijgewerkt 3 september 2026</p>
+    <h3>1. Doel van Mijn LeefRitme</h3>
+    <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
-    <p>Informatie, signaleringen, categorieën en de LeefKracht-score zijn informatief. Zij vervangen geen advies, diagnose of behandeling door een arts of andere bevoegde zorgprofessional.</p>
+    <p>Informatie, signaleringen, categorieën en de LeefRitme-score zijn informatief. Zij vervangen geen advies, diagnose of behandeling door een arts of andere bevoegde zorgprofessional.</p>
     <h3>3. Eigen gegevens en invoer</h3>
     <p>Je bent zelf verantwoordelijk voor de juistheid van gegevens die je handmatig invoert. Gegevens uit Apple Health, Health Connect, Samsung Health of andere gekoppelde bronnen kunnen vertraagd of onvolledig zijn.</p>
     <h3>4. Opslag en back-ups</h3>
-    <p>De huidige versie bewaart gegevens hoofdzakelijk lokaal op het apparaat. LeefKracht biedt lokale veiligheidskopieën en een externe JSON-back-up. Lokale gegevens kunnen verloren gaan door verwijderen van de app, wissen van opslag, systeemproblemen of verlies van het apparaat. Bewaar daarom regelmatig een externe back-up buiten de app.</p>
+    <p>De huidige versie bewaart gegevens hoofdzakelijk lokaal op het apparaat. Mijn LeefRitme biedt lokale veiligheidskopieën en een externe JSON-back-up. Lokale gegevens kunnen verloren gaan door verwijderen van de app, wissen van opslag, systeemproblemen of verlies van het apparaat. Bewaar daarom regelmatig een externe back-up buiten de app.</p>
     <h3>5. Gezondheidskoppelingen</h3>
     <p>Toegang tot Apple Health of Health Connect wordt alleen gebruikt na jouw toestemming en alleen voor functies die gezondheidsgegevens nodig hebben. Je kunt die toestemming via het besturingssysteem weer intrekken. Gezondheidsgegevens worden niet gebruikt voor advertenties of verkocht aan derden.</p>
     <h3>6. Beschikbaarheid en wijzigingen</h3>
-    <p>LeefKracht wordt actief ontwikkeld. Functies kunnen worden verbeterd, gewijzigd of tijdelijk niet beschikbaar zijn. We proberen gegevenscompatibiliteit tussen versies te behouden.</p>
+    <p>Mijn LeefRitme wordt actief ontwikkeld. Functies kunnen worden verbeterd, gewijzigd of tijdelijk niet beschikbaar zijn. We proberen gegevenscompatibiliteit tussen versies te behouden.</p>
     <h3>7. Verantwoord gebruik</h3>
-    <p>Gebruik LeefKracht niet voor illegale doeleinden of om rechten van anderen te schenden. Deel gezondheidsgegevens of back-ups alleen met personen of organisaties die je vertrouwt.</p>
+    <p>Gebruik Mijn LeefRitme niet voor illegale doeleinden of om rechten van anderen te schenden. Deel gezondheidsgegevens of back-ups alleen met personen of organisaties die je vertrouwt.</p>
     <h3>8. Intellectuele eigendom</h3>
-    <p>De naam, vormgeving en software van LeefKracht zijn beschermd voor zover daarop intellectuele-eigendomsrechten rusten. Eigen gezondheidsgegevens en documenten blijven van jou.</p>
+    <p>De naam, vormgeving en software van Mijn LeefRitme zijn beschermd voor zover daarop intellectuele-eigendomsrechten rusten. Eigen gezondheidsgegevens en documenten blijven van jou.</p>
     <h3>9. Aansprakelijkheid</h3>
-    <p>LeefKracht is bedoeld als ondersteunend hulpmiddel. Voor zover wettelijk toegestaan wordt geen garantie gegeven dat de app altijd foutloos, volledig of ononderbroken werkt.</p>
+    <p>Mijn LeefRitme is bedoeld als ondersteunend hulpmiddel. Voor zover wettelijk toegestaan wordt geen garantie gegeven dat de app altijd foutloos, volledig of ononderbroken werkt.</p>
     <h3>10. Wijzigingen in deze voorwaarden</h3>
-    <p>Deze voorwaarden kunnen worden aangepast wanneer functies, wetgeving of de werking van LeefKracht veranderen. In de app wordt de actuele versie vermeld.</p>
+    <p>Deze voorwaarden kunnen worden aangepast wanneer functies, wetgeving of de werking van Mijn LeefRitme veranderen. In de app wordt de actuele versie vermeld.</p>
   </div>
 </section>
 
@@ -4570,17 +4641,17 @@ input:-webkit-autofill:active{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">LeefKracht 38.34</p>
+    <p class="legalDate">Mijn LeefRitme 38.35</p>
     <h3>Probleem met gegevens of back-up?</h3>
-    <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefKracht → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
+    <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
-    <p><strong>Laatste terugzetten</strong> gebruikt de nieuwste lokale veiligheidskopie. Met <strong>Andere back-up kiezen</strong> kun je een eerder opgeslagen LeefKracht JSON-bestand selecteren.</p>
+    <p><strong>Laatste terugzetten</strong> gebruikt de nieuwste lokale veiligheidskopie. Met <strong>Andere back-up kiezen</strong> kun je een eerder opgeslagen Mijn LeefRitme JSON-bestand selecteren.</p>
     <h3>Apple Health of Health Connect</h3>
-    <p>Controleer eerst of LeefKracht toestemming heeft voor het betreffende gegevenstype. Synchroniseer daarna opnieuw vanuit Gezondheid koppelen. Op Samsung kan de keten lopen via Galaxy Watch → Samsung Health → Health Connect → LeefKracht.</p>
+    <p>Controleer eerst of Mijn LeefRitme toestemming heeft voor het betreffende gegevenstype. Synchroniseer daarna opnieuw vanuit Gezondheid koppelen. Op Samsung kan de keten lopen via Galaxy Watch → Samsung Health → Health Connect → Mijn LeefRitme.</p>
     <h3>App lijkt oude gegevens te tonen</h3>
-    <p>Sluit LeefKracht volledig af en open de app opnieuw. Controleer daarna het versienummer onder <strong>Over LeefKracht</strong>.</p>
+    <p>Sluit Mijn LeefRitme volledig af en open de app opnieuw. Controleer daarna het versienummer onder <strong>Over Mijn LeefRitme</strong>.</p>
     <h3>Welke informatie helpt bij support?</h3>
-    <p>Noteer toesteltype, iOS- of Android-versie, LeefKracht-versie, wat je deed vlak vóór het probleem en wat je verwachtte te zien. Een schermafbeelding helpt vaak ook.</p>
+    <p>Noteer toesteltype, iOS- of Android-versie, Mijn LeefRitme-versie, wat je deed vlak vóór het probleem en wat je verwachtte te zien. Een schermafbeelding helpt vaak ook.</p>
     <h3>Contact</h3>
     <p>Tijdens de testfase loopt ondersteuning rechtstreeks via de ontwikkelaar. Vóór publicatie in de App Store en Google Play wordt een openbaar support-e-mailadres toegevoegd.</p>
     <div class="supportTip"><strong>Belangrijk:</strong> bij verlies van gegevens eerst stoppen met wijzigen of opnieuw installeren. Probeer eerst de laatste lokale veiligheidskopie of een externe JSON-back-up terug te zetten.</div>
@@ -4597,43 +4668,43 @@ input:-webkit-autofill:active{
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.34 · bijgewerkt 3 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.35 · bijgewerkt 3 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
-    <p>LeefKracht wordt in de huidige testfase ontwikkeld en beheerd door LeefKracht. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
+    <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
 
-    <h3>2. Welke gegevens kan LeefKracht verwerken?</h3>
+    <h3>2. Welke gegevens kan Mijn LeefRitme verwerken?</h3>
     <p>Dat kunnen onder meer zijn: naam, e-mailadres, geboortedatum, geslacht, lengte, gewicht, lichaamsmaten, stappen, bloeddruk, hartslag, bloedsuiker, streefgewicht, rapportinstellingen, gezondheidskoppelingen en door jou opgeslagen foto's, PDF's of andere documenten.</p>
 
     <h3>3. Waarvoor worden deze gegevens gebruikt?</h3>
-    <p>De gegevens worden gebruikt om jouw persoonlijke overzicht, trends, grafieken, rapporten, LeefKracht-score en andere door jou gekozen functies te tonen. LeefKracht gebruikt gezondheidsgegevens niet voor advertenties, profilering voor reclame of verkoop aan derden.</p>
+    <p>De gegevens worden gebruikt om jouw persoonlijke overzicht, trends, grafieken, rapporten, LeefRitme-score en andere door jou gekozen functies te tonen. Mijn LeefRitme gebruikt gezondheidsgegevens niet voor advertenties, profilering voor reclame of verkoop aan derden.</p>
 
     <h3>4. Lokale opslag</h3>
-    <p>In de huidige versie worden ingevoerde gegevens en documenten hoofdzakelijk lokaal op jouw apparaat bewaard. LeefKracht verstuurt deze gegevens niet automatisch naar een arts, coach, adverteerder of andere derde partij.</p>
+    <p>In de huidige versie worden ingevoerde gegevens en documenten hoofdzakelijk lokaal op jouw apparaat bewaard. Mijn LeefRitme verstuurt deze gegevens niet automatisch naar een arts, coach, adverteerder of andere derde partij.</p>
 
     <h3>5. Apple Health en Health Connect</h3>
-    <p>LeefKracht vraagt alleen toegang tot gezondheidsgegevens die nodig zijn voor functies die jij gebruikt. Toestemming kun je via Apple Health of Android Health Connect intrekken. Gegevens uit deze bronnen kunnen vertraagd, onvolledig of afhankelijk van de bronapp zijn.</p>
+    <p>Mijn LeefRitme vraagt alleen toegang tot gezondheidsgegevens die nodig zijn voor functies die jij gebruikt. Toestemming kun je via Apple Health of Android Health Connect intrekken. Gegevens uit deze bronnen kunnen vertraagd, onvolledig of afhankelijk van de bronapp zijn.</p>
 
     <h3>6. Delen en exporteren</h3>
     <p>Een rapport, CSV, document of back-up wordt alleen gedeeld of geëxporteerd wanneer jij daarvoor zelf een actie uitvoert. Daarna ben jij verantwoordelijk voor de plek waar je het bestand bewaart en met wie je het deelt.</p>
 
     <h3>7. Back-ups en bewaartermijn</h3>
-    <p>Bij het maken van een back-up bewaart LeefKracht lokaal maximaal vijf veiligheidskopieën voor snel herstel. Oudere lokale veiligheidskopieën worden automatisch verwijderd. Externe JSON-back-ups die jij opslaat in Bestanden, iCloud Drive, Android-opslag of elders vallen buiten het beheer van LeefKracht en blijven bestaan totdat jij ze zelf verwijdert.</p>
+    <p>Bij het maken van een back-up bewaart Mijn LeefRitme lokaal maximaal vijf veiligheidskopieën voor snel herstel. Oudere lokale veiligheidskopieën worden automatisch verwijderd. Externe JSON-back-ups die jij opslaat in Bestanden, iCloud Drive, Android-opslag of elders vallen buiten het beheer van Mijn LeefRitme en blijven bestaan totdat jij ze zelf verwijdert.</p>
 
     <h3>8. Verwijderen van gegevens</h3>
-    <p>Je kunt metingen en documenten in de app verwijderen. Het verwijderen van de app of het wissen van app-/websiteopslag kan lokale LeefKracht-gegevens verwijderen. Maak daarom eerst een externe back-up als je gegevens wilt bewaren.</p>
+    <p>Je kunt metingen en documenten in de app verwijderen. Het verwijderen van de app of het wissen van app-/websiteopslag kan lokale Mijn LeefRitme-gegevens verwijderen. Maak daarom eerst een externe back-up als je gegevens wilt bewaren.</p>
 
     <h3>9. Beveiliging</h3>
-    <p>LeefKracht beperkt gegevensverwerking zoveel mogelijk tot het eigen apparaat en vraagt alleen noodzakelijke toegangsrechten. Geen enkel digitaal systeem kan echter absolute beveiliging garanderen. Bewaar externe back-ups op een locatie die je vertrouwt.</p>
+    <p>Mijn LeefRitme beperkt gegevensverwerking zoveel mogelijk tot het eigen apparaat en vraagt alleen noodzakelijke toegangsrechten. Geen enkel digitaal systeem kan echter absolute beveiliging garanderen. Bewaar externe back-ups op een locatie die je vertrouwt.</p>
 
     <h3>10. Kinderen</h3>
-    <p>LeefKracht is in de huidige versie niet specifiek ontworpen voor gebruik door kinderen en is niet bedoeld om zonder passende begeleiding gezondheidsbeslissingen voor minderjarigen te nemen.</p>
+    <p>Mijn LeefRitme is in de huidige versie niet specifiek ontworpen voor gebruik door kinderen en is niet bedoeld om zonder passende begeleiding gezondheidsbeslissingen voor minderjarigen te nemen.</p>
 
     <h3>11. Toekomstige cloud-, account- of coachfuncties</h3>
     <p>Wanneer in de toekomst cloudopslag, accounts, automatische deling met arts of coach, abonnementen of andere online functies worden toegevoegd, wordt deze privacyverklaring vooraf aangepast en worden waar nodig aanvullende toestemmingen gevraagd.</p>
 
     <h3>12. Wijzigingen</h3>
-    <p>Deze privacyverklaring kan worden aangepast wanneer functies, wetgeving of de manier waarop LeefKracht gegevens verwerkt veranderen. In de app wordt steeds de actuele versie vermeld.</p>
+    <p>Deze privacyverklaring kan worden aangepast wanneer functies, wetgeving of de manier waarop Mijn LeefRitme gegevens verwerkt veranderen. In de app wordt steeds de actuele versie vermeld.</p>
 
     <h3>13. Contact</h3>
     <p>Vóór publicatie in de App Store en Google Play wordt een openbaar privacy- en supportcontact toegevoegd.</p>
@@ -4692,7 +4763,7 @@ input:-webkit-autofill:active{
     <div class="healthLogo">♡</div>
     <div>
       <h3>Automatische gegevens</h3>
-      <p class="muted">LeefKracht is voorbereid op Apple Health en Android Health Connect.</p>
+      <p class="muted">Mijn LeefRitme is voorbereid op Apple Health en Android Health Connect.</p>
     </div>
   </div>
 
@@ -4708,7 +4779,7 @@ input:-webkit-autofill:active{
 
   <div class="card noticeCard">
     <h3>Waarom nog niet automatisch?</h3>
-    <p>Deze versie van LeefKracht is nog een web-app. Apple Health en Health Connect kunnen pas echt worden uitgelezen zodra we hiervan een native iPhone- en Android-app maken.</p>
+    <p>Deze versie van Mijn LeefRitme is nog een web-app. Apple Health en Health Connect kunnen pas echt worden uitgelezen zodra we hiervan een native iPhone- en Android-app maken.</p>
     <p class="muted">Handmatige invoer blijft altijd beschikbaar.</p>
   </div>
 </section>
@@ -5478,7 +5549,7 @@ async function lkRestoreLatestBackup(){
     return;
   }
   const latest=all[0];
-  const file=new File([latest.text],'leefkracht-backup-'+lkBackupStamp(new Date(latest.createdAt))+'.json',{type:'application/json'});
+  const file=new File([latest.text],'mijn-leefritme-backup-'+lkBackupStamp(new Date(latest.createdAt))+'.json',{type:'application/json'});
   await restoreBackup(file);
 }
 
@@ -5496,7 +5567,7 @@ async function lkBuildBackupPayload(){
     createdAt:d.createdAt||'',dataUrl:d.blob?await lkDocFileToDataUrl(d.blob):''
   })));
   return {
-    app:'LeefKracht',
+    app:'Mijn LeefRitme',
     backupFormat:3,
     version:LEEFKRACHT_VERSION,
     exportedAt:new Date().toISOString(),
@@ -5549,7 +5620,7 @@ async function makeBackup(){
   await lkStoreBackupSnapshot(text,payload.exportedAt);
   await lkRefreshBackupLastInfo();
 
-  const filename='leefkracht-backup-'+lkBackupStamp(new Date(payload.exportedAt))+'.json';
+  const filename='mijn-leefritme-backup-'+lkBackupStamp(new Date(payload.exportedAt))+'.json';
   const platform=(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')
     ? window.Capacitor.getPlatform()
     : 'web';
@@ -5576,10 +5647,10 @@ async function makeBackup(){
         }
         if(!uri) throw new Error('Geen bestands-URI ontvangen');
         await Share.share({
-          title:'LeefKracht back-up',
-          text:'Bewaar deze LeefKracht-back-up buiten de app.',
+          title:'Mijn LeefRitme back-up',
+          text:'Bewaar deze Mijn-LeefRitme-back-up buiten de app.',
           url:uri,
-          dialogTitle:'LeefKracht back-up opslaan'
+          dialogTitle:'Mijn LeefRitme back-up opslaan'
         });
         return;
       }
@@ -5607,8 +5678,8 @@ async function restoreBackup(file){
   let beforeText='';
   try{
     const txt=await file.text(), payload=JSON.parse(txt);
-    if(!payload || payload.app!=='LeefKracht' || !Array.isArray(payload.measurements))
-      throw new Error('Ongeldige LeefKracht-back-up');
+    if(!payload || !['Mijn LeefRitme','LeefKracht'].includes(payload.app) || !Array.isArray(payload.measurements))
+      throw new Error('Ongeldige Mijn-LeefRitme-back-up');
 
     const measurements=lkBackupNormalizeMeasurements(payload.measurements);
     const profile=lkBackupNormalizeProfile(payload.profile);
@@ -5641,7 +5712,7 @@ async function restoreBackup(file){
       Array.isArray(payload.documents)?restoredDocs.length+' document(en)':'documenten ongewijzigd'
     ].join(', ');
 
-    if(!confirm('Back-up '+version+' terugzetten?\n\n'+summary+'\n\nDe huidige LeefKracht-gegevens op dit toestel worden vervangen.'))
+    if(!confirm('Back-up '+version+' terugzetten?\n\n'+summary+'\n\nDe huidige Mijn LeefRitme-gegevens op dit toestel worden vervangen.'))
       return;
 
     /* Altijd eerst een volledige veiligheidskopie van de huidige toestand maken. */
@@ -5697,7 +5768,7 @@ async function restoreBackup(file){
     alert('Back-up volledig teruggezet: '+measurements.length+' meetdag(en).');
   }catch(e){
     window.__lkRestoringBackup=false;
-    console.error('LeefKracht restore',e);
+    console.error('Mijn LeefRitme restore',e);
     alert('Deze back-up kon niet volledig worden teruggezet. Gebruik zo nodig “Laatste terugzetten” om de veiligheidskopie van vóór deze poging te herstellen.');
   }
 }
@@ -5708,7 +5779,7 @@ if($('#restoreFile')) $('#restoreFile').onchange=e=>{const f=e.target.files&&e.t
 lkRefreshBackupLastInfo();
 
 $('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
-try{render()}catch(e){console.warn('LeefKracht start',e)}
+try{render()}catch(e){console.warn('Mijn LeefRitme start',e)}
 
 
 function lkEsc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
@@ -5831,7 +5902,7 @@ function makeHealthReport(){
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-  <title>LeefKracht gezondheidsrapport</title><style>
+  <title>Mijn LeefRitme gezondheidsrapport</title><style>
   *{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172a3a;margin:0;background:#eef3f7;line-height:1.4}
   .sheet{max-width:920px;margin:24px auto;background:white;padding:42px;border-radius:18px;box-shadow:0 8px 35px #0001}
   .cover{border-bottom:3px solid #e9447b;padding-bottom:22px;margin-bottom:24px}.logo{font-size:38px;font-weight:850;color:#0b3558}.pink{color:#e9447b}
@@ -5851,7 +5922,7 @@ function makeHealthReport(){
   <h2 class="section">Meetgegevens</h2>
   <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}${use.glucose?'<th>Suiker mmol/L</th>':''}</tr></thead>
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
-  <p class="foot">LeefKracht – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
+  <p class="foot">Mijn LeefRitme – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
   <button class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport();}else{window.print();}}catch(e){window.print();}})()">Afdrukken / bewaren als PDF</button>
   </main></body></html>`;
   window.__lkLastReportHtml=report;
@@ -5872,7 +5943,7 @@ async function lkNativePrintReport(){
       const Printer=plugins.CapgoCapacitorPrinter || plugins.Printer || plugins.CapacitorPrinter;
       if(Printer && typeof Printer.printHtml==='function'){
         await Printer.printHtml({
-          name:'LeefKracht gezondheidsrapport',
+          name:'Mijn LeefRitme gezondheidsrapport',
           html:html
         });
         return;
@@ -5899,7 +5970,7 @@ function exportHealthCsv(){
   });
   const blob=new Blob(["\ufeff"+lines.join('\n')],{type:'text/csv;charset=utf-8'});
   const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob); a.download='LeefKracht-rapport.csv';
+  a.href=URL.createObjectURL(blob); a.download='Mijn-LeefRitme-rapport.csv';
   document.body.appendChild(a); a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
 }
@@ -6273,7 +6344,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
         reg.waiting.postMessage({type:'SKIP_WAITING'});
       }
     }catch(e){
-      console.warn('LeefKracht updatecontrole niet beschikbaar', e);
+      console.warn('Mijn LeefRitme updatecontrole niet beschikbaar', e);
     }
   });
 
@@ -6382,7 +6453,7 @@ function draw(){
   var dw=diffMetric(a,"weight"), dwaist=diffMetric(a,"waist");
   var steps=cur.raw.steps;
   var headline="Je bouwt aan je overzicht.";
-  var body="Blijf meten; LeefKracht kan je ontwikkeling dan steeds beter samenvatten.";
+  var body="Blijf meten; Mijn LeefRitme kan je ontwikkeling dan steeds beter samenvatten.";
 
   if(dw!==null && dw<0 && steps!==null && steps>=8000){
     headline=withName("👍 Goed bezig");
@@ -6398,7 +6469,7 @@ function draw(){
     body="Je bloeddruk en rusthartslag liggen in een rustige zone. Dat is een fijne basis om vast te houden.";
   }else if(trend!==null && trend>0){
     headline=withName("👍 Je gaat de goede kant op");
-    body="Je LeefKracht-score is hoger dan in de vorige vergelijkingsperiode. Goed volhouden.";
+    body="Je LeefRitme-score is hoger dan in de vorige vergelijkingsperiode. Goed volhouden.";
   }else if(cur.total!==null && cur.total>=85){
     headline=withName("🌟 Heel goed bezig");
     body="Je totale ontwikkeling ziet er sterk uit. Houd vooral vast wat nu goed werkt.";
@@ -6429,7 +6500,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* LeefKracht 38.34 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.35 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
@@ -6535,7 +6606,7 @@ window.LeefKrachtHealth = (function(){
   async function connect(){
     const c=capability();
     if(!c.native){
-      return {ok:false,nativeRequired:true,message:'Open LeefKracht als geïnstalleerde app om gezondheidsgegevens te koppelen.'};
+      return {ok:false,nativeRequired:true,message:'Open Mijn LeefRitme als geïnstalleerde app om gezondheidsgegevens te koppelen.'};
     }
 
     if(c.platform==='android'){
@@ -6681,7 +6752,7 @@ window.LeefKrachtHealth = (function(){
     }
 
     /* Stappen: Health Connect levert een oplopend dagtotaal.
-       Vandaag moet LeefKracht dit dus ook kunnen bijwerken na een eerdere sync.
+       Vandaag moet Mijn LeefRitme dit dus ook kunnen bijwerken na een eerdere sync.
        Historische handmatige stappen worden niet overschreven. */
     (raw.steps||[]).forEach(s=>{
       const date=localDate(s.startDate||s.endDate);
@@ -6701,7 +6772,7 @@ window.LeefKrachtHealth = (function(){
     });
 
     /* Gewicht: bij meerdere samples op een dag wint de laatste Health-sample,
-       maar alleen als LeefKracht nog geen gewicht voor die dag heeft. */
+       maar alleen als Mijn LeefRitme nog geen gewicht voor die dag heeft. */
     const lastWeightByDay={};
     (raw.weight||[]).forEach(s=>{
       const date=localDate(s.startDate||s.endDate);
@@ -6958,10 +7029,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
   if(cap.platform==='android'){
     if(status)status.textContent=cap.canReadHealth?'Klaar om te verbinden':'Native app nodig voor koppeling';
-    if(note)note.textContent='Op Android gebruikt LeefKracht Health Connect. Ontbrekende waarden van de afgelopen 30 dagen worden automatisch aangevuld; handmatige metingen blijven altijd staan.';
+    if(note)note.textContent='Op Android gebruikt Mijn LeefRitme Health Connect. Ontbrekende waarden van de afgelopen 30 dagen worden automatisch aangevuld; handmatige metingen blijven altijd staan.';
   }else if(cap.platform==='ios'){
     if(status)status.textContent=cap.canReadHealth?'Klaar om te verbinden':'Native app nodig voor koppeling';
-    if(note)note.textContent='Op iPhone gebruikt LeefKracht Apple Health. Jij bepaalt welke gegevens LeefKracht mag lezen. Na toestemming worden nieuwe Health-waarden bij openen/synchroniseren bijgewerkt.';
+    if(note)note.textContent='Op iPhone gebruikt Mijn LeefRitme Apple Health. Jij bepaalt welke gegevens Mijn LeefRitme mag lezen. Na toestemming worden nieuwe Health-waarden bij openen/synchroniseren bijgewerkt.';
     if(cap.canReadHealth){
       window.LeefKrachtHealth.autoSync().then(function(auto){
         refreshLastSync();

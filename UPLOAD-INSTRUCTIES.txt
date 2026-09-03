@@ -1,0 +1,9 @@
+LEEFKRACHT 37.5 WEBVERSIE
+
+Upload naar GitHub:
+index.html
+fresh.html
+manifest.webmanifest
+sw.js
+icon-192.png
+icon-512.png

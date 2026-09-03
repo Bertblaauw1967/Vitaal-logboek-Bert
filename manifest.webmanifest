@@ -1,10 +1,10 @@
 {
-  "name": "LeefKracht",
-  "short_name": "LeefKracht",
+  "name": "Mijn LeefRitme",
+  "short_name": "LeefRitme",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#041525",
-  "theme_color": "#061827",
+  "background_color": "#08111d",
+  "theme_color": "#0a1522",
   "icons": [
     {
       "src": "icon-192.png",
