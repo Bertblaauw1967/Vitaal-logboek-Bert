@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b1510">
-<meta name="app-version" content="38.39">
+<meta name="theme-color" content="#08110d">
+<meta name="app-version" content="38.40">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.39";
+const LEEFKRACHT_VERSION = "38.40";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1115,7 +1115,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* v38.39 — detailpagina's strakker uitgelijnd */
+/* v38.40 — detailpagina's strakker uitgelijnd */
 .kvList{
   width:100%;
   display:grid;
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.39 — totale visuele finetune
+   Mijn LeefRitme 38.40 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.39 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.40 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.39 — commerciële polishronde
+   Mijn LeefRitme 38.40 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.39 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.40 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -4437,6 +4437,108 @@ button.primary,button.secondary{
 }
 </style>
 
+
+<style id="mijn-leefritme-3840-final-theme">
+/* 38.40 — oude LeefKracht-opzet, definitieve Mijn LeefRitme-kleurlaag */
+:root{
+ --bg:#08110d;--bg2:#0c140e;--card:#141d16;--card2:#0e1510;
+ --line:rgba(154,174,114,.38);--white:#f4f1e7;--muted:#b5bdab;
+ --blue:#9aae72;--green:#b4c887;--teal:#9db48a;--amber:#c8ba78;
+ --purple:#aab88b;--pink:#d99a62;--red:#d98e72;
+ --lkOlive:#9aae72;--lkOliveDark:#687a4f;--lkOliveBright:#b4c887;--lkOrange:#d99a62;
+ --lkPanel1:#141d16;--lkPanel2:#0e1510;--lkInk:#08110d;
+}
+html,body{background:#08110d!important;color:var(--white)!important}
+body{background:#08110d!important}
+.app{
+ background:#08110d!important;
+ box-shadow:none!important;
+}
+/* Header en logo: één egale donkere zone; geen sticker-/kaartgevoel */
+#overview .heroHeader{background:#08110d!important;padding-top:0!important}
+#overview .brandArtworkRow{
+ background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;
+}
+#overview .brandArtwork{
+ background:#08110d!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+ width:min(100%,460px)!important;
+}
+#overview.page.active::before{display:none!important}
+#overview .pulse{margin-top:12px!important}
+#overview .pulse:before,#overview .pulse:after,#overview .pulse i{background:var(--lkOrange)!important}
+/* Tegels: donker olijf/zwart, oude tweekolomsopzet behouden */
+.card,.panel,.summary,.historyItem,.settingsCard,.legalTextCard,.privacyPolicyCard,
+#overview .approvedGrid .tile,#overview .card,#more .aboutLeefKrachtCard,#more .releaseReadiness,#more .privacyRows>div,
+.docsIntro,.healthReadyCard,.setting{
+ background:linear-gradient(180deg,var(--lkPanel1),var(--lkPanel2))!important;
+ border-color:rgba(154,174,114,.34)!important;
+ box-shadow:0 10px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.018)!important;
+}
+#overview .approvedGrid .tile,
+.tileWeight,.tileBlood,.tileHeart,.tileWaist,.tileSteps,.tileGoal,.tileBmi,.tileMore,.tileScore,.tileInsight,.bodyMetricTile{
+ background:linear-gradient(180deg,#151f17,#0f1611)!important;
+ border:1px solid rgba(154,174,114,.40)!important;
+}
+/* Icoontjes rustig, groen; oranje alleen waar logisch */
+.icon,.tileIcon,.clock,.summary .icon,.metricIcon,.healthLogo{
+ background:#101812!important;border-color:rgba(154,174,114,.38)!important;color:var(--lkOliveBright)!important;
+ box-shadow:none!important;
+}
+.icon.pink{color:#d9a077!important;border-color:rgba(217,154,98,.38)!important}
+.icon.amber{color:#c9bd7d!important}
+.icon.purple,.icon.teal,.icon.blue,.icon.green,.bodyMeasureIcon,.insightIcon{color:var(--lkOliveBright)!important}
+/* Teksten */
+.label,.sectionTitle,.detailTop .eyebrow,.historyDate,.title,strong,.page h1,.page h2,.page h3,
+#overview .approvedGrid .label,#more .aboutRows span,#more .aboutRows strong,#more .privacyRows span,#more .privacyRows strong{color:var(--white)!important}
+.sub,.muted,.helper,.caption,.note,.meta,.legalDate,.privacyPolicyDate,.page p,.legalTextCard p,.privacyPolicyCard p,
+#more .releaseReadiness span,#more .backupSafetyNote{color:var(--muted)!important}
+.value,.tile .value,.approvedGrid .value,.summaryValue,.metricValue{color:var(--white)!important}
+.green,.greenProgress,.success,.ok,.statusGood{color:var(--lkOliveBright)!important}
+/* Knoppen overal dezelfde familie — ook persoonsgegevens/Mijn LeefRitme */
+.primary,.secondary,button.primary,button.secondary,.settingRow .primary,.heroNew,.newMeasure,
+button[data-page="new"].primary,.newMeasurementBtn,.actionBtn,.cta,.blueBtn,.btn,
+#more .aboutOpenBtn,#more .privacyPolicyBtn.lkMainAction,#more #restoreOtherBtn,#more #backupBtn,#more #restoreBtn,
+#more .lkMainAction,#more #documentsActionBtn.lkMainAction,#more #healthConnectBtn.lkMainAction,
+#saveProfileBtn,#profileSave,#healthConnectBtn,#reportBtn,#documentsActionBtn,.privacyPolicyBtn,.aboutOpenBtn{
+ background:linear-gradient(135deg,var(--lkOlive),var(--lkOliveDark))!important;
+ color:var(--lkInk)!important;
+ border:1px solid rgba(230,236,213,.14)!important;
+ box-shadow:0 8px 18px rgba(66,78,50,.24)!important;
+}
+.secondary.ghost,.outline,button.ghost{background:transparent!important;color:var(--white)!important;border:1px solid rgba(154,174,114,.36)!important;box-shadow:none!important}
+/* Persoonsgegevens en formulieren */
+input,select,textarea{
+ background:#0d1510!important;color:var(--white)!important;border:1px solid rgba(154,174,114,.30)!important;box-shadow:none!important;
+}
+input:focus,select:focus,textarea:focus{border-color:rgba(180,200,135,.68)!important;box-shadow:0 0 0 3px rgba(154,174,114,.11)!important;outline:none!important}
+input::placeholder,textarea::placeholder{color:#87927f!important}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active{
+ -webkit-text-fill-color:#f4f1e7!important;caret-color:#f4f1e7!important;
+ -webkit-box-shadow:0 0 0 1000px #0d1510 inset!important;box-shadow:0 0 0 1000px #0d1510 inset!important;
+ border-color:rgba(154,174,114,.38)!important;
+}
+/* Voortgang en grafiekaccenten */
+.progressTrack,.track,.rangeTrack,.barBg{background:rgba(154,174,114,.11)!important}
+.progressFill,.fill,.rangeFill,.barFill,.scoreBar>i{background:linear-gradient(90deg,var(--lkOrange),#b97848)!important}
+.chart{background:linear-gradient(180deg,#111914,#0c120e)!important;border-color:rgba(154,174,114,.22)!important}
+.scoreRing{background:conic-gradient(var(--lkOrange) 0deg,var(--lkOrange) var(--scoreDeg,0deg),rgba(255,255,255,.10) var(--scoreDeg,0deg))!important}
+.scoreRing:after{background:#0e1510!important}
+/* Kleine statusblokken */
+.badge,.statusPill,.scoreHint,.goalRemaining,.bmiStatus,.releaseReadiness{background:rgba(154,174,114,.10)!important;border-color:rgba(154,174,114,.22)!important;color:var(--white)!important}
+/* Navigatie */
+.bottom{background:rgba(7,13,9,.97)!important;border-top-color:rgba(154,174,114,.16)!important}
+.nav{color:#8f9c82!important}
+.nav.active{color:var(--lkOliveBright)!important}
+/* Kruisjes en sticky headers */
+.closeDetail,.closeFloating,.closeFab,.topClose,.pageClose{background:#101812!important;border-color:rgba(154,174,114,.38)!important;color:var(--white)!important}
+#termsPolicy .detailTop,#supportPage .detailTop,#privacyPolicy .detailTop,#more .detailTop{
+ background:linear-gradient(180deg,rgba(8,17,13,.99),rgba(8,17,13,.95))!important;
+}
+/* Oranje alleen als accent */
+.historyShortcut b{color:var(--lkOrange)!important}
+hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rgba(154,174,114,.16)!important}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -4449,7 +4551,7 @@ button.primary,button.secondary{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.39</div>
+<div class="v291Indicator">v38.40</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5002,7 +5104,7 @@ button.primary,button.secondary{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.39</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.40</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -5040,7 +5142,7 @@ button.primary,button.secondary{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.39 · bijgewerkt 3 september 2026</p>
+    <p class="legalDate">Versie 38.40 · bijgewerkt 3 september 2026</p>
     <h3>1. Doel van Mijn LeefRitme</h3>
     <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
@@ -5070,7 +5172,7 @@ button.primary,button.secondary{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.39</p>
+    <p class="legalDate">Mijn LeefRitme 38.40</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -5097,7 +5199,7 @@ button.primary,button.secondary{
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.39 · bijgewerkt 3 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.40 · bijgewerkt 3 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
     <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
@@ -6984,6 +7086,108 @@ button.primary,button.secondary{
 }
 </style>
 
+
+<style id="mijn-leefritme-3840-final-theme">
+/* 38.40 — oude LeefKracht-opzet, definitieve Mijn LeefRitme-kleurlaag */
+:root{
+ --bg:#08110d;--bg2:#0c140e;--card:#141d16;--card2:#0e1510;
+ --line:rgba(154,174,114,.38);--white:#f4f1e7;--muted:#b5bdab;
+ --blue:#9aae72;--green:#b4c887;--teal:#9db48a;--amber:#c8ba78;
+ --purple:#aab88b;--pink:#d99a62;--red:#d98e72;
+ --lkOlive:#9aae72;--lkOliveDark:#687a4f;--lkOliveBright:#b4c887;--lkOrange:#d99a62;
+ --lkPanel1:#141d16;--lkPanel2:#0e1510;--lkInk:#08110d;
+}
+html,body{background:#08110d!important;color:var(--white)!important}
+body{background:#08110d!important}
+.app{
+ background:#08110d!important;
+ box-shadow:none!important;
+}
+/* Header en logo: één egale donkere zone; geen sticker-/kaartgevoel */
+#overview .heroHeader{background:#08110d!important;padding-top:0!important}
+#overview .brandArtworkRow{
+ background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;
+}
+#overview .brandArtwork{
+ background:#08110d!important;border:0!important;box-shadow:none!important;border-radius:0!important;
+ width:min(100%,460px)!important;
+}
+#overview.page.active::before{display:none!important}
+#overview .pulse{margin-top:12px!important}
+#overview .pulse:before,#overview .pulse:after,#overview .pulse i{background:var(--lkOrange)!important}
+/* Tegels: donker olijf/zwart, oude tweekolomsopzet behouden */
+.card,.panel,.summary,.historyItem,.settingsCard,.legalTextCard,.privacyPolicyCard,
+#overview .approvedGrid .tile,#overview .card,#more .aboutLeefKrachtCard,#more .releaseReadiness,#more .privacyRows>div,
+.docsIntro,.healthReadyCard,.setting{
+ background:linear-gradient(180deg,var(--lkPanel1),var(--lkPanel2))!important;
+ border-color:rgba(154,174,114,.34)!important;
+ box-shadow:0 10px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.018)!important;
+}
+#overview .approvedGrid .tile,
+.tileWeight,.tileBlood,.tileHeart,.tileWaist,.tileSteps,.tileGoal,.tileBmi,.tileMore,.tileScore,.tileInsight,.bodyMetricTile{
+ background:linear-gradient(180deg,#151f17,#0f1611)!important;
+ border:1px solid rgba(154,174,114,.40)!important;
+}
+/* Icoontjes rustig, groen; oranje alleen waar logisch */
+.icon,.tileIcon,.clock,.summary .icon,.metricIcon,.healthLogo{
+ background:#101812!important;border-color:rgba(154,174,114,.38)!important;color:var(--lkOliveBright)!important;
+ box-shadow:none!important;
+}
+.icon.pink{color:#d9a077!important;border-color:rgba(217,154,98,.38)!important}
+.icon.amber{color:#c9bd7d!important}
+.icon.purple,.icon.teal,.icon.blue,.icon.green,.bodyMeasureIcon,.insightIcon{color:var(--lkOliveBright)!important}
+/* Teksten */
+.label,.sectionTitle,.detailTop .eyebrow,.historyDate,.title,strong,.page h1,.page h2,.page h3,
+#overview .approvedGrid .label,#more .aboutRows span,#more .aboutRows strong,#more .privacyRows span,#more .privacyRows strong{color:var(--white)!important}
+.sub,.muted,.helper,.caption,.note,.meta,.legalDate,.privacyPolicyDate,.page p,.legalTextCard p,.privacyPolicyCard p,
+#more .releaseReadiness span,#more .backupSafetyNote{color:var(--muted)!important}
+.value,.tile .value,.approvedGrid .value,.summaryValue,.metricValue{color:var(--white)!important}
+.green,.greenProgress,.success,.ok,.statusGood{color:var(--lkOliveBright)!important}
+/* Knoppen overal dezelfde familie — ook persoonsgegevens/Mijn LeefRitme */
+.primary,.secondary,button.primary,button.secondary,.settingRow .primary,.heroNew,.newMeasure,
+button[data-page="new"].primary,.newMeasurementBtn,.actionBtn,.cta,.blueBtn,.btn,
+#more .aboutOpenBtn,#more .privacyPolicyBtn.lkMainAction,#more #restoreOtherBtn,#more #backupBtn,#more #restoreBtn,
+#more .lkMainAction,#more #documentsActionBtn.lkMainAction,#more #healthConnectBtn.lkMainAction,
+#saveProfileBtn,#profileSave,#healthConnectBtn,#reportBtn,#documentsActionBtn,.privacyPolicyBtn,.aboutOpenBtn{
+ background:linear-gradient(135deg,var(--lkOlive),var(--lkOliveDark))!important;
+ color:var(--lkInk)!important;
+ border:1px solid rgba(230,236,213,.14)!important;
+ box-shadow:0 8px 18px rgba(66,78,50,.24)!important;
+}
+.secondary.ghost,.outline,button.ghost{background:transparent!important;color:var(--white)!important;border:1px solid rgba(154,174,114,.36)!important;box-shadow:none!important}
+/* Persoonsgegevens en formulieren */
+input,select,textarea{
+ background:#0d1510!important;color:var(--white)!important;border:1px solid rgba(154,174,114,.30)!important;box-shadow:none!important;
+}
+input:focus,select:focus,textarea:focus{border-color:rgba(180,200,135,.68)!important;box-shadow:0 0 0 3px rgba(154,174,114,.11)!important;outline:none!important}
+input::placeholder,textarea::placeholder{color:#87927f!important}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,input:-webkit-autofill:active{
+ -webkit-text-fill-color:#f4f1e7!important;caret-color:#f4f1e7!important;
+ -webkit-box-shadow:0 0 0 1000px #0d1510 inset!important;box-shadow:0 0 0 1000px #0d1510 inset!important;
+ border-color:rgba(154,174,114,.38)!important;
+}
+/* Voortgang en grafiekaccenten */
+.progressTrack,.track,.rangeTrack,.barBg{background:rgba(154,174,114,.11)!important}
+.progressFill,.fill,.rangeFill,.barFill,.scoreBar>i{background:linear-gradient(90deg,var(--lkOrange),#b97848)!important}
+.chart{background:linear-gradient(180deg,#111914,#0c120e)!important;border-color:rgba(154,174,114,.22)!important}
+.scoreRing{background:conic-gradient(var(--lkOrange) 0deg,var(--lkOrange) var(--scoreDeg,0deg),rgba(255,255,255,.10) var(--scoreDeg,0deg))!important}
+.scoreRing:after{background:#0e1510!important}
+/* Kleine statusblokken */
+.badge,.statusPill,.scoreHint,.goalRemaining,.bmiStatus,.releaseReadiness{background:rgba(154,174,114,.10)!important;border-color:rgba(154,174,114,.22)!important;color:var(--white)!important}
+/* Navigatie */
+.bottom{background:rgba(7,13,9,.97)!important;border-top-color:rgba(154,174,114,.16)!important}
+.nav{color:#8f9c82!important}
+.nav.active{color:var(--lkOliveBright)!important}
+/* Kruisjes en sticky headers */
+.closeDetail,.closeFloating,.closeFab,.topClose,.pageClose{background:#101812!important;border-color:rgba(154,174,114,.38)!important;color:var(--white)!important}
+#termsPolicy .detailTop,#supportPage .detailTop,#privacyPolicy .detailTop,#more .detailTop{
+ background:linear-gradient(180deg,rgba(8,17,13,.99),rgba(8,17,13,.95))!important;
+}
+/* Oranje alleen als accent */
+.historyShortcut b{color:var(--lkOrange)!important}
+hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rgba(154,174,114,.16)!important}
+</style>
+
 </head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
@@ -7570,7 +7774,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.39 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.40 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
