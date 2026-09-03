@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.42">
+<meta name="app-version" content="38.43">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.42";
+const LEEFKRACHT_VERSION = "38.43";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.42 — totale visuele finetune
+   Mijn LeefRitme 38.43 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.42 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.43 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.42 — commerciële polishronde
+   Mijn LeefRitme 38.43 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.42 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.43 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -4788,6 +4788,93 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   text-rendering:optimizeLegibility;
 }
 </style>
+<style id="mijn-leefritme-3843-text-unify">
+/* 38.43 — tekstkleuren verder gelijkgetrokken */
+#more .settingsCard p,
+#more .settingsCard label,
+#more .settingsCard span,
+#more .settingsCard li,
+#more .settingsCard .docsPrivacy,
+#more .settingsCard .docMeta,
+#more .settingsCard .docsEmpty,
+#more .settingsCard .profileEmailNote,
+#more .settingsCard .profileReadNote,
+#more .settingsCard .healthReadyNote,
+#more .settingsCard #backupLastInfo,
+#health .card p,
+#health .card span,
+#documents .card p,
+#documents .card label,
+#documents .card span,
+#report .card p,
+#report .card label,
+#support p,
+#support li,
+#support .muted,
+#privacyPolicy p,
+#privacyPolicy li,
+#privacyPolicy .muted,
+#terms p,
+#terms li,
+#terms .muted{
+  color:#d7dfcc !important;
+}
+#more .settingsCard small,
+#more .settingsCard .muted,
+#health .card .muted,
+#documents .card .muted,
+#report .card .muted,
+#report .card .smallNote,
+#support small,
+#privacyPolicy small,
+#terms small{
+  color:#bcc5b2 !important;
+}
+#more .settingsCard h3,
+#more .settingsCard strong,
+#more .settingsCard .profileFieldLabel,
+#more .settingsCard .docTitle,
+#more .settingsCard .healthReadyHead strong,
+#more .healthSyncRows > div strong,
+#more .healthAutoSyncLine strong,
+#more .privacyRows > div strong,
+#more .aboutRows > div strong,
+#documents .card h3,
+#documents .card strong,
+#health .card h3,
+#health .card strong,
+#report .sectionTitle,
+#report h3,
+#report strong,
+#support h1,
+#support h2,
+#support strong,
+#privacyPolicy h1,
+#privacyPolicy h2,
+#privacyPolicy strong,
+#terms h1,
+#terms h2,
+#terms strong{
+  color:#f4f1e7 !important;
+}
+#more .settingsCard input,
+#more .settingsCard select,
+#more .settingsCard textarea,
+#documents .card input,
+#documents .card select,
+#documents .card textarea,
+#report .card input,
+#report .card select,
+#report .card textarea{
+  color:#f4f1e7 !important;
+  -webkit-text-fill-color:#f4f1e7 !important;
+}
+#report .checkGrid label,
+#report .checkGrid label span,
+#report .checkGrid label strong{
+  color:#f4f1e7 !important;
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -4800,7 +4887,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.42</div>
+<div class="v291Indicator">v38.43</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5353,7 +5440,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.42</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.43</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -5391,7 +5478,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.42 · bijgewerkt 3 september 2026</p>
+    <p class="legalDate">Versie 38.43 · bijgewerkt 3 september 2026</p>
     <h3>1. Doel van Mijn LeefRitme</h3>
     <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
@@ -5421,7 +5508,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.42</p>
+    <p class="legalDate">Mijn LeefRitme 38.43</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -5448,7 +5535,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.42 · bijgewerkt 3 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.43 · bijgewerkt 3 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
     <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
@@ -6694,6 +6781,21 @@ function makeHealthReport(){
   .foot{margin-top:26px;padding-top:14px;border-top:1px solid #dfe6ec;color:#788997;font-size:10px}.printBtn{margin-top:20px;padding:12px 18px;border:0;border-radius:10px;background:#0b5f9e;color:white;font-weight:700}.closePdf{position:fixed;right:18px;top:18px;width:50px;height:50px;touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:50%;border:1px solid #9fb5c6;background:#0b3558;color:white;font-size:28px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 16px #0002;z-index:99}
   @media print{body{background:white}.sheet{margin:0;max-width:none;padding:10mm;box-shadow:none;border-radius:0}.noPrint{display:none}.chartBox{break-inside:avoid}}
   @media(max-width:700px){.sheet{margin:0;padding:20px;border-radius:0}.grid{grid-template-columns:1fr 1fr}.chartHead{font-size:12px}}
+.reportReadableFix{display:none}
+body{color:#1c241c!important;background:#eef0e8!important}
+.sheet{background:#ffffff!important}
+.cover{border-bottom:3px solid #9aae72!important}
+.logo{color:#1e2a1f!important}
+.pink{color:#7e8763!important}
+.cover h2,.meta,h2.section,.chartHead,.chartHead b,.foot,th,td,table,.glucoseTag{color:#243126!important}
+.kpi{background:#f8f8f3!important;border-color:#d8dfd0!important}
+.kpi b,.kpi small{color:#51604d!important}
+.kpi strong{color:#111111!important}
+.chartBox{border-color:#d8dfd0!important;background:#fff!important}
+th{background:#f0f3ec!important}
+td{color:#111111!important;font-weight:500!important}
+.printBtn{background:#9aae72!important;color:#10140f!important}
+.closePdf{background:#9aae72!important;color:#10140f!important;border-color:#b9c59c!important}
   
 /* 38.36 — Volledige kleurharmonie op basis van Mijn LeefRitme-logo */
 :root{
@@ -7686,8 +7788,95 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   text-rendering:optimizeLegibility;
 }
 </style>
+<style id="mijn-leefritme-3843-text-unify">
+/* 38.43 — tekstkleuren verder gelijkgetrokken */
+#more .settingsCard p,
+#more .settingsCard label,
+#more .settingsCard span,
+#more .settingsCard li,
+#more .settingsCard .docsPrivacy,
+#more .settingsCard .docMeta,
+#more .settingsCard .docsEmpty,
+#more .settingsCard .profileEmailNote,
+#more .settingsCard .profileReadNote,
+#more .settingsCard .healthReadyNote,
+#more .settingsCard #backupLastInfo,
+#health .card p,
+#health .card span,
+#documents .card p,
+#documents .card label,
+#documents .card span,
+#report .card p,
+#report .card label,
+#support p,
+#support li,
+#support .muted,
+#privacyPolicy p,
+#privacyPolicy li,
+#privacyPolicy .muted,
+#terms p,
+#terms li,
+#terms .muted{
+  color:#d7dfcc !important;
+}
+#more .settingsCard small,
+#more .settingsCard .muted,
+#health .card .muted,
+#documents .card .muted,
+#report .card .muted,
+#report .card .smallNote,
+#support small,
+#privacyPolicy small,
+#terms small{
+  color:#bcc5b2 !important;
+}
+#more .settingsCard h3,
+#more .settingsCard strong,
+#more .settingsCard .profileFieldLabel,
+#more .settingsCard .docTitle,
+#more .settingsCard .healthReadyHead strong,
+#more .healthSyncRows > div strong,
+#more .healthAutoSyncLine strong,
+#more .privacyRows > div strong,
+#more .aboutRows > div strong,
+#documents .card h3,
+#documents .card strong,
+#health .card h3,
+#health .card strong,
+#report .sectionTitle,
+#report h3,
+#report strong,
+#support h1,
+#support h2,
+#support strong,
+#privacyPolicy h1,
+#privacyPolicy h2,
+#privacyPolicy strong,
+#terms h1,
+#terms h2,
+#terms strong{
+  color:#f4f1e7 !important;
+}
+#more .settingsCard input,
+#more .settingsCard select,
+#more .settingsCard textarea,
+#documents .card input,
+#documents .card select,
+#documents .card textarea,
+#report .card input,
+#report .card select,
+#report .card textarea{
+  color:#f4f1e7 !important;
+  -webkit-text-fill-color:#f4f1e7 !important;
+}
+#report .checkGrid label,
+#report .checkGrid label span,
+#report .checkGrid label strong{
+  color:#f4f1e7 !important;
+}
+</style>
 </head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
-  <div class="cover"><div class="logo">Leef<span class="pink">Kracht</span></div><h2>Gezondheidsrapport</h2>
+  <div class="cover"><div class="logo">Mijn LeefRitme</div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
   ${charts?'<h2 class="section">Voortgang</h2>'+charts:''}
@@ -8272,7 +8461,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.42 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.43 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
