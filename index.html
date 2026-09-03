@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#061827">
-<meta name="app-version" content="38.24">
+<meta name="app-version" content="38.25">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LeefKracht">
@@ -253,7 +253,7 @@ button[data-page="new"].primary:active,
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.24";
+const LEEFKRACHT_VERSION = "38.25";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -3701,6 +3701,52 @@ input:-webkit-autofill:active{
   transition:background-color 9999s ease-out 0s;
 }
 </style>
+
+<style id="backup-button-fix-3824a">
+/* 38.24a — back-upknoppen gelijk trekken en tekst exact centreren */
+#more #backupBtn,
+#more #restoreBtn,
+#more #restoreOtherBtn{
+  background:linear-gradient(135deg,#2c6fdd,#4b8cff) !important;
+  color:#ffffff !important;
+  border:0 !important;
+  border-radius:14px !important;
+  font-weight:800 !important;
+  box-shadow:0 10px 24px rgba(53,111,203,.18) !important;
+}
+
+#more #backupBtn,
+#more #restoreBtn{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  padding:0 12px !important;
+  min-height:72px !important;
+  height:72px !important;
+  line-height:1.15 !important;
+}
+
+#more #restoreBtn{
+  white-space:normal !important;
+}
+
+#more #restoreOtherBtn{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+  min-height:54px !important;
+  height:54px !important;
+  padding:0 16px !important;
+  margin-top:10px !important;
+}
+
+#more #backupLastInfo{
+  margin-top:12px !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -3717,7 +3763,7 @@ input:-webkit-autofill:active{
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.24</div>
+<div class="v291Indicator">v38.25</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -4268,7 +4314,7 @@ input:-webkit-autofill:active{
     <div class="label">Over LeefKracht</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.24</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.25</strong></div>
       <div><span>Ontwikkelaar</span><strong>LeefKracht</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong class="aboutSoon">Binnenkort</strong></div>
@@ -4300,7 +4346,7 @@ input:-webkit-autofill:active{
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.24 · bijgewerkt 2 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.25 · bijgewerkt 3 september 2026</p>
     <p>LeefKracht helpt je om persoonlijke gezondheidsgegevens op één plek te volgen. In de huidige versie worden je ingevoerde gegevens en opgeslagen documenten lokaal op jouw apparaat bewaard.</p>
 
     <h3>Welke gegevens gebruikt LeefKracht?</h3>
