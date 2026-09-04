@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.81">
+<meta name="app-version" content="38.82">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.81";
+const LEEFKRACHT_VERSION = "38.82";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6506,6 +6506,76 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
   letter-spacing:.05em!important;text-transform:uppercase!important;
 }
 </style>
+
+
+<style id="mijn-leefritme-3882-documenten-knoppen-polish">
+/* 38.82 — documentenpagina: Bestand kiezen netjes onder elkaar en tegelkleuren gelijkgetrokken */
+#documents .docsActions{
+  gap:12px !important;
+}
+#documents .docsActionBtn{
+  min-height:108px !important;
+  padding:16px 14px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:12px !important;
+  border-radius:20px !important;
+  border:1px solid rgba(230,236,213,.14) !important;
+  background:linear-gradient(135deg,#a9bb76,#7f9359) !important;
+  color:#0a120d !important;
+  box-shadow:0 8px 18px rgba(66,78,50,.24) !important;
+}
+#documents .docsActionIcon{
+  font-size:28px !important;
+  line-height:1 !important;
+  flex:0 0 auto !important;
+}
+#documents .docsActionText{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+  gap:2px !important;
+  font-weight:800 !important;
+  font-size:24px !important;
+  line-height:1.04 !important;
+  text-align:left !important;
+}
+#documents .docsActionText span{
+  display:block !important;
+}
+#documents .docsQrBtn{
+  min-height:72px !important;
+  border-radius:20px !important;
+  border:1px solid rgba(230,236,213,.12) !important;
+  background:linear-gradient(135deg,#8e9f63,#6b7c49) !important;
+  color:#101812 !important;
+  box-shadow:0 8px 18px rgba(66,78,50,.20) !important;
+}
+#documents .docsIntro,
+#documents .docsForm,
+#documents .docItem,
+#documents .docsEmpty{
+  background:linear-gradient(180deg,#141d16,#0e1510) !important;
+  border:1px solid rgba(154,174,114,.18) !important;
+}
+#documents .docsPrivacy,
+#documents .docsEmpty,
+#documents .docMeta,
+#documents .muted{
+  color:#d2dac7 !important;
+}
+@media(max-width:390px){
+  #documents .docsActionBtn{
+    min-height:92px !important;
+  }
+  #documents .docsActionText{
+    font-size:21px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6986,7 +7056,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.81</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.82</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7116,7 +7186,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.81</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.82</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7184,7 +7254,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.81</p>
+    <p class="legalDate">Mijn LeefRitme 38.82</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7264,10 +7334,10 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <strong>Medische documenten bewaren</strong>
     <p class="muted">Voeg een foto of bestand toe, bijvoorbeeld een bloeduitslag van huisarts of ziekenhuis.</p>
     <div class="docsActions">
-      <button type="button" class="primary" id="docPhotoBtn">📷 Foto maken</button>
-      <button type="button" class="primary" id="docFileBtn">📎 Bestand kiezen</button>
+      <button type="button" class="primary docsActionBtn" id="docPhotoBtn"><span class="docsActionIcon">📷</span><span class="docsActionText"><span>Foto</span><span>maken</span></span></button>
+      <button type="button" class="primary docsActionBtn" id="docFileBtn"><span class="docsActionIcon">📎</span><span class="docsActionText"><span>Bestand</span><span>kiezen</span></span></button>
     </div>
-    <button type="button" class="secondary wideBtn docsSoon" id="docQrBtn" style="margin-top:10px">▦ QR-code scannen · binnenkort</button>
+    <button type="button" class="secondary wideBtn docsSoon docsQrBtn" id="docQrBtn" style="margin-top:10px">▦ QR-code scannen · binnenkort</button>
     <input id="docPhotoInput" type="file" accept="image/*" capture="environment" style="display:none">
     <input id="docFileInput" type="file" accept="image/*,application/pdf,.pdf" style="display:none">
     <p class="docsPrivacy">Documenten worden lokaal op dit apparaat bewaard en niet automatisch gedeeld.</p>
