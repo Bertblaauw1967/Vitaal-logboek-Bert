@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.51">
+<meta name="app-version" content="38.52">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.51";
+const LEEFKRACHT_VERSION = "38.52";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5381,6 +5381,20 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+<style>
+/* 38.52 — versienummer subtiel onderaan Mijn LeefRitme-menu */
+#more .moreVersionFooter{
+  margin:24px 0 6px;
+  text-align:center;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.01em;
+  color:rgba(180,200,135,.58);
+}
+#more.moreSubOpen .moreVersionFooter{display:none!important;}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5393,7 +5407,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.51</div>
+
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5856,6 +5870,8 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.52</div>
+
   <div class="moreGroupLabel">Persoonlijk</div>
 
   <div class="card settingsCard moreDetailSection" data-more-detail="profile">
@@ -5984,7 +6000,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.51</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.52</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6052,7 +6068,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.51</p>
+    <p class="legalDate">Mijn LeefRitme 38.52</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
