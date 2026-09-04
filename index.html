@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.76">
+<meta name="app-version" content="38.77">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.76";
+const LEEFKRACHT_VERSION = "38.77";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6973,7 +6973,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.76</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.77</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7103,7 +7103,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.76</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.77</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7171,7 +7171,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.76</p>
+    <p class="legalDate">Mijn LeefRitme 38.77</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7496,7 +7496,7 @@ function renderHistory(data){
    host.innerHTML='<div class="historyEmptyHint">Geen meting gevonden op deze datum.</div>';
    return;
  }
- host.innerHTML='<div class="historyList">'+filtered.map((e)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-date="${e.date}">Wijzig</button><button class="delete" data-date="${e.date}">Verwijder</button></div></div><div class="historyData"> <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
+ host.innerHTML='<div class="historyList">'+filtered.map((e)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-date="${e.date}">Wijzig</button><button class="delete" data-date="${e.date}">Verwijder</button></div></div><div class="historyData"> <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Heup</span><b>${e.hip?e.hip+' cm':'—'}</b></div><div class="hmini"><span>Borst</span><b>${e.chest?e.chest+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
  $$('.editMeasurement').forEach(b=>b.onclick=()=>{const row=sorted(load()).find(x=>x.date===b.dataset.date); if(row)lkBeginMeasurementEdit(row)});
  $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load()); const idx=s.findIndex(x=>x.date===b.dataset.date); if(idx>-1){s.splice(idx,1); save(s); render();}})
 }
@@ -7506,7 +7506,7 @@ function render(){
         bp=ordered.find(e=>n(e.sys)!==null&&n(e.dia)!==null),
         heart=lastWith(data,'heart');
 
-  lkSafeText('latestDate',latest?fdate(latest.date):'Nog geen meting');
+  lkSafeText('latestDate',w?fdate(w.date):'Nog geen gewicht');
 
   if(w){
     const ww=n(w.weight), bmi=lkBmiFromWeight(ww), loss=START-ww;
@@ -8367,7 +8367,7 @@ if($('#restoreOtherBtn')) $('#restoreOtherBtn').onclick=()=>$('#restoreFile')?.c
 if($('#restoreFile')) $('#restoreFile').onchange=e=>{const f=e.target.files&&e.target.files[0];if(f)restoreBackup(f);e.target.value='';};
 lkRefreshBackupLastInfo();
 
-$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm'],...load().map(e=>[e.date,e.weight,e.waist||'',e.steps,e.sys,e.dia,e.heart||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='vitaal-logboek.csv';a.click()};
+$('#exportBtn').onclick=()=>{const rows=[['datum','gewicht_kg','buikomtrek_cm','heupomtrek_cm','borstomtrek_cm','stappen','systolisch','diastolisch','hartslag_bpm','bloedsuiker_mmol_l','bloedsuiker_moment','bloedsuiker_tijd'],...sorted(load()).reverse().map(e=>[e.date,e.weight||'',e.waist||'',e.hip||'',e.chest||'',e.steps||'',e.sys||'',e.dia||'',e.heart||'',e.glucose||'',e.glucoseContext||'',e.glucoseTime||''])];const csv='\ufeff'+rows.map(r=>r.join(';')).join('\n');const blob=new Blob([csv],{type:'text/csv'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='mijn-leefritme-metingen.csv';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
 try{render()}catch(e){console.warn('Mijn LeefRitme start',e)}
 
 
@@ -10237,7 +10237,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
 <script>
 (function(){
-function N(v){var n=Number(String(v==null?"":v).replace(",","."));return Number.isFinite(n)?n:null}
+function N(v){if(v===null||v===undefined||String(v).trim()==="")return null;var n=Number(String(v).replace(",","."));return Number.isFinite(n)?n:null}
 function clamp(n){return Math.max(0,Math.min(100,Math.round(n)))}
 function valAtOrBefore(a,k,end){
   if(!Array.isArray(a))return null;
@@ -10261,17 +10261,30 @@ function avgSteps(a,end){
   for(var i=start;i<=end;i++){var s=N(a[i]&&a[i].steps);if(s!==null)vals.push(s)}
   return vals.length?vals.reduce(function(x,y){return x+y},0)/vals.length:null
 }
+function bpAtOrBefore(a,end){
+  if(!Array.isArray(a))return null;
+  for(var i=Math.min(end,a.length-1);i>=0;i--){
+    var e=a[i]||{};
+    var sy=N(e.sys!==undefined&&e.sys!==''?e.sys:e.systolic);
+    var di=N(e.dia!==undefined&&e.dia!==''?e.dia:e.diastolic);
+    if(sy!==null&&di!==null)return {sys:sy,dia:di};
+  }
+  return null;
+}
 function scoreAt(a,end){
   if(!Array.isArray(a)||!a.length||end<0)return {total:null,parts:{}};
-  var w=valAtOrBefore(a,"weight",end),
-      sy=valAtOrBefore(a,"systolic",end),
-      di=valAtOrBefore(a,"diastolic",end),
+  var bpPair=bpAtOrBefore(a,end),
+      w=valAtOrBefore(a,"weight",end),
+      sy=bpPair?bpPair.sys:null,
+      di=bpPair?bpPair.dia:null,
       hr=restingHeartAtOrBefore(a,end),
       wa=valAtOrBefore(a,"waist",end),
       steps=avgSteps(a,end);
   var sw=w===null?null:clamp(100-Math.abs(w-85)*3);
-  var sb=(sy===null||di===null)?null:(sy<120&&di<80?100:sy<130&&di<85?90:sy<140&&di<90?75:sy<160&&di<100?55:35);
-  var sh=hr===null?null:(hr>=55&&hr<=75?100:hr>=50&&hr<=85?85:hr>=45&&hr<=95?70:50);
+  /* Zelfde bloeddrukgrenzen als het dashboard: onder 140/90 = normaal. */
+  var sb=(sy===null||di===null)?null:(sy<140&&di<90?100:sy<160&&di<100?60:sy<180&&di<110?40:20);
+  /* Zelfde normale rusthartslagzone als de dashboardstatus. */
+  var sh=hr===null?null:(hr>=50&&hr<=100?100:hr>=45&&hr<=110?70:40);
   var sc=wa===null?null:clamp(100-Math.max(0,wa-90)*2);
   var ss=steps===null?null:clamp(steps/8000*100);
   var arr=[sw,sb,sh,sc,ss].filter(function(v){return v!==null});
@@ -10304,6 +10317,8 @@ function draw(){
   var d={};try{d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"{}")||{}}catch(e){}
   var a=Array.isArray(d)?d:(d.measurements||d.entries||d.items||[]);
   if(!Array.isArray(a))a=[];
+  /* Score altijd chronologisch berekenen, onafhankelijk van invoer- of syncvolgorde. */
+  a=a.filter(function(x){return x&&x.date}).slice().sort(function(x,y){return String(x.date).localeCompare(String(y.date))});
 
   var cur=scoreAt(a,a.length-1);
   var prevIndex=a.length>7?a.length-8:(a.length>1?a.length-2:-1);
