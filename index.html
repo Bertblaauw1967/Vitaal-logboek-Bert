@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.59">
+<meta name="app-version" content="38.60">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.59";
+const LEEFKRACHT_VERSION = "38.60";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5710,6 +5710,114 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3860-scorekop-en-uitlijning">
+/* 38.60 — koptekst LeefRitme-score terug en dashboard opnieuw uitgelijnd */
+
+/* Oude tijdelijke verschuiving terugdraaien zodat de kop weer zichtbaar is */
+#overview .tileScore .label{
+  transform:none !important;
+  position:static !important;
+  top:auto !important;
+  left:auto !important;
+  margin:0 !important;
+}
+
+/* Tegelkoppen en subtitels overal in hetzelfde ritme */
+#overview .approvedGrid .label{
+  display:block !important;
+  width:100% !important;
+  min-height:2.35em !important;
+  line-height:1.16 !important;
+  letter-spacing:.016em !important;
+  margin:0 !important;
+}
+#overview .approvedGrid .sub{
+  display:block !important;
+  width:100% !important;
+  line-height:1.28 !important;
+}
+
+/* Score tegel weer met zichtbare kop en gelijke bovenruimte */
+#overview .tileScore .label::after{
+  content:"Totale ontwikkeling";
+  display:block;
+  visibility:hidden;
+  font-size:10px;
+  line-height:1.28;
+  margin-top:2px;
+}
+#overview .tileScore .value{
+  margin-top:30px !important;
+}
+#overview .tileScore #scoreTileSub{
+  margin-top:10px !important;
+  line-height:1.28 !important;
+}
+
+/* Bloeddruk en hartslag exact gelijk */
+#overview .tileBlood .tileBody,
+#overview .tileHeart .tileBody,
+#overview .tileSteps .tileBody,
+#overview .tileScore .tileBody{
+  padding-top:2px !important;
+  padding-right:0 !important;
+}
+#overview .tileBlood .value,
+#overview .tileHeart .value,
+#overview .tileSteps .value,
+#overview .tileScore .value{
+  width:100% !important;
+  font-size:27px !important;
+  margin:30px 0 10px !important;
+  line-height:1.03 !important;
+  letter-spacing:0 !important;
+  font-variant-numeric:tabular-nums !important;
+}
+#overview .tileBlood #bpDate,
+#overview .tileHeart #heartDate{
+  width:100% !important;
+  margin-top:auto !important;
+  padding-top:10px !important;
+}
+#overview #bpBadge .badge,
+#overview #heartBadge .badge{
+  min-height:34px !important;
+  padding:0 16px !important;
+  font-size:10.5px !important;
+  line-height:1 !important;
+}
+
+/* Lichaamsmaten iets rustiger en netter gescheiden */
+#overview .bodyMetricTile .bodyMeasurementsRows{
+  width:100% !important;
+  margin-top:16px !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows > div{
+  grid-template-columns:minmax(0,1fr) auto !important;
+  column-gap:12px !important;
+  padding:6px 0 !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows span{
+  padding-right:6px !important;
+}
+
+/* Extra algemene dashboard-uitlijning */
+#overview .approvedGrid .tile{
+  align-items:start !important;
+}
+#overview .approvedGrid .tileBody{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  width:100% !important;
+  min-width:0 !important;
+  height:100% !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6190,7 +6298,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.59</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.60</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6320,7 +6428,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.59</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.60</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6388,7 +6496,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.59</p>
+    <p class="legalDate">Mijn LeefRitme 38.60</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
