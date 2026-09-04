@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.53">
+<meta name="app-version" content="38.54">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -68,6 +68,7 @@ input:focus{border-color:var(--blue)}
 .settings{display:grid;gap:14px}.setting{padding:17px}.settingRow{display:grid;grid-template-columns:1fr auto;gap:10px}.settingRow .primary{width:auto;padding:0 16px}
 .historyList{display:grid;gap:10px}.historyItem{padding:15px}.historyTop{display:flex;justify-content:space-between;gap:10px;align-items:center}.historyDate{font-weight:800}.delete{border:0;background:transparent;color:#ff9cac}
 .historyData{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}.hmini{background:#08243e;border-radius:11px;padding:9px}.hmini span{display:block;color:#8faec7;font-size:10px}.hmini b{display:block;margin-top:3px;font-size:14px}
+.historyActions{display:flex;align-items:center;gap:10px}.editMeasurement,.delete{border:0;background:transparent;font-weight:700;padding:6px 2px}.editMeasurement{color:#F2F0E8}.delete{color:#ff9cac}.editModeNote{display:none;margin:0 0 12px;padding:10px 12px;border:1px solid rgba(217,176,140,.38);border-radius:12px;background:rgba(217,176,140,.08);color:#F2F0E8}.editModeNote.active{display:block}.measureSaveActions{display:flex;gap:10px}.measureSaveActions .primary,.measureSaveActions .secondary{flex:1}
 .empty{padding:35px;text-align:center;color:#91afc8}
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.secondary{border:0;border-radius:14px;padding:13px;background:#214d6e;color:#fff;font-weight:700}
 
@@ -328,7 +329,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.53";
+const LEEFKRACHT_VERSION = "38.54";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5397,7 +5398,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
 
 <style id="mijn-leefritme-3853-resultaten-wit">
-/* 38.53 — alle dynamische waarden en uitslagen op het dashboard wit.
+/* 38.54 — alle dynamische waarden en uitslagen op het dashboard wit.
    Semantische badge-achtergronden mogen kleur houden; de tekst zelf blijft wit. */
 #overview #latestWeight,
 #overview #loss,
@@ -5867,7 +5868,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="moreMenuRow" data-more-target="health">
       <span class="moreMenuIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2 4.8 13C2.1 10.3 2 6 4.7 3.8 7 1.9 10.1 2.7 12 5c1.9-2.3 5-3.1 7.3-1.2 2.7 2.2 2.6 6.5-.1 9.2L12 20.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
       <span class="moreMenuText"><strong>Gezondheidskoppeling</strong><small>Koppel met Apple Health of Health Connect.</small></span>
-      <span class="moreMenuPill">Koppel</span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
     </button>
     <button type="button" class="moreMenuRow" data-page="report">
       <span class="moreMenuIcon" aria-hidden="true">▤</span>
@@ -5896,7 +5897,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.53</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.54</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6026,7 +6027,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.53</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.54</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6094,7 +6095,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.53</p>
+    <p class="legalDate">Mijn LeefRitme 38.54</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -6277,6 +6278,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 <section id="new" class="page">
     <div class="card panel">
       <div class="detailTop"><h2 class="sectionTitle">Nieuwe meting</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
+      <div id="editModeNote" class="editModeNote">Je wijzigt deze meetdag. Lege velden worden bij opslaan ook echt leeggemaakt.</div>
       <form id="form" class="formgrid">
         <div class="full"><label>DATUM</label><input id="date" type="date" required></div>
 
@@ -6299,7 +6301,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
         <div class="full measureGroupTitle">Beweging</div>
         <div class="full"><label>STAPPEN</label><input id="stepsInput" type="number" inputmode="numeric"></div>
 
-        <div class="full"><button class="primary" type="submit">Meting opslaan</button></div>
+        <div class="full measureSaveActions"><button id="saveMeasurementBtn" class="primary" type="submit">Meting opslaan</button><button id="cancelEditBtn" class="secondary" type="button" style="display:none">Annuleren</button></div>
       </form>
       <div class="sub" style="margin-top:9px">Je hoeft niet alles tegelijk in te vullen.</div>
     </div>
@@ -6397,8 +6399,9 @@ function renderCharts(data){
 function renderHistory(data){
  const items=sorted(data),host=$('#historyList');
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
- host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><button class="delete" data-i="${i}">Verwijder</button></div><div class="historyData">
+ host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-i="${i}">Wijzig</button><button class="delete" data-i="${i}">Verwijder</button></div></div><div class="historyData">
  <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
+ $$('.editMeasurement').forEach(b=>b.onclick=()=>{const s=sorted(load()), row=s[+b.dataset.i]; if(row)lkBeginMeasurementEdit(row)});
  $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
 }
 function render(){
@@ -6755,7 +6758,42 @@ function lkRenderBodyChart(data){
 }
 
 
-$('#form').onsubmit=e=>{e.preventDefault();const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};const d=load();let existing=d.find(x=>x.date===entry.date);if(existing){Object.keys(entry).forEach(k=>{if(k==='date'||(entry[k]!==''&&entry[k]!=null))existing[k]=entry[k];});}else{d.push(entry);}save(d);e.target.reset();$('#date').value=today();page('overview')};
+let lkEditingOriginalDate=null;
+function lkSetMeasurementEditMode(active){
+  const note=$('#editModeNote'), saveBtn=$('#saveMeasurementBtn'), cancelBtn=$('#cancelEditBtn');
+  if(note)note.classList.toggle('active',!!active);
+  if(saveBtn)saveBtn.textContent=active?'Wijziging opslaan':'Meting opslaan';
+  if(cancelBtn)cancelBtn.style.display=active?'block':'none';
+}
+function lkBeginMeasurementEdit(row){
+  lkEditingOriginalDate=row.date;
+  $('#date').value=row.date||today();
+  $('#weightInput').value=row.weight??''; $('#waistInput').value=row.waist??''; $('#hipInput').value=row.hip??''; $('#chestInput').value=row.chest??'';
+  $('#sysInput').value=row.sys??''; $('#diaInput').value=row.dia??''; $('#heartInput').value=row.heart??'';
+  $('#glucoseInput').value=row.glucose??''; $('#glucoseContext').value=row.glucoseContext??''; $('#glucoseTime').value=row.glucoseTime??'';
+  $('#stepsInput').value=row.steps??'';
+  lkSetMeasurementEditMode(true); page('new');
+}
+function lkCancelMeasurementEdit(){
+  lkEditingOriginalDate=null; $('#form').reset(); $('#date').value=today(); lkSetMeasurementEditMode(false);
+}
+if($('#cancelEditBtn')) $('#cancelEditBtn').onclick=()=>{lkCancelMeasurementEdit();page('history')};
+$('#form').onsubmit=e=>{
+  e.preventDefault();
+  const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};
+  const d=load();
+  if(lkEditingOriginalDate){
+    const originalIndex=d.findIndex(x=>x.date===lkEditingOriginalDate);
+    if(originalIndex>=0)d.splice(originalIndex,1);
+    const target=d.find(x=>x.date===entry.date);
+    if(target)Object.assign(target,entry); else d.push(entry);
+  }else{
+    const existing=d.find(x=>x.date===entry.date);
+    if(existing){Object.keys(entry).forEach(k=>{if(k==='date'||(entry[k]!==''&&entry[k]!=null))existing[k]=entry[k];});}
+    else d.push(entry);
+  }
+  save(d); lkCancelMeasurementEdit(); page('overview');
+};
 $('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
 
 
@@ -6932,6 +6970,7 @@ function lkBackupNormalizeProfile(raw){
 }
 
 
+/* 38.54 — Back-upcontrole: dezelfde JSON-opbouw op iOS en Android; lokale veiligheidskopieën in IndexedDB; externe export via Capacitor Filesystem + Share. Health-toestemming blijft bewust toestelgebonden en wordt niet hersteld. */
 const LK_BACKUP_DB='leefkracht-backups-v1';
 const LK_BACKUP_STORE='backups';
 
