@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.54">
+<meta name="app-version" content="38.55">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -329,7 +329,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.54";
+const LEEFKRACHT_VERSION = "38.55";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5398,7 +5398,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
 
 <style id="mijn-leefritme-3853-resultaten-wit">
-/* 38.54 — alle dynamische waarden en uitslagen op het dashboard wit.
+/* 38.55 — alle dynamische waarden en uitslagen op het dashboard wit.
    Semantische badge-achtergronden mogen kleur houden; de tekst zelf blijft wit. */
 #overview #latestWeight,
 #overview #loss,
@@ -5897,7 +5897,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.54</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.55</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6027,7 +6027,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.54</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.55</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6095,7 +6095,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.54</p>
+    <p class="legalDate">Mijn LeefRitme 38.55</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -6970,7 +6970,7 @@ function lkBackupNormalizeProfile(raw){
 }
 
 
-/* 38.54 — Back-upcontrole: dezelfde JSON-opbouw op iOS en Android; lokale veiligheidskopieën in IndexedDB; externe export via Capacitor Filesystem + Share. Health-toestemming blijft bewust toestelgebonden en wordt niet hersteld. */
+/* 38.55 — Back-upcontrole: dezelfde JSON-opbouw op iOS en Android; lokale veiligheidskopieën in IndexedDB; externe export via Capacitor Filesystem + Share. Health-toestemming blijft bewust toestelgebonden en wordt niet hersteld. */
 const LK_BACKUP_DB='leefkracht-backups-v1';
 const LK_BACKUP_STORE='backups';
 
