@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.94">
+<meta name="app-version" content="38.96">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -7227,6 +7227,9 @@ body.mlr-home-edit #home [data-tile-key]{
 }
 </style>
 
+<style id="health-tiles-3896">
+.healthMiniRows{display:grid;gap:9px;margin-top:12px}.healthMiniRows>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(180,195,150,.18);padding-bottom:7px}.healthMiniRows>div:last-child{border-bottom:0}.healthMiniRows span{font-size:13px;color:var(--muted)}.healthMiniRows strong{font-size:14px;color:var(--text)}.healthBigValue{font-size:38px;font-weight:800;margin:8px 0}.healthDetailRows{display:grid;gap:0;margin:15px 0}.healthDetailRows>div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}.healthDetailRows strong{color:var(--green)}
+</style>
 </head>
 <body>
 <main class="app">
@@ -7333,6 +7336,15 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="insightMini" id="insightTileText">👍 Persoonlijk inzicht zodra er genoeg metingen zijn.</div>
   </div>
 </button>
+<button type="button" class="card tile clickable tileSleep" data-page="sleep" data-tile-id="sleep">
+  <div class="icon purple" aria-hidden="true">☾</div><div class="tileBody"><div class="label">Slaap</div><div class="sub">Afgelopen nacht</div><div class="value" id="sleepTile">—</div><div class="sub" id="sleepTileSub">Nog geen slaapgegevens</div></div>
+</button>
+<button type="button" class="card tile clickable tileRecovery" data-page="recovery" data-tile-id="recovery">
+  <div class="icon pink" aria-hidden="true">♡</div><div class="tileBody"><div class="label">Herstel</div><div class="healthMiniRows"><div><span>Rusthartslag</span><strong id="recoveryRhr">—</strong></div><div><span>HRV</span><strong id="recoveryHrv">—</strong></div><div><span>Ademhaling</span><strong id="recoveryResp">—</strong></div></div></div>
+</button>
+<button type="button" class="card tile clickable tileActivity" data-page="activity" data-tile-id="activity">
+  <div class="icon blue" aria-hidden="true">↗</div><div class="tileBody"><div class="label">Activiteit</div><div class="healthMiniRows"><div><span>Stappen</span><strong id="activitySteps">—</strong></div><div><span>Afstand</span><strong id="activityDistance">—</strong></div><div><span>Actief</span><strong id="activityMinutes">—</strong></div></div></div>
+</button>
 <button type="button" class="card tile clickable tileMore" data-page="more" data-tile-id="more">
 <div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
 <div class="sub moreMenuStack"><span>Profiel</span><span>Rapporten</span><span>Documenten</span></div></div></button>
@@ -7345,6 +7357,9 @@ body.mlr-home-edit #home [data-tile-key]{
   
 
 
+<section id="sleep" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Slaap</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthBigValue" id="sleepDetailValue">—</div><div class="muted" id="sleepDetailDate">Nog geen slaapgegevens</div><div class="healthDetailRows"><div><span>7-daags gemiddelde</span><strong id="sleep7Avg">—</strong></div><div><span>Diepe slaap</span><strong id="sleepDeep">—</strong></div><div><span>REM-slaap</span><strong id="sleepRem">—</strong></div></div><small class="muted">Slaapfasen worden alleen getoond wanneer je horloge of gezondheidsapp deze doorgeeft.</small></div></section>
+<section id="recovery" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Herstel</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Rusthartslag</span><strong id="recoveryDetailRhr">—</strong></div><div><span>HRV</span><strong id="recoveryDetailHrv">—</strong></div><div><span>Ademhalingsfrequentie</span><strong id="recoveryDetailResp">—</strong></div><div><span>Zuurstofsaturatie</span><strong id="recoverySpo2">—</strong></div></div><small class="muted">Deze waarden zijn vooral bedoeld om je eigen trend te volgen en zijn geen diagnose.</small></div></section>
+<section id="activity" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Activiteit</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Stappen vandaag</span><strong id="activityDetailSteps">—</strong></div><div><span>Afstand vandaag</span><strong id="activityDetailDistance">—</strong></div><div><span>Trainingsminuten</span><strong id="activityDetailMinutes">—</strong></div><div><span>Actieve energie</span><strong id="activityCalories">—</strong></div></div><small class="muted">Mijn LeefRitme combineert hier beweging uit Apple Health of Health Connect.</small></div></section>
 <section id="insight" class="page">
   <div class="detailTop">
     <div>
@@ -7717,7 +7732,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.94</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.96</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7793,6 +7808,13 @@ body.mlr-home-edit #home [data-tile-key]{
       <div data-health-metric="heartRate"><span>Hartslag</span><strong>Nog niet verbonden</strong></div>
       <div data-health-metric="bloodPressure"><span>Bloeddruk</span><strong>Nog niet verbonden</strong></div>
       <div data-health-metric="bloodGlucose"><span>Bloedsuiker</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="sleep"><span>Slaap</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="heartRateVariability"><span>HRV</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="respiratoryRate"><span>Ademhaling</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="oxygenSaturation"><span>Zuurstofsaturatie</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="distance"><span>Afstand</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="exerciseTime"><span>Trainingsminuten</span><strong>Nog niet verbonden</strong></div>
+      <div data-health-metric="calories"><span>Actieve energie</span><strong>Nog niet verbonden</strong></div>
     </div>
 
     <small class="muted healthReadyNote">
@@ -7915,7 +7937,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.94</p>
+    <p class="legalDate">Mijn LeefRitme 38.96</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11240,7 +11262,7 @@ window.MijnLeefRitmePlans=(function(){
 window.LeefKrachtHealth = (function(){
   const SOURCE_KEY='leefkracht-health-source-v1';
   const LAST_SYNC_KEY='leefkracht-health-last-sync-v1';
-  const METRICS=['steps','weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose'];
+  const METRICS=['steps','weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose','sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','exerciseTime','calories'];
   const DATA_KEY='vitaal-logboek-v1';
 
   function platform(){
@@ -11415,7 +11437,7 @@ window.LeefKrachtHealth = (function(){
     const start=new Date(end.getTime()-(Number(days)||30)*86400000);
     const startDate=start.toISOString(), endDate=end.toISOString();
 
-    const out={steps:[],weight:[],heartRate:[],restingHeartRate:[],bloodPressure:[],bloodGlucose:[]};
+    const out={steps:[],weight:[],heartRate:[],restingHeartRate:[],bloodPressure:[],bloodGlucose:[],sleep:[],heartRateVariability:[],respiratoryRate:[],oxygenSaturation:[],distance:[],exerciseTime:[],calories:[]};
 
     /* Stappen eerst als dagtotaal opvragen. Op sommige Samsung/Health Connect
        combinaties levert queryAggregated echter geen resultaat terug. Dan vallen
@@ -11462,7 +11484,7 @@ window.LeefKrachtHealth = (function(){
       }catch(e){}
     }
 
-    for(const type of ['weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose']){
+    for(const type of ['weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose','sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','exerciseTime','calories']){
       try{
         const r=await hp.readSamples({
           dataType:type,startDate,endDate,limit:500,ascending:true
@@ -11639,6 +11661,7 @@ window.LeefKrachtHealth = (function(){
         const auth=await check();
         if(!auth.ok) return {ok:false,permissionRequired:true};
         const raw=await readAndroid(Math.min(Number(days)||30,30));
+        try{if(window.MLRHealthExtra)window.MLRHealthExtra.saveRaw(raw,'Health Connect')}catch(e){}
         const merged=mergeAndroidData(raw);
         return {
           ok:true,
@@ -11661,6 +11684,7 @@ window.LeefKrachtHealth = (function(){
     if(c.platform==='ios'){
       try{
         const raw=await iosPlugin().syncHealthData({days:Number(days)||30})||{};
+        try{if(window.MLRHealthExtra)window.MLRHealthExtra.saveRaw(raw,'Apple Health')}catch(e){}
         const merged=mergeIosData(raw);
         return {ok:true,provider:'Apple Health',...merged};
       }catch(e){
@@ -11883,6 +11907,30 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
+<script id="health-extra-3896">
+(function(){
+ const KEY='mijnleefritme-health-extra-v1';
+ function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')||{}}catch(e){return {}}}
+ function saveRaw(raw,provider){
+   const x=load(); x.provider=provider||x.provider||''; x.updatedAt=new Date().toISOString();
+   const arr=k=>Array.isArray(raw&&raw[k])?raw[k]:[];
+   ['sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','exerciseTime','calories'].forEach(k=>{if(arr(k).length)x[k]=arr(k)});
+   if(raw&&raw.restingHeartRate)x.restingHeartRate=raw.restingHeartRate;
+   try{localStorage.setItem(KEY,JSON.stringify(x))}catch(e){}; render();
+ }
+ function num(v){v=Number(v);return Number.isFinite(v)?v:null}
+ function last(k){const a=load()[k];return Array.isArray(a)&&a.length?a[a.length-1]:null}
+ function sumToday(k){const a=load()[k]; if(!Array.isArray(a))return null; const d=new Date().toISOString().slice(0,10); let n=0,hit=false; a.forEach(x=>{const dt=String(x.startDate||x.endDate||x.date||'').slice(0,10); const v=num(x.value);if(dt===d&&v!==null){n+=v;hit=true}});return hit?n:null}
+ function sleepSummary(){const a=load().sleep;if(!Array.isArray(a)||!a.length)return null; const nights={}; a.forEach(x=>{const end=new Date(x.endDate||x.startDate||x.date);if(isNaN(end))return; const key=end.toISOString().slice(0,10); const st=String(x.sleepState||'asleep').toLowerCase(); if(st==='awake'||st==='inbed')return; const mins=num(x.value)!=null&&num(x.value)>0?num(x.value):Math.max(0,(new Date(x.endDate)-new Date(x.startDate))/60000); if(!Number.isFinite(mins))return; nights[key]=nights[key]||{total:0,deep:0,rem:0}; nights[key].total+=mins;if(st.includes('deep'))nights[key].deep+=mins;if(st.includes('rem'))nights[key].rem+=mins; }); const keys=Object.keys(nights).sort(); if(!keys.length)return null; const latest=nights[keys[keys.length-1]], vals=keys.slice(-7).map(k=>nights[k].total).filter(Boolean); return {date:keys[keys.length-1],...latest,avg:vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:0};}
+ function dur(m){if(m==null)return '—';m=Math.round(m);return Math.floor(m/60)+' u '+String(m%60).padStart(2,'0')+' min'}
+ function set(id,t){const e=document.getElementById(id);if(e)e.textContent=t}
+ function render(){const x=load(), sl=sleepSummary(), h=last('heartRateVariability'), r=last('respiratoryRate'), o=last('oxygenSaturation'); if(sl){set('sleepTile',dur(sl.total));set('sleepTileSub','7-daags gem.: '+dur(sl.avg));set('sleepDetailValue',dur(sl.total));set('sleepDetailDate',sl.date);set('sleep7Avg',dur(sl.avg));set('sleepDeep',dur(sl.deep));set('sleepRem',dur(sl.rem));}
+   const rhr=x.restingHeartRate&&num(x.restingHeartRate.value); const hv=h&&num(h.value), rv=r&&num(r.value), ov=o&&num(o.value); set('recoveryRhr',rhr!=null?Math.round(rhr)+' bpm':'—');set('recoveryHrv',hv!=null?Math.round(hv)+' ms':'—');set('recoveryResp',rv!=null?rv.toFixed(1)+'/min':'—');set('recoveryDetailRhr',rhr!=null?Math.round(rhr)+' bpm':'—');set('recoveryDetailHrv',hv!=null?Math.round(hv)+' ms':'—');set('recoveryDetailResp',rv!=null?rv.toFixed(1)+'/min':'—');set('recoverySpo2',ov!=null?(ov<=1?ov*100:ov).toFixed(0)+'%':'—');
+   const stepsEl=document.getElementById('stepsToday'); const st=stepsEl&&stepsEl.textContent&&!stepsEl.textContent.includes('—')?stepsEl.textContent:'—'; const dist=sumToday('distance'), mins=sumToday('exerciseTime'), cal=sumToday('calories'); set('activitySteps',st);set('activityDistance',dist!=null?(dist/1000).toFixed(1)+' km':'—');set('activityMinutes',mins!=null?Math.round(mins)+' min':'—');set('activityDetailSteps',st);set('activityDetailDistance',dist!=null?(dist/1000).toFixed(1)+' km':'—');set('activityDetailMinutes',mins!=null?Math.round(mins)+' min':'—');set('activityCalories',cal!=null?Math.round(cal)+' kcal':'—');
+ }
+ window.MLRHealthExtra={saveRaw,render}; document.addEventListener('DOMContentLoaded',render);window.addEventListener('pageshow',render);
+})();
+</script>
 <script id="mijn-leefritme-3895-dashboard-layout-js">
 (function(){
   const PREF_KEY='mijnleefritme-dashboard-layout-v3';
@@ -11901,6 +11949,9 @@ document.addEventListener('DOMContentLoaded', function(){
     {id:'steps',name:'Stappen vandaag',desc:'Dagelijkse stappen'},
     {id:'score',name:'LeefRitme-score',desc:'Jouw totaalscore'},
     {id:'insight',name:'Wat valt op?',desc:'Korte persoonlijke signalen'},
+    {id:'sleep',name:'Slaap',desc:'Slaapduur en slaapfasen'},
+    {id:'recovery',name:'Herstel',desc:'Rusthartslag, HRV en ademhaling'},
+    {id:'activity',name:'Activiteit',desc:'Stappen, afstand en actieve minuten'},
     {id:'more',name:'Mijn LeefRitme',desc:'Gegevens en instellingen',locked:true}
   ];
 
