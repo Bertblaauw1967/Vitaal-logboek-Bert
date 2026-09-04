@@ -7230,6 +7230,18 @@ body.mlr-home-edit #home [data-tile-key]{
 <style id="health-tiles-3896">
 .healthMiniRows{display:grid;gap:9px;margin-top:12px}.healthMiniRows>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(180,195,150,.18);padding-bottom:7px}.healthMiniRows>div:last-child{border-bottom:0}.healthMiniRows span{font-size:13px;color:var(--muted)}.healthMiniRows strong{font-size:14px;color:var(--text)}.healthBigValue{font-size:38px;font-weight:800;margin:8px 0}.healthDetailRows{display:grid;gap:0;margin:15px 0}.healthDetailRows>div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}.healthDetailRows strong{color:var(--green)}
 </style>
+
+<style id="mijn-leefritme-3897-care-mail">
+#report .reportContactCard{margin-bottom:14px}
+#report .reportContactGrid{display:grid;grid-template-columns:1fr 1.35fr;gap:12px}
+#report .reportContactCard .input,#report #reportQuestion{width:100%;margin:7px 0 14px}
+#report #saveCareContact{width:100%;margin-top:2px}
+#report #careContactStatus{display:block;min-height:20px;margin-top:8px}
+#report #reportQuestion{resize:vertical;min-height:96px}
+#report .reportActions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#report .reportActions button{width:100%}
+@media(max-width:560px){#report .reportContactGrid,#report .reportActions{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <main class="app">
@@ -7732,7 +7744,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.96</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.97</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8086,6 +8098,31 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
 
+  <div class="card reportContactCard">
+    <h3>Arts / coach</h3>
+    <p class="muted">Sla één vast contact op. Er wordt nooit automatisch iets verstuurd.</p>
+    <div class="reportContactGrid">
+      <div>
+        <label for="careRole">Rol</label>
+        <select id="careRole" class="input">
+          <option value="arts">Arts</option>
+          <option value="coach">Coach</option>
+          <option value="dietist">Diëtist</option>
+          <option value="fysiotherapeut">Fysiotherapeut</option>
+          <option value="anders">Anders</option>
+        </select>
+      </div>
+      <div>
+        <label for="careName">Naam</label>
+        <input id="careName" class="input" type="text" autocomplete="name" placeholder="bijv. huisarts De Vries">
+      </div>
+    </div>
+    <label for="careEmail">E-mailadres</label>
+    <input id="careEmail" class="input" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" placeholder="bijv. praktijk@voorbeeld.nl">
+    <button type="button" class="secondary" id="saveCareContact">Contact opslaan</button>
+    <small id="careContactStatus" class="muted"></small>
+  </div>
+
   <div class="card">
     <label>Periode</label>
     <select id="reportPeriod" class="input">
@@ -8109,8 +8146,12 @@ body.mlr-home-edit #home [data-tile-key]{
     <label style="margin-top:18px">Naam (optioneel)</label>
     <input id="reportName" class="input" placeholder="Naam voor op rapport">
 
+    <label for="reportQuestion" style="margin-top:18px">Vraag / toelichting voor arts of coach (optioneel)</label>
+    <textarea id="reportQuestion" class="input" rows="4" maxlength="1200" placeholder="bijv. Ik wil graag mijn bloeddruktrend en herstelwaarden bespreken."></textarea>
+
     <div class="reportActions">
       <button type="button" class="primary" id="makeReport">Rapport openen</button>
+      <button type="button" class="secondary" id="emailReport">E-mail voorbereiden</button>
       <button type="button" class="secondary" id="exportCsv">CSV exporteren</button>
     </div>
     <p class="muted smallNote">In het geopende rapport opent Afdrukken / bewaren als PDF op iPhone en Android het systeemeigen afdrukvenster.</p>
@@ -8869,7 +8910,10 @@ function lkBackupNormalizeProfile(raw){
     email:String(p.email||'').trim().toLowerCase().slice(0,254),
     birthdate:String(birth||'').slice(0,10),
     age:(p.age===undefined||p.age===null)?'':p.age,
-    sex:['man','vrouw'].includes(p.sex)?p.sex:''
+    sex:['man','vrouw'].includes(p.sex)?p.sex:'',
+    careRole:['arts','coach','dietist','fysiotherapeut','anders'].includes(p.careRole)?p.careRole:'arts',
+    careName:String(p.careName||'').slice(0,100),
+    careEmail:String(p.careEmail||'').trim().toLowerCase().slice(0,254)
   };
 }
 
@@ -9251,6 +9295,11 @@ function makeHealthReport(){
   const days=document.querySelector('#reportPeriod')?.value||'90';
   const rows=lkReportRows(days);
   const name=document.querySelector('#reportName')?.value?.trim()||'';
+  const question=document.querySelector('#reportQuestion')?.value?.trim()||'';
+  const profile=lkLoadProfile();
+  const careName=(document.querySelector('#careName')?.value||profile.careName||'').trim();
+  const careRole=(document.querySelector('#careRole')?.value||profile.careRole||'arts');
+  const careRoleLabel=lkCareRoleLabel(careRole);
   const use={
     weight:document.querySelector('#rWeight')?.checked,
     waist:document.querySelector('#rWaist')?.checked,
@@ -9302,7 +9351,7 @@ function makeHealthReport(){
   *{box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#172a3a;margin:0;background:#eef3f7;line-height:1.4}
   .sheet{max-width:920px;margin:24px auto;background:white;padding:42px;border-radius:18px;box-shadow:0 8px 35px #0001}
   .cover{border-bottom:3px solid #e9447b;padding-bottom:22px;margin-bottom:24px}.logo{font-size:38px;font-weight:850;color:#0b3558}.pink{color:#e9447b}
-  .cover h2{font-size:24px;margin:18px 0 4px}.meta{color:#667788}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 30px}
+  .cover h2{font-size:24px;margin:18px 0 4px}.meta{color:#667788}.reportQuestion{margin-top:16px;padding:12px 14px;border:1px solid #d8dfd0;border-radius:12px;background:#f8f8f3}.reportQuestion b{display:block;margin-bottom:5px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0 30px}
   .kpi{border:1px solid #d7e1ea;border-radius:14px;padding:15px;background:#fbfdff}.kpi b,.kpi small{display:block;color:#657789}.kpi strong{display:block;font-size:25px;margin:7px 0;color:#153d5d}
   h2.section{font-size:20px;margin:30px 0 12px;color:#0b3558}.chartBox{border:1px solid #dbe4eb;border-radius:14px;padding:14px;margin:12px 0;break-inside:avoid}
   .chartHead{display:flex;justify-content:space-between;gap:12px;color:#667788;margin-bottom:6px}.chartHead b{color:#183b57}.chartBox svg{width:100%;height:auto}
@@ -10599,7 +10648,8 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
 </style>
 </head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Mijn LeefRitme</div><h2>Gezondheidsrapport</h2>
-  <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}</div></div>
+  <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}${careName?'<br>Voor: '+lkEsc(careRoleLabel)+' '+lkEsc(careName):''}</div>
+  ${question?`<div class="reportQuestion"><b>Vraag / toelichting</b><div>${lkEsc(question).replace(/\n/g,'<br>')}</div></div>`:''}</div>
   <h2 class="section">Samenvatting</h2><div class="grid">${cards||'<p>Geen onderdelen geselecteerd.</p>'}</div>
   ${charts?'<h2 class="section">Voortgang</h2>'+charts:''}
   <h2 class="section">Meetgegevens</h2>
@@ -10675,11 +10725,56 @@ function exportHealthCsv(){
   setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
 }
 
+function lkCareRoleLabel(v){
+  return ({arts:'Arts',coach:'Coach',dietist:'Diëtist',fysiotherapeut:'Fysiotherapeut',anders:'Contact'})[v]||'Contact';
+}
+function lkValidEmail(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v||'').trim())}
+function lkLoadCareContactUi(){
+  const p=lkLoadProfile();
+  const role=document.getElementById('careRole'), name=document.getElementById('careName'), email=document.getElementById('careEmail');
+  if(role) role.value=['arts','coach','dietist','fysiotherapeut','anders'].includes(p.careRole)?p.careRole:'arts';
+  if(name) name.value=p.careName||'';
+  if(email) email.value=p.careEmail||'';
+  const reportName=document.getElementById('reportName');
+  if(reportName && !reportName.value) reportName.value=p.name||'';
+}
+function lkSaveCareContact(showStatus=true){
+  const role=document.getElementById('careRole')?.value||'arts';
+  const careName=(document.getElementById('careName')?.value||'').trim();
+  const careEmail=(document.getElementById('careEmail')?.value||'').trim().toLowerCase();
+  const status=document.getElementById('careContactStatus');
+  if(careName.length>100){if(status)status.textContent='Naam is te lang.';return false}
+  if(careEmail && !lkValidEmail(careEmail)){if(status)status.textContent='Vul een geldig e-mailadres in.';return false}
+  const next=Object.assign({},lkLoadProfile(),{careRole:role,careName,careEmail});
+  lkSaveProfile(next);
+  if(showStatus&&status){status.textContent='Contact opgeslagen ✓';setTimeout(()=>{if(status)status.textContent=''},1800)}
+  return true;
+}
+function lkPrepareReportEmail(){
+  if(!lkSaveCareContact(false)) return;
+  const p=lkLoadProfile();
+  const to=(document.getElementById('careEmail')?.value||p.careEmail||'').trim();
+  if(!lkValidEmail(to)){const st=document.getElementById('careContactStatus');if(st)st.textContent='Vul eerst het e-mailadres van arts of coach in.';return}
+  const days=document.getElementById('reportPeriod')?.value||'90';
+  const period=days==='all'?'vanaf het begin':days==='30'?'van de laatste 30 dagen':days==='90'?'van de laatste 3 maanden':days==='180'?'van de laatste 6 maanden':'van het laatste jaar';
+  const q=(document.getElementById('reportQuestion')?.value||'').trim();
+  const sender=(document.getElementById('reportName')?.value||p.name||'').trim();
+  const salutation=p.careName?`Beste ${p.careName},`:'Goedendag,';
+  const body=[salutation,'',`Hierbij mijn gezondheidsrapport ${period} uit Mijn LeefRitme.`,`Het rapport kan ik als PDF bij deze e-mail voegen.`,q?'':null,q?`Mijn vraag / toelichting:\n${q}`:null,'',sender?`Met vriendelijke groet,\n${sender}`:'Met vriendelijke groet'].filter(x=>x!==null).join('\n');
+  const subject='Mijn LeefRitme – gezondheidsrapport';
+  window.location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 document.addEventListener('click',e=>{
   if(e.target.closest('#makeReport')) makeHealthReport();
+  if(e.target.closest('#saveCareContact')) lkSaveCareContact(true);
+  if(e.target.closest('#emailReport')) lkPrepareReportEmail();
   if(e.target.closest('#exportCsv')) exportHealthCsv();
 });
 
+
+document.addEventListener('click',e=>{if(e.target.closest('[data-page="report"]')) setTimeout(lkLoadCareContactUi,0)});
+setTimeout(lkLoadCareContactUi,200);
 
 function lkSafeText(id, value){
   const el=document.getElementById(id);
