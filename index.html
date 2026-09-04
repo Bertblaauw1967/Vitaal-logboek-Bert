@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.48">
+<meta name="app-version" content="38.49">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.48";
+const LEEFKRACHT_VERSION = "38.49";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.48 — totale visuele finetune
+   Mijn LeefRitme 38.49 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.48 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.49 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.48 — commerciële polishronde
+   Mijn LeefRitme 38.49 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.48 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.49 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -5214,7 +5214,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.48</div>
+<div class="v291Indicator">v38.49</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5805,7 +5805,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.48</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.49</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -5873,7 +5873,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.48</p>
+    <p class="legalDate">Mijn LeefRitme 38.49</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -8444,36 +8444,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   <p class="foot">Mijn LeefRitme – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
   <button class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport();}else{window.print();}}catch(e){window.print();}})()">Afdrukken / bewaren als PDF</button>
   </main>
-<script id="mijn-leefritme-3848-menu-js">
-(function(){
-  function moreEl(){return document.getElementById('more')}
-  function showMenu(scroll){
-    const more=moreEl(); if(!more)return;
-    more.classList.remove('moreSubOpen');
-    more.removeAttribute('data-more-open');
-    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
-    if(scroll!==false){try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}}
-  }
-  function showDetail(key){
-    const more=moreEl(); if(!more)return;
-    const target=more.querySelector('.moreDetailSection[data-more-detail="'+key+'"]');
-    if(!target)return;
-    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
-    target.classList.add('moreDetailActive');
-    more.classList.add('moreSubOpen');
-    more.setAttribute('data-more-open',key);
-    try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}
-  }
-  document.addEventListener('DOMContentLoaded',function(){
-    const more=moreEl(); if(!more)return;
-    showMenu(false);
-    more.querySelectorAll('[data-more-target]').forEach(btn=>btn.addEventListener('click',function(){showDetail(this.getAttribute('data-more-target'))}));
-    const close=more.querySelector('.detailTop .closeDetail');
-    if(close){close.addEventListener('click',function(e){if(more.classList.contains('moreSubOpen')){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();showMenu(true)}},true)}
-    document.querySelectorAll('[data-page="more"]').forEach(btn=>btn.addEventListener('click',function(){showMenu(false)},true));
-  });
-})();
-</script>
+
 </body></html>`;
   window.__lkLastReportHtml=report;
   const w=window.open('','_blank');
@@ -9050,7 +9021,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.48 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.49 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
@@ -9668,5 +9639,35 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<script id="mijn-leefritme-3849-menu-js">
+(function(){
+  function moreEl(){return document.getElementById('more')}
+  function showMenu(scroll){
+    const more=moreEl(); if(!more)return;
+    more.classList.remove('moreSubOpen');
+    more.removeAttribute('data-more-open');
+    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
+    if(scroll!==false){try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}}
+  }
+  function showDetail(key){
+    const more=moreEl(); if(!more)return;
+    const target=more.querySelector('.moreDetailSection[data-more-detail="'+key+'"]');
+    if(!target)return;
+    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
+    target.classList.add('moreDetailActive');
+    more.classList.add('moreSubOpen');
+    more.setAttribute('data-more-open',key);
+    try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    const more=moreEl(); if(!more)return;
+    showMenu(false);
+    more.querySelectorAll('[data-more-target]').forEach(btn=>btn.addEventListener('click',function(){showDetail(this.getAttribute('data-more-target'))}));
+    const close=more.querySelector('.detailTop .closeDetail');
+    if(close){close.addEventListener('click',function(e){if(more.classList.contains('moreSubOpen')){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();showMenu(true)}},true)}
+    document.querySelectorAll('[data-page="more"]').forEach(btn=>btn.addEventListener('click',function(){showMenu(false)},true));
+  });
+})();
+</script>
 </body>
 </html>
