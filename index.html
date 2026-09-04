@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.89">
+<meta name="app-version" content="38.91">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.89";
+const LEEFKRACHT_VERSION = "38.91";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6832,7 +6832,7 @@ body.mlr-home-edit #home [data-tile-key]{
 </style>
 
 
-<style id="mijn-leefritme-3889-iphone-wiggle">
+<style id="mijn-leefritme-3890-iphone-wiggle-fix">
 /* 38.89 — iPhone-achtige bewerkmodus */
 @keyframes mlrTileWiggle3889{
   0%   { transform:rotate(-0.7deg) translateY(0); }
@@ -6966,6 +6966,108 @@ body.mlr-home-edit #home [data-tile-key]{
 }
 </style>
 
+
+<style id="mijn-leefritme-3890-lock-more-and-minus-fix">
+/* 38.90 — Mijn LeefRitme is vast; minteken krijgt betrouwbare touchzone */
+#overview.dashboardEditing .tileMore{
+  animation:none !important;
+  transform:none !important;
+  cursor:default !important;
+  outline:1px solid rgba(169,187,118,.18) !important;
+}
+#overview.dashboardEditing .tileMore::after{
+  content:"Vast";
+  position:absolute;
+  top:9px;
+  right:10px;
+  padding:3px 7px;
+  border-radius:999px;
+  background:rgba(169,187,118,.13);
+  color:#b9c799;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.dashboardMinus3889{
+  width:34px !important;
+  height:34px !important;
+  min-width:34px !important;
+  min-height:34px !important;
+  touch-action:manipulation !important;
+  pointer-events:auto !important;
+  -webkit-tap-highlight-color:transparent !important;
+}
+</style>
+
+
+<style id="mijn-leefritme-3891-editmode-ux-fix">
+/* 38.91 — bewerkmodus: altijd bereikbare Gereed-knop en normaal verticaal scrollen */
+#overview.dashboardEditing{
+  padding-bottom:104px !important;
+}
+
+/* De bewerkbalk zweeft vast onderaan en blijft altijd bereikbaar */
+#overview .dashboardEditBar{
+  position:fixed !important;
+  left:50% !important;
+  bottom:max(14px, env(safe-area-inset-bottom)) !important;
+  transform:translateX(-50%) !important;
+  z-index:100000 !important;
+  width:min(calc(100% - 28px), 560px) !important;
+  margin:0 !important;
+  padding:10px 12px !important;
+  border-radius:18px !important;
+  background:rgba(18,26,19,.97) !important;
+  border:1px solid rgba(154,174,114,.42) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.44) !important;
+  backdrop-filter:blur(10px) !important;
+  -webkit-backdrop-filter:blur(10px) !important;
+}
+#overview .dashboardEditBar[hidden]{
+  display:none !important;
+}
+#overview .dashboardEditBar div{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+}
+#overview .dashboardEditBar strong{
+  font-size:13px !important;
+}
+#overview .dashboardEditBar span{
+  font-size:11px !important;
+}
+#overview .dashboardEditBar button{
+  flex:0 0 auto !important;
+  min-width:94px !important;
+  min-height:48px !important;
+  border-radius:15px !important;
+  font-size:16px !important;
+}
+
+/* Tijdens wiebelen mag een gewone verticale veeg blijven scrollen */
+#overview.dashboardEditing .tiles [data-tile-id]{
+  touch-action:pan-y !important;
+}
+
+/* De vaste Mijn LeefRitme-tegel reageert niet als sleepdoel */
+#overview.dashboardEditing .tileMore{
+  touch-action:pan-y !important;
+}
+
+/* Geen misleidende buiten-tik-instructie meer */
+@media(max-width:430px){
+  #overview .dashboardEditBar span{
+    display:none !important;
+  }
+  #overview .dashboardEditBar{
+    justify-content:center !important;
+  }
+  #overview .dashboardEditBar div{
+    flex:0 1 auto !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6981,7 +7083,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
 
     <div id="dashboardEditBar" class="dashboardEditBar" hidden>
-      <div><strong>Voorpagina indelen</strong><span>Sleep tegels, tik op − om te verbergen, tik naast de tegels om af te sluiten.</span></div>
+      <div><strong>Voorpagina indelen</strong><span>Sleep tegels of tik op −. Klaar? Tik op Gereed.</span></div>
       <button type="button" id="dashboardEditDoneBtn">Gereed</button>
     </div>
 
@@ -7456,7 +7558,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.89</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.91</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7586,7 +7688,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.89</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.91</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7654,7 +7756,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.89</p>
+    <p class="legalDate">Mijn LeefRitme 38.91</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11622,10 +11724,11 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script id="mijn-leefritme-3889-dashboard-layout-js">
+<script id="mijn-leefritme-3891-dashboard-layout-js">
 (function(){
   const PREF_KEY='mijnleefritme-dashboard-layout-v2';
   const LONG_PRESS_MS=2000;
+  const EDIT_DRAG_HOLD_MS=420;
   const MOVE_CANCEL_PX=14;
 
   const TILES=[
@@ -11666,6 +11769,10 @@ document.addEventListener('DOMContentLoaded', function(){
         if(ids.includes(id)&&!order.includes(id)) order.push(id);
       });
       ids.forEach(id=>{ if(!order.includes(id)) order.push(id); });
+      // Mijn LeefRitme is de vaste tegel: altijd als laatste op Home.
+      const moreIndex=order.indexOf('more');
+      if(moreIndex!==-1) order.splice(moreIndex,1);
+      order.push('more');
 
       const visible={};
       TILES.forEach(t=>{
@@ -11702,6 +11809,10 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!g) return;
 
     const p=pref||read();
+    const order=p.order.filter(id=>id!=='more');
+    order.push('more');
+    p.order=order;
+
     p.order.forEach(id=>{
       const el=g.querySelector('[data-tile-id="'+id+'"]');
       if(el) g.appendChild(el);
@@ -11779,22 +11890,7 @@ document.addEventListener('DOMContentLoaded', function(){
         badge.setAttribute('aria-label','Verberg '+(meta?.name||'tegel'));
         badge.textContent='−';
 
-        const hideTile=(ev)=>{
-          ev.preventDefault();
-          ev.stopPropagation();
-          if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
-
-          const p=read();
-          p.visible[id]=false;
-          write(p);
-          renderManager();
-        };
-
-        badge.addEventListener('touchstart',hideTile,{passive:false});
-        badge.addEventListener('pointerdown',ev=>{
-          if(ev.pointerType!=='touch') hideTile(ev);
-        });
-        badge.addEventListener('click',hideTile);
+        badge.dataset.hideTileId=id;
         tile.appendChild(badge);
       }
     });
@@ -11802,6 +11898,16 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function removeMinusBadges(){
     document.querySelectorAll('.dashboardMinus3889').forEach(el=>el.remove());
+  }
+
+  function hideTileById(id){
+    const meta=TILES.find(t=>t.id===id);
+    if(!id || (meta && meta.locked)) return;
+    const p=read();
+    p.visible[id]=false;
+    write(p);
+    renderManager();
+    ensureMinusBadges();
   }
 
   function setEditMode(on){
@@ -11855,6 +11961,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function beginDrag(tile,x,y){
     if(!tile || dragging) return;
+    const meta=TILES.find(t=>t.id===tile.dataset.tileId);
+    if(meta && meta.locked) return;
     setEditMode(true);
 
     const g=makeGhost(tile,x,y);
@@ -11899,7 +12007,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const g=grid();
     if(!g) return;
 
-    const ids=[...g.querySelectorAll('[data-tile-id]')].map(el=>el.dataset.tileId);
+    const ids=[...g.querySelectorAll('[data-tile-id]')]
+      .map(el=>el.dataset.tileId)
+      .filter(id=>id!=='more');
+    ids.push('more');
     const p=read();
     p.order=ids;
     write(p);
@@ -11940,6 +12051,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
       const tile=ev.target.closest('[data-tile-id]');
       if(!tile || tile.style.display==='none') return;
+      const meta=TILES.find(t=>t.id===tile.dataset.tileId);
+      if(meta && meta.locked) return;
 
       const p=getTouchPoint(ev);
       if(!p) return;
@@ -11949,8 +12062,14 @@ document.addEventListener('DOMContentLoaded', function(){
       activeTile=tile;
 
       if(editMode){
-        ev.preventDefault();
-        beginDrag(tile,p.x,p.y);
+        // In bewerkmodus blijft verticaal scrollen mogelijk.
+        // Alleen als je de tegel kort stil vasthoudt, begint het slepen.
+        holdTimer=setTimeout(()=>{
+          holdTimer=null;
+          if(activeTile===tile){
+            beginDrag(tile,startX,startY);
+          }
+        },EDIT_DRAG_HOLD_MS);
         return;
       }
 
@@ -11984,6 +12103,15 @@ document.addEventListener('DOMContentLoaded', function(){
     },{passive:false});
 
     g.addEventListener('touchend',ev=>{
+      const minus=ev.target.closest('.dashboardMinus3889');
+      if(minus){
+        ev.preventDefault();
+        clearHold();
+        hideTileById(minus.dataset.hideTileId);
+        suppressClickUntil=Date.now()+500;
+        return;
+      }
+
       clearHold();
       if(dragging){
         ev.preventDefault();
@@ -12010,14 +12138,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
       const tile=ev.target.closest('[data-tile-id]');
       if(!tile || tile.style.display==='none') return;
+      const meta=TILES.find(t=>t.id===tile.dataset.tileId);
+      if(meta && meta.locked) return;
 
       startX=ev.clientX;
       startY=ev.clientY;
       activeTile=tile;
 
       if(editMode){
-        ev.preventDefault();
-        beginDrag(tile,ev.clientX,ev.clientY);
+        holdTimer=setTimeout(()=>{
+          holdTimer=null;
+          if(activeTile===tile){
+            beginDrag(tile,startX,startY);
+          }
+        },EDIT_DRAG_HOLD_MS);
         return;
       }
 
@@ -12058,9 +12192,13 @@ document.addEventListener('DOMContentLoaded', function(){
     g.dataset.clickGuard3889='1';
 
     g.addEventListener('click',ev=>{
-      if(ev.target.closest('.dashboardMinus3889')){
+      const minus=ev.target.closest('.dashboardMinus3889');
+      if(minus){
         ev.preventDefault();
-        ev.stopImmediatePropagation();
+        ev.stopPropagation();
+        if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+        hideTileById(minus.dataset.hideTileId);
+        suppressClickUntil=Date.now()+500;
         return;
       }
 
@@ -12075,24 +12213,8 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function bindOutsideTap(){
-    const overview=document.getElementById('overview');
-    if(!overview || overview.dataset.outsideEdit3889) return;
-    overview.dataset.outsideEdit3889='1';
-
-    const outside=(target)=>{
-      if(!editMode || dragging) return;
-      if(target.closest('[data-tile-id]')) return;
-      if(target.closest('#dashboardEditBar')) return;
-      setEditMode(false);
-    };
-
-    overview.addEventListener('touchend',ev=>{
-      outside(ev.target);
-    },{passive:true});
-
-    overview.addEventListener('click',ev=>{
-      outside(ev.target);
-    });
+    // 38.91: niet meer afsluiten door ergens naast de tegels te tikken.
+    // De vaste Gereed-knop is de enige duidelijke afsluiting.
   }
 
   function init(){
