@@ -10762,7 +10762,44 @@ function lkPrepareReportEmail(){
   const salutation=p.careName?`Beste ${p.careName},`:'Goedendag,';
   const body=[salutation,'',`Hierbij mijn gezondheidsrapport ${period} uit Mijn LeefRitme.`,`Het rapport kan ik als PDF bij deze e-mail voegen.`,q?'':null,q?`Mijn vraag / toelichting:\n${q}`:null,'',sender?`Met vriendelijke groet,\n${sender}`:'Met vriendelijke groet'].filter(x=>x!==null).join('\n');
   const subject='Mijn LeefRitme – gezondheidsrapport';
-  window.location.href=`mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const mailto=`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  // 38.98 — betrouwbaarder openen vanuit iOS/Android appvenster.
+  // Gebruik eerst een echte mailto-link. Als het appvenster die blokkeert,
+  // bied dan het systeemeigen deelvenster aan als fallback.
+  let fallbackTimer=null;
+  const openShareFallback=async()=>{
+    try{
+      if(navigator.share){
+        await navigator.share({title:subject,text:body});
+        return;
+      }
+    }catch(err){
+      // Annuleren door gebruiker is geen fout; andere fouten vallen door.
+      if(err && err.name==='AbortError') return;
+    }
+    const st=document.getElementById('careContactStatus');
+    if(st) st.textContent='De mailapp kon niet automatisch worden geopend. Kopieer eventueel het e-mailadres en gebruik Delen.';
+  };
+
+  try{
+    const a=document.createElement('a');
+    a.href=mailto;
+    a.target='_blank';
+    a.rel='noopener';
+    a.style.display='none';
+    document.body.appendChild(a);
+
+    const onHide=()=>{ if(document.hidden && fallbackTimer){clearTimeout(fallbackTimer);fallbackTimer=null;} };
+    document.addEventListener('visibilitychange',onHide,{once:true});
+    a.click();
+    setTimeout(()=>a.remove(),500);
+
+    // Als na korte tijd niets naar de achtergrond ging, is mailto waarschijnlijk geblokkeerd.
+    fallbackTimer=setTimeout(()=>{fallbackTimer=null;openShareFallback()},900);
+  }catch(err){
+    openShareFallback();
+  }
 }
 
 document.addEventListener('click',e=>{
