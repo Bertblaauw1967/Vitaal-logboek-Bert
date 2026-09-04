@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.52">
+<meta name="app-version" content="38.53">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.52";
+const LEEFKRACHT_VERSION = "38.53";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5395,6 +5395,32 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 #more.moreSubOpen .moreVersionFooter{display:none!important;}
 </style>
 
+
+<style id="mijn-leefritme-3853-resultaten-wit">
+/* 38.53 — alle dynamische waarden en uitslagen op het dashboard wit.
+   Semantische badge-achtergronden mogen kleur houden; de tekst zelf blijft wit. */
+#overview #latestWeight,
+#overview #loss,
+#overview #goalTile,
+#overview #goalSub,
+#overview #bmiTile,
+#overview #bmiClass,
+#overview #bodyWaistRow,
+#overview #bodyHipRow,
+#overview #bodyChestRow,
+#overview #bp,
+#overview #bpBadge .badge,
+#overview #heartTile,
+#overview #heartBadge .badge,
+#overview #stepsToday,
+#overview #steps7Sub,
+#overview #scoreTile,
+#overview #scoreTileSub{
+  color:#f7f5ef !important;
+  -webkit-text-fill-color:#f7f5ef !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5870,7 +5896,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.52</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.53</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6000,7 +6026,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.52</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.53</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6068,7 +6094,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.52</p>
+    <p class="legalDate">Mijn LeefRitme 38.53</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -6333,7 +6359,7 @@ function fdate(s){return new Intl.DateTimeFormat('nl-NL',{day:'numeric',month:'s
 function sorted(d){return [...d].sort((a,b)=>b.date.localeCompare(a.date))}
 function lastWith(d,k){return sorted(d).find(x=>n(x[k])!==null)}
 function goal(){const g=parseFloat(localStorage.getItem(GOAL_KEY)||'');return Number.isFinite(g)?g:null}
-function bpCat(s,d){if(s>=140||d>=90)return['Hoog','bad'];if(s>=130||d>=85)return['Verhoogd','warn'];return['Normaal','good']}
+function bpCat(s,d){if(s>=180||d>=110)return['Ernstig hoog','bad'];if(s>=140||d>=90)return['Hoog','bad'];return['Normaal','good']}
 function heartCat(h){if(h==null)return['—',''];if(h<50)return['Laag','warn'];if(h<=100)return['Normaal','good'];return['Hoog','bad']}
 function page(id){$$('.page').forEach(p=>p.classList.toggle('active',p.id===id));window.scrollTo(0,0);render()}
 document.addEventListener('click',e=>{
