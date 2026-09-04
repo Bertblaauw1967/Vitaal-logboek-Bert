@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.79">
+<meta name="app-version" content="38.80">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.79";
+const LEEFKRACHT_VERSION = "38.80";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6495,7 +6495,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
 
 <style id="mijn-leefritme-plans-3878">
-/* 38.79 — technische voorbereiding Basis / Plus / Pro. Nog geen betaalmuur actief. */
+/* 38.80 — technische voorbereiding Basis / Plus / Pro. Nog geen betaalmuur actief. */
 #more .lkFeatureLabel{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
 #more .lkPlanBadge{
   display:inline-flex!important;align-items:center!important;justify-content:center!important;
@@ -6986,7 +6986,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.79</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.80</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7116,7 +7116,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.79</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.80</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7184,7 +7184,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.79</p>
+    <p class="legalDate">Mijn LeefRitme 38.80</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7511,7 +7511,15 @@ function renderHistory(data){
  }
  host.innerHTML='<div class="historyList">'+filtered.map((e)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-date="${e.date}">Wijzig</button><button class="delete" data-date="${e.date}">Verwijder</button></div></div><div class="historyData"> <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Heup</span><b>${e.hip?e.hip+' cm':'—'}</b></div><div class="hmini"><span>Borst</span><b>${e.chest?e.chest+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
  $$('.editMeasurement').forEach(b=>b.onclick=()=>{const row=sorted(load()).find(x=>x.date===b.dataset.date); if(row)lkBeginMeasurementEdit(row)});
- $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load()); const idx=s.findIndex(x=>x.date===b.dataset.date); if(idx>-1){s.splice(idx,1); save(s); render();}})
+ $$('.delete').forEach(b=>b.onclick=()=>{
+   const date=b.dataset.date;
+   const label=fdate(date);
+   const ok=confirm('Meting van '+label+' verwijderen?\n\nAlleen de gegevens van deze datum worden verwijderd. Alle andere meetgegevens blijven bewaard.');
+   if(!ok)return;
+   const s=sorted(load());
+   const idx=s.findIndex(x=>x.date===date);
+   if(idx>-1){s.splice(idx,1); save(s); render();}
+ })
 }
 function render(){
   const data=load(), ordered=sorted(data), latest=ordered[0],
@@ -7904,7 +7912,15 @@ $('#form').onsubmit=e=>{
   }
   save(d); lkCancelMeasurementEdit(); page('overview');
 };
-$('#clearBtn').onclick=()=>{if(confirm('Alle metingen wissen?')){localStorage.removeItem(KEY);render()}};
+$('#clearBtn').onclick=()=>{
+  const first=confirm('WAARSCHUWING\n\nJe gaat nu ALLE meetgegevens uit Meetgeschiedenis wissen. Niet alleen de geselecteerde datum.\n\nWil je doorgaan?');
+  if(!first)return;
+  const second=confirm('Weet je het zeker?\n\nALLE meetgegevens worden definitief verwijderd. Dit kan niet ongedaan worden gemaakt.');
+  if(!second)return;
+  localStorage.removeItem(KEY);
+  if($('#historyDateFilter'))$('#historyDateFilter').value='';
+  render();
+};
 
 
 const LK_DOC_DB='leefkracht-documents-v1';
@@ -10418,7 +10434,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){var rows=a.filter(function(r){return r&&r.date&&r[k]!==undefined&&r[k]!==null&&r[k]!==""}).sort(function(x,y){return String(y.date).localeCompare(String(x.date))});return rows.length?rows[0][k]:null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script id="mijn-leefritme-plans-3878-js">
-/* 38.79 — abonnementenstructuur voorbereid, betalingen nog uitgeschakeld.
+/* 38.80 — abonnementenstructuur voorbereid, betalingen nog uitgeschakeld.
    Basis = kernapp, Plus = automatische gezondheidskoppelingen en toekomstige premiumfuncties,
    Pro = toekomstige professionele functies. Tijdens ontwikkeling zijn alle functies toegankelijk. */
 window.MijnLeefRitmePlans=(function(){
