@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.69">
+<meta name="app-version" content="38.70">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.69";
+const LEEFKRACHT_VERSION = "38.70";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6191,6 +6191,58 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 <style id="mijn-leefritme-3869-latest-body-measurement-note">
 /* 38.69 — lichaamsmaten tonen altijd de nieuwste niet-lege waarde op datum */
 </style>
+
+
+<style id="mijn-leefritme-3870-blauwe-teksten-fix">
+/* 38.70 — resterende blauwe teksten in de app omgezet naar de huidige huisstijl */
+.brand p,
+.latestTitle small,
+.message p,
+.message .info,
+.back,
+.chartEmpty,
+.chartIntro,
+.moreLink small,
+.moreLink .arrow,
+.docsForm label,
+.docMeta,
+.docsEmpty,
+.docsPrivacy,
+.legalDate,
+.legalTextCard p,
+.supportTip,
+#more .releaseReadiness span,
+#more .aboutRows span,
+#more .aboutRows .aboutSoon,
+#more .healthAutoSyncLine span,
+#history .historyEmptyHint,
+#history .empty,
+#history .historyFilterHint,
+.page .sub,
+.page label,
+.kvKey,
+.kvVal{
+  color:#d7dfcc !important;
+}
+
+#history .historyDate,
+.docTitle,
+.legalTextCard h3,
+.page .sectionTitle,
+.page .title,
+.page strong{
+  color:#f4f1e7 !important;
+}
+
+#history .historyFilterCard > label,
+#history .historyDate,
+#report .checkGrid label,
+.docsForm label,
+.legalDate{
+  letter-spacing:.02em !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6671,7 +6723,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.69</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.70</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6801,7 +6853,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.69</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.70</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6869,7 +6921,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.69</p>
+    <p class="legalDate">Mijn LeefRitme 38.70</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
