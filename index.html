@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.77">
+<meta name="app-version" content="38.78">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.77";
+const LEEFKRACHT_VERSION = "38.78";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6493,6 +6493,19 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+<style id="mijn-leefritme-plans-3878">
+/* 38.78 — technische voorbereiding Basis / Plus / Pro. Nog geen betaalmuur actief. */
+#more .lkFeatureLabel{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
+#more .lkPlanBadge{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  min-height:22px!important;padding:2px 9px!important;border-radius:999px!important;
+  border:1px solid rgba(192,171,111,.68)!important;background:rgba(192,171,111,.13)!important;
+  color:#ead79a!important;-webkit-text-fill-color:#ead79a!important;
+  font:800 11px/1 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  letter-spacing:.05em!important;text-transform:uppercase!important;
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -6973,7 +6986,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.77</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.78</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7027,8 +7040,8 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
   <div class="moreGroupLabel">Gezondheid &amp; overzicht</div>
 
-  <div class="card panel settingsCard healthReadyCard moreDetailSection" data-more-detail="health">
-    <div class="label">Gezondheid koppelen</div>
+  <div class="card panel settingsCard healthReadyCard moreDetailSection" data-more-detail="health" data-feature="healthSync" data-min-plan="plus">
+    <div class="label lkFeatureLabel">Gezondheid koppelen <span class="lkPlanBadge" aria-label="Plus-functie">Plus</span></div>
     <div class="healthReadyHead">
       <div class="healthReadyIcon">♥</div>
       <div>
@@ -7103,7 +7116,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.77</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.78</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7171,7 +7184,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.77</p>
+    <p class="legalDate">Mijn LeefRitme 38.78</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -10391,6 +10404,46 @@ document.addEventListener("click",function(e){
 })();
 </script><script>
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){var rows=a.filter(function(r){return r&&r.date&&r[k]!==undefined&&r[k]!==null&&r[k]!==""}).sort(function(x,y){return String(y.date).localeCompare(String(x.date))});return rows.length?rows[0][k]:null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
+</script>
+<script id="mijn-leefritme-plans-3878-js">
+/* 38.78 — abonnementenstructuur voorbereid, betalingen nog uitgeschakeld.
+   Basis = kernapp, Plus = automatische gezondheidskoppelingen en toekomstige premiumfuncties,
+   Pro = toekomstige professionele functies. Tijdens ontwikkeling zijn alle functies toegankelijk. */
+window.MijnLeefRitmePlans=(function(){
+  const STORAGE_KEY='mijnleefritme-plan-v1';
+  const BILLING_ACTIVE=false;
+  const DEFAULT_TEST_PLAN='plus';
+  const RANK={basis:0,plus:1,pro:2};
+  const FEATURES={
+    core:'basis',
+    manualMeasurements:'basis',
+    history:'basis',
+    healthSync:'plus',
+    advancedInsights:'plus',
+    advancedReports:'plus',
+    professionalClients:'pro',
+    professionalSharing:'pro'
+  };
+  function normalize(plan){return Object.prototype.hasOwnProperty.call(RANK,plan)?plan:'basis'}
+  function selectedPlan(){
+    try{return normalize(localStorage.getItem(STORAGE_KEY)||DEFAULT_TEST_PLAN)}catch(e){return DEFAULT_TEST_PLAN}
+  }
+  function requiredPlan(feature){return normalize(FEATURES[feature]||'basis')}
+  function has(feature){
+    if(!BILLING_ACTIVE)return true;
+    return RANK[selectedPlan()]>=RANK[requiredPlan(feature)];
+  }
+  function access(feature){
+    return {feature,requiredPlan:requiredPlan(feature),plan:selectedPlan(),allowed:has(feature),billingActive:BILLING_ACTIVE};
+  }
+  function setTestPlan(plan){
+    const p=normalize(plan);
+    try{localStorage.setItem(STORAGE_KEY,p)}catch(e){}
+    window.dispatchEvent(new CustomEvent('mijnleefritme:planchange',{detail:{plan:p}}));
+    return p;
+  }
+  return {billingActive:BILLING_ACTIVE,features:Object.freeze({...FEATURES}),selectedPlan,requiredPlan,has,access,setTestPlan};
+})();
 </script>
 <script>
 /* Mijn LeefRitme 38.51 — Health Connect synchronisatie.
