@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.02">
+<meta name="app-version" content="39.03">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.02";
+const LEEFKRACHT_VERSION = "39.03";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7744,7 +7744,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.02</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.03</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7881,7 +7881,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.02</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.03</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -9168,7 +9168,11 @@ async function restoreBackup(file){
 
     window.__lkRestoringBackup=true;
 
-    save(measurements);
+    /* 39.03 — herstelcompatibiliteit voor oudere Mijn LeefRitme-back-ups.
+       Schrijf de genormaliseerde meetgegevens rechtstreeks naar dezelfde opslagkey
+       die de app zelf gebruikt. Daardoor is terugzetten niet afhankelijk van een
+       oudere save()-implementatie of een wijziging in event-handlers. */
+    localStorage.setItem(KEY,JSON.stringify(measurements));
 
     if(hasGoal){
       if(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined') localStorage.removeItem(GOAL_KEY);
@@ -9195,6 +9199,26 @@ async function restoreBackup(file){
     /* Als documenten in de back-up zitten, moet de documentset exact overeenkomen. */
     if(Array.isArray(payload.documents)) await lkDocReplaceAll(restoredDocs);
 
+    /* Controleer vóór succesmelding of de kerngegevens daadwerkelijk zijn opgeslagen. */
+    let verifyMeasurements=[];
+    try{verifyMeasurements=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
+    if(!Array.isArray(verifyMeasurements) || verifyMeasurements.length!==measurements.length){
+      throw new Error('Controle na terugzetten mislukt: meetgegevens niet volledig opgeslagen');
+    }
+    if(hasGoal){
+      const expectedGoal=(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined')?null:Number(payload.goal);
+      const storedGoal=goal();
+      if(Number.isFinite(expectedGoal) && storedGoal!==expectedGoal) throw new Error('Controle na terugzetten mislukt: streefgewicht');
+    }
+    if(hasHeight){
+      const expectedHeight=Number(payload.heightCm);
+      if(Number.isFinite(expectedHeight) && Math.abs(lkGetHeightCm()-expectedHeight)>0.01) throw new Error('Controle na terugzetten mislukt: lengte');
+    }
+    if(hasProfile){
+      const storedProfile=lkLoadProfile();
+      if(String(storedProfile.name||'')!==String(profile.name||'')) throw new Error('Controle na terugzetten mislukt: profiel');
+    }
+
     window.__lkRestoringBackup=false;
 
     try{render();}catch(e){}
@@ -9205,7 +9229,9 @@ async function restoreBackup(file){
     /* Maak van de volledig herstelde toestand meteen weer een nieuwe veiligheidskopie. */
     await lkCreateSafetyBackup('na terugzetten');
 
-    alert('Back-up volledig teruggezet: '+measurements.length+' meetdag(en).');
+    alert('Back-up volledig teruggezet en gecontroleerd: '+measurements.length+' meetdag(en).\n\nVersie uit back-up: '+version);
+    /* Een echte reload voorkomt dat oude schermwaarden uit geheugen zichtbaar blijven. */
+    setTimeout(()=>location.reload(),250);
   }catch(e){
     window.__lkRestoringBackup=false;
     console.error('Mijn LeefRitme restore',e);
@@ -10789,7 +10815,7 @@ function lkPrepareReportEmail(){
     +'?subject='+encodeURIComponent(subject)
     +'&body='+encodeURIComponent(body);
 
-  // 39.02 — direct openen vanuit de klik zelf.
+  // 39.03 — direct openen vanuit de klik zelf.
   // Geen target=_blank en geen vertraagde share-call: iOS blokkeert die soms.
   try{
     if(st) st.textContent='Mailapp openen…';
@@ -11177,7 +11203,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.02', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.03', {
         scope: './',
         updateViaCache: 'none'
       });
