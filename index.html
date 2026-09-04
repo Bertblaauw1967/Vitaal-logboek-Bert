@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.78">
+<meta name="app-version" content="38.79">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.78";
+const LEEFKRACHT_VERSION = "38.79";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6495,7 +6495,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
 
 <style id="mijn-leefritme-plans-3878">
-/* 38.78 — technische voorbereiding Basis / Plus / Pro. Nog geen betaalmuur actief. */
+/* 38.79 — technische voorbereiding Basis / Plus / Pro. Nog geen betaalmuur actief. */
 #more .lkFeatureLabel{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:wrap!important}
 #more .lkPlanBadge{
   display:inline-flex!important;align-items:center!important;justify-content:center!important;
@@ -6986,7 +6986,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.78</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.79</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7116,7 +7116,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.78</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.79</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7184,7 +7184,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.78</p>
+    <p class="legalDate">Mijn LeefRitme 38.79</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -9812,7 +9812,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   <table><thead><tr><th>Datum</th>${use.weight?'<th>Gewicht kg</th><th>BMI</th>':''}${use.waist?'<th>Buik cm</th>':''}${use.steps?'<th>Stappen</th>':''}${use.blood?'<th>Bloeddruk</th>':''}${use.heart?'<th>Hartslag</th>':''}${use.glucose?'<th>Suiker mmol/L</th>':''}</tr></thead>
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
   <p class="foot">Mijn LeefRitme – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
-  <button class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport();}else{window.print();}}catch(e){window.print();}})()">Afdrukken / bewaren als PDF</button>
+  <button type="button" class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport(window);}else{window.focus();window.print();}}catch(e){try{window.focus();window.print();}catch(_){alert('Afdrukken kon niet worden geopend.');}}})()">Afdrukken / bewaren als PDF</button>
   </main>
 
 </body></html>`;
@@ -9822,31 +9822,43 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   w.document.open();w.document.write(report);w.document.close();
 }
 
-async function lkNativePrintReport(){
+async function lkNativePrintReport(reportWindow){
   const html=window.__lkLastReportHtml||'';
   const platform=(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')
     ? window.Capacitor.getPlatform()
     : 'web';
 
+  /* Native app: gebruik de printer-plugin. De plugin heet in verschillende
+     Capacitor builds soms Printer of CapgoCapacitorPrinter, daarom controleren
+     we beide. Als de plugin niet beschikbaar is, vallen we altijd terug op het
+     afdrukvenster van HET RAPPORT zelf (niet op de hoofdpagina). */
   if((platform==='android'||platform==='ios') && html){
     try{
       const plugins=window.Capacitor&&window.Capacitor.Plugins ? window.Capacitor.Plugins : {};
-      const Printer=plugins.CapgoCapacitorPrinter || plugins.Printer || plugins.CapacitorPrinter;
+      const Printer=plugins.Printer || plugins.CapgoCapacitorPrinter || plugins.CapacitorPrinter;
       if(Printer && typeof Printer.printHtml==='function'){
         await Printer.printHtml({
           name:'Mijn LeefRitme gezondheidsrapport',
           html:html
         });
-        return;
+        return true;
       }
-      throw new Error('Printer-plugin niet beschikbaar');
+      console.warn('Printer-plugin niet gevonden; browser-afdrukfallback wordt gebruikt.');
     }catch(e){
-      console.warn('Native afdrukken mislukt',e);
-      alert('De native afdrukfunctie is nog niet beschikbaar. Controleer de printer-plugin en voer opnieuw npx cap sync uit.');
-      return;
+      console.warn('Native afdrukken mislukt; browser-afdrukfallback wordt gebruikt.',e);
     }
   }
-  window.print();
+
+  try{
+    const target=reportWindow && !reportWindow.closed ? reportWindow : window;
+    target.focus();
+    target.print();
+    return true;
+  }catch(e){
+    console.error('Afdrukfallback mislukt',e);
+    alert('Afdrukken kon niet worden geopend. Probeer het rapport opnieuw te openen.');
+    return false;
+  }
 }
 window.lkNativePrintReport=lkNativePrintReport;
 
@@ -10406,7 +10418,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){var rows=a.filter(function(r){return r&&r.date&&r[k]!==undefined&&r[k]!==null&&r[k]!==""}).sort(function(x,y){return String(y.date).localeCompare(String(x.date))});return rows.length?rows[0][k]:null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script id="mijn-leefritme-plans-3878-js">
-/* 38.78 — abonnementenstructuur voorbereid, betalingen nog uitgeschakeld.
+/* 38.79 — abonnementenstructuur voorbereid, betalingen nog uitgeschakeld.
    Basis = kernapp, Plus = automatische gezondheidskoppelingen en toekomstige premiumfuncties,
    Pro = toekomstige professionele functies. Tijdens ontwikkeling zijn alle functies toegankelijk. */
 window.MijnLeefRitmePlans=(function(){
