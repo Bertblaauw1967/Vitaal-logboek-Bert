@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.72">
+<meta name="app-version" content="38.75">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.72";
+const LEEFKRACHT_VERSION = "38.75";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6330,6 +6330,96 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3873-meetgeschiedenis-herindeling">
+/* 38.73 — Meetgeschiedenis opnieuw ingedeeld zoals de andere detailpagina's */
+#history{
+  padding-top:4px !important;
+}
+#history > .detailTop{
+  position:static !important;
+  top:auto !important;
+  margin:0 0 14px !important;
+  padding-top:4px !important;
+  padding-bottom:0 !important;
+  align-items:flex-start !important;
+  justify-content:space-between !important;
+  gap:14px !important;
+}
+#history > .detailTop > div:first-child{
+  min-width:0 !important;
+  flex:1 1 auto !important;
+}
+#history > .detailTop .eyebrow{
+  display:block !important;
+  margin:0 0 6px !important;
+}
+#history > .detailTop .sectionTitle{
+  margin:0 !important;
+  max-width:none !important;
+  font-size:clamp(34px, 8vw, 46px) !important;
+  line-height:0.98 !important;
+}
+#history > .detailTop .closeDetail{
+  position:static !important;
+  top:auto !important;
+  right:auto !important;
+  margin:0 !important;
+  width:52px !important;
+  height:52px !important;
+  min-width:52px !important;
+  border-radius:16px !important;
+}
+#history .panel{
+  padding-top:20px !important;
+}
+#history .historyFilterCard{
+  margin:0 0 18px !important;
+  padding:0 !important;
+}
+#history .historyFilterCard > label{
+  display:block !important;
+  margin:0 0 8px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  letter-spacing:.02em !important;
+}
+#history #historyDateFilter{
+  display:block !important;
+  width:100% !important;
+  min-height:54px !important;
+  box-sizing:border-box !important;
+}
+#history .historyFilterActions{
+  display:flex !important;
+  justify-content:flex-end !important;
+  margin-top:10px !important;
+}
+#history .historyClearFilterBtn{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:86px !important;
+  height:42px !important;
+  padding:0 16px !important;
+  border-radius:14px !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  margin:0 !important;
+}
+#history .historyFilterHint{
+  margin:10px 0 0 !important;
+  font-size:11px !important;
+  line-height:1.35 !important;
+}
+#history .historyEmptyHint,
+#history .empty{
+  margin-top:10px !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6810,7 +6900,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.72</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.75</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6940,7 +7030,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.72</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.75</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7008,7 +7098,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.72</p>
+    <p class="legalDate">Mijn LeefRitme 38.75</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7221,14 +7311,18 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
   </section>
 
   <section id="history" class="page">
+    <div class="detailTop">
+      <div>
+        <div class="eyebrow">Metingen beheren</div>
+        <h2 class="sectionTitle">Meetgeschiedenis</h2>
+      </div>
+      <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
+    </div>
     <div class="card panel">
-      <div class="detailTop"><h2 class="sectionTitle">Meetgeschiedenis</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
       <div class="historyFilterCard">
         <label for="historyDateFilter">Zoek een meting op datum</label>
-        <div class="historyFilterRow">
-          <input id="historyDateFilter" class="input" type="date">
-          <button type="button" class="secondary historyClearFilterBtn" id="historyClearFilterBtn">Wis</button>
-        </div>
+        <input id="historyDateFilter" class="input" type="date">
+        <div class="historyFilterActions"><button type="button" class="secondary historyClearFilterBtn" id="historyClearFilterBtn">Wis</button></div>
         <div class="historyFilterHint">Kies een datum om die meetdag te bekijken of te wijzigen.</div>
       </div>
       <div id="historyList"></div>
