@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.49">
+<meta name="app-version" content="38.50">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.49";
+const LEEFKRACHT_VERSION = "38.50";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.49 — totale visuele finetune
+   Mijn LeefRitme 38.50 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.49 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.50 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.49 — commerciële polishronde
+   Mijn LeefRitme 38.50 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.49 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.50 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -5202,6 +5202,150 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 #more.moreSubOpen .moreDetailActive button,#more.moreSubOpen .moreDetailActive .primary,#more.moreSubOpen .moreDetailActive .secondary{color:#101510!important;-webkit-text-fill-color:#101510!important}
 @media(max-width:390px){#more .moreMenuRow{min-height:90px;padding:15px 14px;grid-template-columns:50px minmax(0,1fr) auto;gap:11px}#more .moreMenuIcon{width:46px;height:46px;border-radius:14px}#more .moreMenuText strong{font-size:16px}#more .moreMenuText small{font-size:13px}#more .moreMenuPill{min-width:72px;padding:10px 12px}}
 </style>
+
+<style id="mijn-leefritme-3850-menu-alignment">
+/* 38.50 — Mijn LeefRitme-menu: vaste kaarthoogtes, strakke uitlijning en nette tekstverdeling */
+#more .moreMenuV3848{
+  display:grid !important;
+  gap:14px !important;
+  margin:28px 0 28px !important;
+  padding:0 !important;
+}
+#more .moreMenuRow{
+  width:100% !important;
+  height:auto !important;
+  min-height:112px !important;
+  box-sizing:border-box !important;
+  display:grid !important;
+  grid-template-columns:58px minmax(0,1fr) 46px !important;
+  column-gap:16px !important;
+  align-items:center !important;
+  padding:18px 18px !important;
+  margin:0 !important;
+  overflow:hidden !important;
+  border-radius:22px !important;
+  text-align:left !important;
+}
+#more .moreMenuRow[data-more-target="health"]{
+  grid-template-columns:58px minmax(0,1fr) 100px !important;
+}
+#more .moreMenuIcon{
+  width:52px !important;
+  height:52px !important;
+  min-width:52px !important;
+  align-self:center !important;
+  justify-self:start !important;
+  margin:0 !important;
+}
+#more .moreMenuText{
+  min-width:0 !important;
+  width:100% !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:6px !important;
+  margin:0 !important;
+  padding:0 !important;
+  overflow:visible !important;
+}
+#more .moreMenuText strong{
+  display:block !important;
+  width:100% !important;
+  margin:0 !important;
+  color:#F2F0E8 !important;
+  -webkit-text-fill-color:#F2F0E8 !important;
+  font-size:18px !important;
+  line-height:1.18 !important;
+  font-weight:850 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  white-space:normal !important;
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+}
+#more .moreMenuText small{
+  display:block !important;
+  width:100% !important;
+  margin:0 !important;
+  color:#F2F0E8 !important;
+  -webkit-text-fill-color:#F2F0E8 !important;
+  font-size:14px !important;
+  line-height:1.42 !important;
+  font-weight:500 !important;
+  white-space:normal !important;
+  overflow-wrap:break-word !important;
+}
+#more .moreMenuArrow{
+  width:40px !important;
+  height:52px !important;
+  display:grid !important;
+  place-items:center !important;
+  justify-self:end !important;
+  align-self:center !important;
+  margin:0 !important;
+  font-size:38px !important;
+  line-height:1 !important;
+}
+#more .moreMenuPill{
+  width:96px !important;
+  min-width:96px !important;
+  height:52px !important;
+  box-sizing:border-box !important;
+  display:grid !important;
+  place-items:center !important;
+  justify-self:end !important;
+  align-self:center !important;
+  padding:0 14px !important;
+  margin:0 !important;
+  border-radius:999px !important;
+  font-size:14px !important;
+  line-height:1 !important;
+}
+@media(max-width:430px){
+  #more .moreMenuV3848{
+    gap:12px !important;
+    margin-top:26px !important;
+  }
+  #more .moreMenuRow{
+    min-height:106px !important;
+    grid-template-columns:52px minmax(0,1fr) 34px !important;
+    column-gap:12px !important;
+    padding:16px 14px !important;
+    border-radius:20px !important;
+  }
+  #more .moreMenuRow[data-more-target="health"]{
+    grid-template-columns:52px minmax(0,1fr) 86px !important;
+  }
+  #more .moreMenuIcon{
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    border-radius:15px !important;
+  }
+  #more .moreMenuText strong{
+    font-size:16px !important;
+    line-height:1.2 !important;
+  }
+  #more .moreMenuText small{
+    font-size:13px !important;
+    line-height:1.38 !important;
+  }
+  #more .moreMenuArrow{
+    width:30px !important;
+    height:48px !important;
+    font-size:34px !important;
+  }
+  #more .moreMenuPill{
+    width:82px !important;
+    min-width:82px !important;
+    height:48px !important;
+    padding:0 10px !important;
+    font-size:13px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5214,7 +5358,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.49</div>
+<div class="v291Indicator">v38.50</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5805,7 +5949,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.49</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.50</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -5873,7 +6017,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.49</p>
+    <p class="legalDate">Mijn LeefRitme 38.50</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -9021,7 +9165,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.49 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.50 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
