@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.84">
+<meta name="app-version" content="38.85">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.84";
+const LEEFKRACHT_VERSION = "38.85";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7115,7 +7115,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.84</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.85</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7245,7 +7245,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.84</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.85</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7313,7 +7313,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.84</p>
+    <p class="legalDate">Mijn LeefRitme 38.85</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -9986,71 +9986,7 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   </main>
 
 
-<script id="mijn-leefritme-3884-dashboard-layout-js">
-(function(){
-  const PREF_KEY='mijnleefritme-dashboard-layout-v1';
-  const TILES=[
-    {id:'weight',name:'Gewicht'},
-    {id:'goal',name:'Streefgewicht'},
-    {id:'bmi',name:'BMI'},
-    {id:'body',name:'Lichaamsmaten'},
-    {id:'blood',name:'Bloeddruk'},
-    {id:'heart',name:'Hartslag'},
-    {id:'steps',name:'Stappen vandaag'},
-    {id:'score',name:'LeefRitme-score'},
-    {id:'insight',name:'Wat valt op?'},
-    {id:'more',name:'Mijn LeefRitme',locked:true}
-  ];
-  function defaults(){return {order:TILES.map(t=>t.id),visible:Object.fromEntries(TILES.map(t=>[t.id,true]))}}
-  function read(){
-    const d=defaults();
-    try{
-      const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
-      if(!raw||!Array.isArray(raw.order)||typeof raw.visible!=='object')return d;
-      const valid=TILES.map(t=>t.id), order=[];
-      raw.order.forEach(id=>{if(valid.includes(id)&&!order.includes(id))order.push(id)});
-      valid.forEach(id=>{if(!order.includes(id))order.push(id)});
-      const visible={...d.visible,...raw.visible,more:true};
-      return {order,visible};
-    }catch(e){return d}
-  }
-  function write(p){p.visible.more=true;localStorage.setItem(PREF_KEY,JSON.stringify(p));apply(p)}
-  function apply(pref){
-    const p=pref||read(), grid=document.querySelector('#overview .tiles'); if(!grid)return;
-    p.order.forEach(id=>{const el=grid.querySelector('[data-tile-id="'+id+'"]');if(el)grid.appendChild(el)});
-    TILES.forEach(t=>{const el=grid.querySelector('[data-tile-id="'+t.id+'"]');if(el)el.style.display=(t.locked||p.visible[t.id]!==false)?'':'none'});
-  }
-  function renderManager(){
-    const host=document.getElementById('dashboardTileList');if(!host)return;
-    const p=read(), byId=Object.fromEntries(TILES.map(t=>[t.id,t]));
-    host.innerHTML='';
-    p.order.forEach((id,index)=>{
-      const t=byId[id];if(!t)return;
-      const row=document.createElement('div');row.className='dashboardTileRow';
-      const main=document.createElement('label');main.className='dashboardTileMain';
-      const cb=document.createElement('input');cb.type='checkbox';cb.className='dashboardTileCheck';cb.checked=t.locked?true:p.visible[id]!==false;cb.disabled=!!t.locked;cb.setAttribute('aria-label',t.name+' op voorpagina tonen');
-      const label=document.createElement('span');label.className='dashboardTileName';label.textContent=t.name;
-      if(t.locked){const small=document.createElement('small');small.className='dashboardTileLock';small.textContent='Altijd zichtbaar';label.appendChild(small)}
-      main.append(cb,label);
-      const moves=document.createElement('div');moves.className='dashboardMoveButtons';
-      const up=document.createElement('button');up.type='button';up.className='dashboardMoveBtn';up.textContent='↑';up.disabled=index===0;up.setAttribute('aria-label',t.name+' één plek omhoog');
-      const down=document.createElement('button');down.type='button';down.className='dashboardMoveBtn';down.textContent='↓';down.disabled=index===p.order.length-1;down.setAttribute('aria-label',t.name+' één plek omlaag');
-      cb.addEventListener('change',()=>{const q=read();q.visible[id]=cb.checked;write(q)});
-      up.addEventListener('click',()=>move(id,-1));down.addEventListener('click',()=>move(id,1));
-      moves.append(up,down);row.append(main,moves);host.appendChild(row);
-    });
-  }
-  function move(id,dir){const p=read(),i=p.order.indexOf(id),j=i+dir;if(i<0||j<0||j>=p.order.length)return;[p.order[i],p.order[j]]=[p.order[j],p.order[i]];write(p);renderManager()}
-  function init(){
-    apply();renderManager();
-    const all=document.getElementById('dashboardShowAllBtn');if(all)all.addEventListener('click',()=>{const p=read();TILES.forEach(t=>p.visible[t.id]=true);write(p);renderManager()});
-    const reset=document.getElementById('dashboardResetBtn');if(reset)reset.addEventListener('click',()=>{const p=defaults();write(p);renderManager()});
-    document.addEventListener('click',e=>{if(e.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderManager,0)});
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-  window.MijnLeefRitmeDashboard={apply,read};
-})();
-</script>
+
 
 </body></html>`;
   window.__lkLastReportHtml=report;
@@ -11342,6 +11278,72 @@ document.addEventListener('DOMContentLoaded', function(){
     if(close){close.addEventListener('click',function(e){if(more.classList.contains('moreSubOpen')){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();showMenu(true)}},true)}
     document.querySelectorAll('[data-page="more"]').forEach(btn=>btn.addEventListener('click',function(){showMenu(false)},true));
   });
+})();
+</script>
+
+<script id="mijn-leefritme-3885-dashboard-layout-js">
+(function(){
+  const PREF_KEY='mijnleefritme-dashboard-layout-v1';
+  const TILES=[
+    {id:'weight',name:'Gewicht'},
+    {id:'goal',name:'Streefgewicht'},
+    {id:'bmi',name:'BMI'},
+    {id:'body',name:'Lichaamsmaten'},
+    {id:'blood',name:'Bloeddruk'},
+    {id:'heart',name:'Hartslag'},
+    {id:'steps',name:'Stappen vandaag'},
+    {id:'score',name:'LeefRitme-score'},
+    {id:'insight',name:'Wat valt op?'},
+    {id:'more',name:'Mijn LeefRitme',locked:true}
+  ];
+  function defaults(){return {order:TILES.map(t=>t.id),visible:Object.fromEntries(TILES.map(t=>[t.id,true]))}}
+  function read(){
+    const d=defaults();
+    try{
+      const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
+      if(!raw||!Array.isArray(raw.order)||typeof raw.visible!=='object')return d;
+      const valid=TILES.map(t=>t.id), order=[];
+      raw.order.forEach(id=>{if(valid.includes(id)&&!order.includes(id))order.push(id)});
+      valid.forEach(id=>{if(!order.includes(id))order.push(id)});
+      const visible={...d.visible,...raw.visible,more:true};
+      return {order,visible};
+    }catch(e){return d}
+  }
+  function write(p){p.visible.more=true;localStorage.setItem(PREF_KEY,JSON.stringify(p));apply(p)}
+  function apply(pref){
+    const p=pref||read(), grid=document.querySelector('#overview .tiles'); if(!grid)return;
+    p.order.forEach(id=>{const el=grid.querySelector('[data-tile-id="'+id+'"]');if(el)grid.appendChild(el)});
+    TILES.forEach(t=>{const el=grid.querySelector('[data-tile-id="'+t.id+'"]');if(el)el.style.display=(t.locked||p.visible[t.id]!==false)?'':'none'});
+  }
+  function renderManager(){
+    const host=document.getElementById('dashboardTileList');if(!host)return;
+    const p=read(), byId=Object.fromEntries(TILES.map(t=>[t.id,t]));
+    host.innerHTML='';
+    p.order.forEach((id,index)=>{
+      const t=byId[id];if(!t)return;
+      const row=document.createElement('div');row.className='dashboardTileRow';
+      const main=document.createElement('label');main.className='dashboardTileMain';
+      const cb=document.createElement('input');cb.type='checkbox';cb.className='dashboardTileCheck';cb.checked=t.locked?true:p.visible[id]!==false;cb.disabled=!!t.locked;cb.setAttribute('aria-label',t.name+' op voorpagina tonen');
+      const label=document.createElement('span');label.className='dashboardTileName';label.textContent=t.name;
+      if(t.locked){const small=document.createElement('small');small.className='dashboardTileLock';small.textContent='Altijd zichtbaar';label.appendChild(small)}
+      main.append(cb,label);
+      const moves=document.createElement('div');moves.className='dashboardMoveButtons';
+      const up=document.createElement('button');up.type='button';up.className='dashboardMoveBtn';up.textContent='↑';up.disabled=index===0;up.setAttribute('aria-label',t.name+' één plek omhoog');
+      const down=document.createElement('button');down.type='button';down.className='dashboardMoveBtn';down.textContent='↓';down.disabled=index===p.order.length-1;down.setAttribute('aria-label',t.name+' één plek omlaag');
+      cb.addEventListener('change',()=>{const q=read();q.visible[id]=cb.checked;write(q)});
+      up.addEventListener('click',()=>move(id,-1));down.addEventListener('click',()=>move(id,1));
+      moves.append(up,down);row.append(main,moves);host.appendChild(row);
+    });
+  }
+  function move(id,dir){const p=read(),i=p.order.indexOf(id),j=i+dir;if(i<0||j<0||j>=p.order.length)return;[p.order[i],p.order[j]]=[p.order[j],p.order[i]];write(p);renderManager()}
+  function init(){
+    apply();renderManager();
+    const all=document.getElementById('dashboardShowAllBtn');if(all)all.addEventListener('click',()=>{const p=read();TILES.forEach(t=>p.visible[t.id]=true);write(p);renderManager()});
+    const reset=document.getElementById('dashboardResetBtn');if(reset)reset.addEventListener('click',()=>{const p=defaults();write(p);renderManager()});
+    document.addEventListener('click',e=>{if(e.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderManager,0)});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  window.MijnLeefRitmeDashboard={apply,read};
 })();
 </script>
 </body>
