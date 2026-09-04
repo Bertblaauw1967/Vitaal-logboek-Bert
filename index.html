@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.58">
+<meta name="app-version" content="38.59">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.55";
+const LEEFKRACHT_VERSION = "38.59";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6153,6 +6153,11 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
       <span class="moreMenuText"><strong>Jouw gegevens</strong><small>Voor je BMI, voortgang en persoonlijke doelen.</small></span>
       <span class="moreMenuArrow" aria-hidden="true">›</span>
     </button>
+    <button type="button" class="moreMenuRow" data-page="history">
+      <span class="moreMenuIcon" aria-hidden="true">◷</span>
+      <span class="moreMenuText"><strong>Meetgeschiedenis</strong><small>Bekijk, wijzig of verwijder eerder ingevoerde metingen.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
     <button type="button" class="moreMenuRow" data-more-target="health">
       <span class="moreMenuIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2 4.8 13C2.1 10.3 2 6 4.7 3.8 7 1.9 10.1 2.7 12 5c1.9-2.3 5-3.1 7.3-1.2 2.7 2.2 2.6 6.5-.1 9.2L12 20.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
       <span class="moreMenuText"><strong>Gezondheidskoppeling</strong><small>Koppel met Apple Health of Health Connect.</small></span>
@@ -6185,7 +6190,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.55</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.59</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6315,7 +6320,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.55</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.59</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6383,7 +6388,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.55</p>
+    <p class="legalDate">Mijn LeefRitme 38.59</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
