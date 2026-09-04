@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.93">
+<meta name="app-version" content="38.94">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.93";
+const LEEFKRACHT_VERSION = "38.94";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7094,7 +7094,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
 
 <style id="mijn-leefritme-3893-slot-drag-fix">
-/* 38.93 — negen vaste keuzeposities + één vaste Mijn LeefRitme-tegel */
+/* 38.95 — lege posities alleen tijdens indelen; normale Home blijft compact */
 #overview .tiles{
   align-items:stretch !important;
 }
@@ -7717,7 +7717,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.93</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.94</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7847,7 +7847,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.93</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.94</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7915,7 +7915,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.93</p>
+    <p class="legalDate">Mijn LeefRitme 38.94</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11883,7 +11883,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script id="mijn-leefritme-3893-dashboard-layout-js">
+<script id="mijn-leefritme-3895-dashboard-layout-js">
 (function(){
   const PREF_KEY='mijnleefritme-dashboard-layout-v3';
   const MAX_OPTIONAL=9;
@@ -11968,20 +11968,24 @@ document.addEventListener('DOMContentLoaded', function(){
     // Hide all optional tiles first.
     optionalIds().forEach(id=>{
       const el=g.querySelector('[data-tile-id="'+id+'"]');
-      if(el)el.style.display='none';
+      // Belangrijk: de tegel-CSS gebruikt display:grid !important.
+      // Daarom moet verbergen óók inline !important zijn, anders blijven
+      // bibliotheektegels zichtbaar op Home.
+      if(el)el.style.setProperty('display','none','important');
     });
 
-    // Build exactly nine configurable positions. Empty slots stay empty,
-    // so moving a tile into a gap does not shuffle every other tile.
+    // 38.95: op de normale voorpagina tonen we alleen echte tegels.
+    // Lege posities bestaan intern nog wel, maar worden pas zichtbaar zodra
+    // de gebruiker 'Voorpagina indelen' activeert. Daardoor blijft Home compact.
     p.slots.forEach((id,slotIndex)=>{
       if(id){
         const el=g.querySelector('[data-tile-id="'+id+'"]');
         if(el){
-          el.style.display='';
+          el.style.removeProperty('display');
           el.dataset.dashboardSlot=String(slotIndex);
           g.appendChild(el);
         }
-      }else{
+      }else if(editMode){
         const gap=document.createElement('div');
         gap.className='dashboardEmptySlot3893';
         gap.dataset.dashboardSlot=String(slotIndex);
@@ -11990,10 +11994,11 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
 
-    // Fixed tile is always position 10.
+    // Normaal staat Mijn LeefRitme direct na de laatste zichtbare tegel.
+    // Tijdens indelen blijft hij na de negen vaste keuzeposities staan.
     const more=g.querySelector('[data-tile-id="more"]');
     if(more){
-      more.style.display='';
+      more.style.removeProperty('display');
       more.removeAttribute('data-dashboard-slot');
       g.appendChild(more);
     }
@@ -12099,12 +12104,16 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function setEditMode(on){
-    editMode=!!on;
+    const next=!!on;
+    if(!next&&dragging)finishDrag(false);
+    editMode=next;
     const ov=document.getElementById('overview');
     const bar=document.getElementById('dashboardEditBar');
     if(ov)ov.classList.toggle('dashboardEditing',editMode);
     if(bar)bar.hidden=!editMode;
-    if(!editMode)finishDrag(false);
+    // Opnieuw opbouwen: in bewerkmodus alle 9 slots tonen,
+    // daarbuiten de lege slots volledig weglaten.
+    apply();
     refreshMinusButtons();
   }
 
