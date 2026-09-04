@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.63">
+<meta name="app-version" content="38.64">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.63";
+const LEEFKRACHT_VERSION = "38.64";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5900,6 +5900,39 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3864-lichaamsmaten-tile-fix">
+/* 38.64 — labels in Lichaamsmaten-tegel netjes passend maken */
+#overview .bodyMetricTile .bodyMeasurementsRows{
+  width:100% !important;
+  margin-top:16px !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows > div{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 80px !important;
+  column-gap:8px !important;
+  align-items:center !important;
+  padding:6px 0 !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows span{
+  font-size:9.2px !important;
+  line-height:1.2 !important;
+  letter-spacing:0 !important;
+  white-space:nowrap !important;
+  overflow:visible !important;
+  text-overflow:clip !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  width:80px !important;
+  font-size:9.2px !important;
+  line-height:1.2 !important;
+  text-align:right !important;
+  white-space:nowrap !important;
+  font-variant-numeric:tabular-nums !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5958,7 +5991,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="label bodyMeasureLabel">Lichaamsmaten</div>
           <div class="value" id="bodyTile">—</div>
           <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
-        <div class="bodyMeasurementsRows"><div><span>Buikomtrek</span><strong id="bodyWaistRow">—</strong></div><div><span>Heup</span><strong id="bodyHipRow">—</strong></div><div><span>Borst</span><strong id="bodyChestRow">—</strong></div></div></div>
+        <div class="bodyMeasurementsRows"><div><span>Buikomtr.</span><strong id="bodyWaistRow">—</strong></div><div><span>Heupomtr.</span><strong id="bodyHipRow">—</strong></div><div><span>Borstomtr.</span><strong id="bodyChestRow">—</strong></div></div></div>
       </button>
 <button type="button" class="card tile clickable tileBlood" data-page="blood">
         <div class="icon pink">♥</div>
@@ -6380,7 +6413,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.63</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.64</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6510,7 +6543,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.63</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.64</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6578,7 +6611,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.63</p>
+    <p class="legalDate">Mijn LeefRitme 38.64</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
