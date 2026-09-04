@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.64">
+<meta name="app-version" content="38.65">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.64";
+const LEEFKRACHT_VERSION = "38.65";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5933,6 +5933,103 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3865-meetgeschiedenis-zoekveld">
+/* 38.65 — meetgeschiedenis rustiger met datumzoekveld en nieuwe vakstijl */
+#history .historyFilterCard{
+  margin:4px 0 14px !important;
+  padding:14px 0 6px !important;
+}
+#history .historyFilterCard > label{
+  display:block !important;
+  margin:0 0 8px !important;
+  color:#f3f0e7 !important;
+  font-size:12px !important;
+  letter-spacing:.03em !important;
+}
+#history .historyFilterRow{
+  display:flex !important;
+  gap:10px !important;
+  align-items:center !important;
+}
+#history #historyDateFilter{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+}
+#history .historyClearFilterBtn{
+  min-width:78px !important;
+  flex:0 0 auto !important;
+}
+#history .historyQuickDates{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+  margin-top:12px !important;
+}
+#history .historyQuickDate{
+  border:1px solid rgba(154,174,114,.28) !important;
+  background:rgba(18,35,29,.82) !important;
+  color:#f3f0e7 !important;
+  border-radius:999px !important;
+  padding:8px 12px !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+}
+#history .historyQuickDate.active{
+  background:rgba(184,199,133,.22) !important;
+  border-color:rgba(184,199,133,.55) !important;
+}
+#history .historyFilterHint,
+#history .historyEmptyHint{
+  margin-top:10px !important;
+  color:#b8beb1 !important;
+  font-size:12px !important;
+  line-height:1.35 !important;
+}
+#history .historyItem{
+  padding:16px !important;
+}
+#history .historyData{
+  grid-template-columns:1fr 1fr !important;
+  gap:10px !important;
+  margin-top:14px !important;
+}
+#history .hmini{
+  background:linear-gradient(180deg,rgba(15,36,28,.92),rgba(10,27,22,.96)) !important;
+  border:1px solid rgba(154,174,114,.18) !important;
+  border-radius:16px !important;
+  padding:12px 14px !important;
+}
+#history .hmini span{
+  color:#b5baad !important;
+  font-size:11px !important;
+  line-height:1.2 !important;
+}
+#history .hmini b{
+  color:#f7f5ef !important;
+  margin-top:5px !important;
+  font-size:17px !important;
+  line-height:1.15 !important;
+}
+#history .historyActions{
+  gap:8px !important;
+}
+#history .editMeasurement,
+#history .delete{
+  border-radius:12px !important;
+  padding:9px 12px !important;
+  border:1px solid rgba(154,174,114,.22) !important;
+  background:rgba(184,199,133,.92) !important;
+  color:#101812 !important;
+}
+#history .delete{
+  background:rgba(189,128,120,.18) !important;
+  border-color:rgba(189,128,120,.35) !important;
+  color:#f3d8d4 !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6413,7 +6510,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.64</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.65</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6543,7 +6640,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.64</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.65</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6611,7 +6708,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.64</p>
+    <p class="legalDate">Mijn LeefRitme 38.65</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -6826,6 +6923,15 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
   <section id="history" class="page">
     <div class="card panel">
       <div class="detailTop"><h2 class="sectionTitle">Meetgeschiedenis</h2><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div>
+      <div class="historyFilterCard">
+        <label for="historyDateFilter">Zoek een meting op datum</label>
+        <div class="historyFilterRow">
+          <input id="historyDateFilter" class="input" type="date">
+          <button type="button" class="secondary historyClearFilterBtn" id="historyClearFilterBtn">Wis</button>
+        </div>
+        <div id="historyQuickDates" class="historyQuickDates"></div>
+        <div class="historyFilterHint">Kies een datum hierboven. Dat werkt rustiger dan alle meetdagen onder elkaar te tonen.</div>
+      </div>
       <div id="historyList"></div>
       <div class="actions"><button class="secondary" id="exportBtn">Exporteer CSV</button><button class="secondary" id="clearBtn">Wis alles</button></div>
     </div>
@@ -6913,12 +7019,28 @@ function renderCharts(data){
  $('#goalChart').innerHTML=svgLine(goalPts,['#ffb020']);
 }
 function renderHistory(data){
- const items=sorted(data),host=$('#historyList');
+ const items=sorted(data),host=$('#historyList'), filterInput=$('#historyDateFilter'), quickHost=$('#historyQuickDates');
+ const selectedDate = filterInput ? filterInput.value : '';
+ if(quickHost){
+   const quickItems = items.slice(0,8);
+   quickHost.innerHTML = quickItems.length
+     ? quickItems.map(e=>`<button type="button" class="historyQuickDate${selectedDate===e.date?' active':''}" data-date="${e.date}">${fdate(e.date)}</button>`).join('')
+     : '<div class="historyEmptyHint">Nog geen meetdagen beschikbaar.</div>';
+   $$('.historyQuickDate').forEach(btn=>btn.onclick=()=>{ if(filterInput){ filterInput.value = btn.dataset.date || ''; renderHistory(load()); } });
+ }
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
- host.innerHTML='<div class="historyList">'+items.map((e,i)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-i="${i}">Wijzig</button><button class="delete" data-i="${i}">Verwijder</button></div></div><div class="historyData">
- <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
- $$('.editMeasurement').forEach(b=>b.onclick=()=>{const s=sorted(load()), row=s[+b.dataset.i]; if(row)lkBeginMeasurementEdit(row)});
- $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load());s.splice(+b.dataset.i,1);save(s);render()})
+ if(!selectedDate){
+   host.innerHTML='<div class="historyEmptyHint">Kies hierboven een datum om een meting te bekijken, te wijzigen of te verwijderen.</div>';
+   return;
+ }
+ const filtered = items.filter(e=>e.date===selectedDate);
+ if(!filtered.length){
+   host.innerHTML='<div class="historyEmptyHint">Geen meting gevonden op deze datum.</div>';
+   return;
+ }
+ host.innerHTML='<div class="historyList">'+filtered.map((e)=>`<div class="card historyItem"><div class="historyTop"><div class="historyDate">${fdate(e.date)}</div><div class="historyActions"><button class="editMeasurement" data-date="${e.date}">Wijzig</button><button class="delete" data-date="${e.date}">Verwijder</button></div></div><div class="historyData"> <div class="hmini"><span>Gewicht</span><b>${e.weight?e.weight+' kg':'—'}</b></div><div class="hmini"><span>Buik</span><b>${e.waist?e.waist+' cm':'—'}</b></div><div class="hmini"><span>Stappen</span><b>${e.steps?Number(e.steps).toLocaleString('nl-NL'):'—'}</b></div><div class="hmini"><span>Bloeddruk</span><b>${e.sys&&e.dia?e.sys+'/'+e.dia:'—'}</b></div><div class="hmini"><span>Hartslag</span><b>${e.heart?e.heart+' bpm':'—'}</b></div><div class="hmini"><span>Bloedsuiker</span><b>${e.glucose?String(e.glucose).replace('.',',')+' mmol/L':'—'}</b></div></div></div>`).join('')+'</div>';
+ $$('.editMeasurement').forEach(b=>b.onclick=()=>{const row=sorted(load()).find(x=>x.date===b.dataset.date); if(row)lkBeginMeasurementEdit(row)});
+ $$('.delete').forEach(b=>b.onclick=()=>{const s=sorted(load()); const idx=s.findIndex(x=>x.date===b.dataset.date); if(idx>-1){s.splice(idx,1); save(s); render();}})
 }
 function render(){
   const data=load(), ordered=sorted(data), latest=ordered[0],
@@ -7294,6 +7416,8 @@ function lkCancelMeasurementEdit(){
   lkEditingOriginalDate=null; $('#form').reset(); $('#date').value=today(); lkSetMeasurementEditMode(false);
 }
 if($('#cancelEditBtn')) $('#cancelEditBtn').onclick=()=>{lkCancelMeasurementEdit();page('history')};
+if($('#historyDateFilter')) $('#historyDateFilter').addEventListener('change',()=>renderHistory(load()));
+if($('#historyClearFilterBtn')) $('#historyClearFilterBtn').onclick=()=>{ if($('#historyDateFilter')) $('#historyDateFilter').value=''; renderHistory(load()); };
 $('#form').onsubmit=e=>{
   e.preventDefault();
   const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};
