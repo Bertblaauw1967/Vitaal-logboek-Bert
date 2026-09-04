@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.65">
+<meta name="app-version" content="38.66">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.65";
+const LEEFKRACHT_VERSION = "38.66";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6030,6 +6030,85 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3866-meetgeschiedenis-final">
+/* 38.66 — Meetgeschiedenis: alleen datumzoekveld + finale polish */
+#history .historyQuickDates{display:none !important;}
+#history .historyFilterCard{
+  margin:2px 0 18px !important;
+  padding:0 !important;
+}
+#history .historyFilterCard > label{
+  margin:0 0 8px !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  letter-spacing:.02em !important;
+}
+#history .historyFilterRow{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 78px !important;
+  gap:10px !important;
+  align-items:stretch !important;
+}
+#history #historyDateFilter,
+#history .historyClearFilterBtn{
+  min-height:54px !important;
+  border-radius:14px !important;
+}
+#history .historyClearFilterBtn{
+  padding:0 12px !important;
+}
+#history .historyFilterHint{
+  margin:8px 2px 0 !important;
+  font-size:11px !important;
+  line-height:1.35 !important;
+  color:#aeb5a8 !important;
+}
+#history .historyEmptyHint{
+  margin:18px 0 4px !important;
+  padding:16px !important;
+  border:1px solid rgba(154,174,114,.18) !important;
+  border-radius:16px !important;
+  background:rgba(16,26,18,.55) !important;
+  text-align:center !important;
+}
+#history .historyItem{
+  margin-top:8px !important;
+  border-radius:20px !important;
+}
+#history .historyTop{
+  align-items:center !important;
+  margin-bottom:4px !important;
+}
+#history .historyDate{
+  font-size:18px !important;
+  line-height:1.15 !important;
+}
+#history .historyActions{
+  display:flex !important;
+  gap:8px !important;
+}
+#history .editMeasurement,#history .delete{
+  min-height:38px !important;
+  padding:0 12px !important;
+  font-size:12px !important;
+}
+#history .historyData{
+  margin-top:12px !important;
+  gap:8px !important;
+}
+#history .hmini{
+  min-height:72px !important;
+  padding:10px 12px !important;
+  border-radius:14px !important;
+}
+#history .actions{
+  margin-top:18px !important;
+  gap:10px !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6510,7 +6589,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.65</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.66</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6640,7 +6719,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.65</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.66</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6708,7 +6787,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.65</p>
+    <p class="legalDate">Mijn LeefRitme 38.66</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -6929,8 +7008,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <input id="historyDateFilter" class="input" type="date">
           <button type="button" class="secondary historyClearFilterBtn" id="historyClearFilterBtn">Wis</button>
         </div>
-        <div id="historyQuickDates" class="historyQuickDates"></div>
-        <div class="historyFilterHint">Kies een datum hierboven. Dat werkt rustiger dan alle meetdagen onder elkaar te tonen.</div>
+        <div class="historyFilterHint">Kies een datum om die meetdag te bekijken of te wijzigen.</div>
       </div>
       <div id="historyList"></div>
       <div class="actions"><button class="secondary" id="exportBtn">Exporteer CSV</button><button class="secondary" id="clearBtn">Wis alles</button></div>
@@ -7019,15 +7097,8 @@ function renderCharts(data){
  $('#goalChart').innerHTML=svgLine(goalPts,['#ffb020']);
 }
 function renderHistory(data){
- const items=sorted(data),host=$('#historyList'), filterInput=$('#historyDateFilter'), quickHost=$('#historyQuickDates');
+ const items=sorted(data),host=$('#historyList'), filterInput=$('#historyDateFilter');
  const selectedDate = filterInput ? filterInput.value : '';
- if(quickHost){
-   const quickItems = items.slice(0,8);
-   quickHost.innerHTML = quickItems.length
-     ? quickItems.map(e=>`<button type="button" class="historyQuickDate${selectedDate===e.date?' active':''}" data-date="${e.date}">${fdate(e.date)}</button>`).join('')
-     : '<div class="historyEmptyHint">Nog geen meetdagen beschikbaar.</div>';
-   $$('.historyQuickDate').forEach(btn=>btn.onclick=()=>{ if(filterInput){ filterInput.value = btn.dataset.date || ''; renderHistory(load()); } });
- }
  if(!items.length){host.innerHTML='<div class="empty">Nog geen metingen opgeslagen.</div>';return}
  if(!selectedDate){
    host.innerHTML='<div class="historyEmptyHint">Kies hierboven een datum om een meting te bekijken, te wijzigen of te verwijderen.</div>';
