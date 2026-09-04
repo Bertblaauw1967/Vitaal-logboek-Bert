@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.88">
+<meta name="app-version" content="38.89">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.88";
+const LEEFKRACHT_VERSION = "38.89";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6831,6 +6831,141 @@ body.mlr-home-edit #home [data-tile-key]{
 }
 </style>
 
+
+<style id="mijn-leefritme-3889-iphone-wiggle">
+/* 38.89 — iPhone-achtige bewerkmodus */
+@keyframes mlrTileWiggle3889{
+  0%   { transform:rotate(-0.7deg) translateY(0); }
+  25%  { transform:rotate(0.7deg) translateY(-0.5px); }
+  50%  { transform:rotate(-0.45deg) translateY(0); }
+  75%  { transform:rotate(0.55deg) translateY(0.5px); }
+  100% { transform:rotate(-0.7deg) translateY(0); }
+}
+
+#overview.dashboardEditing .tiles [data-tile-id]{
+  animation:mlrTileWiggle3889 .34s ease-in-out infinite !important;
+  transform-origin:50% 50% !important;
+  touch-action:none !important;
+  overflow:visible !important;
+}
+
+#overview.dashboardEditing .tiles [data-tile-id]:nth-child(even){
+  animation-delay:-.17s !important;
+}
+
+#overview .dashboardDragSource3889{
+  opacity:.24 !important;
+  animation:none !important;
+  outline:2px dashed rgba(185,202,124,.68) !important;
+  outline-offset:-3px !important;
+}
+
+#dashboardDragGhost3889{
+  position:fixed !important;
+  z-index:99999 !important;
+  pointer-events:none !important;
+  opacity:.94 !important;
+  transform:scale(1.035) !important;
+  animation:none !important;
+  box-shadow:0 18px 40px rgba(0,0,0,.44) !important;
+  outline:2px solid rgba(185,202,124,.80) !important;
+}
+
+.dashboardMinus3889{
+  position:absolute !important;
+  top:-10px !important;
+  left:-10px !important;
+  width:30px !important;
+  height:30px !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:#202820 !important;
+  border:2px solid #a9bb76 !important;
+  color:#f3f0e6 !important;
+  font-size:24px !important;
+  font-weight:900 !important;
+  line-height:1 !important;
+  z-index:15 !important;
+  box-shadow:0 4px 10px rgba(0,0,0,.34) !important;
+  cursor:pointer !important;
+}
+
+#overview.dashboardEditing .tiles [data-tile-id]{
+  position:relative !important;
+}
+
+#overview.dashboardEditing .tileMore .dashboardMinus3889{
+  display:none !important;
+}
+
+/* Bibliotheek: rustig en zonder sorteerpijlen */
+.dashboardTileRow3889{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:16px !important;
+  min-height:70px !important;
+  padding:12px 4px !important;
+  border-bottom:1px solid rgba(154,174,114,.14) !important;
+}
+.dashboardTileInfo3889{
+  display:flex !important;
+  min-width:0 !important;
+  flex-direction:column !important;
+  gap:4px !important;
+}
+.dashboardTileInfo3889 strong{
+  color:#f2f0e8 !important;
+  font-size:16px !important;
+  line-height:1.2 !important;
+}
+.dashboardTileInfo3889 small{
+  color:#b7c2ad !important;
+  font-size:12px !important;
+  line-height:1.25 !important;
+}
+.dashboardTileCheck3889{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  width:30px !important;
+  height:30px !important;
+  min-width:30px !important;
+  border-radius:9px !important;
+  border:2px solid #6d7d52 !important;
+  background:#0b120d !important;
+  display:grid !important;
+  place-content:center !important;
+  margin:0 !important;
+}
+.dashboardTileCheck3889::before{
+  content:"✓";
+  color:#0a120d;
+  font-size:20px;
+  font-weight:900;
+  line-height:1;
+  transform:scale(0);
+}
+.dashboardTileCheck3889:checked{
+  background:#a7b978 !important;
+  border-color:#a7b978 !important;
+}
+.dashboardTileCheck3889:checked::before{
+  transform:scale(1);
+}
+.dashboardTileCheck3889:disabled{
+  opacity:.58 !important;
+}
+
+@media (prefers-reduced-motion: reduce){
+  #overview.dashboardEditing .tiles [data-tile-id]{
+    animation:none !important;
+    outline:1px solid rgba(169,187,118,.42) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6846,7 +6981,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
 
     <div id="dashboardEditBar" class="dashboardEditBar" hidden>
-      <div><strong>Voorpagina indelen</strong><span>Sleep de tegels naar de gewenste plek.</span></div>
+      <div><strong>Voorpagina indelen</strong><span>Sleep tegels, tik op − om te verbergen, tik naast de tegels om af te sluiten.</span></div>
       <button type="button" id="dashboardEditDoneBtn">Gereed</button>
     </div>
 
@@ -7321,7 +7456,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.88</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.89</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7451,7 +7586,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.88</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.89</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7519,7 +7654,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.88</p>
+    <p class="legalDate">Mijn LeefRitme 38.89</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11487,7 +11622,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script id="mijn-leefritme-3888-dashboard-layout-js">
+<script id="mijn-leefritme-3889-dashboard-layout-js">
 (function(){
   const PREF_KEY='mijnleefritme-dashboard-layout-v2';
   const LONG_PRESS_MS=2000;
@@ -11514,8 +11649,6 @@ document.addEventListener('DOMContentLoaded', function(){
   let suppressClickUntil=0;
 
   function defaults(){
-    // Dit is bewust de maximale standaard-voorpagina.
-    // Nieuwe tegels die later aan TILES worden toegevoegd, komen standaard NIET op Home.
     const visible={};
     TILES.forEach(t=>visible[t.id]=true);
     return {order:TILES.map(t=>t.id),visible};
@@ -11526,29 +11659,37 @@ document.addEventListener('DOMContentLoaded', function(){
     try{
       const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
       if(!raw) return d;
+
       const ids=TILES.map(t=>t.id);
       const order=[];
       (Array.isArray(raw.order)?raw.order:[]).forEach(id=>{
-        if(ids.includes(id)&&!order.includes(id))order.push(id);
+        if(ids.includes(id)&&!order.includes(id)) order.push(id);
       });
-      ids.forEach(id=>{if(!order.includes(id))order.push(id)});
+      ids.forEach(id=>{ if(!order.includes(id)) order.push(id); });
+
       const visible={};
       TILES.forEach(t=>{
         if(t.locked) visible[t.id]=true;
-        else if(raw.visible && Object.prototype.hasOwnProperty.call(raw.visible,t.id)) visible[t.id]=!!raw.visible[t.id];
-        else visible[t.id]=false; // nieuwe tegel: eerst alleen in bibliotheek
+        else if(raw.visible && Object.prototype.hasOwnProperty.call(raw.visible,t.id)){
+          visible[t.id]=!!raw.visible[t.id];
+        }else{
+          // Nieuwe tegels komen standaard alleen in de bibliotheek.
+          visible[t.id]=false;
+        }
       });
-      // Eerste gebruik van v2: neem de huidige 10 tegels allemaal mee.
+
       if(!raw.visible){
         TILES.forEach(t=>visible[t.id]=true);
       }
       return {order,visible};
-    }catch(e){ return d; }
+    }catch(e){
+      return d;
+    }
   }
 
   function write(p){
     p.visible.more=true;
-    try{localStorage.setItem(PREF_KEY,JSON.stringify(p))}catch(e){}
+    try{ localStorage.setItem(PREF_KEY,JSON.stringify(p)); }catch(e){}
     apply(p);
   }
 
@@ -11557,43 +11698,52 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function apply(pref){
-    const g=grid(); if(!g)return;
+    const g=grid();
+    if(!g) return;
+
     const p=pref||read();
     p.order.forEach(id=>{
       const el=g.querySelector('[data-tile-id="'+id+'"]');
-      if(el)g.appendChild(el);
+      if(el) g.appendChild(el);
     });
+
     TILES.forEach(t=>{
       const el=g.querySelector('[data-tile-id="'+t.id+'"]');
-      if(el)el.style.display=(t.locked||p.visible[t.id])?'':'none';
+      if(el) el.style.display=(t.locked||p.visible[t.id])?'':'none';
     });
+
+    if(editMode) ensureMinusBadges();
   }
 
   function renderManager(){
-    const host=document.getElementById('dashboardTileList'); if(!host)return;
+    const host=document.getElementById('dashboardTileList');
+    if(!host) return;
+
     const p=read();
     const byId=Object.fromEntries(TILES.map(t=>[t.id,t]));
     host.innerHTML='';
+
     p.order.forEach(id=>{
-      const t=byId[id]; if(!t)return;
+      const t=byId[id];
+      if(!t) return;
+
       const row=document.createElement('label');
-      row.className='dashboardTileRow dashboardTileRow3888';
+      row.className='dashboardTileRow dashboardTileRow3889';
 
       const textWrap=document.createElement('span');
-      textWrap.className='dashboardTileInfo3888';
+      textWrap.className='dashboardTileInfo3889';
 
       const name=document.createElement('strong');
       name.textContent=t.name;
 
       const desc=document.createElement('small');
       desc.textContent=t.locked ? 'Altijd zichtbaar · '+t.desc : t.desc;
-
       textWrap.append(name,desc);
 
       const cb=document.createElement('input');
       cb.type='checkbox';
-      cb.className='dashboardTileCheck dashboardTileCheck3888';
-      cb.checked=t.locked?true:!!p.visible[id];
+      cb.className='dashboardTileCheck dashboardTileCheck3889';
+      cb.checked=t.locked ? true : !!p.visible[id];
       cb.disabled=!!t.locked;
       cb.setAttribute('aria-label',t.name+' op voorpagina tonen');
 
@@ -11608,71 +11758,147 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
 
+  function ensureMinusBadges(){
+    const g=grid();
+    if(!g) return;
+
+    g.querySelectorAll('[data-tile-id]').forEach(tile=>{
+      const id=tile.dataset.tileId;
+      const meta=TILES.find(t=>t.id===id);
+      let badge=tile.querySelector('.dashboardMinus3889');
+
+      if(meta && meta.locked){
+        if(badge) badge.remove();
+        return;
+      }
+
+      if(!badge){
+        badge=document.createElement('span');
+        badge.className='dashboardMinus3889';
+        badge.setAttribute('role','button');
+        badge.setAttribute('aria-label','Verberg '+(meta?.name||'tegel'));
+        badge.textContent='−';
+
+        const hideTile=(ev)=>{
+          ev.preventDefault();
+          ev.stopPropagation();
+          if(ev.stopImmediatePropagation) ev.stopImmediatePropagation();
+
+          const p=read();
+          p.visible[id]=false;
+          write(p);
+          renderManager();
+        };
+
+        badge.addEventListener('touchstart',hideTile,{passive:false});
+        badge.addEventListener('pointerdown',ev=>{
+          if(ev.pointerType!=='touch') hideTile(ev);
+        });
+        badge.addEventListener('click',hideTile);
+        tile.appendChild(badge);
+      }
+    });
+  }
+
+  function removeMinusBadges(){
+    document.querySelectorAll('.dashboardMinus3889').forEach(el=>el.remove());
+  }
+
   function setEditMode(on){
     editMode=!!on;
     const overview=document.getElementById('overview');
     const bar=document.getElementById('dashboardEditBar');
-    if(overview)overview.classList.toggle('dashboardEditing',editMode);
-    if(bar)bar.hidden=!editMode;
-    if(!editMode)finishDrag(false);
+
+    if(overview) overview.classList.toggle('dashboardEditing',editMode);
+    if(bar) bar.hidden=!editMode;
+
+    if(editMode){
+      ensureMinusBadges();
+    }else{
+      finishDrag(false);
+      removeMinusBadges();
+    }
   }
 
   function clearHold(){
-    if(holdTimer){clearTimeout(holdTimer);holdTimer=null}
+    if(holdTimer){
+      clearTimeout(holdTimer);
+      holdTimer=null;
+    }
     activeTile=null;
   }
 
   function visibleTiles(){
-    const g=grid(); if(!g)return [];
+    const g=grid();
+    if(!g) return [];
     return [...g.querySelectorAll('[data-tile-id]')].filter(el=>el.style.display!=='none');
   }
 
   function makeGhost(tile,x,y){
     const r=tile.getBoundingClientRect();
     const ghost=tile.cloneNode(true);
-    ghost.id='dashboardDragGhost3888';
+    ghost.id='dashboardDragGhost3889';
     ghost.removeAttribute('data-page');
+
+    const minus=ghost.querySelector('.dashboardMinus3889');
+    if(minus) minus.remove();
+
     ghost.style.width=r.width+'px';
     ghost.style.height=r.height+'px';
     ghost.style.left=(x-r.width/2)+'px';
     ghost.style.top=(y-r.height/2)+'px';
+
     document.body.appendChild(ghost);
-    tile.classList.add('dashboardDragSource3888');
+    tile.classList.add('dashboardDragSource3889');
     return {ghost,w:r.width,h:r.height};
   }
 
   function beginDrag(tile,x,y){
-    if(!tile)return;
+    if(!tile || dragging) return;
     setEditMode(true);
+
     const g=makeGhost(tile,x,y);
     dragging={tile,ghost:g.ghost,w:g.w,h:g.h};
-    if(navigator.vibrate){try{navigator.vibrate(20)}catch(e){}}
+
+    if(navigator.vibrate){
+      try{ navigator.vibrate(18); }catch(e){}
+    }
   }
 
   function moveDrag(x,y){
-    if(!dragging)return;
+    if(!dragging) return;
+
     const d=dragging;
     d.ghost.style.left=(x-d.w/2)+'px';
     d.ghost.style.top=(y-d.h/2)+'px';
 
     const candidates=visibleTiles().filter(el=>el!==d.tile);
     let target=null,best=Infinity;
+
     for(const el of candidates){
       const r=el.getBoundingClientRect();
-      const dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2);
+      const dx=x-(r.left+r.width/2);
+      const dy=y-(r.top+r.height/2);
       const dist=dx*dx+dy*dy;
-      if(dist<best){best=dist;target=el}
+      if(dist<best){
+        best=dist;
+        target=el;
+      }
     }
-    if(!target)return;
+
+    if(!target) return;
 
     const r=target.getBoundingClientRect();
     const sameRow=Math.abs(y-(r.top+r.height/2))<r.height*.38;
     const before=sameRow ? x<(r.left+r.width/2) : y<(r.top+r.height/2);
+
     target.parentNode.insertBefore(d.tile,before?target:target.nextSibling);
   }
 
   function saveDomOrder(){
-    const g=grid(); if(!g)return;
+    const g=grid();
+    if(!g) return;
+
     const ids=[...g.querySelectorAll('[data-tile-id]')].map(el=>el.dataset.tileId);
     const p=read();
     p.order=ids;
@@ -11681,11 +11907,14 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function finishDrag(save=true){
-    if(!dragging)return;
+    if(!dragging) return;
+
     const d=dragging;
     dragging=null;
-    d.tile.classList.remove('dashboardDragSource3888');
-    if(d.ghost&&d.ghost.remove)d.ghost.remove();
+    d.tile.classList.remove('dashboardDragSource3889');
+
+    if(d.ghost && d.ghost.remove) d.ghost.remove();
+
     if(save){
       suppressClickUntil=Date.now()+700;
       saveDomOrder();
@@ -11693,21 +11922,31 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function getTouchPoint(ev){
-    const t=ev.touches&&ev.touches[0] ? ev.touches[0] :
-            ev.changedTouches&&ev.changedTouches[0] ? ev.changedTouches[0] : null;
-    return t?{x:t.clientX,y:t.clientY}:null;
+    const t=ev.touches&&ev.touches[0]
+      ? ev.touches[0]
+      : ev.changedTouches&&ev.changedTouches[0]
+        ? ev.changedTouches[0]
+        : null;
+    return t ? {x:t.clientX,y:t.clientY} : null;
   }
 
   function bindTouch(){
-    const g=grid(); if(!g||g.dataset.touchDrag3888)return;
-    g.dataset.touchDrag3888='1';
+    const g=grid();
+    if(!g || g.dataset.touchDrag3889) return;
+    g.dataset.touchDrag3889='1';
 
     g.addEventListener('touchstart',ev=>{
-      const tile=ev.target.closest('[data-tile-id]');
-      if(!tile||tile.style.display==='none')return;
-      const p=getTouchPoint(ev); if(!p)return;
+      if(ev.target.closest('.dashboardMinus3889')) return;
 
-      startX=p.x;startY=p.y;activeTile=tile;
+      const tile=ev.target.closest('[data-tile-id]');
+      if(!tile || tile.style.display==='none') return;
+
+      const p=getTouchPoint(ev);
+      if(!p) return;
+
+      startX=p.x;
+      startY=p.y;
+      activeTile=tile;
 
       if(editMode){
         ev.preventDefault();
@@ -11718,16 +11957,18 @@ document.addEventListener('DOMContentLoaded', function(){
       holdTimer=setTimeout(()=>{
         holdTimer=null;
         if(activeTile===tile){
+          // Na 2 sec blijft de hele voorpagina in wiebel-/bewerkmodus.
+          // De tegel die is vastgehouden kan direct verder worden gesleept.
           beginDrag(tile,startX,startY);
         }
       },LONG_PRESS_MS);
     },{passive:false});
 
     g.addEventListener('touchmove',ev=>{
-      const p=getTouchPoint(ev); if(!p)return;
+      const p=getTouchPoint(ev);
+      if(!p) return;
 
       if(dragging){
-        // Vanaf het moment dat de lange druk actief is, neemt de tegel de beweging over.
         ev.preventDefault();
         moveDrag(p.x,p.y);
         return;
@@ -11736,7 +11977,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(holdTimer){
         const moved=Math.hypot(p.x-startX,p.y-startY);
         if(moved>MOVE_CANCEL_PX){
-          // Dit is gewoon scrollen.
+          // Gewoon scrollen: lange druk vervalt.
           clearHold();
         }
       }
@@ -11747,6 +11988,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(dragging){
         ev.preventDefault();
         finishDrag(true);
+        // Bewerkmodus blijft bewust actief; alle tegels blijven wiebelen.
       }
     },{passive:false});
 
@@ -11757,49 +11999,100 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 
   function bindMousePointerFallback(){
-    const g=grid(); if(!g||g.dataset.pointerDrag3888)return;
-    g.dataset.pointerDrag3888='1';
+    const g=grid();
+    if(!g || g.dataset.pointerDrag3889) return;
+    g.dataset.pointerDrag3889='1';
 
     g.addEventListener('pointerdown',ev=>{
-      if(ev.pointerType==='touch')return;
-      if(ev.button!==0)return;
+      if(ev.pointerType==='touch') return;
+      if(ev.button!==0) return;
+      if(ev.target.closest('.dashboardMinus3889')) return;
+
       const tile=ev.target.closest('[data-tile-id]');
-      if(!tile||tile.style.display==='none')return;
-      startX=ev.clientX;startY=ev.clientY;activeTile=tile;
+      if(!tile || tile.style.display==='none') return;
+
+      startX=ev.clientX;
+      startY=ev.clientY;
+      activeTile=tile;
 
       if(editMode){
         ev.preventDefault();
         beginDrag(tile,ev.clientX,ev.clientY);
         return;
       }
+
       holdTimer=setTimeout(()=>{
         holdTimer=null;
-        if(activeTile===tile)beginDrag(tile,startX,startY);
+        if(activeTile===tile) beginDrag(tile,startX,startY);
       },LONG_PRESS_MS);
     });
 
     g.addEventListener('pointermove',ev=>{
-      if(ev.pointerType==='touch')return;
-      if(dragging){ev.preventDefault();moveDrag(ev.clientX,ev.clientY);return}
-      if(holdTimer&&Math.hypot(ev.clientX-startX,ev.clientY-startY)>MOVE_CANCEL_PX)clearHold();
+      if(ev.pointerType==='touch') return;
+
+      if(dragging){
+        ev.preventDefault();
+        moveDrag(ev.clientX,ev.clientY);
+        return;
+      }
+
+      if(holdTimer && Math.hypot(ev.clientX-startX,ev.clientY-startY)>MOVE_CANCEL_PX){
+        clearHold();
+      }
     });
 
     g.addEventListener('pointerup',ev=>{
-      if(ev.pointerType==='touch')return;
+      if(ev.pointerType==='touch') return;
       clearHold();
-      if(dragging){ev.preventDefault();finishDrag(true)}
+
+      if(dragging){
+        ev.preventDefault();
+        finishDrag(true);
+      }
     });
   }
 
   function bindClickGuard(){
-    const g=grid(); if(!g||g.dataset.clickGuard3888)return;
-    g.dataset.clickGuard3888='1';
+    const g=grid();
+    if(!g || g.dataset.clickGuard3889) return;
+    g.dataset.clickGuard3889='1';
+
     g.addEventListener('click',ev=>{
-      if(editMode||Date.now()<suppressClickUntil){
+      if(ev.target.closest('.dashboardMinus3889')){
+        ev.preventDefault();
+        ev.stopImmediatePropagation();
+        return;
+      }
+
+      if(editMode || Date.now()<suppressClickUntil){
         const tile=ev.target.closest('[data-tile-id]');
-        if(tile){ev.preventDefault();ev.stopImmediatePropagation()}
+        if(tile){
+          ev.preventDefault();
+          ev.stopImmediatePropagation();
+        }
       }
     },true);
+  }
+
+  function bindOutsideTap(){
+    const overview=document.getElementById('overview');
+    if(!overview || overview.dataset.outsideEdit3889) return;
+    overview.dataset.outsideEdit3889='1';
+
+    const outside=(target)=>{
+      if(!editMode || dragging) return;
+      if(target.closest('[data-tile-id]')) return;
+      if(target.closest('#dashboardEditBar')) return;
+      setEditMode(false);
+    };
+
+    overview.addEventListener('touchend',ev=>{
+      outside(ev.target);
+    },{passive:true});
+
+    overview.addEventListener('click',ev=>{
+      outside(ev.target);
+    });
   }
 
   function init(){
@@ -11808,39 +12101,47 @@ document.addEventListener('DOMContentLoaded', function(){
     bindTouch();
     bindMousePointerFallback();
     bindClickGuard();
+    bindOutsideTap();
 
     const all=document.getElementById('dashboardShowAllBtn');
-    if(all&&!all.dataset.bound3888){
-      all.dataset.bound3888='1';
+    if(all && !all.dataset.bound3889){
+      all.dataset.bound3889='1';
       all.addEventListener('click',()=>{
         const p=read();
         TILES.forEach(t=>p.visible[t.id]=true);
-        write(p);renderManager();
+        write(p);
+        renderManager();
       });
     }
 
     const reset=document.getElementById('dashboardResetBtn');
-    if(reset&&!reset.dataset.bound3888){
-      reset.dataset.bound3888='1';
+    if(reset && !reset.dataset.bound3889){
+      reset.dataset.bound3889='1';
       reset.addEventListener('click',()=>{
         const p=defaults();
-        write(p);renderManager();
+        write(p);
+        renderManager();
       });
     }
 
     const done=document.getElementById('dashboardEditDoneBtn');
-    if(done&&!done.dataset.bound3888){
-      done.dataset.bound3888='1';
+    if(done && !done.dataset.bound3889){
+      done.dataset.bound3889='1';
       done.addEventListener('click',()=>setEditMode(false));
     }
 
     document.addEventListener('click',ev=>{
-      if(ev.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderManager,0);
+      if(ev.target.closest('[data-page="dashboardSetup"]')){
+        setTimeout(renderManager,0);
+      }
     });
   }
 
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
-  else init();
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init,{once:true});
+  }else{
+    init();
+  }
 
   window.MijnLeefRitmeDashboard={apply,read,setEditMode};
 })();
