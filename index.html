@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.70">
+<meta name="app-version" content="38.71">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.70";
+const LEEFKRACHT_VERSION = "38.71";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6243,6 +6243,51 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3871-scoretrend-en-wis-fix">
+/* 38.71 — blauwe trendtekst weg en Wis-knop compacter */
+#score .scoreTrend{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:12px 0 4px !important;
+  padding:8px 14px !important;
+  border:1px solid rgba(154,174,114,.24) !important;
+  border-radius:999px !important;
+  background:rgba(154,174,114,.10) !important;
+  color:#f1a259 !important;
+  font-size:13px !important;
+  font-weight:800 !important;
+  letter-spacing:.01em !important;
+  box-shadow:none !important;
+}
+
+#history .historyFilterRow{
+  grid-template-columns:minmax(0,1fr) 64px !important;
+  gap:8px !important;
+  align-items:stretch !important;
+}
+#history .historyClearFilterBtn{
+  min-height:48px !important;
+  height:48px !important;
+  min-width:64px !important;
+  width:64px !important;
+  padding:0 10px !important;
+  border-radius:14px !important;
+  font-size:11px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  align-self:stretch !important;
+  justify-self:stretch !important;
+  box-sizing:border-box !important;
+}
+#history #historyDateFilter{
+  min-height:48px !important;
+  box-sizing:border-box !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6723,7 +6768,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.70</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.71</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6853,7 +6898,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.70</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.71</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6921,7 +6966,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.70</p>
+    <p class="legalDate">Mijn LeefRitme 38.71</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
