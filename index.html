@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.92">
+<meta name="app-version" content="38.93">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.92";
+const LEEFKRACHT_VERSION = "38.93";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7092,6 +7092,141 @@ body.mlr-home-edit #home [data-tile-key]{
 #overview.dashboardEditing .tileMore::after{content:"Vast";position:absolute;top:9px;right:10px;padding:3px 7px;border-radius:999px;background:rgba(169,187,118,.13);color:#b9c799;font-size:10px;font-weight:800}
 </style>
 
+
+<style id="mijn-leefritme-3893-slot-drag-fix">
+/* 38.93 — negen vaste keuzeposities + één vaste Mijn LeefRitme-tegel */
+#overview .tiles{
+  align-items:stretch !important;
+}
+#overview .dashboardEmptySlot3893{
+  min-width:0 !important;
+  min-height:142px !important;
+  border-radius:20px !important;
+  background:transparent !important;
+  border:1px solid transparent !important;
+  box-sizing:border-box !important;
+}
+#overview.dashboardEditing .dashboardEmptySlot3893{
+  border:2px dashed rgba(169,187,118,.34) !important;
+  background:rgba(169,187,118,.035) !important;
+}
+#overview .dashboardDropTarget3893{
+  border-color:rgba(241,162,89,.9) !important;
+  background:rgba(241,162,89,.10) !important;
+  outline:2px solid rgba(241,162,89,.34) !important;
+  outline-offset:-2px !important;
+}
+#overview .dashboardDragSource3893{
+  opacity:.24 !important;
+}
+#dashboardDragGhost3893{
+  position:fixed !important;
+  z-index:100050 !important;
+  pointer-events:none !important;
+  opacity:.95 !important;
+  transform:scale(1.035) !important;
+  box-shadow:0 18px 42px rgba(0,0,0,.48) !important;
+  outline:2px solid rgba(185,202,124,.80) !important;
+}
+
+/* Minteken zit in de tegel, maar wordt in capture afgehandeld vóór de tegelknop. */
+#overview.dashboardEditing [data-tile-id]{
+  position:relative !important;
+  overflow:visible !important;
+}
+.dashboardMinus3893{
+  position:absolute !important;
+  left:-10px !important;
+  top:-10px !important;
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+  min-height:38px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  border-radius:50% !important;
+  background:#202820 !important;
+  border:2px solid #a9bb76 !important;
+  color:#fff !important;
+  font-size:28px !important;
+  font-weight:800 !important;
+  line-height:1 !important;
+  z-index:20 !important;
+  box-shadow:0 5px 12px rgba(0,0,0,.40) !important;
+  touch-action:manipulation !important;
+  pointer-events:auto !important;
+  -webkit-tap-highlight-color:transparent !important;
+}
+
+/* Bibliotheek plus/min */
+.dashboardTileCounter3893{
+  margin:0 0 10px !important;
+  color:#c6cfba !important;
+  font-size:12px !important;
+  font-weight:800 !important;
+  text-align:right !important;
+}
+.dashboardLibraryRow3893{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:14px !important;
+  min-height:70px !important;
+  padding:11px 2px !important;
+  border-bottom:1px solid rgba(154,174,114,.14) !important;
+}
+.dashboardLibraryInfo3893{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:4px !important;
+  min-width:0 !important;
+}
+.dashboardLibraryInfo3893 strong{
+  color:#f2f0e8 !important;
+  font-size:16px !important;
+}
+.dashboardLibraryInfo3893 small{
+  color:#b7c2ad !important;
+  font-size:12px !important;
+}
+.dashboardLibraryAction3893{
+  width:44px !important;
+  height:44px !important;
+  min-width:44px !important;
+  border-radius:14px !important;
+  border:1px solid rgba(169,187,118,.45) !important;
+  background:#101812 !important;
+  color:#e9eddf !important;
+  font-size:29px !important;
+  line-height:1 !important;
+  font-weight:700 !important;
+  padding:0 !important;
+  display:grid !important;
+  place-items:center !important;
+}
+.dashboardLibraryAction3893.isPlus{
+  background:linear-gradient(135deg,#a9bb76,#7f9359) !important;
+  color:#0b130e !important;
+}
+.dashboardLibraryAction3893.isMinus{
+  background:#202820 !important;
+  color:#eef0e8 !important;
+}
+.dashboardLibraryAction3893.isLocked{
+  width:auto !important;
+  min-width:62px !important;
+  padding:0 12px !important;
+  font-size:12px !important;
+  color:#b9c799 !important;
+  opacity:.75 !important;
+}
+
+@media(max-width:390px){
+  #overview .dashboardEmptySlot3893{min-height:132px !important;}
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -7582,7 +7717,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.92</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.93</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7712,7 +7847,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.92</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.93</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7780,7 +7915,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.92</p>
+    <p class="legalDate">Mijn LeefRitme 38.93</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11748,12 +11883,12 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script id="mijn-leefritme-3892-dashboard-layout-js">
+<script id="mijn-leefritme-3893-dashboard-layout-js">
 (function(){
-  const PREF_KEY='mijnleefritme-dashboard-layout-v2';
+  const PREF_KEY='mijnleefritme-dashboard-layout-v3';
   const MAX_OPTIONAL=9;
   const LONG_PRESS_MS=1800;
-  const EDIT_DRAG_HOLD_MS=360;
+  const EDIT_DRAG_HOLD_MS=340;
   const MOVE_CANCEL_PX=14;
 
   const TILES=[
@@ -11769,212 +11904,469 @@ document.addEventListener('DOMContentLoaded', function(){
     {id:'more',name:'Mijn LeefRitme',desc:'Gegevens en instellingen',locked:true}
   ];
 
-  let editMode=false, holdTimer=null, activeTile=null, dragging=null;
+  let editMode=false,holdTimer=null,activeTile=null,dragging=null;
   let startX=0,startY=0,suppressClickUntil=0;
-  let minusLayer=null;
 
   const meta=id=>TILES.find(t=>t.id===id);
   const grid=()=>document.querySelector('#overview .tiles');
-  const optionalVisibleCount=p=>TILES.filter(t=>!t.locked && p.visible[t.id]).length;
+
+  function optionalIds(){return TILES.filter(t=>!t.locked).map(t=>t.id)}
 
   function defaults(){
-    const visible={};
-    TILES.forEach(t=>visible[t.id]=true);
-    return {order:TILES.map(t=>t.id),visible};
+    const ids=optionalIds();
+    return {slots:Array.from({length:MAX_OPTIONAL},(_,i)=>ids[i]||null)};
+  }
+
+  function migrateOld(){
+    try{
+      const old=JSON.parse(localStorage.getItem('mijnleefritme-dashboard-layout-v2')||'null');
+      if(!old)return defaults();
+      const order=Array.isArray(old.order)?old.order:[];
+      const visible=old.visible||{};
+      const active=order.filter(id=>id!=='more'&&optionalIds().includes(id)&&visible[id]!==false);
+      const slots=Array(MAX_OPTIONAL).fill(null);
+      active.slice(0,MAX_OPTIONAL).forEach((id,i)=>slots[i]=id);
+      return {slots};
+    }catch(e){return defaults()}
   }
 
   function read(){
-    const d=defaults();
     try{
       const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
-      if(!raw)return d;
-      const ids=TILES.map(t=>t.id), order=[];
-      (Array.isArray(raw.order)?raw.order:[]).forEach(id=>{if(ids.includes(id)&&!order.includes(id))order.push(id)});
-      ids.forEach(id=>{if(!order.includes(id))order.push(id)});
-      const mi=order.indexOf('more'); if(mi>=0)order.splice(mi,1); order.push('more');
-      const visible={};
-      TILES.forEach(t=>{
-        if(t.locked)visible[t.id]=true;
-        else if(raw.visible&&Object.prototype.hasOwnProperty.call(raw.visible,t.id))visible[t.id]=!!raw.visible[t.id];
-        else visible[t.id]=false;
+      if(!raw||!Array.isArray(raw.slots))return migrateOld();
+      const allowed=new Set(optionalIds());
+      const seen=new Set();
+      const slots=Array(MAX_OPTIONAL).fill(null);
+      raw.slots.slice(0,MAX_OPTIONAL).forEach((id,i)=>{
+        if(id&&allowed.has(id)&&!seen.has(id)){slots[i]=id;seen.add(id)}
       });
-      if(!raw.visible)TILES.forEach(t=>visible[t.id]=true);
-      // Cap future-proof: if an older setting ever contains >9 optional tiles, keep first 9 by order.
-      let seen=0;
-      order.forEach(id=>{const t=meta(id);if(t&&!t.locked&&visible[id]){seen++;if(seen>MAX_OPTIONAL)visible[id]=false}});
-      return {order,visible};
-    }catch(e){return d}
+      return {slots};
+    }catch(e){return migrateOld()}
   }
 
   function write(p){
-    p.visible.more=true;
-    const order=p.order.filter(id=>id!=='more'); order.push('more'); p.order=order;
-    try{localStorage.setItem(PREF_KEY,JSON.stringify(p))}catch(e){}
-    apply(p); renderLibrary(); updateMinusLayer();
+    try{localStorage.setItem(PREF_KEY,JSON.stringify({slots:p.slots.slice(0,MAX_OPTIONAL)}))}catch(e){}
+    apply(p);
+    renderLibrary();
+    refreshMinusButtons();
+  }
+
+  function presentIds(p){return p.slots.filter(Boolean)}
+  function visibleCount(p){return presentIds(p).length}
+
+  function removeGeneratedSlots(){
+    const g=grid();if(!g)return;
+    g.querySelectorAll('.dashboardEmptySlot3893').forEach(el=>el.remove());
   }
 
   function apply(pref){
     const g=grid();if(!g)return;
     const p=pref||read();
-    const order=p.order.filter(id=>id!=='more');order.push('more');p.order=order;
-    p.order.forEach(id=>{const el=g.querySelector('[data-tile-id="'+id+'"]');if(el)g.appendChild(el)});
-    TILES.forEach(t=>{const el=g.querySelector('[data-tile-id="'+t.id+'"]');if(el)el.style.display=(t.locked||p.visible[t.id])?'':'none'});
+
+    removeGeneratedSlots();
+
+    // Hide all optional tiles first.
+    optionalIds().forEach(id=>{
+      const el=g.querySelector('[data-tile-id="'+id+'"]');
+      if(el)el.style.display='none';
+    });
+
+    // Build exactly nine configurable positions. Empty slots stay empty,
+    // so moving a tile into a gap does not shuffle every other tile.
+    p.slots.forEach((id,slotIndex)=>{
+      if(id){
+        const el=g.querySelector('[data-tile-id="'+id+'"]');
+        if(el){
+          el.style.display='';
+          el.dataset.dashboardSlot=String(slotIndex);
+          g.appendChild(el);
+        }
+      }else{
+        const gap=document.createElement('div');
+        gap.className='dashboardEmptySlot3893';
+        gap.dataset.dashboardSlot=String(slotIndex);
+        gap.setAttribute('aria-hidden','true');
+        g.appendChild(gap);
+      }
+    });
+
+    // Fixed tile is always position 10.
+    const more=g.querySelector('[data-tile-id="more"]');
+    if(more){
+      more.style.display='';
+      more.removeAttribute('data-dashboard-slot');
+      g.appendChild(more);
+    }
   }
 
   function addToHome(id){
     const t=meta(id);if(!t||t.locked)return;
     const p=read();
-    if(p.visible[id])return;
-    if(optionalVisibleCount(p)>=MAX_OPTIONAL){
-      alert('Je kunt maximaal 9 tegels op de voorpagina zetten, plus de vaste tegel Mijn LeefRitme. Verwijder eerst een andere tegel.');
+    if(p.slots.includes(id))return;
+    const empty=p.slots.indexOf(null);
+    if(empty===-1){
+      alert('De voorpagina is vol. Er kunnen maximaal 9 keuzetegels op Home staan, plus de vaste tegel Mijn LeefRitme.');
       return;
     }
-    p.visible[id]=true;
-    // Newly-added tile goes immediately before fixed Mijn LeefRitme.
-    p.order=p.order.filter(x=>x!==id&&x!=='more');p.order.push(id,'more');
+    p.slots[empty]=id;
     write(p);
   }
 
   function removeFromHome(id){
     const t=meta(id);if(!t||t.locked)return;
-    const p=read();p.visible[id]=false;write(p);
+    const p=read();
+    const i=p.slots.indexOf(id);
+    if(i===-1)return;
+    p.slots[i]=null;
+    write(p);
   }
 
   function renderLibrary(){
     const host=document.getElementById('dashboardTileList');if(!host)return;
-    const p=read();host.innerHTML='';
-    p.order.forEach(id=>{
-      const t=meta(id);if(!t)return;
-      const row=document.createElement('div');row.className='dashboardLibraryRow3892';
-      const info=document.createElement('div');info.className='dashboardLibraryInfo3892';
-      const name=document.createElement('strong');name.textContent=t.name;
-      const desc=document.createElement('small');desc.textContent=t.locked?'Vast op Home · '+t.desc:t.desc;
+    const p=read();
+    host.innerHTML='';
+
+    TILES.forEach(t=>{
+      const row=document.createElement('div');
+      row.className='dashboardLibraryRow3893';
+
+      const info=document.createElement('div');
+      info.className='dashboardLibraryInfo3893';
+
+      const name=document.createElement('strong');
+      name.textContent=t.name;
+
+      const desc=document.createElement('small');
+      const onHome=t.locked||p.slots.includes(t.id);
+      desc.textContent=t.locked?'Vast op Home · '+t.desc:(onHome?'Op Home · '+t.desc:'In bibliotheek · '+t.desc);
       info.append(name,desc);
-      const action=document.createElement('button');action.type='button';action.className='dashboardLibraryAction3892';
-      if(t.locked){action.textContent='Vast';action.disabled=true;action.classList.add('isLocked')}
-      else if(p.visible[id]){action.textContent='−';action.setAttribute('aria-label',t.name+' van Home verwijderen');action.classList.add('isMinus');action.addEventListener('click',()=>removeFromHome(id))}
-      else{action.textContent='+';action.setAttribute('aria-label',t.name+' op Home zetten');action.classList.add('isPlus');action.addEventListener('click',()=>addToHome(id))}
-      row.append(info,action);host.appendChild(row);
+
+      const action=document.createElement('button');
+      action.type='button';
+      action.className='dashboardLibraryAction3893';
+
+      if(t.locked){
+        action.textContent='Vast';
+        action.disabled=true;
+        action.classList.add('isLocked');
+      }else if(onHome){
+        action.textContent='−';
+        action.classList.add('isMinus');
+        action.setAttribute('aria-label',t.name+' van Home verwijderen');
+        action.addEventListener('click',()=>removeFromHome(t.id));
+      }else{
+        action.textContent='+';
+        action.classList.add('isPlus');
+        action.setAttribute('aria-label',t.name+' op Home zetten');
+        action.addEventListener('click',()=>addToHome(t.id));
+      }
+
+      row.append(info,action);
+      host.appendChild(row);
     });
-    const counter=document.getElementById('dashboardTileCounter3892');
-    if(counter)counter.textContent=optionalVisibleCount(p)+' van 9 keuzetegels op Home';
+
+    let counter=document.getElementById('dashboardTileCounter3893');
+    if(!counter){
+      counter=document.createElement('div');
+      counter.id='dashboardTileCounter3893';
+      counter.className='dashboardTileCounter3893';
+      host.parentNode.insertBefore(counter,host);
+    }
+    counter.textContent=visibleCount(p)+' van 9 keuzetegels op Home';
   }
 
-  function ensureCounter(){
-    if(document.getElementById('dashboardTileCounter3892'))return;
-    const host=document.getElementById('dashboardTileList');if(!host)return;
-    const el=document.createElement('div');el.id='dashboardTileCounter3892';el.className='dashboardTileCounter3892';
-    host.parentNode.insertBefore(el,host);
+  function clearMinusButtons(){
+    document.querySelectorAll('.dashboardMinus3893').forEach(el=>el.remove());
   }
 
-  function ensureMinusLayer(){
-    if(minusLayer&&document.body.contains(minusLayer))return minusLayer;
-    minusLayer=document.createElement('div');minusLayer.id='dashboardMinusLayer3892';document.body.appendChild(minusLayer);return minusLayer;
-  }
+  function refreshMinusButtons(){
+    clearMinusButtons();
+    if(!editMode)return;
+    const g=grid();if(!g)return;
 
-  function clearMinusLayer(){if(minusLayer)minusLayer.innerHTML=''}
+    g.querySelectorAll('[data-tile-id]').forEach(tile=>{
+      const id=tile.dataset.tileId,t=meta(id);
+      if(!t||t.locked||tile.style.display==='none')return;
 
-  function updateMinusLayer(){
-    if(!editMode){clearMinusLayer();return}
-    const layer=ensureMinusLayer(),g=grid();if(!g)return;layer.innerHTML='';
-    [...g.querySelectorAll('[data-tile-id]')].forEach(tile=>{
-      const id=tile.dataset.tileId,t=meta(id);if(!t||t.locked||tile.style.display==='none')return;
-      const r=tile.getBoundingClientRect();
-      const b=document.createElement('button');b.type='button';b.className='dashboardMinusOverlay3892';b.textContent='−';
-      b.style.left=(r.left-11)+'px';b.style.top=(r.top-11)+'px';
-      b.setAttribute('aria-label',t.name+' van Home verwijderen');
-      b.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();removeFromHome(id)});
-      b.addEventListener('touchend',ev=>{ev.preventDefault();ev.stopPropagation();removeFromHome(id)},{passive:false});
-      layer.appendChild(b);
+      const minus=document.createElement('span');
+      minus.className='dashboardMinus3893';
+      minus.dataset.hideTileId=id;
+      minus.setAttribute('role','button');
+      minus.setAttribute('aria-label',t.name+' naar bibliotheek');
+      minus.textContent='−';
+      tile.appendChild(minus);
     });
   }
 
   function setEditMode(on){
-    editMode=!!on;const ov=document.getElementById('overview'),bar=document.getElementById('dashboardEditBar');
-    if(ov)ov.classList.toggle('dashboardEditing',editMode);if(bar)bar.hidden=!editMode;
-    if(!editMode)finishDrag(false);updateMinusLayer();
+    editMode=!!on;
+    const ov=document.getElementById('overview');
+    const bar=document.getElementById('dashboardEditBar');
+    if(ov)ov.classList.toggle('dashboardEditing',editMode);
+    if(bar)bar.hidden=!editMode;
+    if(!editMode)finishDrag(false);
+    refreshMinusButtons();
   }
 
-  function clearHold(){if(holdTimer){clearTimeout(holdTimer);holdTimer=null}activeTile=null}
-  function point(ev){const t=ev.touches&&ev.touches[0]?ev.touches[0]:ev.changedTouches&&ev.changedTouches[0]?ev.changedTouches[0]:null;return t?{x:t.clientX,y:t.clientY}:null}
+  function clearHold(){
+    if(holdTimer){clearTimeout(holdTimer);holdTimer=null}
+    activeTile=null;
+  }
+
+  function touchPoint(ev){
+    const t=ev.touches&&ev.touches[0]?ev.touches[0]:
+            ev.changedTouches&&ev.changedTouches[0]?ev.changedTouches[0]:null;
+    return t?{x:t.clientX,y:t.clientY}:null;
+  }
+
+  function slotElementFromPoint(x,y){
+    const g=grid();if(!g)return null;
+    const els=[...g.querySelectorAll('[data-dashboard-slot]')];
+    let best=null,bestDist=Infinity;
+    for(const el of els){
+      if(el===dragging?.tile)continue;
+      const r=el.getBoundingClientRect();
+      const dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2);
+      const d=dx*dx+dy*dy;
+      if(d<bestDist){bestDist=d;best=el}
+    }
+    return best;
+  }
 
   function beginDrag(tile,x,y){
-    if(!tile||dragging)return;const t=meta(tile.dataset.tileId);if(!t||t.locked)return;
-    setEditMode(true);clearMinusLayer();
-    const g=grid(),r=tile.getBoundingClientRect();
-    const ph=document.createElement('div');ph.className='dashboardPlaceholder3892';ph.style.height=r.height+'px';
-    g.insertBefore(ph,tile);tile.style.display='none';
-    const ghost=tile.cloneNode(true);ghost.id='dashboardDragGhost3892';ghost.style.display='block';ghost.style.width=r.width+'px';ghost.style.height=r.height+'px';ghost.style.left=(x-r.width/2)+'px';ghost.style.top=(y-r.height/2)+'px';document.body.appendChild(ghost);
-    dragging={tile,ghost,ph,w:r.width,h:r.height};
+    if(!tile||dragging)return;
+    const id=tile.dataset.tileId,t=meta(id);
+    if(!t||t.locked)return;
+
+    const p=read();
+    const sourceSlot=p.slots.indexOf(id);
+    if(sourceSlot<0)return;
+
+    setEditMode(true);
+    clearMinusButtons();
+
+    const r=tile.getBoundingClientRect();
+    const ghost=tile.cloneNode(true);
+    ghost.querySelectorAll('.dashboardMinus3893').forEach(x=>x.remove());
+    ghost.id='dashboardDragGhost3893';
+    ghost.style.width=r.width+'px';
+    ghost.style.height=r.height+'px';
+    ghost.style.left=(x-r.width/2)+'px';
+    ghost.style.top=(y-r.height/2)+'px';
+    document.body.appendChild(ghost);
+
+    tile.classList.add('dashboardDragSource3893');
+    dragging={tile,id,sourceSlot,targetSlot:sourceSlot,ghost,w:r.width,h:r.height,p};
   }
 
-  function movePlaceholder(x,y){
-    if(!dragging)return;const d=dragging;d.ghost.style.left=(x-d.w/2)+'px';d.ghost.style.top=(y-d.h/2)+'px';
-    const g=grid();
-    const candidates=[...g.querySelectorAll('[data-tile-id]')].filter(el=>el!==d.tile&&el.dataset.tileId!=='more'&&el.style.display!=='none');
-    let target=null,best=Infinity;
-    for(const el of candidates){const r=el.getBoundingClientRect();const dx=x-(r.left+r.width/2),dy=y-(r.top+r.height/2),dist=dx*dx+dy*dy;if(dist<best){best=dist;target=el}}
-    const more=g.querySelector('[data-tile-id="more"]');
-    if(!target){if(more)g.insertBefore(d.ph,more);return}
-    const r=target.getBoundingClientRect();
-    const rowish=Math.abs(y-(r.top+r.height/2))<r.height*.42;
-    const before=rowish?x<(r.left+r.width/2):y<(r.top+r.height/2);
-    g.insertBefore(d.ph,before?target:target.nextSibling);
-    // Never place after fixed Mijn LeefRitme.
-    if(more&&d.ph.compareDocumentPosition(more)&Node.DOCUMENT_POSITION_PRECEDING)g.insertBefore(d.ph,more);
-    // Gentle auto-scroll near screen edges while dragging.
-    if(y<90)window.scrollBy(0,-12);else if(y>window.innerHeight-120)window.scrollBy(0,12);
+  function moveDrag(x,y){
+    if(!dragging)return;
+    const d=dragging;
+    d.ghost.style.left=(x-d.w/2)+'px';
+    d.ghost.style.top=(y-d.h/2)+'px';
+
+    const target=slotElementFromPoint(x,y);
+    if(!target)return;
+    const slot=Number(target.dataset.dashboardSlot);
+    if(!Number.isInteger(slot)||slot<0||slot>=MAX_OPTIONAL)return;
+    d.targetSlot=slot;
+
+    // Visual marker only. Do NOT reshuffle the DOM while the finger is moving.
+    document.querySelectorAll('.dashboardDropTarget3893').forEach(el=>el.classList.remove('dashboardDropTarget3893'));
+    target.classList.add('dashboardDropTarget3893');
+
+    if(y<95)window.scrollBy(0,-10);
+    else if(y>window.innerHeight-125)window.scrollBy(0,10);
   }
 
   function finishDrag(save=true){
-    if(!dragging)return;const d=dragging;dragging=null;
-    const g=grid();d.tile.style.display='';g.insertBefore(d.tile,d.ph);d.ph.remove();d.ghost.remove();
+    if(!dragging)return;
+    const d=dragging;
+    dragging=null;
+
+    d.tile.classList.remove('dashboardDragSource3893');
+    if(d.ghost&&d.ghost.remove)d.ghost.remove();
+    document.querySelectorAll('.dashboardDropTarget3893').forEach(el=>el.classList.remove('dashboardDropTarget3893'));
+
     if(save){
-      const ids=[...g.querySelectorAll('[data-tile-id]')].map(el=>el.dataset.tileId).filter(id=>id!=='more');ids.push('more');
-      const p=read();p.order=ids;write(p);suppressClickUntil=Date.now()+650;
+      const p=read();
+      const from=p.slots.indexOf(d.id);
+      const to=d.targetSlot;
+
+      if(from>=0&&to>=0&&from!==to){
+        // Swap, never compact/reorder the rest.
+        const other=p.slots[to];
+        p.slots[to]=d.id;
+        p.slots[from]=other||null;
+        write(p);
+      }else{
+        apply(p);
+      }
+      suppressClickUntil=Date.now()+600;
+    }else{
+      apply();
     }
-    updateMinusLayer();
+    refreshMinusButtons();
+  }
+
+  function hideFromMinus(target,ev){
+    const minus=target&&target.closest?target.closest('.dashboardMinus3893'):null;
+    if(!minus)return false;
+    if(ev){
+      ev.preventDefault();
+      ev.stopPropagation();
+      if(ev.stopImmediatePropagation)ev.stopImmediatePropagation();
+    }
+    removeFromHome(minus.dataset.hideTileId);
+    suppressClickUntil=Date.now()+600;
+    return true;
+  }
+
+  function bindMinusCapture(){
+    if(document.documentElement.dataset.minusCapture3893)return;
+    document.documentElement.dataset.minusCapture3893='1';
+
+    // Capture phase makes the minus work even though the tile itself is a button.
+    document.addEventListener('touchstart',ev=>{
+      if(hideFromMinus(ev.target,ev))clearHold();
+    },{capture:true,passive:false});
+
+    document.addEventListener('pointerdown',ev=>{
+      if(ev.pointerType!=='touch')hideFromMinus(ev.target,ev);
+    },true);
+
+    document.addEventListener('click',ev=>{
+      hideFromMinus(ev.target,ev);
+    },true);
   }
 
   function bindTouch(){
-    const g=grid();if(!g||g.dataset.drag3892)return;g.dataset.drag3892='1';
+    const g=grid();if(!g||g.dataset.drag3893)return;
+    g.dataset.drag3893='1';
+
     g.addEventListener('touchstart',ev=>{
-      const tile=ev.target.closest('[data-tile-id]');if(!tile||tile.style.display==='none'||tile.dataset.tileId==='more')return;
-      const p=point(ev);if(!p)return;startX=p.x;startY=p.y;activeTile=tile;
+      if(ev.target.closest('.dashboardMinus3893'))return;
+      const tile=ev.target.closest('[data-tile-id]');
+      if(!tile||tile.dataset.tileId==='more'||tile.style.display==='none')return;
+      const p=touchPoint(ev);if(!p)return;
+
+      startX=p.x;startY=p.y;activeTile=tile;
       const delay=editMode?EDIT_DRAG_HOLD_MS:LONG_PRESS_MS;
-      holdTimer=setTimeout(()=>{holdTimer=null;if(activeTile===tile)beginDrag(tile,startX,startY)},delay);
+      holdTimer=setTimeout(()=>{
+        holdTimer=null;
+        if(activeTile===tile)beginDrag(tile,startX,startY);
+      },delay);
     },{passive:false});
+
     g.addEventListener('touchmove',ev=>{
-      const p=point(ev);if(!p)return;
-      if(dragging){ev.preventDefault();movePlaceholder(p.x,p.y);return}
+      const p=touchPoint(ev);if(!p)return;
+      if(dragging){
+        ev.preventDefault();
+        moveDrag(p.x,p.y);
+        return;
+      }
       if(holdTimer&&Math.hypot(p.x-startX,p.y-startY)>MOVE_CANCEL_PX)clearHold();
     },{passive:false});
-    g.addEventListener('touchend',ev=>{clearHold();if(dragging){ev.preventDefault();finishDrag(true)}},{passive:false});
-    g.addEventListener('touchcancel',()=>{clearHold();finishDrag(false)},{passive:false});
+
+    g.addEventListener('touchend',ev=>{
+      if(ev.target.closest('.dashboardMinus3893'))return;
+      clearHold();
+      if(dragging){
+        ev.preventDefault();
+        finishDrag(true);
+      }
+    },{passive:false});
+
+    g.addEventListener('touchcancel',()=>{
+      clearHold();
+      finishDrag(false);
+    },{passive:false});
   }
 
   function bindPointer(){
-    const g=grid();if(!g||g.dataset.pointer3892)return;g.dataset.pointer3892='1';
+    const g=grid();if(!g||g.dataset.pointer3893)return;
+    g.dataset.pointer3893='1';
+
     g.addEventListener('pointerdown',ev=>{
-      if(ev.pointerType==='touch'||ev.button!==0)return;const tile=ev.target.closest('[data-tile-id]');if(!tile||tile.dataset.tileId==='more'||tile.style.display==='none')return;
-      startX=ev.clientX;startY=ev.clientY;activeTile=tile;const delay=editMode?EDIT_DRAG_HOLD_MS:LONG_PRESS_MS;
-      holdTimer=setTimeout(()=>{holdTimer=null;if(activeTile===tile)beginDrag(tile,startX,startY)},delay);
+      if(ev.pointerType==='touch'||ev.button!==0||ev.target.closest('.dashboardMinus3893'))return;
+      const tile=ev.target.closest('[data-tile-id]');
+      if(!tile||tile.dataset.tileId==='more'||tile.style.display==='none')return;
+
+      startX=ev.clientX;startY=ev.clientY;activeTile=tile;
+      const delay=editMode?EDIT_DRAG_HOLD_MS:LONG_PRESS_MS;
+      holdTimer=setTimeout(()=>{
+        holdTimer=null;
+        if(activeTile===tile)beginDrag(tile,startX,startY);
+      },delay);
     });
-    g.addEventListener('pointermove',ev=>{if(ev.pointerType==='touch')return;if(dragging){ev.preventDefault();movePlaceholder(ev.clientX,ev.clientY)}else if(holdTimer&&Math.hypot(ev.clientX-startX,ev.clientY-startY)>MOVE_CANCEL_PX)clearHold()});
-    g.addEventListener('pointerup',ev=>{if(ev.pointerType==='touch')return;clearHold();if(dragging){ev.preventDefault();finishDrag(true)}});
+
+    g.addEventListener('pointermove',ev=>{
+      if(ev.pointerType==='touch')return;
+      if(dragging){
+        ev.preventDefault();
+        moveDrag(ev.clientX,ev.clientY);
+      }else if(holdTimer&&Math.hypot(ev.clientX-startX,ev.clientY-startY)>MOVE_CANCEL_PX){
+        clearHold();
+      }
+    });
+
+    g.addEventListener('pointerup',ev=>{
+      if(ev.pointerType==='touch')return;
+      clearHold();
+      if(dragging){
+        ev.preventDefault();
+        finishDrag(true);
+      }
+    });
   }
 
   function bindGuards(){
-    const g=grid();if(g&&!g.dataset.guard3892){g.dataset.guard3892='1';g.addEventListener('click',ev=>{if(editMode||Date.now()<suppressClickUntil){const tile=ev.target.closest('[data-tile-id]');if(tile){ev.preventDefault();ev.stopImmediatePropagation()}}},true)}
-    const done=document.getElementById('dashboardEditDoneBtn');if(done&&!done.dataset.b3892){done.dataset.b3892='1';done.addEventListener('click',()=>setEditMode(false))}
-    const reset=document.getElementById('dashboardResetBtn');if(reset&&!reset.dataset.b3892){reset.dataset.b3892='1';reset.addEventListener('click',()=>{write(defaults());renderLibrary()})}
-    window.addEventListener('scroll',()=>{if(editMode&&!dragging)updateMinusLayer()},{passive:true});
-    window.addEventListener('resize',()=>{if(editMode&&!dragging)updateMinusLayer()});
-    document.addEventListener('click',ev=>{if(ev.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderLibrary,0)});
+    const g=grid();
+    if(g&&!g.dataset.guard3893){
+      g.dataset.guard3893='1';
+      g.addEventListener('click',ev=>{
+        if(ev.target.closest('.dashboardMinus3893'))return;
+        if(editMode||Date.now()<suppressClickUntil){
+          const tile=ev.target.closest('[data-tile-id]');
+          if(tile){
+            ev.preventDefault();
+            ev.stopImmediatePropagation();
+          }
+        }
+      },true);
+    }
+
+    const done=document.getElementById('dashboardEditDoneBtn');
+    if(done&&!done.dataset.b3893){
+      done.dataset.b3893='1';
+      done.addEventListener('click',()=>setEditMode(false));
+    }
+
+    const reset=document.getElementById('dashboardResetBtn');
+    if(reset&&!reset.dataset.b3893){
+      reset.dataset.b3893='1';
+      reset.addEventListener('click',()=>{
+        write(defaults());
+      });
+    }
+
+    document.addEventListener('click',ev=>{
+      if(ev.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderLibrary,0);
+    });
   }
 
-  function init(){ensureCounter();apply();renderLibrary();bindTouch();bindPointer();bindGuards()}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  function init(){
+    apply();
+    renderLibrary();
+    bindMinusCapture();
+    bindTouch();
+    bindPointer();
+    bindGuards();
+  }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
+
   window.MijnLeefRitmeDashboard={read,apply,setEditMode,addToHome,removeFromHome};
 })();
 </script>
