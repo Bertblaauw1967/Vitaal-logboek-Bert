@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.67">
+<meta name="app-version" content="38.68">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.67";
+const LEEFKRACHT_VERSION = "38.68";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6148,6 +6148,46 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3868-history-close-overlap-fix">
+/* 38.68 — kruisje Meetgeschiedenis mag nooit meer over de titel vallen */
+#history .detailTop{
+  align-items:flex-start !important;
+  justify-content:space-between !important;
+  gap:10px !important;
+  padding-right:2px !important;
+}
+#history .sectionTitle{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+  max-width:calc(100% - 64px) !important;
+  font-size:30px !important;
+  line-height:1.02 !important;
+  white-space:normal !important;
+  overflow-wrap:anywhere !important;
+  word-break:break-word !important;
+  padding-right:4px !important;
+}
+#history .closeDetail{
+  flex:0 0 48px !important;
+  align-self:flex-start !important;
+  margin-left:0 !important;
+  margin-top:2px !important;
+}
+@media(max-width:430px){
+  #history .sectionTitle{
+    font-size:28px !important;
+    max-width:calc(100% - 60px) !important;
+  }
+  #history .closeDetail{
+    width:46px !important;
+    height:46px !important;
+    min-width:46px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6628,7 +6668,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.67</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.68</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6758,7 +6798,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.67</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.68</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6826,7 +6866,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.67</p>
+    <p class="legalDate">Mijn LeefRitme 38.68</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
