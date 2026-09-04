@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.75">
+<meta name="app-version" content="38.76">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.75";
+const LEEFKRACHT_VERSION = "38.76";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6420,6 +6420,79 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+<style id="mijn-leefritme-3876-history-final-reset">
+/* 38.76 — Meetgeschiedenis definitief vereenvoudigd: alleen datumveld */
+#history > .detailTop{
+  display:flex !important;
+  align-items:flex-start !important;
+  justify-content:space-between !important;
+  gap:12px !important;
+  margin:0 0 18px !important;
+  padding:4px 0 0 !important;
+  position:static !important;
+}
+#history > .detailTop > div:first-child{
+  flex:1 1 auto !important;
+  min-width:0 !important;
+}
+#history > .detailTop .eyebrow{
+  margin:0 0 6px !important;
+  font-size:14px !important;
+  line-height:1.2 !important;
+}
+#history > .detailTop .sectionTitle{
+  margin:0 !important;
+  font-size:36px !important;
+  line-height:1 !important;
+  white-space:nowrap !important;
+  word-break:normal !important;
+  overflow-wrap:normal !important;
+}
+#history > .detailTop .closeDetail{
+  flex:0 0 48px !important;
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  margin:0 !important;
+  position:static !important;
+}
+#history .panel{
+  overflow:hidden !important;
+  padding:22px !important;
+}
+#history .historyFilterCard{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  margin:0 0 18px !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+  overflow:hidden !important;
+}
+#history #historyDateFilter{
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  inline-size:100% !important;
+  box-sizing:border-box !important;
+  margin:0 !important;
+  min-height:54px !important;
+  -webkit-appearance:none !important;
+  appearance:none !important;
+}
+#history .historyFilterActions,
+#history .historyClearFilterBtn{
+  display:none !important;
+}
+@media(max-width:430px){
+  #history > .detailTop .sectionTitle{font-size:30px !important;}
+  #history > .detailTop .closeDetail{width:46px !important;height:46px !important;min-width:46px !important;}
+  #history .panel{padding:18px !important;}
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6900,7 +6973,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.75</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.76</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7030,7 +7103,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.75</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.76</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7098,7 +7171,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.75</p>
+    <p class="legalDate">Mijn LeefRitme 38.76</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7322,7 +7395,6 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
       <div class="historyFilterCard">
         <label for="historyDateFilter">Zoek een meting op datum</label>
         <input id="historyDateFilter" class="input" type="date">
-        <div class="historyFilterActions"><button type="button" class="secondary historyClearFilterBtn" id="historyClearFilterBtn">Wis</button></div>
         <div class="historyFilterHint">Kies een datum om die meetdag te bekijken of te wijzigen.</div>
       </div>
       <div id="historyList"></div>
@@ -7803,7 +7875,6 @@ function lkCancelMeasurementEdit(){
 }
 if($('#cancelEditBtn')) $('#cancelEditBtn').onclick=()=>{lkCancelMeasurementEdit();page('history')};
 if($('#historyDateFilter')) $('#historyDateFilter').addEventListener('change',()=>renderHistory(load()));
-if($('#historyClearFilterBtn')) $('#historyClearFilterBtn').onclick=()=>{ if($('#historyDateFilter')) $('#historyDateFilter').value=''; renderHistory(load()); };
 $('#form').onsubmit=e=>{
   e.preventDefault();
   const entry={date:$('#date').value,weight:$('#weightInput').value,waist:$('#waistInput').value,hip:$('#hipInput').value,chest:$('#chestInput').value,steps:$('#stepsInput').value,sys:$('#sysInput').value,dia:$('#diaInput').value,heart:$('#heartInput').value,glucose:$('#glucoseInput').value,glucoseContext:$('#glucoseContext').value,glucoseTime:$('#glucoseTime').value};
