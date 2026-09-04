@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.85">
+<meta name="app-version" content="38.86">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.85";
+const LEEFKRACHT_VERSION = "38.86";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6630,6 +6630,45 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 @media(max-width:390px){.dashboardTileRow{grid-template-columns:1fr}.dashboardMoveButtons{justify-content:flex-end}.dashboardTileActions{grid-template-columns:1fr}}
 </style>
 
+
+<style id="mijn-leefritme-3886-home-drag-sort">
+/* 38.86 — Plus: iPhone-achtig lang indrukken en slepen op Home */
+#overview .dashboardEditBar{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  margin:4px 0 14px;padding:12px 14px;border-radius:18px;
+  background:linear-gradient(180deg,#151d16,#101610);
+  border:1px solid rgba(154,174,114,.30);
+}
+#overview .dashboardEditBar[hidden]{display:none!important}
+#overview .dashboardEditBar div{min-width:0;display:flex;flex-direction:column;gap:2px}
+#overview .dashboardEditBar strong{color:#f0eee5;font-size:14px}
+#overview .dashboardEditBar span{color:#bcc5b3;font-size:12px;line-height:1.25}
+#overview .dashboardEditBar button{
+  min-width:78px;min-height:44px;padding:8px 14px!important;border:0!important;border-radius:14px!important;
+  background:linear-gradient(135deg,#9aae72,#778b54)!important;color:#0a120d!important;font-weight:900!important;
+}
+#overview.dashboardEditing .approvedGrid .tile{
+  cursor:grab!important;user-select:none!important;-webkit-user-select:none!important;
+  touch-action:none!important;position:relative;
+}
+#overview.dashboardEditing .approvedGrid .tile::after{
+  content:'≡';position:absolute;right:10px;top:10px;width:28px;height:28px;border-radius:999px;
+  display:flex;align-items:center;justify-content:center;background:rgba(154,174,114,.16);
+  border:1px solid rgba(154,174,114,.34);color:#dce3ce;font-size:18px;font-weight:900;
+}
+#overview.dashboardEditing .approvedGrid .tile.dashboardDragSource{
+  opacity:.38!important;transform:scale(.985)!important;
+}
+#dashboardDragGhost{
+  position:fixed!important;z-index:99999!important;pointer-events:none!important;margin:0!important;
+  opacity:.94!important;transform:scale(1.02) rotate(.4deg)!important;
+  box-shadow:0 18px 36px rgba(0,0,0,.38)!important;
+}
+@media (prefers-reduced-motion:no-preference){
+  #overview.dashboardEditing .approvedGrid .tile:not(.dashboardDragSource){transition:transform .12s ease}
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6643,6 +6682,11 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
     <div class="pulse"><i></i></div>
 
+
+    <div id="dashboardEditBar" class="dashboardEditBar" hidden>
+      <div><strong>Voorpagina indelen</strong><span>Sleep de tegels naar de gewenste plek.</span></div>
+      <button type="button" id="dashboardEditDoneBtn">Gereed</button>
+    </div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight" data-tile-id="weight">
@@ -7115,7 +7159,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.85</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.86</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7245,7 +7289,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.85</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.86</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7313,7 +7357,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.85</p>
+    <p class="legalDate">Mijn LeefRitme 38.86</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7535,7 +7579,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
   </div>
   <div class="card panel dashboardSetupIntro">
     <div class="label">Jouw tegelmagazijn</div>
-    <p class="muted">Zet een vinkje bij de tegels die je op de voorpagina wilt zien. Met de pijlen bepaal je de volgorde. De voorpagina wordt direct aangepast.</p>
+    <p class="muted">Zet een vinkje bij de tegels die je op de voorpagina wilt zien. Je kunt hier met de pijlen ordenen, of op Home een tegel lang indrukken en met je vinger verslepen.</p>
   </div>
   <div class="card panel dashboardTileManager">
     <div id="dashboardTileList" class="dashboardTileList" aria-live="polite"></div>
@@ -11281,44 +11325,38 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
-<script id="mijn-leefritme-3885-dashboard-layout-js">
+<script id="mijn-leefritme-3886-dashboard-layout-js">
 (function(){
   const PREF_KEY='mijnleefritme-dashboard-layout-v1';
   const TILES=[
-    {id:'weight',name:'Gewicht'},
-    {id:'goal',name:'Streefgewicht'},
-    {id:'bmi',name:'BMI'},
-    {id:'body',name:'Lichaamsmaten'},
-    {id:'blood',name:'Bloeddruk'},
-    {id:'heart',name:'Hartslag'},
-    {id:'steps',name:'Stappen vandaag'},
-    {id:'score',name:'LeefRitme-score'},
-    {id:'insight',name:'Wat valt op?'},
+    {id:'weight',name:'Gewicht'}, {id:'goal',name:'Streefgewicht'}, {id:'bmi',name:'BMI'},
+    {id:'body',name:'Lichaamsmaten'}, {id:'blood',name:'Bloeddruk'}, {id:'heart',name:'Hartslag'},
+    {id:'steps',name:'Stappen vandaag'}, {id:'score',name:'LeefRitme-score'}, {id:'insight',name:'Wat valt op?'},
     {id:'more',name:'Mijn LeefRitme',locked:true}
   ];
+  const LONG_PRESS_MS=520;
+  let editMode=false, pressTimer=null, pressTile=null, drag=null, suppressClickUntil=0;
   function defaults(){return {order:TILES.map(t=>t.id),visible:Object.fromEntries(TILES.map(t=>[t.id,true]))}}
   function read(){
     const d=defaults();
     try{
       const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
       if(!raw||!Array.isArray(raw.order)||typeof raw.visible!=='object')return d;
-      const valid=TILES.map(t=>t.id), order=[];
+      const valid=TILES.map(t=>t.id),order=[];
       raw.order.forEach(id=>{if(valid.includes(id)&&!order.includes(id))order.push(id)});
       valid.forEach(id=>{if(!order.includes(id))order.push(id)});
-      const visible={...d.visible,...raw.visible,more:true};
-      return {order,visible};
+      return {order,visible:{...d.visible,...raw.visible,more:true}};
     }catch(e){return d}
   }
   function write(p){p.visible.more=true;localStorage.setItem(PREF_KEY,JSON.stringify(p));apply(p)}
   function apply(pref){
-    const p=pref||read(), grid=document.querySelector('#overview .tiles'); if(!grid)return;
+    const p=pref||read(),grid=document.querySelector('#overview .tiles');if(!grid)return;
     p.order.forEach(id=>{const el=grid.querySelector('[data-tile-id="'+id+'"]');if(el)grid.appendChild(el)});
     TILES.forEach(t=>{const el=grid.querySelector('[data-tile-id="'+t.id+'"]');if(el)el.style.display=(t.locked||p.visible[t.id]!==false)?'':'none'});
   }
   function renderManager(){
     const host=document.getElementById('dashboardTileList');if(!host)return;
-    const p=read(), byId=Object.fromEntries(TILES.map(t=>[t.id,t]));
-    host.innerHTML='';
+    const p=read(),byId=Object.fromEntries(TILES.map(t=>[t.id,t]));host.innerHTML='';
     p.order.forEach((id,index)=>{
       const t=byId[id];if(!t)return;
       const row=document.createElement('div');row.className='dashboardTileRow';
@@ -11336,14 +11374,67 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }
   function move(id,dir){const p=read(),i=p.order.indexOf(id),j=i+dir;if(i<0||j<0||j>=p.order.length)return;[p.order[i],p.order[j]]=[p.order[j],p.order[i]];write(p);renderManager()}
+  function setEditMode(on){
+    editMode=!!on;
+    const overview=document.getElementById('overview'),bar=document.getElementById('dashboardEditBar');
+    if(overview)overview.classList.toggle('dashboardEditing',editMode);
+    if(bar)bar.hidden=!editMode;
+    if(!editMode)cancelDrag();
+  }
+  function visibleTiles(){return [...document.querySelectorAll('#overview .tiles [data-tile-id]')].filter(el=>el.style.display!=='none')}
+  function beginDrag(tile,e){
+    if(!editMode||!tile)return;
+    const rect=tile.getBoundingClientRect(),ghost=tile.cloneNode(true);
+    ghost.id='dashboardDragGhost';ghost.removeAttribute('data-page');ghost.style.width=rect.width+'px';ghost.style.height=rect.height+'px';ghost.style.left=(e.clientX-rect.width/2)+'px';ghost.style.top=(e.clientY-rect.height/2)+'px';
+    document.body.appendChild(ghost);tile.classList.add('dashboardDragSource');
+    drag={tile,ghost,pointerId:e.pointerId,w:rect.width,h:rect.height};
+    try{tile.setPointerCapture(e.pointerId)}catch(_){ }
+  }
+  function moveGhost(e){
+    if(!drag)return;
+    drag.ghost.style.left=(e.clientX-drag.w/2)+'px';drag.ghost.style.top=(e.clientY-drag.h/2)+'px';
+    const candidates=visibleTiles().filter(el=>el!==drag.tile);
+    let target=null,best=Infinity;
+    for(const el of candidates){const r=el.getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=dx*dx+dy*dy;if(d<best){best=d;target=el}}
+    if(target){const r=target.getBoundingClientRect();const before=e.clientY<r.top+r.height/2 || (Math.abs(e.clientY-(r.top+r.height/2))<r.height*.22 && e.clientX<r.left+r.width/2);target.parentNode.insertBefore(drag.tile,before?target:target.nextSibling)}
+  }
+  function saveDomOrder(){
+    const grid=document.querySelector('#overview .tiles');if(!grid)return;
+    const domIds=[...grid.querySelectorAll('[data-tile-id]')].map(el=>el.dataset.tileId),p=read();
+    const rest=p.order.filter(id=>!domIds.includes(id));p.order=[...domIds,...rest];write(p);renderManager();
+  }
+  function endDrag(){
+    if(!drag)return;
+    const d=drag;drag=null;d.tile.classList.remove('dashboardDragSource');if(d.ghost&&d.ghost.remove)d.ghost.remove();
+    suppressClickUntil=Date.now()+500;saveDomOrder();
+  }
+  function cancelDrag(){if(!drag)return;const d=drag;drag=null;d.tile.classList.remove('dashboardDragSource');if(d.ghost&&d.ghost.remove)d.ghost.remove()}
+  function clearPress(){if(pressTimer){clearTimeout(pressTimer);pressTimer=null}pressTile=null}
+  function bindHomeDrag(){
+    const grid=document.querySelector('#overview .tiles');if(!grid||grid.dataset.dragBound)return;grid.dataset.dragBound='1';
+    grid.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse'&&e.button!==0)return;
+      const tile=e.target.closest('[data-tile-id]');if(!tile||tile.style.display==='none')return;
+      if(editMode){e.preventDefault();beginDrag(tile,e);return}
+      pressTile=tile;const x=e.clientX,y=e.clientY;
+      pressTimer=setTimeout(()=>{pressTimer=null;if(pressTile===tile){setEditMode(true);beginDrag(tile,e);if(navigator.vibrate)try{navigator.vibrate(25)}catch(_){}}},LONG_PRESS_MS);
+      const cancelIfMoved=ev=>{if(Math.hypot(ev.clientX-x,ev.clientY-y)>12)clearPress()};
+      tile.addEventListener('pointermove',cancelIfMoved,{once:true});
+    },{passive:false});
+    grid.addEventListener('pointermove',e=>{if(drag){e.preventDefault();moveGhost(e)}},{passive:false});
+    grid.addEventListener('pointerup',e=>{clearPress();if(drag){e.preventDefault();endDrag()}},{passive:false});
+    grid.addEventListener('pointercancel',()=>{clearPress();cancelDrag()});
+    grid.addEventListener('click',e=>{if(editMode||Date.now()<suppressClickUntil){const tile=e.target.closest('[data-tile-id]');if(tile){e.preventDefault();e.stopImmediatePropagation()}}},true);
+  }
   function init(){
-    apply();renderManager();
+    apply();renderManager();bindHomeDrag();
     const all=document.getElementById('dashboardShowAllBtn');if(all)all.addEventListener('click',()=>{const p=read();TILES.forEach(t=>p.visible[t.id]=true);write(p);renderManager()});
     const reset=document.getElementById('dashboardResetBtn');if(reset)reset.addEventListener('click',()=>{const p=defaults();write(p);renderManager()});
+    const done=document.getElementById('dashboardEditDoneBtn');if(done)done.addEventListener('click',()=>setEditMode(false));
     document.addEventListener('click',e=>{if(e.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderManager,0)});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-  window.MijnLeefRitmeDashboard={apply,read};
+  window.MijnLeefRitmeDashboard={apply,read,setEditMode};
 })();
 </script>
 </body>
