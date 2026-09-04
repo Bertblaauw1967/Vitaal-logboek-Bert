@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.50">
+<meta name="app-version" content="38.51">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.50";
+const LEEFKRACHT_VERSION = "38.51";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.50 — totale visuele finetune
+   Mijn LeefRitme 38.51 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.50 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.51 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.50 — commerciële polishronde
+   Mijn LeefRitme 38.51 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.50 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.51 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -5204,7 +5204,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 </style>
 
 <style id="mijn-leefritme-3850-menu-alignment">
-/* 38.50 — Mijn LeefRitme-menu: vaste kaarthoogtes, strakke uitlijning en nette tekstverdeling */
+/* 38.51 — Mijn LeefRitme-menu: vaste kaarthoogtes, strakke uitlijning en nette tekstverdeling */
 #more .moreMenuV3848{
   display:grid !important;
   gap:14px !important;
@@ -5346,6 +5346,41 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+<style id="mijn-leefritme-3851-report-docs-alignment-fix">
+/* 38.51 — Rapport arts/coach en Uitslagen/documenten exact gelijk aan de overige menurubrieken.
+   Overschrijft oudere knopregels die data-page knoppen smaller en 54px hoog maakten. */
+#more button.moreMenuRow[data-page="report"],
+#more button.moreMenuRow[data-page="documents"]{
+  display:grid !important;
+  width:100% !important;
+  max-width:none !important;
+  min-width:0 !important;
+  height:auto !important;
+  min-height:112px !important;
+  grid-template-columns:58px minmax(0,1fr) 46px !important;
+  column-gap:16px !important;
+  align-items:center !important;
+  justify-content:stretch !important;
+  padding:18px 18px !important;
+  margin:0 !important;
+  border-radius:22px !important;
+  background:linear-gradient(180deg,#141d16,#0e1510) !important;
+  color:inherit !important;
+  box-shadow:0 9px 22px rgba(0,0,0,.16) !important;
+  text-align:left !important;
+}
+@media(max-width:430px){
+  #more button.moreMenuRow[data-page="report"],
+  #more button.moreMenuRow[data-page="documents"]{
+    min-height:106px !important;
+    grid-template-columns:52px minmax(0,1fr) 34px !important;
+    column-gap:12px !important;
+    padding:16px 14px !important;
+    border-radius:20px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5358,7 +5393,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.50</div>
+<div class="v291Indicator">v38.51</div>
 
     <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
@@ -5949,7 +5984,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.50</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.51</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6017,7 +6052,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.50</p>
+    <p class="legalDate">Mijn LeefRitme 38.51</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -9165,7 +9200,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.50 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.51 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
