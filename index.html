@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.01">
+<meta name="app-version" content="39.02">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.01";
+const LEEFKRACHT_VERSION = "39.02";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7744,7 +7744,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.01</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.02</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7881,7 +7881,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.01</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.02</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -10752,53 +10752,63 @@ function lkSaveCareContact(showStatus=true){
 }
 function lkPrepareReportEmail(){
   if(!lkSaveCareContact(false)) return;
+
   const p=lkLoadProfile();
   const to=(document.getElementById('careEmail')?.value||p.careEmail||'').trim();
-  if(!lkValidEmail(to)){const st=document.getElementById('careContactStatus');if(st)st.textContent='Vul eerst het e-mailadres van arts of coach in.';return}
+  const st=document.getElementById('careContactStatus');
+
+  if(!lkValidEmail(to)){
+    if(st) st.textContent='Vul eerst het e-mailadres van arts of coach in.';
+    return;
+  }
+
   const days=document.getElementById('reportPeriod')?.value||'90';
-  const period=days==='all'?'vanaf het begin':days==='30'?'van de laatste 30 dagen':days==='90'?'van de laatste 3 maanden':days==='180'?'van de laatste 6 maanden':'van het laatste jaar';
+  const period=days==='all'?'vanaf het begin':
+               days==='30'?'van de laatste 30 dagen':
+               days==='90'?'van de laatste 3 maanden':
+               days==='180'?'van de laatste 6 maanden':
+               'van het laatste jaar';
+
   const q=(document.getElementById('reportQuestion')?.value||'').trim();
   const sender=(document.getElementById('reportName')?.value||p.name||'').trim();
   const salutation=p.careName?`Beste ${p.careName},`:'Goedendag,';
-  const body=[salutation,'',`Hierbij mijn gezondheidsrapport ${period} uit Mijn LeefRitme.`,`Het rapport kan ik als PDF bij deze e-mail voegen.`,q?'':null,q?`Mijn vraag / toelichting:\n${q}`:null,'',sender?`Met vriendelijke groet,\n${sender}`:'Met vriendelijke groet'].filter(x=>x!==null).join('\n');
+
+  const body=[
+    salutation,
+    '',
+    `Hierbij mijn gezondheidsrapport ${period} uit Mijn LeefRitme.`,
+    'Het rapport kan ik als PDF bij deze e-mail voegen.',
+    q ? '' : null,
+    q ? `Mijn vraag / toelichting:\n${q}` : null,
+    '',
+    sender ? `Met vriendelijke groet,\n${sender}` : 'Met vriendelijke groet'
+  ].filter(x=>x!==null).join('\n');
+
   const subject='Mijn LeefRitme – gezondheidsrapport';
-  const mailto=`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const mailto='mailto:'+encodeURIComponent(to)
+    +'?subject='+encodeURIComponent(subject)
+    +'&body='+encodeURIComponent(body);
 
-  // 38.98 — betrouwbaarder openen vanuit iOS/Android appvenster.
-  // Gebruik eerst een echte mailto-link. Als het appvenster die blokkeert,
-  // bied dan het systeemeigen deelvenster aan als fallback.
-  let fallbackTimer=null;
-  const openShareFallback=async()=>{
-    try{
-      if(navigator.share){
-        await navigator.share({title:subject,text:body});
-        return;
-      }
-    }catch(err){
-      // Annuleren door gebruiker is geen fout; andere fouten vallen door.
-      if(err && err.name==='AbortError') return;
-    }
-    const st=document.getElementById('careContactStatus');
-    if(st) st.textContent='De mailapp kon niet automatisch worden geopend. Kopieer eventueel het e-mailadres en gebruik Delen.';
-  };
-
+  // 39.02 — direct openen vanuit de klik zelf.
+  // Geen target=_blank en geen vertraagde share-call: iOS blokkeert die soms.
   try{
-    const a=document.createElement('a');
-    a.href=mailto;
-    a.target='_blank';
-    a.rel='noopener';
-    a.style.display='none';
-    document.body.appendChild(a);
+    if(st) st.textContent='Mailapp openen…';
+    window.location.href=mailto;
 
-    const onHide=()=>{ if(document.hidden && fallbackTimer){clearTimeout(fallbackTimer);fallbackTimer=null;} };
-    document.addEventListener('visibilitychange',onHide,{once:true});
-    a.click();
-    setTimeout(()=>a.remove(),500);
-
-    // Als na korte tijd niets naar de achtergrond ging, is mailto waarschijnlijk geblokkeerd.
-    fallbackTimer=setTimeout(()=>{fallbackTimer=null;openShareFallback()},900);
+    // Als de browser na korte tijd nog zichtbaar is, geef een bruikbare fallback.
+    setTimeout(async()=>{
+      if(document.visibilityState!=='visible') return;
+      try{
+        await navigator.clipboard.writeText(
+          'Aan: '+to+'\nOnderwerp: '+subject+'\n\n'+body
+        );
+        if(st) st.textContent='Mailapp niet geopend. E-mailtekst is gekopieerd ✓';
+      }catch(err){
+        if(st) st.textContent='Mailapp niet geopend. Kopieer het e-mailadres en probeer via Mail.';
+      }
+    },1600);
   }catch(err){
-    openShareFallback();
+    if(st) st.textContent='Mailapp kon niet worden geopend.';
   }
 }
 
@@ -11167,7 +11177,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.01', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.02', {
         scope: './',
         updateViaCache: 'none'
       });

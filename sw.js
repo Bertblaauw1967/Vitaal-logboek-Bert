@@ -1,5 +1,5 @@
 // Mijn LeefRitme 39.01 - update/cache reset
-const SW_VERSION = '39.01';
+const SW_VERSION = '39.02';
 
 self.addEventListener('install', event => {
   self.skipWaiting();
