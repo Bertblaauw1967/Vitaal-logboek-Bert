@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.47">
+<meta name="app-version" content="38.48">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -328,7 +328,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.47";
+const LEEFKRACHT_VERSION = "38.48";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -1202,7 +1202,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.47 — totale visuele finetune
+   Mijn LeefRitme 38.48 — totale visuele finetune
    Doel: één professioneel systeem voor dashboard + details.
    Geen functionele wijzigingen.
    ========================================================= */
@@ -1555,7 +1555,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 <style>
-/* Mijn LeefRitme 38.47 — KISS: scoretrend, persoonlijk inzicht, privacy */
+/* Mijn LeefRitme 38.48 — KISS: scoretrend, persoonlijk inzicht, privacy */
 .tileInsight{
   border-color:#3977a8 !important;
   background:linear-gradient(145deg,rgba(16,55,86,.96),rgba(10,34,55,.98)) !important;
@@ -1914,7 +1914,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style>
 /* =========================================================
-   Mijn LeefRitme 38.47 — commerciële polishronde
+   Mijn LeefRitme 38.48 — commerciële polishronde
    Geen redesign: alleen producthiërarchie, motivatie en privacy.
    ========================================================= */
 
@@ -2701,7 +2701,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 <style id="leefkracht-360-polish">
 /* =========================================================
-   Mijn LeefRitme 38.47 — eindpolish / commerciële afwerking
+   Mijn LeefRitme 38.48 — eindpolish / commerciële afwerking
    Doel: meer rust, betere hiërarchie, strakkere uitlijning.
    ========================================================= */
 
@@ -5174,169 +5174,33 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
-<style id="mijn-leefritme-3847-dashboard-polish">
-/* 38.47 — rustige, moderne voorpagina + definitieve uitlijning */
-:root{
-  --mlr-text:#F2F0E8;
-  --mlr-olive:#9AAE72;
-  --mlr-orange:#D99A62;
-  --mlr-card1:#141D16;
-  --mlr-card2:#0E1510;
-  --mlr-border:rgba(154,174,114,.42);
+<style id="mijn-leefritme-3848-menu">
+/* 38.48 — oude, vertrouwde hoofdpagina behouden; alleen Mijn LeefRitme-menu vernieuwd. */
+#more .moreMenuV3848{display:grid;gap:12px;margin:18px 0 24px}
+#more .moreMenuRow{
+  width:100%;min-height:96px;box-sizing:border-box;display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:17px 18px;border-radius:22px;border:1px solid rgba(154,174,114,.40)!important;
+  background:linear-gradient(180deg,#141d16,#0e1510)!important;box-shadow:0 9px 22px rgba(0,0,0,.16)!important;text-align:left!important;
 }
-#overview .approvedGrid.dashboardV3847{
-  display:grid!important;
-  grid-template-columns:repeat(2,minmax(0,1fr))!important;
-  gap:14px!important;
-  align-items:stretch!important;
-}
-#overview .dashboardV3847 .tile{
-  min-height:224px!important;
-  height:100%!important;
-  padding:18px 16px!important;
-  display:grid!important;
-  grid-template-columns:48px minmax(0,1fr)!important;
-  column-gap:12px!important;
-  align-content:start!important;
-  align-items:start!important;
-  border-radius:24px!important;
-  background:linear-gradient(180deg,var(--mlr-card1),var(--mlr-card2))!important;
-  border:1px solid var(--mlr-border)!important;
-  box-shadow:0 10px 22px rgba(0,0,0,.16)!important;
-  text-align:left!important;
-}
-#overview .dashboardV3847 .tileBody{
-  min-width:0!important;
-  display:flex!important;
-  flex-direction:column!important;
-  align-items:flex-start!important;
-  height:100%!important;
-}
-#overview .dashboardV3847 .icon{
-  width:46px!important;height:46px!important;min-width:46px!important;
-  display:grid!important;place-items:center!important;
-  border-radius:15px!important;
-  color:var(--mlr-olive)!important;
-  background:#101812!important;
-  border:1px solid rgba(154,174,114,.46)!important;
-  font-size:20px!important;
-}
-#overview .dashboardV3847 .label{
-  color:var(--mlr-text)!important;
-  -webkit-text-fill-color:var(--mlr-text)!important;
-  font-size:13px!important;
-  line-height:1.15!important;
-  font-weight:850!important;
-  letter-spacing:.055em!important;
-  text-transform:uppercase!important;
-  margin:2px 0 4px!important;
-}
-#overview .dashboardV3847 .sub,
-#overview .dashboardV3847 .bodyMeasurementsRows span,
-#overview .dashboardV3847 .bodyMeasurementsRows strong,
-#overview .dashboardV3847 .goalRemaining,
-#overview .dashboardV3847 .bmiStatus,
-#overview .dashboardV3847 .greenProgress,
-#overview .dashboardV3847 .badge,
-#overview .dashboardV3847 .insightMini,
-#overview .dashboardV3847 .tileMoreMini{
-  color:var(--mlr-text)!important;
-  -webkit-text-fill-color:var(--mlr-text)!important;
-}
-#overview .dashboardV3847 .sub{
-  font-size:13px!important;line-height:1.38!important;opacity:.86!important;
-}
-#overview .dashboardV3847 .value{
-  color:var(--mlr-text)!important;
-  -webkit-text-fill-color:var(--mlr-text)!important;
-  font-size:34px!important;
-  line-height:1.05!important;
-  font-weight:850!important;
-  margin:18px 0 10px!important;
-  letter-spacing:-.02em!important;
-}
-#overview .dashboardV3847 .tileBlood .value,
-#overview .dashboardV3847 .tileHeart .value{font-size:32px!important}
-#overview .dashboardV3847 .badge{
-  margin-top:4px!important;
-  background:rgba(154,174,114,.16)!important;
-  border:1px solid rgba(154,174,114,.30)!important;
-  font-weight:800!important;
-}
-#overview .dashboardV3847 .tileBlood .sub:last-child,
-#overview .dashboardV3847 .tileHeart .sub:last-child{
-  margin-top:auto!important;padding-top:18px!important;
-}
-#overview .dashboardV3847 .bodyMeasurementsRows{
-  width:100%!important;margin-top:16px!important;
-}
-#overview .dashboardV3847 .bodyMeasurementsRows>div{
-  display:flex!important;justify-content:space-between!important;gap:10px!important;
-  padding:10px 0!important;border-bottom:1px solid rgba(154,174,114,.17)!important;
-}
-#overview .dashboardV3847 .bodyMeasurementsRows>div:last-child{border-bottom:0!important}
-#overview .dashboardV3847 .bodyMeasurementsRows strong{font-weight:700!important;text-align:right!important}
-#overview .dashboardV3847 .tileSteps .progressTrack{width:100%!important;margin-top:16px!important}
-#overview .dashboardV3847 .tileScore .sub,
-#overview .dashboardV3847 .tileInsight .insightMini{
-  margin-top:12px!important;font-size:15px!important;line-height:1.42!important;
-}
-/* Alleen de bestaande inhoudelijke accenten blijven oranje. */
-#overview .dashboardV3847 .tileScore #scoreTileSub,
-#overview .dashboardV3847 .tileInsight .insightMini .accentOrange,
-#overview .dashboardV3847 .tileInsight .insightMini strong.accentOrange{
-  color:var(--mlr-orange)!important;
-  -webkit-text-fill-color:var(--mlr-orange)!important;
-}
-/* Inzichttekst kan door JS inline oranje krijgen: alleen die inline accentkleur laten bestaan. */
-#overview .dashboardV3847 .tileInsight .insightMini[style*="color"]{color:var(--mlr-orange)!important;-webkit-text-fill-color:var(--mlr-orange)!important}
-#overview .dashboardV3847 .tileMore{
-  grid-column:1/-1!important;
-  min-height:142px!important;
-  grid-template-columns:48px minmax(0,1fr)!important;
-}
-#overview .dashboardV3847 .tileMore .sub{font-size:15px!important;margin-top:8px!important;opacity:1!important}
-#overview .dashboardV3847 .tileMoreMini{font-size:12px!important;line-height:1.45!important;margin-top:8px!important;opacity:.78!important}
-#overview .dashboardHiddenGoal{display:none!important}
-/* Alle dashboardtekst behalve expliciete oranje accentregels: één kleur. */
-#overview .dashboardV3847 .tile :is(.label,.sub,.value,.greenProgress,.goalRemaining,.bmiStatus,.bodyMeasurementsRows span,.bodyMeasurementsRows strong,.badge,.tileMoreMini){
-  color:var(--mlr-text)!important;
-  -webkit-text-fill-color:var(--mlr-text)!important;
-}
-/* Persoonsgegevens: blauw emoji vervangen door olijfgroen monochroom pictogram. */
+#more .moreMenuIcon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;border:1px solid rgba(154,174,114,.48);background:#101812;color:#9aae72!important;-webkit-text-fill-color:#9aae72!important;font-size:27px;font-weight:700}
+#more .moreMenuIcon svg{width:30px;height:30px;display:block;color:inherit}
+#more .moreMenuText{min-width:0;display:flex;flex-direction:column;gap:5px}
+#more .moreMenuText strong,#more .moreMenuText small{color:#F2F0E8!important;-webkit-text-fill-color:#F2F0E8!important;opacity:1!important}
+#more .moreMenuText strong{font-size:18px;line-height:1.2;font-weight:850}
+#more .moreMenuText small{font-size:14px;line-height:1.38;font-weight:500}
+#more .moreMenuArrow{color:#9aae72!important;-webkit-text-fill-color:#9aae72!important;font-size:36px;line-height:1;font-weight:300}
+#more .moreMenuPill{min-width:84px;padding:12px 15px;border-radius:999px;background:linear-gradient(135deg,#9aae72,#687a4f);color:#101510!important;-webkit-text-fill-color:#101510!important;text-align:center;font-size:13px;font-weight:850;letter-spacing:.03em}
+#more .moreGroupLabel,#more .moreDetailSection,#more .moreLegacyNav{display:none!important}
+#more.moreSubOpen .moreMenuV3848{display:none!important}
+#more.moreSubOpen .moreDetailSection.moreDetailActive{display:block!important}
+#more.moreSubOpen .moreGroupLabel{display:none!important}
 #more .profileTitle{display:flex!important;align-items:center!important;gap:10px!important}
-#more .profilePersonIcon{
-  width:30px!important;height:30px!important;min-width:30px!important;
-  display:inline-grid!important;place-items:center!important;
-  color:var(--mlr-olive)!important;
-  -webkit-text-fill-color:var(--mlr-olive)!important;
-}
-#more .profilePersonIcon svg{width:26px!important;height:26px!important;display:block!important;color:inherit!important}
-/* Pagina Mijn LeefRitme: tekst overal exact gelijk; knoptekst blijft donker. */
-#more .settingsCard :is(h3,h4,p,small,label,span,strong,b,li,.muted,.label,.sub,.helper,.caption,.note,.meta,.privacyLead,.profileEmailNote,.profileReadNote,.healthReadyNote,.backupSafetyNote),
-#more .moreGroupLabel,#more .eyebrow,#more .sectionTitle{
-  color:var(--mlr-text)!important;
-  -webkit-text-fill-color:var(--mlr-text)!important;
-  opacity:1!important;
-}
-#more .settingsCard button,#more .settingsCard .primary,#more .settingsCard .secondary,#more .settingsCard .wideBtn,#more .settingsCard .lkMainAction{
-  color:#101510!important;-webkit-text-fill-color:#101510!important;
-}
-/* Gelijke horizontale marges en kaartritme op Mijn LeefRitme. */
-#more>.settingsCard,#more>.card.settingsCard,#more>.moreGroupLabel{
-  width:100%!important;box-sizing:border-box!important;
-}
-#more .settingsCard{padding:20px!important;margin-bottom:16px!important}
-#more .moreGroupLabel{margin:24px 8px 10px!important;font-size:12px!important;letter-spacing:.14em!important;font-weight:850!important}
-/* Mobiel: compact maar niet gepropt. */
-@media(max-width:390px){
-  #overview .approvedGrid.dashboardV3847{gap:11px!important}
-  #overview .dashboardV3847 .tile{padding:16px 13px!important;grid-template-columns:43px minmax(0,1fr)!important;column-gap:10px!important;min-height:216px!important}
-  #overview .dashboardV3847 .icon{width:42px!important;height:42px!important;min-width:42px!important}
-  #overview .dashboardV3847 .value{font-size:31px!important}
-  #overview .dashboardV3847 .label{font-size:11.5px!important}
-  #overview .dashboardV3847 .sub{font-size:12px!important}
-}
+#more .profilePersonIcon{width:30px;height:30px;display:inline-grid;place-items:center;color:#9aae72!important;-webkit-text-fill-color:#9aae72!important}
+#more .profilePersonIcon svg{width:26px;height:26px;display:block}
+/* één tekstkleur in detailweergaven; knoptekst blijft donker */
+#more.moreSubOpen .moreDetailActive :is(h3,h4,p,small,label,span,strong,b,li,.muted,.label,.sub,.helper,.caption,.note,.meta,.privacyLead,.profileEmailNote,.profileReadNote,.healthReadyNote,.backupSafetyNote){color:#F2F0E8!important;-webkit-text-fill-color:#F2F0E8!important;opacity:1!important}
+#more.moreSubOpen .moreDetailActive button,#more.moreSubOpen .moreDetailActive .primary,#more.moreSubOpen .moreDetailActive .secondary{color:#101510!important;-webkit-text-fill-color:#101510!important}
+@media(max-width:390px){#more .moreMenuRow{min-height:90px;padding:15px 14px;grid-template-columns:50px minmax(0,1fr) auto;gap:11px}#more .moreMenuIcon{width:46px;height:46px;border-radius:14px}#more .moreMenuText strong{font-size:16px}#more .moreMenuText small{font-size:13px}#more .moreMenuPill{min-width:72px;padding:10px 12px}}
 </style>
 </head>
 <body>
@@ -5350,9 +5214,9 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
 
     <div class="pulse"><i></i></div>
-<div class="v291Indicator">v38.47</div>
+<div class="v291Indicator">v38.48</div>
 
-    <div class="tiles approvedGrid dashboardV3847">
+    <div class="tiles approvedGrid">
 <button type="button" class="card tile clickable tileWeight" data-page="weight">
         <div class="icon blue">▣</div>
         <div class="tileBody">
@@ -5365,6 +5229,15 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div id="latestBMI" style="display:none"></div>
         </div>
       </button>
+<button type="button" class="card tile clickable tileGoal" data-page="goal">
+        <div class="icon amber">◎</div>
+        <div class="tileBody">
+          <div class="label goalLabelOneLine">Streefgewicht</div>
+          <div class="sub">Jouw doel</div>
+          <div class="value" id="goalTile">—</div>
+          <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
+        </div>
+      </button>
 <button type="button" class="card tile clickable tileBmi" data-page="bmi">
         <div class="icon amber">BMI</div>
         <div class="tileBody">
@@ -5373,6 +5246,21 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="value" id="bmiTile">—</div>
           <div class="bmiStatus" id="bmiClass">Lengte 1,825 m</div>
         </div>
+      </button>
+<button type="button" class="card tile clickable bodyMetricTile" data-page="body">
+        <div class="icon bodyMeasureIcon" aria-hidden="true">
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M7 9.5h14.5a5.5 5.5 0 0 1 0 11H9.5A5.5 5.5 0 0 1 4 15v-2.5A3 3 0 0 1 7 9.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M9 10v4M13 10v2.5M17 10v4M21 10v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="9.5" cy="15.5" r="2" stroke="currentColor" stroke-width="1.8"/>
+  <path d="M21.5 20.5v3H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </div>
+        <div class="tileBody">
+          <div class="label bodyMeasureLabel">Lichaamsmaten</div>
+          <div class="value" id="bodyTile">—</div>
+          <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
+        <div class="bodyMeasurementsRows"><div><span>Buikomtrek</span><strong id="bodyWaistRow">—</strong></div><div><span>Heup</span><strong id="bodyHipRow">—</strong></div><div><span>Borst</span><strong id="bodyChestRow">—</strong></div></div></div>
       </button>
 <button type="button" class="card tile clickable tileBlood" data-page="blood">
         <div class="icon pink">♥</div>
@@ -5393,21 +5281,6 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <span id="heartBadge"></span>
           <div class="sub" id="heartDate">Nog geen meting</div>
         </div>
-      </button>
-<button type="button" class="card tile clickable bodyMetricTile" data-page="body">
-        <div class="icon bodyMeasureIcon" aria-hidden="true">
-<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M7 9.5h14.5a5.5 5.5 0 0 1 0 11H9.5A5.5 5.5 0 0 1 4 15v-2.5A3 3 0 0 1 7 9.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
-  <path d="M9 10v4M13 10v2.5M17 10v4M21 10v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-  <circle cx="9.5" cy="15.5" r="2" stroke="currentColor" stroke-width="1.8"/>
-  <path d="M21.5 20.5v3H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-        </div>
-        <div class="tileBody">
-          <div class="label bodyMeasureLabel">Lichaamsmaten</div>
-          <div class="value" id="bodyTile">—</div>
-          <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
-        <div class="bodyMeasurementsRows"><div><span>Buikomtrek</span><strong id="bodyWaistRow">—</strong></div><div><span>Heup</span><strong id="bodyHipRow">—</strong></div><div><span>Borst</span><strong id="bodyChestRow">—</strong></div></div></div>
       </button>
 <button type="button" class="card tile clickable tileSteps" data-page="steps">
         <div class="icon blue">👟</div>
@@ -5432,16 +5305,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
 <div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
-<div class="sub">Profiel, rapporten &amp; beheer</div><div class="tileMoreMini">Persoonsgegevens · Gezondheid · Documenten · Privacy</div></div></button>
-<button type="button" class="card tile clickable tileGoal dashboardHiddenGoal" data-page="goal">
-        <div class="icon amber">◎</div>
-        <div class="tileBody">
-          <div class="label goalLabelOneLine">Streefgewicht</div>
-          <div class="sub">Jouw doel</div>
-          <div class="value" id="goalTile">—</div>
-          <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
-        </div>
-      </button>
+<div class="sub">Profiel · rapporten · documenten</div></div></button>
     </div>
 
     <div id="msgTitle" style="display:none"></div>
@@ -5775,9 +5639,47 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button>
   </div>
 
+  <div class="moreMenuV3848" aria-label="Mijn LeefRitme menu">
+    <button type="button" class="moreMenuRow" data-more-target="profile">
+      <span class="moreMenuIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="currentColor"/><path d="M4.5 21c.5-5 3.3-7.5 7.5-7.5S19 16 19.5 21H4.5Z" fill="currentColor"/></svg></span>
+      <span class="moreMenuText"><strong>Jouw gegevens</strong><small>Voor je BMI, voortgang en persoonlijke doelen.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-more-target="health">
+      <span class="moreMenuIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2 4.8 13C2.1 10.3 2 6 4.7 3.8 7 1.9 10.1 2.7 12 5c1.9-2.3 5-3.1 7.3-1.2 2.7 2.2 2.6 6.5-.1 9.2L12 20.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+      <span class="moreMenuText"><strong>Gezondheidskoppeling</strong><small>Koppel met Apple Health of Health Connect.</small></span>
+      <span class="moreMenuPill">Koppel</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-page="report">
+      <span class="moreMenuIcon" aria-hidden="true">▤</span>
+      <span class="moreMenuText"><strong>Rapport arts / coach</strong><small>Maak een overzicht van je metingen en voortgang.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-page="documents">
+      <span class="moreMenuIcon" aria-hidden="true">▧</span>
+      <span class="moreMenuText"><strong>Uitslagen &amp; documenten</strong><small>Bekijk en beheer je uitslagen en documenten.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-more-target="privacy">
+      <span class="moreMenuIcon" aria-hidden="true">♙</span>
+      <span class="moreMenuText"><strong>Privacy</strong><small>Beheer je privacy en toestemming.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-more-target="backup">
+      <span class="moreMenuIcon" aria-hidden="true">⇧</span>
+      <span class="moreMenuText"><strong>Back-up</strong><small>Maak of herstel een back-up van je gegevens.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+    <button type="button" class="moreMenuRow" data-more-target="about">
+      <span class="moreMenuIcon" aria-hidden="true">ⓘ</span>
+      <span class="moreMenuText"><strong>Over Mijn LeefRitme</strong><small>Versie, voorwaarden, support en meer informatie.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
+  </div>
+
   <div class="moreGroupLabel">Persoonlijk</div>
 
-  <div class="card settingsCard">
+  <div class="card settingsCard moreDetailSection" data-more-detail="profile">
     <h3 class="profileTitle"><span class="profilePersonIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" fill="currentColor"/><path d="M4.5 21c.5-5 3.3-7.5 7.5-7.5S19 16 19.5 21H4.5Z" fill="currentColor"/></svg></span><span>Jouw gegevens</span></h3>
     <p class="muted">Voor je BMI, voortgang en persoonlijke doelen.</p>
 
@@ -5827,7 +5729,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
   <div class="moreGroupLabel">Gezondheid &amp; overzicht</div>
 
-  <div class="card panel settingsCard healthReadyCard">
+  <div class="card panel settingsCard healthReadyCard moreDetailSection" data-more-detail="health">
     <div class="label">Gezondheid koppelen</div>
     <div class="healthReadyHead">
       <div class="healthReadyIcon">♥</div>
@@ -5856,13 +5758,13 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </small>
   </div>
 
-<div class="card settingsCard">
+<div class="card settingsCard moreLegacyNav">
     <h3>▤ Rapport arts / coach</h3>
     <p class="muted">Maak een overzicht van je metingen en voortgang.</p>
     <button type="button" class="primary wideBtn lkMainAction" data-page="report">Rapport maken</button>
   </div>
 
-  <div class="card settingsCard">
+  <div class="card settingsCard moreLegacyNav">
     <h3>📄 Uitslagen & documenten</h3>
     <p class="muted">Maak een foto of bewaar een bloeduitslag, brief of PDF bij je gezondheidsgegevens.</p>
     <button type="button" class="primary wideBtn lkMainAction" id="documentsActionBtn" data-page="documents">Foto / document toevoegen</button>
@@ -5870,7 +5772,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
   <div class="moreGroupLabel">Privacy &amp; beheer</div>
 
-  <div class="card settingsCard privacyCard">
+  <div class="card settingsCard privacyCard moreDetailSection" data-more-detail="privacy">
     <h3>🔒 Privacy</h3>
     <p class="privacyLead">Jouw gegevens zijn van jou.</p>
     <p class="muted">Mijn LeefRitme deelt niets zonder jouw toestemming.</p>
@@ -5884,7 +5786,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <small class="muted">Hier lees je precies welke gegevens Mijn LeefRitme gebruikt, waar ze worden bewaard en hoe je ze kunt verwijderen.</small>
   </div>
 
-  <div class="card settingsCard">
+  <div class="card settingsCard moreDetailSection" data-more-detail="backup">
     <h3>⇧ Back-up</h3>
     <p class="muted">Mijn LeefRitme maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -5899,11 +5801,11 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
   
 
-  <div class="card panel settingsCard aboutLeefKrachtCard">
+  <div class="card panel settingsCard aboutLeefKrachtCard moreDetailSection" data-more-detail="about">
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.47</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.48</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -5941,7 +5843,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.46 · bijgewerkt 4 september 2026</p>
+    <p class="legalDate">Versie 38.48 · bijgewerkt 4 september 2026</p>
     <h3>1. Doel van Mijn LeefRitme</h3>
     <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
@@ -5971,7 +5873,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.47</p>
+    <p class="legalDate">Mijn LeefRitme 38.48</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -5998,7 +5900,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.46 · bijgewerkt 4 september 2026</p>
+    <p class="privacyPolicyDate">Versie 38.48 · bijgewerkt 4 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
     <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
@@ -8541,7 +8443,38 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   <tbody>${tableRows||'<tr><td colspan="8">Geen metingen in deze periode.</td></tr>'}</tbody></table>
   <p class="foot">Mijn LeefRitme – Dit rapport is een overzicht van geregistreerde gezondheidsmetingen. Het vervangt geen medisch onderzoek, diagnose of advies.</p>
   <button class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport();}else{window.print();}}catch(e){window.print();}})()">Afdrukken / bewaren als PDF</button>
-  </main></body></html>`;
+  </main>
+<script id="mijn-leefritme-3848-menu-js">
+(function(){
+  function moreEl(){return document.getElementById('more')}
+  function showMenu(scroll){
+    const more=moreEl(); if(!more)return;
+    more.classList.remove('moreSubOpen');
+    more.removeAttribute('data-more-open');
+    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
+    if(scroll!==false){try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}}
+  }
+  function showDetail(key){
+    const more=moreEl(); if(!more)return;
+    const target=more.querySelector('.moreDetailSection[data-more-detail="'+key+'"]');
+    if(!target)return;
+    more.querySelectorAll('.moreDetailSection').forEach(el=>el.classList.remove('moreDetailActive'));
+    target.classList.add('moreDetailActive');
+    more.classList.add('moreSubOpen');
+    more.setAttribute('data-more-open',key);
+    try{more.scrollTop=0;window.scrollTo(0,0)}catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    const more=moreEl(); if(!more)return;
+    showMenu(false);
+    more.querySelectorAll('[data-more-target]').forEach(btn=>btn.addEventListener('click',function(){showDetail(this.getAttribute('data-more-target'))}));
+    const close=more.querySelector('.detailTop .closeDetail');
+    if(close){close.addEventListener('click',function(e){if(more.classList.contains('moreSubOpen')){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();showMenu(true)}},true)}
+    document.querySelectorAll('[data-page="more"]').forEach(btn=>btn.addEventListener('click',function(){showMenu(false)},true));
+  });
+})();
+</script>
+</body></html>`;
   window.__lkLastReportHtml=report;
   const w=window.open('','_blank');
   if(!w){alert('Sta pop-ups toe om het rapport te openen.');return}
@@ -9117,7 +9050,7 @@ document.addEventListener("click",function(e){
 (function(){function f(v){var n=Number(v);return Number.isFinite(n)?n.toFixed(1).replace(".",",")+" cm":"—"}function u(){try{var d=JSON.parse(localStorage.getItem("vitaal-logboek-v1")||"[]"),a=Array.isArray(d)?d:(Array.isArray(d.measurements)?d.measurements:[]);function l(k){for(var i=a.length-1;i>=0;i--){var v=a[i]&&a[i][k];if(v!==undefined&&v!==null&&v!=="")return v}return null}var x=document.getElementById("bodyWaistRow"),y=document.getElementById("bodyHipRow"),z=document.getElementById("bodyChestRow");if(x)x.textContent=f(l("waist"));if(y)y.textContent=f(l("hip"));if(z)z.textContent=f(l("chest"))}catch(e){}}document.addEventListener("DOMContentLoaded",u);document.addEventListener("click",function(){setTimeout(u,50)});setTimeout(u,100)})();
 </script>
 <script>
-/* Mijn LeefRitme 38.47 — Health Connect synchronisatie.
+/* Mijn LeefRitme 38.48 — Health Connect synchronisatie.
    Handmatige gezondheidsmetingen blijven staan.
    Stappen van vandaag mogen wél oplopen met het actuele Health Connect-dagtotaal. */
 window.LeefKrachtHealth = (function(){
