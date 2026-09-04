@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.62">
+<meta name="app-version" content="38.63">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.62";
+const LEEFKRACHT_VERSION = "38.63";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -5842,6 +5842,64 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+
+<style id="mijn-leefritme-3863-buikomtrek-en-menu-tile">
+/* 38.63 — lichaamsmatenregel en Mijn LeefRitme-tegel verfijnd */
+
+/* Lichaamsmaten: meer ruimte tussen label en waarde */
+#overview .bodyMetricTile .bodyMeasurementsRows{
+  width:100% !important;
+  margin-top:16px !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows > div{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 72px !important;
+  column-gap:10px !important;
+  align-items:center !important;
+  padding:6px 0 !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows span{
+  font-size:8.8px !important;
+  line-height:1.2 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  padding-right:4px !important;
+}
+#overview .bodyMetricTile .bodyMeasurementsRows strong{
+  width:72px !important;
+  font-size:8.8px !important;
+  line-height:1.2 !important;
+  text-align:right !important;
+  white-space:nowrap !important;
+  font-variant-numeric:tabular-nums !important;
+}
+
+/* Mijn LeefRitme-tegel: onder elkaar is rustiger en mooier */
+#overview .tileMore .tileBody{
+  padding-top:2px !important;
+  justify-content:flex-start !important;
+}
+#overview .tileMore .label{
+  min-height:2.35em !important;
+}
+#overview .tileMore .moreMenuStack{
+  margin-top:18px !important;
+  max-width:none !important;
+  font-size:11px !important;
+  line-height:1.35 !important;
+  color:#d7d9d0 !important;
+}
+#overview .tileMore .moreMenuStack span{
+  display:block !important;
+  margin:0 0 3px 0 !important;
+}
+#overview .tileMore .moreMenuStack span:last-child{
+  margin-bottom:0 !important;
+}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -5945,7 +6003,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more">
 <div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
-<div class="sub">Profiel · rapporten · documenten</div></div></button>
+<div class="sub moreMenuStack"><span>Profiel</span><span>Rapporten</span><span>Documenten</span></div></div></button>
     </div>
 
     <div id="msgTitle" style="display:none"></div>
@@ -6322,7 +6380,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.62</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.63</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -6452,7 +6510,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.62</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.63</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -6520,7 +6578,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.62</p>
+    <p class="legalDate">Mijn LeefRitme 38.63</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
