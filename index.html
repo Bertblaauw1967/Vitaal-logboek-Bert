@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="38.83">
+<meta name="app-version" content="38.84">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "38.83";
+const LEEFKRACHT_VERSION = "38.84";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -6610,6 +6610,26 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 }
 </style>
 
+
+<style id="mijn-leefritme-3884-dashboard-layout">
+/* 38.84 — Plus: zelf voorpagina-tegels kiezen en ordenen */
+.plusMiniBadge{display:inline-flex;align-items:center;margin-left:6px;padding:2px 7px;border-radius:999px;background:#d69a55;color:#10140f;font-size:10px;font-weight:900;letter-spacing:.06em;vertical-align:2px}
+.dashboardSetupIntro,.dashboardTileManager,.dashboardSetupNote{background:linear-gradient(180deg,#141d16,#0e1510)!important;border:1px solid rgba(154,174,114,.22)!important}
+.dashboardTileList{display:grid;gap:10px}
+.dashboardTileRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 12px;border:1px solid rgba(154,174,114,.17);border-radius:16px;background:#101711}
+.dashboardTileMain{display:flex;align-items:center;gap:11px;min-width:0}
+.dashboardTileCheck{width:22px;height:22px;accent-color:#9aae72;flex:0 0 auto}
+.dashboardTileName{font-weight:800;color:#f0eee5;min-width:0}
+.dashboardTileLock{display:block;margin-top:2px;font-size:11px;font-weight:700;color:#aeb99f}
+.dashboardMoveButtons{display:flex;gap:6px}
+.dashboardMoveBtn{width:44px;height:44px;padding:0!important;border-radius:13px!important;border:1px solid rgba(230,236,213,.12)!important;background:linear-gradient(135deg,#9aae72,#687a4f)!important;color:#08110d!important;font-size:20px!important;font-weight:900!important;line-height:1!important}
+.dashboardMoveBtn:disabled{opacity:.32!important}
+.dashboardTileActions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.dashboardTileActions button{min-height:48px;border-radius:16px!important;background:linear-gradient(135deg,#8f9f68,#687a4f)!important;color:#0a120d!important;font-weight:800!important}
+.dashboardSetupNote strong{color:#f0eee5}.dashboardSetupNote .muted{margin-bottom:0}
+@media(max-width:390px){.dashboardTileRow{grid-template-columns:1fr}.dashboardMoveButtons{justify-content:flex-end}.dashboardTileActions{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <main class="app">
@@ -6625,7 +6645,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
 
 
     <div class="tiles approvedGrid">
-<button type="button" class="card tile clickable tileWeight" data-page="weight">
+<button type="button" class="card tile clickable tileWeight" data-page="weight" data-tile-id="weight">
         <div class="icon blue">▣</div>
         <div class="tileBody">
           <div class="label">Gewicht</div>
@@ -6637,7 +6657,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div id="latestBMI" style="display:none"></div>
         </div>
       </button>
-<button type="button" class="card tile clickable tileGoal" data-page="goal">
+<button type="button" class="card tile clickable tileGoal" data-page="goal" data-tile-id="goal">
         <div class="icon amber">◎</div>
         <div class="tileBody">
           <div class="label goalLabelOneLine">Streefgewicht</div>
@@ -6646,7 +6666,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="goalRemaining" id="goalSub">Instellen bij Meer</div>
         </div>
       </button>
-<button type="button" class="card tile clickable tileBmi" data-page="bmi">
+<button type="button" class="card tile clickable tileBmi" data-page="bmi" data-tile-id="bmi">
         <div class="icon amber">BMI</div>
         <div class="tileBody">
           <div class="label">BMI</div>
@@ -6655,7 +6675,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="bmiStatus" id="bmiClass">Lengte 1,825 m</div>
         </div>
       </button>
-<button type="button" class="card tile clickable bodyMetricTile" data-page="body">
+<button type="button" class="card tile clickable bodyMetricTile" data-page="body" data-tile-id="body">
         <div class="icon bodyMeasureIcon" aria-hidden="true">
 <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M7 9.5h14.5a5.5 5.5 0 0 1 0 11H9.5A5.5 5.5 0 0 1 4 15v-2.5A3 3 0 0 1 7 9.5Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
@@ -6670,7 +6690,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
         <div class="bodyMeasurementsRows"><div><span>Buikomtr.</span><strong id="bodyWaistRow">—</strong></div><div><span>Heupomtr.</span><strong id="bodyHipRow">—</strong></div><div><span>Borstomtr.</span><strong id="bodyChestRow">—</strong></div></div></div>
       </button>
-<button type="button" class="card tile clickable tileBlood" data-page="blood">
+<button type="button" class="card tile clickable tileBlood" data-page="blood" data-tile-id="blood">
         <div class="icon pink">♥</div>
         <div class="tileBody">
           <div class="label">Bloeddruk</div>
@@ -6680,7 +6700,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="sub" id="bpDate">Nog geen meting</div>
         </div>
       </button>
-<button type="button" class="card tile clickable tileHeart" data-page="heart">
+<button type="button" class="card tile clickable tileHeart" data-page="heart" data-tile-id="heart">
         <div class="icon purple">♡</div>
         <div class="tileBody">
           <div class="label">Hartslag</div>
@@ -6690,7 +6710,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="sub" id="heartDate">Nog geen meting</div>
         </div>
       </button>
-<button type="button" class="card tile clickable tileSteps" data-page="steps">
+<button type="button" class="card tile clickable tileSteps" data-page="steps" data-tile-id="steps">
         <div class="icon blue">👟</div>
         <div class="tileBody">
           <div class="label">Stappen vandaag</div>
@@ -6701,17 +6721,17 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
           <div class="progressTrack"><div class="progressFill" id="stepsProgress"></div></div>
         </div>
       </button>
-<button type="button" class="card tile clickable tileScore" data-page="score">
+<button type="button" class="card tile clickable tileScore" data-page="score" data-tile-id="score">
 <div class="icon green">♡</div><div class="tileBody"><div class="label">LeefRitme-score</div>
 <div class="value" id="scoreTile">—</div><div class="sub" id="scoreTileSub">Totale ontwikkeling</div></div></button>
-<button type="button" class="card tile clickable tileInsight" data-page="insight">
+<button type="button" class="card tile clickable tileInsight" data-page="insight" data-tile-id="insight">
   <div class="icon insightIcon" aria-hidden="true">✦</div>
   <div class="tileBody">
     <div class="label">Wat valt op?</div>
     <div class="insightMini" id="insightTileText">👍 Persoonlijk inzicht zodra er genoeg metingen zijn.</div>
   </div>
 </button>
-<button type="button" class="card tile clickable tileMore" data-page="more">
+<button type="button" class="card tile clickable tileMore" data-page="more" data-tile-id="more">
 <div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
 <div class="sub moreMenuStack"><span>Profiel</span><span>Rapporten</span><span>Documenten</span></div></div></button>
     </div>
@@ -7058,6 +7078,11 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
       <span class="moreMenuText"><strong>Meetgeschiedenis</strong><small>Bekijk, wijzig of verwijder eerder ingevoerde metingen.</small></span>
       <span class="moreMenuArrow" aria-hidden="true">›</span>
     </button>
+    <button type="button" class="moreMenuRow" data-page="dashboardSetup" data-feature="dashboardLayout" data-min-plan="plus">
+      <span class="moreMenuIcon" aria-hidden="true">▦</span>
+      <span class="moreMenuText"><strong>Voorpagina indelen <span class="plusMiniBadge">PLUS</span></strong><small>Kies welke tegels je ziet en bepaal zelf de volgorde.</small></span>
+      <span class="moreMenuArrow" aria-hidden="true">›</span>
+    </button>
     <button type="button" class="moreMenuRow" data-more-target="health">
       <span class="moreMenuIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.2 4.8 13C2.1 10.3 2 6 4.7 3.8 7 1.9 10.1 2.7 12 5c1.9-2.3 5-3.1 7.3-1.2 2.7 2.2 2.6 6.5-.1 9.2L12 20.2Z" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
       <span class="moreMenuText"><strong>Gezondheidskoppeling</strong><small>Koppel met Apple Health of Health Connect.</small></span>
@@ -7090,7 +7115,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.83</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 38.84</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7220,7 +7245,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">38.83</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">38.84</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -7288,7 +7313,7 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 38.83</p>
+    <p class="legalDate">Mijn LeefRitme 38.84</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -7500,7 +7525,32 @@ html,body,.app{background:var(--mlr-bg)!important;color:var(--mlr-text)!importan
     </div>
   </section>
 
-  <section id="history" class="page">
+  <section id="dashboardSetup" class="page" data-feature="dashboardLayout" data-min-plan="plus">
+  <div class="detailTop">
+    <div>
+      <div class="eyebrow">Plus · Persoonlijke indeling</div>
+      <h2 class="sectionTitle">Voorpagina indelen</h2>
+    </div>
+    <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
+  </div>
+  <div class="card panel dashboardSetupIntro">
+    <div class="label">Jouw tegelmagazijn</div>
+    <p class="muted">Zet een vinkje bij de tegels die je op de voorpagina wilt zien. Met de pijlen bepaal je de volgorde. De voorpagina wordt direct aangepast.</p>
+  </div>
+  <div class="card panel dashboardTileManager">
+    <div id="dashboardTileList" class="dashboardTileList" aria-live="polite"></div>
+    <div class="dashboardTileActions">
+      <button type="button" class="secondary" id="dashboardShowAllBtn">Alles tonen</button>
+      <button type="button" class="secondary" id="dashboardResetBtn">Standaard herstellen</button>
+    </div>
+  </div>
+  <div class="card panel dashboardSetupNote">
+    <strong>Mijn LeefRitme blijft altijd zichtbaar.</strong>
+    <p class="muted">Zo kun je altijd terug naar je gegevens en instellingen, ook als je andere tegels uitzet.</p>
+  </div>
+</section>
+
+<section id="history" class="page">
     <div class="detailTop">
       <div>
         <div class="eyebrow">Metingen beheren</div>
@@ -9935,6 +9985,73 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   <button type="button" class="printBtn noPrint" onclick="(async function(){try{if(window.opener&&window.opener.lkNativePrintReport){await window.opener.lkNativePrintReport(window);}else{window.focus();window.print();}}catch(e){try{window.focus();window.print();}catch(_){alert('Afdrukken kon niet worden geopend.');}}})()">Afdrukken / bewaren als PDF</button>
   </main>
 
+
+<script id="mijn-leefritme-3884-dashboard-layout-js">
+(function(){
+  const PREF_KEY='mijnleefritme-dashboard-layout-v1';
+  const TILES=[
+    {id:'weight',name:'Gewicht'},
+    {id:'goal',name:'Streefgewicht'},
+    {id:'bmi',name:'BMI'},
+    {id:'body',name:'Lichaamsmaten'},
+    {id:'blood',name:'Bloeddruk'},
+    {id:'heart',name:'Hartslag'},
+    {id:'steps',name:'Stappen vandaag'},
+    {id:'score',name:'LeefRitme-score'},
+    {id:'insight',name:'Wat valt op?'},
+    {id:'more',name:'Mijn LeefRitme',locked:true}
+  ];
+  function defaults(){return {order:TILES.map(t=>t.id),visible:Object.fromEntries(TILES.map(t=>[t.id,true]))}}
+  function read(){
+    const d=defaults();
+    try{
+      const raw=JSON.parse(localStorage.getItem(PREF_KEY)||'null');
+      if(!raw||!Array.isArray(raw.order)||typeof raw.visible!=='object')return d;
+      const valid=TILES.map(t=>t.id), order=[];
+      raw.order.forEach(id=>{if(valid.includes(id)&&!order.includes(id))order.push(id)});
+      valid.forEach(id=>{if(!order.includes(id))order.push(id)});
+      const visible={...d.visible,...raw.visible,more:true};
+      return {order,visible};
+    }catch(e){return d}
+  }
+  function write(p){p.visible.more=true;localStorage.setItem(PREF_KEY,JSON.stringify(p));apply(p)}
+  function apply(pref){
+    const p=pref||read(), grid=document.querySelector('#overview .tiles'); if(!grid)return;
+    p.order.forEach(id=>{const el=grid.querySelector('[data-tile-id="'+id+'"]');if(el)grid.appendChild(el)});
+    TILES.forEach(t=>{const el=grid.querySelector('[data-tile-id="'+t.id+'"]');if(el)el.style.display=(t.locked||p.visible[t.id]!==false)?'':'none'});
+  }
+  function renderManager(){
+    const host=document.getElementById('dashboardTileList');if(!host)return;
+    const p=read(), byId=Object.fromEntries(TILES.map(t=>[t.id,t]));
+    host.innerHTML='';
+    p.order.forEach((id,index)=>{
+      const t=byId[id];if(!t)return;
+      const row=document.createElement('div');row.className='dashboardTileRow';
+      const main=document.createElement('label');main.className='dashboardTileMain';
+      const cb=document.createElement('input');cb.type='checkbox';cb.className='dashboardTileCheck';cb.checked=t.locked?true:p.visible[id]!==false;cb.disabled=!!t.locked;cb.setAttribute('aria-label',t.name+' op voorpagina tonen');
+      const label=document.createElement('span');label.className='dashboardTileName';label.textContent=t.name;
+      if(t.locked){const small=document.createElement('small');small.className='dashboardTileLock';small.textContent='Altijd zichtbaar';label.appendChild(small)}
+      main.append(cb,label);
+      const moves=document.createElement('div');moves.className='dashboardMoveButtons';
+      const up=document.createElement('button');up.type='button';up.className='dashboardMoveBtn';up.textContent='↑';up.disabled=index===0;up.setAttribute('aria-label',t.name+' één plek omhoog');
+      const down=document.createElement('button');down.type='button';down.className='dashboardMoveBtn';down.textContent='↓';down.disabled=index===p.order.length-1;down.setAttribute('aria-label',t.name+' één plek omlaag');
+      cb.addEventListener('change',()=>{const q=read();q.visible[id]=cb.checked;write(q)});
+      up.addEventListener('click',()=>move(id,-1));down.addEventListener('click',()=>move(id,1));
+      moves.append(up,down);row.append(main,moves);host.appendChild(row);
+    });
+  }
+  function move(id,dir){const p=read(),i=p.order.indexOf(id),j=i+dir;if(i<0||j<0||j>=p.order.length)return;[p.order[i],p.order[j]]=[p.order[j],p.order[i]];write(p);renderManager()}
+  function init(){
+    apply();renderManager();
+    const all=document.getElementById('dashboardShowAllBtn');if(all)all.addEventListener('click',()=>{const p=read();TILES.forEach(t=>p.visible[t.id]=true);write(p);renderManager()});
+    const reset=document.getElementById('dashboardResetBtn');if(reset)reset.addEventListener('click',()=>{const p=defaults();write(p);renderManager()});
+    document.addEventListener('click',e=>{if(e.target.closest('[data-page="dashboardSetup"]'))setTimeout(renderManager,0)});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+  window.MijnLeefRitmeDashboard={apply,read};
+})();
+</script>
+
 </body></html>`;
   window.__lkLastReportHtml=report;
   const w=window.open('','_blank');
@@ -10551,6 +10668,7 @@ window.MijnLeefRitmePlans=(function(){
     manualMeasurements:'basis',
     history:'basis',
     healthSync:'plus',
+    dashboardLayout:'plus',
     advancedInsights:'plus',
     advancedReports:'plus',
     professionalClients:'pro',
