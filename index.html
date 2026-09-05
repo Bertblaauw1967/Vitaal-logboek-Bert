@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.03">
+<meta name="app-version" content="39.04">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.03";
+const LEEFKRACHT_VERSION = "39.04";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7256,6 +7256,32 @@ body.mlr-home-edit #home [data-tile-key]{
 #report .reportActions button{width:100%}
 @media(max-width:560px){#report .reportContactGrid,#report .reportActions{grid-template-columns:1fr}}
 </style>
+
+<style id="mijn-leefritme-3904-tile-fill">
+#overview .approvedGrid .tile{min-height:232px!important}
+#overview .approvedGrid .tile>.icon{align-self:start!important;margin-top:1px!important}
+#overview .approvedGrid .tileBody{min-height:100%!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+#overview .approvedGrid .label{display:block!important;margin-top:2px!important;margin-bottom:10px!important}
+#overview .approvedGrid .sub{line-height:1.32!important}
+#overview .approvedGrid .value{margin:14px 0 8px!important}
+#overview .tileGoal .goalRemaining,#overview .tileBmi .bmiStatus,#overview .tileBlood #bpDate,#overview .tileHeart #heartDate,#overview .tileScore #scoreTileSub{margin-top:auto!important}
+#overview .tileMore .moreMenuStack{margin-top:auto!important;display:grid!important;gap:8px!important}
+#overview .tileInsight .tileBody{justify-content:space-between!important}
+#overview .tileInsight .insightMini{margin-top:20px!important;line-height:1.26!important;max-width:12ch!important}
+#overview .bodyMetricTile .tileBody{justify-content:flex-start!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:auto!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{padding:8px 0!important}
+#overview .tileRecovery .tileBody,#overview .tileActivity .tileBody{justify-content:flex-start!important}
+#overview .tileRecovery .healthMiniRows,#overview .tileActivity .healthMiniRows{width:100%!important;margin-top:8px!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+#overview .tileRecovery .healthMiniRows>div,#overview .tileActivity .healthMiniRows>div{align-items:center!important;padding:8px 0!important}
+#overview .tileActivity .activityHint{margin-top:14px!important;line-height:1.22!important;max-width:14ch!important}
+#overview .tileMore .tileBody{justify-content:space-between!important}
+@media(max-width:390px){
+  #overview .approvedGrid .tile{min-height:214px!important}
+  #overview .approvedGrid .label{margin-bottom:8px!important}
+  #overview .tileActivity .activityHint{margin-top:10px!important;font-size:10px!important}
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -7767,7 +7793,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.03</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.04</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7887,7 +7913,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
   <div class="card settingsCard moreDetailSection" data-more-detail="backup">
     <h3>⇧ Back-up</h3>
-    <p class="muted">Mijn LeefRitme maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd.</p>
+    <p class="muted">Mijn LeefRitme maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd. Bij terugzetten zie je eerst een duidelijk hersteloverzicht.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <button id="backupBtn" class="primary" type="button">Back-up opslaan</button>
       <button id="restoreBtn" class="primary" type="button">Laatste terugzetten</button>
@@ -7895,7 +7921,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div id="backupLastInfo" class="muted" style="font-size:12px;margin-top:10px">Nog geen lokale veiligheidskopie gevonden.</div>
     <button id="restoreOtherBtn" class="secondary" type="button" style="width:100%;margin-top:10px">Andere back-up kiezen</button>
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
-    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart nu ook je voorpagina-indeling.</small>
+    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart ook je voorpagina-indeling en laat vóór herstellen eerst zien wat er precies wordt teruggezet.</small>
   </div>
 
   
@@ -7904,7 +7930,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.03</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.04</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -8999,6 +9025,52 @@ function lkFmtBackupTime(iso){
   if(Number.isNaN(d.getTime()))return '';
   return new Intl.DateTimeFormat('nl-NL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'}).format(d);
 }
+function lkFmtBackupDay(iso){
+  const d=new Date(iso);
+  if(Number.isNaN(d.getTime()))return '';
+  return new Intl.DateTimeFormat('nl-NL',{day:'2-digit',month:'2-digit',year:'numeric'}).format(d);
+}
+function lkHasValue(v){return !(v===undefined||v===null||String(v).trim()==='')}
+function lkHasAnyValue(row,keys){return keys.some(k=>lkHasValue(row&&row[k]))}
+function lkBuildBackupOverview(measurements,documentsCount){
+  const list=Array.isArray(measurements)?measurements:[];
+  const dates=list.map(x=>String(x&&x.date||'')).filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)).sort();
+  return {
+    days:list.length,
+    firstDate:dates.length?dates[0]:'',
+    lastDate:dates.length?dates[dates.length-1]:'',
+    counts:{
+      weight:list.filter(x=>lkHasValue(x&&x.weight)).length,
+      blood:list.filter(x=>lkHasAnyValue(x,['sys','dia'])).length,
+      heart:list.filter(x=>lkHasValue(x&&x.heart)).length,
+      steps:list.filter(x=>lkHasValue(x&&x.steps)).length,
+      body:list.filter(x=>lkHasAnyValue(x,['waist','hip','chest'])).length,
+      glucose:list.filter(x=>lkHasValue(x&&x.glucose)).length
+    },
+    documents:Number.isFinite(Number(documentsCount))?Number(documentsCount):0
+  };
+}
+function lkBuildRestoreOverviewText(payload,measurements,options){
+  const extra=(options&&typeof options==='object')?options:{};
+  const info=(payload&&payload.overview&&typeof payload.overview==='object')?payload.overview:lkBuildBackupOverview(measurements,extra.documentsCount||0);
+  const counts=info.counts||{};
+  const lines=[
+    'Gemaakt op: '+(lkFmtBackupTime(payload&&payload.exportedAt)||'onbekend'),
+    'Meetdagen: '+String(info.days||0),
+    (info.firstDate&&info.lastDate)?('Periode: '+lkFmtBackupDay(info.firstDate)+' t/m '+lkFmtBackupDay(info.lastDate)):'',
+    'Gewicht: '+String(counts.weight||0),
+    'Bloeddruk: '+String(counts.blood||0),
+    'Hartslag: '+String(counts.heart||0),
+    'Stappen: '+String(counts.steps||0),
+    'Lichaamsmaten: '+String(counts.body||0),
+    'Glucose: '+String(counts.glucose||0),
+    'Documenten: '+String(extra.documentsCount!==undefined?extra.documentsCount:(info.documents||0)),
+    'Profiel: '+(extra.hasProfile?'ja':'nee'),
+    'Streefgewicht: '+(extra.hasGoal?'ja':'nee'),
+    'Voorpagina-indeling: '+(extra.hasDashboardLayout?'ja':'nee')
+  ].filter(Boolean);
+  return lines.join('\n');
+}
 async function lkRefreshBackupLastInfo(){
   const el=document.getElementById('backupLastInfo');
   if(!el)return;
@@ -9029,13 +9101,15 @@ async function lkBuildBackupPayload(){
     mime:d.mime||d.blob?.type||'application/octet-stream',
     createdAt:d.createdAt||'',dataUrl:d.blob?await lkDocFileToDataUrl(d.blob):''
   })));
+  const measurements=lkBackupNormalizeMeasurements(load());
   return {
     app:'Mijn LeefRitme',
-    backupFormat:4,
+    backupFormat:5,
     version:LEEFKRACHT_VERSION,
     exportedAt:new Date().toISOString(),
     platform:(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')?window.Capacitor.getPlatform():'web',
-    measurements:lkBackupNormalizeMeasurements(load()),
+    measurements,
+    overview:lkBuildBackupOverview(measurements,documents.length),
     goal:goal(),
     heightCm:lkGetHeightCm(),
     profile:lkBackupNormalizeProfile(lkLoadProfile()),
@@ -9170,15 +9244,14 @@ async function restoreBackup(file){
       }
     }
 
-    const summary=[
-      measurements.length+' meetdag(en)',
-      hasProfile?'profielgegevens':'geen profielgegevens',
-      hasGoal?'streefgewicht':'geen streefgewicht',
-      hasDashboardLayout?'voorpagina-indeling':'huidige voorpagina behouden',
-      Array.isArray(payload.documents)?restoredDocs.length+' document(en)':'documenten ongewijzigd'
-    ].join(', ');
+    const restoreOverview=lkBuildRestoreOverviewText(payload,measurements,{
+      documentsCount:Array.isArray(payload.documents)?restoredDocs.length:0,
+      hasProfile:!!hasProfile,
+      hasGoal:!!hasGoal,
+      hasDashboardLayout:!!hasDashboardLayout
+    });
 
-    if(!confirm('Back-up '+version+' terugzetten?\n\n'+summary+'\n\nDe huidige Mijn LeefRitme-gegevens op dit toestel worden vervangen.'))
+    if(!confirm('Back-up '+version+' terugzetten?\n\n'+restoreOverview+'\n\nVeiligheid:\n• Eerst wordt automatisch een veiligheidskopie van de huidige toestand gemaakt.\n• Daarna worden de huidige Mijn LeefRitme-gegevens op dit toestel vervangen.'))
       return;
 
     /* Altijd eerst een volledige veiligheidskopie van de huidige toestand maken. */
@@ -9243,7 +9316,7 @@ async function restoreBackup(file){
     /* Maak van de volledig herstelde toestand meteen weer een nieuwe veiligheidskopie. */
     await lkCreateSafetyBackup('na terugzetten');
 
-    alert('Back-up volledig teruggezet: '+measurements.length+' meetdag(en).');
+    alert('Back-up volledig teruggezet: '+measurements.length+' meetdag(en). Voor het herstellen is automatisch eerst een extra veiligheidskopie gemaakt.');
   }catch(e){
     window.__lkRestoringBackup=false;
     console.error('Mijn LeefRitme restore',e);
@@ -10684,6 +10757,32 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
   -webkit-text-fill-color:#101510 !important;
 }
 </style>
+
+<style id="mijn-leefritme-3904-tile-fill">
+#overview .approvedGrid .tile{min-height:232px!important}
+#overview .approvedGrid .tile>.icon{align-self:start!important;margin-top:1px!important}
+#overview .approvedGrid .tileBody{min-height:100%!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
+#overview .approvedGrid .label{display:block!important;margin-top:2px!important;margin-bottom:10px!important}
+#overview .approvedGrid .sub{line-height:1.32!important}
+#overview .approvedGrid .value{margin:14px 0 8px!important}
+#overview .tileGoal .goalRemaining,#overview .tileBmi .bmiStatus,#overview .tileBlood #bpDate,#overview .tileHeart #heartDate,#overview .tileScore #scoreTileSub{margin-top:auto!important}
+#overview .tileMore .moreMenuStack{margin-top:auto!important;display:grid!important;gap:8px!important}
+#overview .tileInsight .tileBody{justify-content:space-between!important}
+#overview .tileInsight .insightMini{margin-top:20px!important;line-height:1.26!important;max-width:12ch!important}
+#overview .bodyMetricTile .tileBody{justify-content:flex-start!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:auto!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{padding:8px 0!important}
+#overview .tileRecovery .tileBody,#overview .tileActivity .tileBody{justify-content:flex-start!important}
+#overview .tileRecovery .healthMiniRows,#overview .tileActivity .healthMiniRows{width:100%!important;margin-top:8px!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
+#overview .tileRecovery .healthMiniRows>div,#overview .tileActivity .healthMiniRows>div{align-items:center!important;padding:8px 0!important}
+#overview .tileActivity .activityHint{margin-top:14px!important;line-height:1.22!important;max-width:14ch!important}
+#overview .tileMore .tileBody{justify-content:space-between!important}
+@media(max-width:390px){
+  #overview .approvedGrid .tile{min-height:214px!important}
+  #overview .approvedGrid .label{margin-bottom:8px!important}
+  #overview .tileActivity .activityHint{margin-top:10px!important;font-size:10px!important}
+}
+</style>
 </head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
   <div class="cover"><div class="logo">Mijn LeefRitme</div><h2>Gezondheidsrapport</h2>
   <div class="meta">${name?lkEsc(name)+'<br>':''}${periodText}<br>Gemaakt op ${new Date().toLocaleDateString('nl-NL')}${careName?'<br>Voor: '+lkEsc(careRoleLabel)+' '+lkEsc(careName):''}</div>
@@ -11215,7 +11314,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.03', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.04', {
         scope: './',
         updateViaCache: 'none'
       });
