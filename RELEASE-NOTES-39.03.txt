@@ -1,0 +1,7 @@
+Mijn LeefRitme 39.03
+
+- Activiteit opnieuw ingericht volgens optie A: stappen blijven apart; Activiteit toont actieve minuten, work-outs en actieve kcal.
+- Activiteit-tegel visueel uitgelijnd en compacter gemaakt.
+- Back-up uitgebreid met voorpagina-indeling.
+- Wijzigingen in de tegelindeling maken nu automatisch een veiligheidskopie.
+- Herstellen uit back-up zet ook de voorpagina-indeling terug.

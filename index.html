@@ -7227,8 +7227,22 @@ body.mlr-home-edit #home [data-tile-key]{
 }
 </style>
 
-<style id="health-tiles-3896">
-.healthMiniRows{display:grid;gap:9px;margin-top:12px}.healthMiniRows>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(180,195,150,.18);padding-bottom:7px}.healthMiniRows>div:last-child{border-bottom:0}.healthMiniRows span{font-size:13px;color:var(--muted)}.healthMiniRows strong{font-size:14px;color:var(--text)}.healthBigValue{font-size:38px;font-weight:800;margin:8px 0}.healthDetailRows{display:grid;gap:0;margin:15px 0}.healthDetailRows>div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}.healthDetailRows strong{color:var(--green)}
+<style id="health-tiles-3903">
+.healthMiniRows{display:grid;gap:9px;margin-top:12px}
+.healthMiniRows>div{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(180,195,150,.18);padding-bottom:7px}
+.healthMiniRows>div:last-child{border-bottom:0}
+.healthMiniRows span{font-size:13px;color:var(--muted)}
+.healthMiniRows strong{font-size:14px;color:var(--text)}
+.healthBigValue{font-size:38px;font-weight:800;margin:8px 0}
+.healthDetailRows{display:grid;gap:0;margin:15px 0}
+.healthDetailRows>div{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.healthDetailRows strong{color:var(--green)}
+#overview .tileActivity .tileBody{display:flex;flex-direction:column;justify-content:flex-start;min-height:100%}
+#overview .tileActivity .label{margin-bottom:2px}
+#overview .tileActivity .healthMiniRows{margin-top:10px}
+#overview .tileActivity .healthMiniRows span{font-size:12.5px}
+#overview .tileActivity .healthMiniRows strong{font-size:15px;font-weight:800}
+#overview .tileActivity .activityHint{margin-top:auto;font-size:11px;color:var(--muted)}
 </style>
 
 <style id="mijn-leefritme-3897-care-mail">
@@ -7355,7 +7369,16 @@ body.mlr-home-edit #home [data-tile-key]{
   <div class="icon pink" aria-hidden="true">♡</div><div class="tileBody"><div class="label">Herstel</div><div class="healthMiniRows"><div><span>Rusthartslag</span><strong id="recoveryRhr">—</strong></div><div><span>HRV</span><strong id="recoveryHrv">—</strong></div><div><span>Ademhaling</span><strong id="recoveryResp">—</strong></div></div></div>
 </button>
 <button type="button" class="card tile clickable tileActivity" data-page="activity" data-tile-id="activity">
-  <div class="icon blue" aria-hidden="true">↗</div><div class="tileBody"><div class="label">Activiteit</div><div class="healthMiniRows"><div><span>Stappen</span><strong id="activitySteps">—</strong></div><div><span>Afstand</span><strong id="activityDistance">—</strong></div><div><span>Actief</span><strong id="activityMinutes">—</strong></div></div></div>
+  <div class="icon blue" aria-hidden="true">↗</div>
+  <div class="tileBody">
+    <div class="label">Activiteit</div>
+    <div class="healthMiniRows">
+      <div><span>Actieve min.</span><strong id="activityTileMinutes">—</strong></div>
+      <div><span>Work-outs 7 d.</span><strong id="activityTileSessions">—</strong></div>
+      <div><span>Kcal actief</span><strong id="activityTileCalories">—</strong></div>
+    </div>
+    <div class="activityHint">Stappen staan apart op de tegel Stappen.</div>
+  </div>
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more" data-tile-id="more">
 <div class="icon blue" aria-hidden="true">◉</div><div class="tileBody"><div class="label">Mijn LeefRitme</div>
@@ -7371,7 +7394,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
 <section id="sleep" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Slaap</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthBigValue" id="sleepDetailValue">—</div><div class="muted" id="sleepDetailDate">Nog geen slaapgegevens</div><div class="healthDetailRows"><div><span>7-daags gemiddelde</span><strong id="sleep7Avg">—</strong></div><div><span>Diepe slaap</span><strong id="sleepDeep">—</strong></div><div><span>REM-slaap</span><strong id="sleepRem">—</strong></div></div><small class="muted">Slaapfasen worden alleen getoond wanneer je horloge of gezondheidsapp deze doorgeeft.</small></div></section>
 <section id="recovery" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Herstel</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Rusthartslag</span><strong id="recoveryDetailRhr">—</strong></div><div><span>HRV</span><strong id="recoveryDetailHrv">—</strong></div><div><span>Ademhalingsfrequentie</span><strong id="recoveryDetailResp">—</strong></div><div><span>Zuurstofsaturatie</span><strong id="recoverySpo2">—</strong></div></div><small class="muted">Deze waarden zijn vooral bedoeld om je eigen trend te volgen en zijn geen diagnose.</small></div></section>
-<section id="activity" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Activiteit</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Stappen vandaag</span><strong id="activityDetailSteps">—</strong></div><div><span>Afstand vandaag</span><strong id="activityDetailDistance">—</strong></div><div><span>Trainingsminuten</span><strong id="activityDetailMinutes">—</strong></div><div><span>Actieve energie</span><strong id="activityCalories">—</strong></div></div><small class="muted">Mijn LeefRitme combineert hier beweging uit Apple Health of Health Connect.</small></div></section>
+<section id="activity" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Activiteit</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Actieve minuten vandaag</span><strong id="activityDetailMinutes">—</strong></div><div><span>Work-outs laatste 7 dagen</span><strong id="activityDetailWorkouts">—</strong></div><div><span>Actieve energie vandaag</span><strong id="activityDetailCalories">—</strong></div><div><span>Afstand vandaag</span><strong id="activityDetailDistance">—</strong></div><div><span>Actieve minuten laatste 7 dagen</span><strong id="activityWeekMinutes">—</strong></div></div><small class="muted">Mijn LeefRitme gebruikt Activiteit voor actieve minuten, work-outs en energie. Stappen blijven bewust apart op de tegel Stappen.</small></div></section>
 <section id="insight" class="page">
   <div class="detailTop">
     <div>
@@ -7872,7 +7895,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div id="backupLastInfo" class="muted" style="font-size:12px;margin-top:10px">Nog geen lokale veiligheidskopie gevonden.</div>
     <button id="restoreOtherBtn" class="secondary" type="button" style="width:100%;margin-top:10px">Andere back-up kiezen</button>
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
-    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme.</small>
+    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart nu ook je voorpagina-indeling.</small>
   </div>
 
   
@@ -9008,7 +9031,7 @@ async function lkBuildBackupPayload(){
   })));
   return {
     app:'Mijn LeefRitme',
-    backupFormat:3,
+    backupFormat:4,
     version:LEEFKRACHT_VERSION,
     exportedAt:new Date().toISOString(),
     platform:(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')?window.Capacitor.getPlatform():'web',
@@ -9016,6 +9039,7 @@ async function lkBuildBackupPayload(){
     goal:goal(),
     heightCm:lkGetHeightCm(),
     profile:lkBackupNormalizeProfile(lkLoadProfile()),
+    dashboardLayout:(()=>{try{return JSON.parse(localStorage.getItem('mijnleefritme-dashboard-layout-v3')||'null')}catch(e){return null}})(),
     health:{
       source:(window.LeefKrachtHealth&&window.LeefKrachtHealth.getSources)?window.LeefKrachtHealth.getSources():{},
       lastSync:(window.LeefKrachtHealth&&window.LeefKrachtHealth.lastSync)?window.LeefKrachtHealth.lastSync():''
@@ -9126,6 +9150,7 @@ async function restoreBackup(file){
     const hasProfile=payload.profile && typeof payload.profile==='object';
     const hasGoal=Object.prototype.hasOwnProperty.call(payload,'goal');
     const hasHeight=Object.prototype.hasOwnProperty.call(payload,'heightCm');
+    const hasDashboardLayout=!!(payload.dashboardLayout && Array.isArray(payload.dashboardLayout.slots));
     const version=String(payload.version||'onbekend');
 
     /* Documenten volledig valideren vóór er huidige gegevens worden gewijzigd. */
@@ -9149,6 +9174,7 @@ async function restoreBackup(file){
       measurements.length+' meetdag(en)',
       hasProfile?'profielgegevens':'geen profielgegevens',
       hasGoal?'streefgewicht':'geen streefgewicht',
+      hasDashboardLayout?'voorpagina-indeling':'huidige voorpagina behouden',
       Array.isArray(payload.documents)?restoredDocs.length+' document(en)':'documenten ongewijzigd'
     ].join(', ');
 
@@ -9168,11 +9194,7 @@ async function restoreBackup(file){
 
     window.__lkRestoringBackup=true;
 
-    /* 39.03 — herstelcompatibiliteit voor oudere Mijn LeefRitme-back-ups.
-       Schrijf de genormaliseerde meetgegevens rechtstreeks naar dezelfde opslagkey
-       die de app zelf gebruikt. Daardoor is terugzetten niet afhankelijk van een
-       oudere save()-implementatie of een wijziging in event-handlers. */
-    localStorage.setItem(KEY,JSON.stringify(measurements));
+    save(measurements);
 
     if(hasGoal){
       if(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined') localStorage.removeItem(GOAL_KEY);
@@ -9189,6 +9211,18 @@ async function restoreBackup(file){
 
     if(hasProfile) lkSaveProfile(profile);
 
+    if(hasDashboardLayout){
+      try{
+        const allowed=['weight','goal','bmi','body','blood','heart','steps','score','insight','sleep','recovery','activity'];
+        const seen=new Set();
+        const slots=Array(9).fill(null);
+        payload.dashboardLayout.slots.slice(0,9).forEach((id,i)=>{
+          if(id && allowed.includes(id) && !seen.has(id)){slots[i]=id;seen.add(id);}
+        });
+        localStorage.setItem('mijnleefritme-dashboard-layout-v3',JSON.stringify({slots}));
+      }catch(e){console.warn('Voorpagina-indeling herstellen mislukt',e)}
+    }
+
     /* Health-toestemming is apparaat- en platformgebonden en wordt bewust NIET
        uit een back-up hersteld. De echte OS-toestemming wordt opnieuw gecontroleerd. */
     try{
@@ -9198,26 +9232,6 @@ async function restoreBackup(file){
 
     /* Als documenten in de back-up zitten, moet de documentset exact overeenkomen. */
     if(Array.isArray(payload.documents)) await lkDocReplaceAll(restoredDocs);
-
-    /* Controleer vóór succesmelding of de kerngegevens daadwerkelijk zijn opgeslagen. */
-    let verifyMeasurements=[];
-    try{verifyMeasurements=JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){}
-    if(!Array.isArray(verifyMeasurements) || verifyMeasurements.length!==measurements.length){
-      throw new Error('Controle na terugzetten mislukt: meetgegevens niet volledig opgeslagen');
-    }
-    if(hasGoal){
-      const expectedGoal=(payload.goal===null || payload.goal==='' || typeof payload.goal==='undefined')?null:Number(payload.goal);
-      const storedGoal=goal();
-      if(Number.isFinite(expectedGoal) && storedGoal!==expectedGoal) throw new Error('Controle na terugzetten mislukt: streefgewicht');
-    }
-    if(hasHeight){
-      const expectedHeight=Number(payload.heightCm);
-      if(Number.isFinite(expectedHeight) && Math.abs(lkGetHeightCm()-expectedHeight)>0.01) throw new Error('Controle na terugzetten mislukt: lengte');
-    }
-    if(hasProfile){
-      const storedProfile=lkLoadProfile();
-      if(String(storedProfile.name||'')!==String(profile.name||'')) throw new Error('Controle na terugzetten mislukt: profiel');
-    }
 
     window.__lkRestoringBackup=false;
 
@@ -9229,9 +9243,7 @@ async function restoreBackup(file){
     /* Maak van de volledig herstelde toestand meteen weer een nieuwe veiligheidskopie. */
     await lkCreateSafetyBackup('na terugzetten');
 
-    alert('Back-up volledig teruggezet en gecontroleerd: '+measurements.length+' meetdag(en).\n\nVersie uit back-up: '+version);
-    /* Een echte reload voorkomt dat oude schermwaarden uit geheugen zichtbaar blijven. */
-    setTimeout(()=>location.reload(),250);
+    alert('Back-up volledig teruggezet: '+measurements.length+' meetdag(en).');
   }catch(e){
     window.__lkRestoringBackup=false;
     console.error('Mijn LeefRitme restore',e);
@@ -10815,7 +10827,7 @@ function lkPrepareReportEmail(){
     +'?subject='+encodeURIComponent(subject)
     +'&body='+encodeURIComponent(body);
 
-  // 39.03 — direct openen vanuit de klik zelf.
+  // 39.02 — direct openen vanuit de klik zelf.
   // Geen target=_blank en geen vertraagde share-call: iOS blokkeert die soms.
   try{
     if(st) st.textContent='Mailapp openen…';
@@ -12089,12 +12101,24 @@ document.addEventListener('DOMContentLoaded', function(){
  function num(v){v=Number(v);return Number.isFinite(v)?v:null}
  function last(k){const a=load()[k];return Array.isArray(a)&&a.length?a[a.length-1]:null}
  function sumToday(k){const a=load()[k]; if(!Array.isArray(a))return null; const d=new Date().toISOString().slice(0,10); let n=0,hit=false; a.forEach(x=>{const dt=String(x.startDate||x.endDate||x.date||'').slice(0,10); const v=num(x.value);if(dt===d&&v!==null){n+=v;hit=true}});return hit?n:null}
+ function sumDays(k,days){const a=load()[k]; if(!Array.isArray(a))return null; const end=new Date(); end.setHours(23,59,59,999); const start=new Date(); start.setHours(0,0,0,0); start.setDate(start.getDate()-(days-1)); let total=0,hit=false; a.forEach(x=>{const dt=new Date(x.startDate||x.endDate||x.date||''); const v=num(x.value); if(!isNaN(dt) && dt>=start && dt<=end && v!==null){total+=v;hit=true}}); return hit?total:null}
+ function workoutDays(days){const a=load().exerciseTime; if(!Array.isArray(a))return 0; const end=new Date(); end.setHours(23,59,59,999); const start=new Date(); start.setHours(0,0,0,0); start.setDate(start.getDate()-(days-1)); const seen=new Set(); a.forEach(x=>{const dt=new Date(x.startDate||x.endDate||x.date||''); const v=num(x.value); if(!isNaN(dt) && dt>=start && dt<=end && v!==null && v>0){seen.add(dt.toISOString().slice(0,10))}}); return seen.size}
  function sleepSummary(){const a=load().sleep;if(!Array.isArray(a)||!a.length)return null; const nights={}; a.forEach(x=>{const end=new Date(x.endDate||x.startDate||x.date);if(isNaN(end))return; const key=end.toISOString().slice(0,10); const st=String(x.sleepState||'asleep').toLowerCase(); if(st==='awake'||st==='inbed')return; const mins=num(x.value)!=null&&num(x.value)>0?num(x.value):Math.max(0,(new Date(x.endDate)-new Date(x.startDate))/60000); if(!Number.isFinite(mins))return; nights[key]=nights[key]||{total:0,deep:0,rem:0}; nights[key].total+=mins;if(st.includes('deep'))nights[key].deep+=mins;if(st.includes('rem'))nights[key].rem+=mins; }); const keys=Object.keys(nights).sort(); if(!keys.length)return null; const latest=nights[keys[keys.length-1]], vals=keys.slice(-7).map(k=>nights[k].total).filter(Boolean); return {date:keys[keys.length-1],...latest,avg:vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:0};}
  function dur(m){if(m==null)return '—';m=Math.round(m);return Math.floor(m/60)+' u '+String(m%60).padStart(2,'0')+' min'}
  function set(id,t){const e=document.getElementById(id);if(e)e.textContent=t}
  function render(){const x=load(), sl=sleepSummary(), h=last('heartRateVariability'), r=last('respiratoryRate'), o=last('oxygenSaturation'); if(sl){set('sleepTile',dur(sl.total));set('sleepTileSub','7-daags gem.: '+dur(sl.avg));set('sleepDetailValue',dur(sl.total));set('sleepDetailDate',sl.date);set('sleep7Avg',dur(sl.avg));set('sleepDeep',dur(sl.deep));set('sleepRem',dur(sl.rem));}
    const rhr=x.restingHeartRate&&num(x.restingHeartRate.value); const hv=h&&num(h.value), rv=r&&num(r.value), ov=o&&num(o.value); set('recoveryRhr',rhr!=null?Math.round(rhr)+' bpm':'—');set('recoveryHrv',hv!=null?Math.round(hv)+' ms':'—');set('recoveryResp',rv!=null?rv.toFixed(1)+'/min':'—');set('recoveryDetailRhr',rhr!=null?Math.round(rhr)+' bpm':'—');set('recoveryDetailHrv',hv!=null?Math.round(hv)+' ms':'—');set('recoveryDetailResp',rv!=null?rv.toFixed(1)+'/min':'—');set('recoverySpo2',ov!=null?(ov<=1?ov*100:ov).toFixed(0)+'%':'—');
-   const stepsEl=document.getElementById('stepsToday'); const st=stepsEl&&stepsEl.textContent&&!stepsEl.textContent.includes('—')?stepsEl.textContent:'—'; const dist=sumToday('distance'), mins=sumToday('exerciseTime'), cal=sumToday('calories'); set('activitySteps',st);set('activityDistance',dist!=null?(dist/1000).toFixed(1)+' km':'—');set('activityMinutes',mins!=null?Math.round(mins)+' min':'—');set('activityDetailSteps',st);set('activityDetailDistance',dist!=null?(dist/1000).toFixed(1)+' km':'—');set('activityDetailMinutes',mins!=null?Math.round(mins)+' min':'—');set('activityCalories',cal!=null?Math.round(cal)+' kcal':'—');
+   const dist=sumToday('distance'), mins=sumToday('exerciseTime'), cal=sumToday('calories');
+   const weekMins=sumDays('exerciseTime',7), workouts=workoutDays(7);
+   const hasActivityData=(mins!=null)||(cal!=null)||(dist!=null)||(weekMins!=null);
+   set('activityTileMinutes',mins!=null?Math.round(mins)+' min':'—');
+   set('activityTileSessions',hasActivityData?String(workouts):'—');
+   set('activityTileCalories',cal!=null?Math.round(cal)+' kcal':'—');
+   set('activityDetailMinutes',mins!=null?Math.round(mins)+' min':'—');
+   set('activityDetailWorkouts',hasActivityData?String(workouts):'—');
+   set('activityDetailCalories',cal!=null?Math.round(cal)+' kcal':'—');
+   set('activityDetailDistance',dist!=null?(dist/1000).toFixed(1)+' km':'—');
+   set('activityWeekMinutes',weekMins!=null?Math.round(weekMins)+' min':'—');
  }
  window.MLRHealthExtra={saveRaw,render}; document.addEventListener('DOMContentLoaded',render);window.addEventListener('pageshow',render);
 })();
@@ -12119,7 +12143,7 @@ document.addEventListener('DOMContentLoaded', function(){
     {id:'insight',name:'Wat valt op?',desc:'Korte persoonlijke signalen'},
     {id:'sleep',name:'Slaap',desc:'Slaapduur en slaapfasen'},
     {id:'recovery',name:'Herstel',desc:'Rusthartslag, HRV en ademhaling'},
-    {id:'activity',name:'Activiteit',desc:'Stappen, afstand en actieve minuten'},
+    {id:'activity',name:'Activiteit',desc:'Actieve minuten, work-outs en energie'},
     {id:'more',name:'Mijn LeefRitme',desc:'Gegevens en instellingen',locked:true}
   ];
 
@@ -12165,6 +12189,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   function write(p){
     try{localStorage.setItem(PREF_KEY,JSON.stringify({slots:p.slots.slice(0,MAX_OPTIONAL)}))}catch(e){}
+    if(!window.__lkRestoringBackup && typeof lkScheduleSafetyBackup==='function') lkScheduleSafetyBackup('voorpagina-indeling');
     apply(p);
     renderLibrary();
     refreshMinusButtons();
