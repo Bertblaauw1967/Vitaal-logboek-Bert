@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.07\n\n- Extra tegel-finetune zonder nieuwe functies.\n- Lichaamsmaten vult de tegel nu beter: iets grotere tekst en iets lager geplaatst.\n- Activiteit en Herstel compacter gezet: regels dichter op elkaar.\n- Algemene tegeluitlijning iets rustiger en consistenter gemaakt.\n- Back-up en hersteloverzicht blijven ongewijzigd.\n
