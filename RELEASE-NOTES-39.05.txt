@@ -1,0 +1,6 @@
+Mijn LeefRitme 39.05
+
+- Tegelindeling herzien: icoon linksboven, kop daarnaast en inhoud daaronder compacter en netter opgevuld.
+- Onderste regels niet meer onnodig naar de bodem gedrukt.
+- Activiteit, Herstel, Lichaamsmaten, Wat valt op? en Mijn LeefRitme vullen de tegel nu evenwichtiger van links naar rechts.
+- Back-up en hersteloverzicht van 39.04 blijven behouden.

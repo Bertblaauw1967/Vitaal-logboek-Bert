@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.06\n\n- Pure tegelpolish, zonder nieuwe functies.\n- Icoon linksboven en koptekst daarnaast/bovenin behouden.\n- Inhoud vloeit daaronder rustiger en tegelvullender van links naar rechts.\n- Overbodige lege ruimte onderin verminderd.\n- Activiteittekst iets compacter gemaakt.\n- Back-up en hersteloverzicht van 39.04/39.05 blijven behouden.\n

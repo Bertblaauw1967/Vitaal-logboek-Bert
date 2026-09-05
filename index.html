@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.04">
+<meta name="app-version" content="39.06">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.04";
+const LEEFKRACHT_VERSION = "39.06";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7257,29 +7257,45 @@ body.mlr-home-edit #home [data-tile-key]{
 @media(max-width:560px){#report .reportContactGrid,#report .reportActions{grid-template-columns:1fr}}
 </style>
 
-<style id="mijn-leefritme-3904-tile-fill">
-#overview .approvedGrid .tile{min-height:232px!important}
-#overview .approvedGrid .tile>.icon{align-self:start!important;margin-top:1px!important}
-#overview .approvedGrid .tileBody{min-height:100%!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
-#overview .approvedGrid .label{display:block!important;margin-top:2px!important;margin-bottom:10px!important}
-#overview .approvedGrid .sub{line-height:1.32!important}
-#overview .approvedGrid .value{margin:14px 0 8px!important}
-#overview .tileGoal .goalRemaining,#overview .tileBmi .bmiStatus,#overview .tileBlood #bpDate,#overview .tileHeart #heartDate,#overview .tileScore #scoreTileSub{margin-top:auto!important}
-#overview .tileMore .moreMenuStack{margin-top:auto!important;display:grid!important;gap:8px!important}
-#overview .tileInsight .tileBody{justify-content:space-between!important}
-#overview .tileInsight .insightMini{margin-top:20px!important;line-height:1.26!important;max-width:12ch!important}
-#overview .bodyMetricTile .tileBody{justify-content:flex-start!important}
-#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:auto!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
-#overview .bodyMetricTile .bodyMeasurementsRows>div{padding:8px 0!important}
-#overview .tileRecovery .tileBody,#overview .tileActivity .tileBody{justify-content:flex-start!important}
-#overview .tileRecovery .healthMiniRows,#overview .tileActivity .healthMiniRows{width:100%!important;margin-top:8px!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
-#overview .tileRecovery .healthMiniRows>div,#overview .tileActivity .healthMiniRows>div{align-items:center!important;padding:8px 0!important}
-#overview .tileActivity .activityHint{margin-top:14px!important;line-height:1.22!important;max-width:14ch!important}
-#overview .tileMore .tileBody{justify-content:space-between!important}
+<style id="mijn-leefritme-3906-tile-polish">
+#overview .approvedGrid .tile{min-height:224px!important;display:grid!important;grid-template-columns:40px minmax(0,1fr)!important;column-gap:12px!important;align-items:start!important;padding:16px 14px!important}
+#overview .approvedGrid .tile>.icon{width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;align-self:start!important;margin:0!important}
+#overview .approvedGrid .tileBody{display:grid!important;grid-auto-rows:min-content!important;align-content:start!important;row-gap:8px!important;width:100%!important;min-height:100%!important;padding-top:0!important}
+#overview .approvedGrid .label{width:100%!important;margin:0!important;line-height:1.14!important}
+#overview .approvedGrid .sub{width:100%!important;margin:0!important;line-height:1.26!important}
+#overview .approvedGrid .value{width:100%!important;margin:2px 0 0!important;line-height:1.04!important}
+#overview .approvedGrid .tileBody>.greenProgress,
+#overview .approvedGrid .tileBody>.goalRemaining,
+#overview .approvedGrid .tileBody>.bmiStatus,
+#overview .approvedGrid .tileBody>#bpBadge,
+#overview .approvedGrid .tileBody>#heartBadge,
+#overview .approvedGrid .tileBody>#bpDate,
+#overview .approvedGrid .tileBody>#heartDate,
+#overview .approvedGrid .tileBody>#scoreTileSub,
+#overview .approvedGrid .tileBody>#sleepTileSub,
+#overview .approvedGrid .tileBody>.progressTrack{margin-top:2px!important}
+#overview .tileInsight .insightMini{width:100%!important;max-width:none!important;margin-top:2px!important;line-height:1.24!important}
+#overview .bodyMetricTile .bodyMeasurementsRows,
+#overview .tileRecovery .healthMiniRows,
+#overview .tileActivity .healthMiniRows,
+#overview .tileMore .moreMenuStack{width:100%!important;margin-top:2px!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{display:grid!important;gap:0!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;column-gap:10px!important;align-items:center!important;padding:8px 0!important}
+#overview .tileRecovery .healthMiniRows>div,
+#overview .tileActivity .healthMiniRows>div{display:flex!important;justify-content:space-between!important;align-items:center!important;padding:8px 0!important;border-bottom:1px solid rgba(180,195,150,.18)!important}
+#overview .tileRecovery .healthMiniRows>div:last-child,
+#overview .tileActivity .healthMiniRows>div:last-child{border-bottom:0!important}
+#overview .tileActivity .activityHint{width:100%!important;max-width:none!important;margin-top:2px!important;line-height:1.22!important}
+#overview .tileMore .moreMenuStack{display:grid!important;gap:6px!important}
+#overview .tileMore .moreMenuStack span{display:block!important;width:100%!important}
+#overview .tileSteps .progressTrack{margin-top:4px!important}
+#overview .tileScore .value{margin-top:6px!important}
 @media(max-width:390px){
-  #overview .approvedGrid .tile{min-height:214px!important}
-  #overview .approvedGrid .label{margin-bottom:8px!important}
-  #overview .tileActivity .activityHint{margin-top:10px!important;font-size:10px!important}
+  #overview .approvedGrid .tile{min-height:210px!important;grid-template-columns:36px minmax(0,1fr)!important;column-gap:10px!important;padding:14px 12px!important}
+  #overview .approvedGrid .tile>.icon{width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important}
+  #overview .approvedGrid .tileBody{row-gap:7px!important}
+  #overview .tileInsight .insightMini,
+  #overview .tileActivity .activityHint{font-size:11px!important}
 }
 </style>
 </head>
@@ -7403,7 +7419,7 @@ body.mlr-home-edit #home [data-tile-key]{
       <div><span>Work-outs 7 d.</span><strong id="activityTileSessions">—</strong></div>
       <div><span>Kcal actief</span><strong id="activityTileCalories">—</strong></div>
     </div>
-    <div class="activityHint">Stappen staan apart op de tegel Stappen.</div>
+    <div class="activityHint">Stappen hebben een eigen tegel.</div>
   </div>
 </button>
 <button type="button" class="card tile clickable tileMore" data-page="more" data-tile-id="more">
@@ -7793,7 +7809,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.04</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.06</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7930,7 +7946,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.04</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.06</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -10758,29 +10774,45 @@ hr,.divider,.hairline{border-color:rgba(154,174,114,.16)!important;background:rg
 }
 </style>
 
-<style id="mijn-leefritme-3904-tile-fill">
-#overview .approvedGrid .tile{min-height:232px!important}
-#overview .approvedGrid .tile>.icon{align-self:start!important;margin-top:1px!important}
-#overview .approvedGrid .tileBody{min-height:100%!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important}
-#overview .approvedGrid .label{display:block!important;margin-top:2px!important;margin-bottom:10px!important}
-#overview .approvedGrid .sub{line-height:1.32!important}
-#overview .approvedGrid .value{margin:14px 0 8px!important}
-#overview .tileGoal .goalRemaining,#overview .tileBmi .bmiStatus,#overview .tileBlood #bpDate,#overview .tileHeart #heartDate,#overview .tileScore #scoreTileSub{margin-top:auto!important}
-#overview .tileMore .moreMenuStack{margin-top:auto!important;display:grid!important;gap:8px!important}
-#overview .tileInsight .tileBody{justify-content:space-between!important}
-#overview .tileInsight .insightMini{margin-top:20px!important;line-height:1.26!important;max-width:12ch!important}
-#overview .bodyMetricTile .tileBody{justify-content:flex-start!important}
-#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:auto!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
-#overview .bodyMetricTile .bodyMeasurementsRows>div{padding:8px 0!important}
-#overview .tileRecovery .tileBody,#overview .tileActivity .tileBody{justify-content:flex-start!important}
-#overview .tileRecovery .healthMiniRows,#overview .tileActivity .healthMiniRows{width:100%!important;margin-top:8px!important;flex:1 1 auto!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important}
-#overview .tileRecovery .healthMiniRows>div,#overview .tileActivity .healthMiniRows>div{align-items:center!important;padding:8px 0!important}
-#overview .tileActivity .activityHint{margin-top:14px!important;line-height:1.22!important;max-width:14ch!important}
-#overview .tileMore .tileBody{justify-content:space-between!important}
+<style id="mijn-leefritme-3906-tile-polish">
+#overview .approvedGrid .tile{min-height:224px!important;display:grid!important;grid-template-columns:40px minmax(0,1fr)!important;column-gap:12px!important;align-items:start!important;padding:16px 14px!important}
+#overview .approvedGrid .tile>.icon{width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;align-self:start!important;margin:0!important}
+#overview .approvedGrid .tileBody{display:grid!important;grid-auto-rows:min-content!important;align-content:start!important;row-gap:8px!important;width:100%!important;min-height:100%!important;padding-top:0!important}
+#overview .approvedGrid .label{width:100%!important;margin:0!important;line-height:1.14!important}
+#overview .approvedGrid .sub{width:100%!important;margin:0!important;line-height:1.26!important}
+#overview .approvedGrid .value{width:100%!important;margin:2px 0 0!important;line-height:1.04!important}
+#overview .approvedGrid .tileBody>.greenProgress,
+#overview .approvedGrid .tileBody>.goalRemaining,
+#overview .approvedGrid .tileBody>.bmiStatus,
+#overview .approvedGrid .tileBody>#bpBadge,
+#overview .approvedGrid .tileBody>#heartBadge,
+#overview .approvedGrid .tileBody>#bpDate,
+#overview .approvedGrid .tileBody>#heartDate,
+#overview .approvedGrid .tileBody>#scoreTileSub,
+#overview .approvedGrid .tileBody>#sleepTileSub,
+#overview .approvedGrid .tileBody>.progressTrack{margin-top:2px!important}
+#overview .tileInsight .insightMini{width:100%!important;max-width:none!important;margin-top:2px!important;line-height:1.24!important}
+#overview .bodyMetricTile .bodyMeasurementsRows,
+#overview .tileRecovery .healthMiniRows,
+#overview .tileActivity .healthMiniRows,
+#overview .tileMore .moreMenuStack{width:100%!important;margin-top:2px!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{display:grid!important;gap:0!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;column-gap:10px!important;align-items:center!important;padding:8px 0!important}
+#overview .tileRecovery .healthMiniRows>div,
+#overview .tileActivity .healthMiniRows>div{display:flex!important;justify-content:space-between!important;align-items:center!important;padding:8px 0!important;border-bottom:1px solid rgba(180,195,150,.18)!important}
+#overview .tileRecovery .healthMiniRows>div:last-child,
+#overview .tileActivity .healthMiniRows>div:last-child{border-bottom:0!important}
+#overview .tileActivity .activityHint{width:100%!important;max-width:none!important;margin-top:2px!important;line-height:1.22!important}
+#overview .tileMore .moreMenuStack{display:grid!important;gap:6px!important}
+#overview .tileMore .moreMenuStack span{display:block!important;width:100%!important}
+#overview .tileSteps .progressTrack{margin-top:4px!important}
+#overview .tileScore .value{margin-top:6px!important}
 @media(max-width:390px){
-  #overview .approvedGrid .tile{min-height:214px!important}
-  #overview .approvedGrid .label{margin-bottom:8px!important}
-  #overview .tileActivity .activityHint{margin-top:10px!important;font-size:10px!important}
+  #overview .approvedGrid .tile{min-height:210px!important;grid-template-columns:36px minmax(0,1fr)!important;column-gap:10px!important;padding:14px 12px!important}
+  #overview .approvedGrid .tile>.icon{width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important}
+  #overview .approvedGrid .tileBody{row-gap:7px!important}
+  #overview .tileInsight .insightMini,
+  #overview .tileActivity .activityHint{font-size:11px!important}
 }
 </style>
 </head><body><button class="closePdf noPrint" onclick="(function(){try{if(window.opener&&!window.opener.closed){window.opener.focus();}window.close();}catch(e){}setTimeout(function(){try{if(!document.hidden){window.location.href='index.html';}}catch(e){}},150);})()" aria-label="Sluiten">×</button><main class="sheet">
@@ -11314,7 +11346,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.04', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.06', {
         scope: './',
         updateViaCache: 'none'
       });
