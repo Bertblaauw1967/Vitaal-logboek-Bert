@@ -2,9 +2,10 @@
   "name": "Mijn LeefRitme",
   "short_name": "LeefRitme",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#08110d",
-  "theme_color": "#08110d",
+  "background_color": "#071823",
+  "theme_color": "#071823",
   "icons": [
     {
       "src": "icon-192.png",
@@ -16,7 +17,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "id": "./leefkracht",
-  "scope": "./"
+  ]
 }

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.24">
+<meta name="app-version" content="39.25">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,24 +354,12 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.24";
+const LEEFKRACHT_VERSION = "39.25";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
 });
 
-(async()=>{
-  try{
-    if('serviceWorker' in navigator){
-      const regs=await navigator.serviceWorker.getRegistrations();
-      await Promise.all(regs.map(r=>r.unregister()));
-    }
-    if('caches' in window){
-      const keys=await caches.keys();
-      await Promise.all(keys.map(k=>caches.delete(k)));
-    }
-  }catch(e){}
-})();
 </script>
 
 <style>
@@ -8058,7 +8046,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.24</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.25</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8186,7 +8174,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div id="backupLastInfo" class="muted" style="font-size:12px;margin-top:10px">Nog geen lokale veiligheidskopie gevonden.</div>
     <button id="restoreOtherBtn" class="secondary" type="button" style="width:100%;margin-top:10px">Andere back-up kiezen</button>
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
-    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart ook je voorpagina-indeling en laat vóór herstellen eerst zien wat er precies wordt teruggezet.</small>
+    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart ook je voorpagina-indeling én de lokale slaap-, herstel- en activiteitsgegevens. Vóór herstellen zie je eerst wat er precies wordt teruggezet.</small>
   </div>
 
   
@@ -8195,7 +8183,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.24</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.25</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -9267,7 +9255,7 @@ async function lkStoreBackupSnapshot(text,createdAt){
     await new Promise((resolve,reject)=>{
       const tx=db.transaction(LK_BACKUP_STORE,'readwrite');
       tx.objectStore(LK_BACKUP_STORE).put({id:createdAt,createdAt,text});
-      tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);
+      tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Back-upopslag afgebroken'));
     });
     const all=await lkBackupSnapshots();
     if(all.length>5){
@@ -9276,10 +9264,11 @@ async function lkStoreBackupSnapshot(text,createdAt){
         const tx=db2.transaction(LK_BACKUP_STORE,'readwrite');
         const s=tx.objectStore(LK_BACKUP_STORE);
         all.slice(5).forEach(x=>s.delete(x.id));
-        tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);
+        tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Back-upopschoning afgebroken'));
       });
     }
-  }catch(e){console.warn('Lokale veiligheidskopie mislukt',e)}
+    return true;
+  }catch(e){console.warn('Lokale veiligheidskopie mislukt',e);return false}
 }
 function lkBackupStamp(d=new Date()){
   const z=n=>String(n).padStart(2,'0');
@@ -9332,7 +9321,8 @@ function lkBuildRestoreOverviewText(payload,measurements,options){
     'Documenten: '+String(extra.documentsCount!==undefined?extra.documentsCount:(info.documents||0)),
     'Profiel: '+(extra.hasProfile?'ja':'nee'),
     'Streefgewicht: '+(extra.hasGoal?'ja':'nee'),
-    'Voorpagina-indeling: '+(extra.hasDashboardLayout?'ja':'nee')
+    'Voorpagina-indeling: '+(extra.hasDashboardLayout?'ja':'nee'),
+    'Slaap / herstel / activiteit: '+(extra.hasHealthExtra?'ja':'niet in deze back-up')
   ].filter(Boolean);
   return lines.join('\n');
 }
@@ -9369,12 +9359,13 @@ async function lkBuildBackupPayload(){
   const measurements=lkBackupNormalizeMeasurements(load());
   return {
     app:'Mijn LeefRitme',
-    backupFormat:5,
+    backupFormat:6,
     version:LEEFKRACHT_VERSION,
     exportedAt:new Date().toISOString(),
     platform:(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')?window.Capacitor.getPlatform():'web',
     measurements,
     overview:lkBuildBackupOverview(measurements,documents.length),
+    healthExtra:(()=>{try{return JSON.parse(localStorage.getItem('mijnleefritme-health-extra-v1')||'null')}catch(e){return null}})(),
     goal:goal(),
     heightCm:lkGetHeightCm(),
     profile:lkBackupNormalizeProfile(lkLoadProfile()),
@@ -9394,7 +9385,8 @@ async function lkCreateSafetyBackup(reason){
   try{
     const payload=await lkBuildBackupPayload();
     payload.safetyReason=reason||'wijziging';
-    await lkStoreBackupSnapshot(JSON.stringify(payload,null,2),payload.exportedAt);
+    const stored=await lkStoreBackupSnapshot(JSON.stringify(payload,null,2),payload.exportedAt);
+    if(!stored) throw new Error('Lokale veiligheidskopie kon niet worden opgeslagen');
     await lkRefreshBackupLastInfo();
     try{localStorage.setItem('leefkracht-last-safety-backup-v1',payload.exportedAt)}catch(e){}
   }catch(e){
@@ -9419,9 +9411,12 @@ async function makeBackup(){
   const payload=await lkBuildBackupPayload();
   const text=JSON.stringify(payload,null,2);
 
-  /* Altijd eerst intern veiligstellen. */
-  await lkStoreBackupSnapshot(text,payload.exportedAt);
+  /* Eerst intern veiligstellen en controleren; externe back-up blijft ook beschikbaar als lokale opslag vol of geblokkeerd is. */
+  const internalStored=await lkStoreBackupSnapshot(text,payload.exportedAt);
   await lkRefreshBackupLastInfo();
+  if(!internalStored){
+    alert('Let op: de lokale veiligheidskopie kon niet worden opgeslagen. Bewaar daarom deze externe back-up op een veilige plek.');
+  }
 
   const filename='mijn-leefritme-backup-'+lkBackupStamp(new Date(payload.exportedAt))+'.json';
   const platform=(window.Capacitor&&typeof window.Capacitor.getPlatform==='function')
@@ -9490,6 +9485,7 @@ async function restoreBackup(file){
     const hasGoal=Object.prototype.hasOwnProperty.call(payload,'goal');
     const hasHeight=Object.prototype.hasOwnProperty.call(payload,'heightCm');
     const hasDashboardLayout=!!(payload.dashboardLayout && Array.isArray(payload.dashboardLayout.slots));
+    const hasHealthExtra=Object.prototype.hasOwnProperty.call(payload,'healthExtra') && payload.healthExtra && typeof payload.healthExtra==='object';
     const version=String(payload.version||'onbekend');
 
     /* Documenten volledig valideren vóór er huidige gegevens worden gewijzigd. */
@@ -9513,7 +9509,8 @@ async function restoreBackup(file){
       documentsCount:Array.isArray(payload.documents)?restoredDocs.length:0,
       hasProfile:!!hasProfile,
       hasGoal:!!hasGoal,
-      hasDashboardLayout:!!hasDashboardLayout
+      hasDashboardLayout:!!hasDashboardLayout,
+      hasHealthExtra:!!hasHealthExtra
     });
 
     if(!confirm('Back-up '+version+' terugzetten?\n\n'+restoreOverview+'\n\nVeiligheid:\n• Eerst wordt automatisch een veiligheidskopie van de huidige toestand gemaakt.\n• Daarna worden de huidige Mijn LeefRitme-gegevens op dit toestel vervangen.'))
@@ -9524,7 +9521,8 @@ async function restoreBackup(file){
       const before=await lkBuildBackupPayload();
       before.safetyReason='voor terugzetten';
       beforeText=JSON.stringify(before,null,2);
-      await lkStoreBackupSnapshot(beforeText,before.exportedAt);
+      const beforeStored=await lkStoreBackupSnapshot(beforeText,before.exportedAt);
+      if(!beforeStored) throw new Error('Voor-herstelkopie kon niet worden opgeslagen');
     }catch(e){
       console.warn('Voor-herstelkopie kon niet worden gemaakt',e);
       if(!confirm('De extra veiligheidskopie vóór terugzetten kon niet worden gemaakt. Toch doorgaan?'))return;
@@ -9548,6 +9546,13 @@ async function restoreBackup(file){
     }
 
     if(hasProfile) lkSaveProfile(profile);
+
+    /* Slaap-, herstel- en activiteitsgegevens zijn lokale Health-samenvattingen.
+       Nieuwe back-ups (format 6+) bewaren deze mee. Bij oudere back-ups laten we
+       de huidige lokale Health-samenvattingen bewust staan in plaats van ze te wissen. */
+    if(hasHealthExtra){
+      try{localStorage.setItem('mijnleefritme-health-extra-v1',JSON.stringify(payload.healthExtra))}catch(e){throw new Error('Health-samenvattingen konden niet worden hersteld')}
+    }
 
     if(hasDashboardLayout){
       try{
@@ -11614,7 +11619,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.24', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.25', {
         scope: './',
         updateViaCache: 'none'
       });

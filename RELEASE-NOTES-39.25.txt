@@ -1,0 +1,9 @@
+Mijn LeefRitme 39.25 — stabiliteitscheck
+
+- Geen wijzigingen aan de goedgekeurde tegelindeling.
+- Back-upformaat 6: lokale slaap-, herstel- en activiteitsgegevens worden nu ook meegenomen.
+- Hersteloverzicht vermeldt of deze Health-samenvattingen in de back-up aanwezig zijn.
+- Voor-herstel veiligheidskopie wordt nu echt gecontroleerd; opslagfouten worden niet meer stil genegeerd.
+- Handmatige back-up waarschuwt als de interne veiligheidskopie niet kon worden opgeslagen.
+- Ontbrekende manifest.webmanifest en sw.js toegevoegd voor een complete web/PWA-package.
+- Service worker gebruikt geen app-cache en ruimt oude caches op om versieproblemen te voorkomen.
