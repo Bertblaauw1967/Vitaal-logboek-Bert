@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.07">
+<meta name="app-version" content="39.08">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.07";
+const LEEFKRACHT_VERSION = "39.08";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7317,6 +7317,37 @@ body.mlr-home-edit #home [data-tile-key]{
   #overview .tileInsight .insightMini{font-size:10px!important}
 }
 </style>
+
+<style id="mijn-leefritme-3908-two-tiles-layout">
+#overview .bodyMetricTile,
+#overview .tileActivity{grid-template-columns:40px minmax(0,1fr)!important;grid-auto-rows:min-content!important;align-items:start!important}
+#overview .bodyMetricTile>.icon,
+#overview .tileActivity>.icon{grid-column:1!important;grid-row:1!important;align-self:start!important}
+#overview .bodyMetricTile>.tileHeaderLabel,
+#overview .tileActivity>.tileHeaderLabel{grid-column:2!important;grid-row:1!important;align-self:center!important;margin:0!important;line-height:1.14!important;width:100%!important}
+#overview .bodyMetricTile>.tileFullRows,
+#overview .tileActivity>.tileFullRows{grid-column:1 / -1!important;grid-row:2!important;width:100%!important;padding-top:10px!important;display:grid!important;grid-auto-rows:min-content!important;row-gap:6px!important}
+#overview .bodyMetricTile>.tileBody,
+#overview .tileActivity>.tileBody{display:none!important}
+#overview .bodyMetricTile .value,#overview .bodyMetricTile .sub,#overview .tileActivity .sub{width:100%!important;margin:0!important}
+#overview .bodyMetricTile .value{line-height:1.04!important;margin-bottom:1px!important}
+#overview .bodyMetricTile .bodyMeasurementsRows{width:100%!important;margin-top:2px!important;display:grid!important;gap:0!important}
+#overview .bodyMetricTile .bodyMeasurementsRows>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;column-gap:12px!important;align-items:center!important;padding:8px 0!important}
+#overview .bodyMetricTile .bodyMeasurementsRows span,#overview .bodyMetricTile .bodyMeasurementsRows strong{font-size:12.5px!important;line-height:1.2!important;white-space:nowrap!important}
+#overview .tileActivity .healthMiniRows{width:100%!important;display:grid!important;gap:0!important;margin-top:0!important}
+#overview .tileActivity .healthMiniRows>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;column-gap:12px!important;align-items:center!important;padding:7px 0!important;border-bottom:1px solid rgba(180,195,150,.18)!important}
+#overview .tileActivity .healthMiniRows>div:last-child{border-bottom:0!important}
+#overview .tileActivity .healthMiniRows span,#overview .tileActivity .healthMiniRows strong{white-space:nowrap!important}
+#overview .tileActivity .activityHint{margin:2px 0 0!important;width:100%!important;max-width:none!important;line-height:1.18!important;font-size:10.5px!important}
+@media(max-width:390px){
+  #overview .bodyMetricTile>.tileFullRows,
+  #overview .tileActivity>.tileFullRows{padding-top:8px!important;row-gap:5px!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows>div,
+  #overview .tileActivity .healthMiniRows>div{column-gap:8px!important}
+  #overview .bodyMetricTile .bodyMeasurementsRows span,#overview .bodyMetricTile .bodyMeasurementsRows strong,
+  #overview .tileActivity .healthMiniRows span,#overview .tileActivity .healthMiniRows strong{font-size:11.5px!important}
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -7376,11 +7407,12 @@ body.mlr-home-edit #home [data-tile-key]{
   <path d="M21.5 20.5v3H26" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
         </div>
-        <div class="tileBody">
-          <div class="label bodyMeasureLabel">Lichaamsmaten</div>
+        <div class="label tileHeaderLabel bodyMeasureLabel">Lichaamsmaten</div>
+        <div class="tileFullRows bodyTileFull">
           <div class="value" id="bodyTile">—</div>
           <div class="sub" id="bodyTileSub">Buik · heup · borst</div>
-        <div class="bodyMeasurementsRows"><div><span>Buikomtr.</span><strong id="bodyWaistRow">—</strong></div><div><span>Heupomtr.</span><strong id="bodyHipRow">—</strong></div><div><span>Borstomtr.</span><strong id="bodyChestRow">—</strong></div></div></div>
+          <div class="bodyMeasurementsRows"><div><span>Buikomtr.</span><strong id="bodyWaistRow">—</strong></div><div><span>Heupomtr.</span><strong id="bodyHipRow">—</strong></div><div><span>Borstomtr.</span><strong id="bodyChestRow">—</strong></div></div>
+        </div>
       </button>
 <button type="button" class="card tile clickable tileBlood" data-page="blood" data-tile-id="blood">
         <div class="icon pink">♥</div>
@@ -7431,8 +7463,8 @@ body.mlr-home-edit #home [data-tile-key]{
 </button>
 <button type="button" class="card tile clickable tileActivity" data-page="activity" data-tile-id="activity">
   <div class="icon blue" aria-hidden="true">↗</div>
-  <div class="tileBody">
-    <div class="label">Activiteit</div>
+  <div class="label tileHeaderLabel">Activiteit</div>
+  <div class="tileFullRows activityTileFull">
     <div class="healthMiniRows">
       <div><span>Actieve min.</span><strong id="activityTileMinutes">—</strong></div>
       <div><span>Work-outs 7 d.</span><strong id="activityTileSessions">—</strong></div>
@@ -7828,7 +7860,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.07</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.08</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -7965,7 +7997,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.07</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.08</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -11384,7 +11416,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.07', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.08', {
         scope: './',
         updateViaCache: 'none'
       });

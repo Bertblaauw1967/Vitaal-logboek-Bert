@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.08\n\n- Alleen Activiteit en Lichaamsmaten aangepast.\n- Koptekst blijft naast het icoon staan.\n- Inhoud loopt nu onder het icoon over de volle tegelbreedte van links naar rechts.\n- Waarden en tekst overlappen niet meer.\n- Geen nieuwe functies toegevoegd.\n
