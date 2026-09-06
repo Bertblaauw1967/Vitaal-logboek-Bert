@@ -1,0 +1,16 @@
+Mijn LeefRitme 0.9
+
+Testbasis na stabiliteitscontrole van 39.25.
+
+Tekstpolish:
+- Activiteit-uitleg korter en rustiger.
+- Gezondheidskoppeling compacter uitgelegd.
+- Privacytekst ontdubbeld.
+- Back-upuitleg ingekort zonder belangrijke waarschuwingen te verwijderen.
+- Documentenuitleg compacter gemaakt.
+
+Techniek en vormgeving:
+- Functionaliteit van 39.25 behouden.
+- Goedgekeurde tegelindeling van 39.24/39.25 ongewijzigd.
+- Back-upformaat 6 en herstelbeveiliging behouden.
+- Versienummer opnieuw gestart op 0.9 als testreeks richting 1.0.

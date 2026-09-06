@@ -1,4 +1,4 @@
-/* Mijn LeefRitme 39.25 — stabiele, cache-arme service worker. */
+/* Mijn LeefRitme 0.9 — stabiele, cache-arme service worker. */
 self.addEventListener('install', event => { self.skipWaiting(); });
 self.addEventListener('activate', event => {
   event.waitUntil((async()=>{

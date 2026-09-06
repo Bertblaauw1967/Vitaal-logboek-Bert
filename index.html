@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.25">
+<meta name="app-version" content="0.9">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.25";
+const LEEFKRACHT_VERSION = "0.9";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7673,7 +7673,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
 <section id="sleep" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Slaap</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthBigValue" id="sleepDetailValue">—</div><div class="muted" id="sleepDetailDate">Nog geen slaapgegevens</div><div class="healthDetailRows"><div><span>7-daags gemiddelde</span><strong id="sleep7Avg">—</strong></div><div><span>Diepe slaap</span><strong id="sleepDeep">—</strong></div><div><span>REM-slaap</span><strong id="sleepRem">—</strong></div></div><small class="muted">Slaapfasen worden alleen getoond wanneer je horloge of gezondheidsapp deze doorgeeft.</small></div></section>
 <section id="recovery" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Herstel</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Rusthartslag</span><strong id="recoveryDetailRhr">—</strong></div><div><span>HRV</span><strong id="recoveryDetailHrv">—</strong></div><div><span>Ademhalingsfrequentie</span><strong id="recoveryDetailResp">—</strong></div><div><span>Zuurstofsaturatie</span><strong id="recoverySpo2">—</strong></div></div><small class="muted">Deze waarden zijn vooral bedoeld om je eigen trend te volgen en zijn geen diagnose.</small></div></section>
-<section id="activity" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Activiteit</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Actieve minuten vandaag</span><strong id="activityDetailMinutes">—</strong></div><div><span>Work-outs laatste 7 dagen</span><strong id="activityDetailWorkouts">—</strong></div><div><span>Actieve energie vandaag</span><strong id="activityDetailCalories">—</strong></div><div><span>Afstand vandaag</span><strong id="activityDetailDistance">—</strong></div><div><span>Actieve minuten laatste 7 dagen</span><strong id="activityWeekMinutes">—</strong></div></div><small class="muted">Mijn LeefRitme gebruikt Activiteit voor actieve minuten, work-outs en energie. Stappen blijven bewust apart op de tegel Stappen.</small></div></section>
+<section id="activity" class="page healthDetailPage"><div class="detailTop"><div><div class="eyebrow">Gezondheid</div><h2 class="sectionTitle">Activiteit</h2></div><button type="button" class="closeDetail" data-page="overview" aria-label="Sluiten">×</button></div><div class="card panel"><div class="healthDetailRows"><div><span>Actieve minuten vandaag</span><strong id="activityDetailMinutes">—</strong></div><div><span>Work-outs laatste 7 dagen</span><strong id="activityDetailWorkouts">—</strong></div><div><span>Actieve energie vandaag</span><strong id="activityDetailCalories">—</strong></div><div><span>Afstand vandaag</span><strong id="activityDetailDistance">—</strong></div><div><span>Actieve minuten laatste 7 dagen</span><strong id="activityWeekMinutes">—</strong></div></div><small class="muted">Activiteit toont actieve minuten, work-outs en energie. Stappen staan apart.</small></div></section>
 <section id="insight" class="page">
   <div class="detailTop">
     <div>
@@ -8046,7 +8046,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.25</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 0.9</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8132,7 +8132,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </div>
 
     <small class="muted healthReadyNote">
-      Mijn LeefRitme leest alleen de gezondheidsgegevens waarvoor jij toestemming geeft. Op Samsung lopen stappen en hartslag via Samsung Health → Health Connect → Mijn LeefRitme. Mijn LeefRitme leest het dagtotaal en controleert voor vandaag altijd of Samsung Health al een actuele waarde heeft doorgegeven.
+      Mijn LeefRitme leest alleen gezondheidsgegevens waarvoor je toestemming geeft. Op Samsung kan synchronisatie via Samsung Health en Health Connect lopen.
     </small>
   </div>
 
@@ -8144,7 +8144,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
   <div class="card settingsCard moreLegacyNav">
     <h3>📄 Uitslagen & documenten</h3>
-    <p class="muted">Maak een foto of bewaar een bloeduitslag, brief of PDF bij je gezondheidsgegevens.</p>
+    <p class="muted">Bewaar een foto, bloeduitslag, brief of PDF bij je gezondheidsgegevens.</p>
     <button type="button" class="primary wideBtn lkMainAction" id="documentsActionBtn" data-page="documents">Foto / document toevoegen</button>
   </div>
 
@@ -8153,7 +8153,7 @@ body.mlr-home-edit #home [data-tile-key]{
   <div class="card settingsCard privacyCard moreDetailSection" data-more-detail="privacy">
     <h3>🔒 Privacy</h3>
     <p class="privacyLead">Jouw gegevens zijn van jou.</p>
-    <p class="muted">Mijn LeefRitme deelt niets zonder jouw toestemming.</p>
+    
     <div class="privacyRows">
       <div><span>Opslag</span><strong>Op dit apparaat</strong></div>
       <div><span>Health-data</span><strong>Alleen met toestemming</strong></div>
@@ -8161,12 +8161,12 @@ body.mlr-home-edit #home [data-tile-key]{
       <div><span>Toegang intrekken</span><strong>Altijd mogelijk</strong></div>
     </div>
     <button type="button" class="primary wideBtn lkMainAction privacyPolicyBtn" data-page="privacyPolicy">Privacyverklaring bekijken</button>
-    <small class="muted">Hier lees je precies welke gegevens Mijn LeefRitme gebruikt, waar ze worden bewaard en hoe je ze kunt verwijderen.</small>
+    <small class="muted">Bekijk welke gegevens Mijn LeefRitme gebruikt en hoe je ze beheert.</small>
   </div>
 
   <div class="card settingsCard moreDetailSection" data-more-detail="backup">
     <h3>⇧ Back-up</h3>
-    <p class="muted">Mijn LeefRitme maakt na wijzigingen automatisch lokale veiligheidskopieën. Met Back-up opslaan opent iPhone/Android de systeemeigen deel-/bewaarfunctie voor een extern bestand met datum én tijd. Bij terugzetten zie je eerst een duidelijk hersteloverzicht.</p>
+    <p class="muted">Na wijzigingen maakt Mijn LeefRitme lokale veiligheidskopieën. Met Back-up opslaan bewaar je daarnaast een extern bestand. Bij herstellen krijg je eerst een overzicht.</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
       <button id="backupBtn" class="primary" type="button">Back-up opslaan</button>
       <button id="restoreBtn" class="primary" type="button">Laatste terugzetten</button>
@@ -8174,7 +8174,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div id="backupLastInfo" class="muted" style="font-size:12px;margin-top:10px">Nog geen lokale veiligheidskopie gevonden.</div>
     <button id="restoreOtherBtn" class="secondary" type="button" style="width:100%;margin-top:10px">Andere back-up kiezen</button>
     <input id="restoreFile" type="file" accept="application/json,.json" style="display:none">
-    <small class="muted backupSafetyNote">Voor bescherming bij verlies of verwijderen van de app: kies bij Back-up opslaan op iPhone bijvoorbeeld ‘Bewaar in Bestanden’ en op Android een veilige opslaglocatie buiten Mijn LeefRitme. De back-up bewaart ook je voorpagina-indeling én de lokale slaap-, herstel- en activiteitsgegevens. Vóór herstellen zie je eerst wat er precies wordt teruggezet.</small>
+    <small class="muted backupSafetyNote">Bewaar geregeld een externe back-up buiten de app, bijvoorbeeld in Bestanden, iCloud Drive of Android-opslag. Deze bevat ook je voorpagina-indeling en lokale slaap-, herstel- en activiteitsgegevens.</small>
   </div>
 
   
@@ -8183,7 +8183,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.25</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">0.9</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -8221,7 +8221,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Versie 38.48 · bijgewerkt 4 september 2026</p>
+    <p class="legalDate">Versie 0.9 · bijgewerkt 6 september 2026</p>
     <h3>1. Doel van Mijn LeefRitme</h3>
     <p>Mijn LeefRitme is een hulpmiddel om persoonlijke gezondheidsgegevens, metingen, trends, documenten en doelen overzichtelijk bij te houden. De app is bedoeld voor eigen inzicht en ondersteuning en is geen medisch hulpmiddel voor diagnose of behandeling.</p>
     <h3>2. Geen medisch advies</h3>
@@ -8278,7 +8278,7 @@ body.mlr-home-edit #home [data-tile-key]{
   </div>
 
   <div class="card panel privacyPolicyCard">
-    <p class="privacyPolicyDate">Versie 38.48 · bijgewerkt 4 september 2026</p>
+    <p class="privacyPolicyDate">Versie 0.9 · bijgewerkt 6 september 2026</p>
 
     <h3>1. Wie is verantwoordelijk?</h3>
     <p>Mijn LeefRitme wordt in de huidige testfase ontwikkeld en beheerd door Mijn LeefRitme. Een definitief openbaar contactadres en support-e-mailadres worden vóór publicatie in de App Store en Google Play toegevoegd.</p>
@@ -11619,7 +11619,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.25', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=0.9', {
         scope: './',
         updateViaCache: 'none'
       });
