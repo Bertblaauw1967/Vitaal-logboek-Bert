@@ -1,0 +1,7 @@
+Mijn LeefRitme 0.9.4
+
+- Vast ingebouwd startgewicht 98,2 kg verwijderd.
+- Startgewicht wordt nu automatisch bepaald uit de eerste opgeslagen gewichtsmeting.
+- Zonder gewichtsmetingen toont de tegel 'Startgewicht: —'.
+- Gewichtsverschil wordt berekend vanaf dat persoonlijke startgewicht.
+- Overige functies en tegel-layout zijn ongewijzigd.
