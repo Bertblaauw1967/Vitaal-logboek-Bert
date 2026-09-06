@@ -1,0 +1,6 @@
+Mijn LeefRitme 39.11
+
+- Gewicht, Streefgewicht, Bloeddruk, Hartslag en LeefRitme-score opnieuw uitgelijnd.
+- Koptekst blijft naast het icoon staan.
+- Inhoud staat daaronder en wordt binnen de tegel gecentreerd.
+- Geen nieuwe functies toegevoegd.
