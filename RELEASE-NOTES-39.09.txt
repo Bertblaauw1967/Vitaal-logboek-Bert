@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.09\n\n- Alle tegels volgen nu dezelfde indeling.\n- Icoon linksboven, koptekst daarnaast.\n- Inhoud loopt daaronder over de volle tegelbreedte.\n- Activiteit en Lichaamsmaten blijven in dezelfde stijl als 39.08.\n- Geen nieuwe functies toegevoegd; back-up en herstel blijven behouden.\n
