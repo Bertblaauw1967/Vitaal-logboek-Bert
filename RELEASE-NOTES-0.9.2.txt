@@ -1,0 +1,6 @@
+Mijn LeefRitme 0.9.2
+
+- PLUS-label staat nu direct achter 'Gezondheidskoppeling' en blijft daar op één regel.
+- De oranje PLUS-stijl blijft gelijk aan 'Voorpagina indelen'.
+- Verouderde supportversie 38.99 vervangen door 0.9.2.
+- Verder geen layout of functionaliteit gewijzigd.
