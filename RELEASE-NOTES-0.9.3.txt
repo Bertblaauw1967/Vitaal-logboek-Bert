@@ -1,0 +1,9 @@
+Mijn LeefRitme 0.9.3
+
+- Health synchroniseert nu direct bij iedere echte app-open/start.
+- Na minimaal 60 seconden in de achtergrond wordt bij terugkeer opnieuw gesynchroniseerd.
+- Stappen, hartslag, slaap, herstel, activiteit en overige toegestane Health-gegevens worden daarna direct opnieuw gerenderd.
+- Dubbele focus/pageshow-events worden gedebounced om dubbele synchronisaties te voorkomen.
+- Een lopende Health-sync wordt hergebruikt zodat twee synchronisaties niet tegelijk draaien.
+- Tekst '±10 min' vervangen door 'Automatisch synchroniseren bij openen'.
+- Goedgekeurde tegel-layout en overige functies zijn niet gewijzigd.

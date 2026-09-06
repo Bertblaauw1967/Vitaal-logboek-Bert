@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="0.9.2">
+<meta name="app-version" content="0.9.3">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "0.9.2";
+const LEEFKRACHT_VERSION = "0.9.3";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -8059,7 +8059,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 0.9.2</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 0.9.3</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8125,7 +8125,7 @@ body.mlr-home-edit #home [data-tile-key]{
 
     <button type="button" class="primary healthConnectBtn lkMainAction" id="healthConnectBtn">Verbinden</button>
     <div class="healthAutoSyncLine">
-      <span>Automatisch synchroniseren · ±10 min</span>
+      <span>Automatisch synchroniseren bij openen</span>
       <strong id="healthLastSync">Nog niet gesynchroniseerd</strong>
     </div>
 
@@ -8196,7 +8196,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">0.9.2</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">0.9.3</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -8264,7 +8264,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <button type="button" class="closeDetail" data-page="more" aria-label="Sluiten">×</button>
   </div>
   <div class="card panel legalTextCard">
-    <p class="legalDate">Mijn LeefRitme 0.9.2</p>
+    <p class="legalDate">Mijn LeefRitme 0.9.3</p>
     <h3>Probleem met gegevens of back-up?</h3>
     <p>Maak, als dat nog mogelijk is, eerst een externe back-up via <strong>Mijn LeefRitme → Back-up opslaan</strong>. Verwijder de app niet zolang je gegevens nog niet veilig buiten de app staan.</p>
     <h3>Back-up terugzetten</h3>
@@ -11632,7 +11632,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=0.9.2', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=0.9.3', {
         scope: './',
         updateViaCache: 'none'
       });
@@ -12292,19 +12292,27 @@ window.LeefKrachtHealth = (function(){
     return {ok:false};
   }
 
-  async function autoSync(){
+  let autoSyncInFlight=null;
+  async function autoSync(options){
+    const force=options===true || !!(options&&options.force);
     const c=capability();
     if(!c.canReadHealth || !['android','ios'].includes(c.platform)) return {ok:false,skipped:true};
-    if(c.platform==='android'){
-      const a=await check();
-      if(!a.ok) return {ok:false,skipped:true};
-    }
-    const last=lastSync();
-    if(last){
-      const age=Date.now()-new Date(last).getTime();
-      if(Number.isFinite(age)&&age<10*60*1000) return {ok:true,skipped:true,lastSync:last};
-    }
-    return sync(30);
+    if(autoSyncInFlight) return autoSyncInFlight;
+    autoSyncInFlight=(async()=>{
+      if(c.platform==='android'){
+        const a=await check();
+        if(!a.ok) return {ok:false,skipped:true};
+      }
+      if(!force){
+        const last=lastSync();
+        if(last){
+          const age=Date.now()-new Date(last).getTime();
+          if(Number.isFinite(age)&&age<10*60*1000) return {ok:true,skipped:true,lastSync:last};
+        }
+      }
+      return sync(30);
+    })();
+    try{return await autoSyncInFlight;}finally{autoSyncInFlight=null;}
   }
 
   async function openSettings(){
@@ -12318,6 +12326,66 @@ window.LeefKrachtHealth = (function(){
     capability,connect,check,sync,autoSync,openSettings,setSource,getSources,lastSync,
     metrics:METRICS.slice()
   };
+})();
+
+/* 0.9.3 — actuele Health-gegevens bij app-open en terugkeer uit achtergrond.
+   Eén geforceerde sync per echte app-open; na minimaal 60 seconden in de achtergrond
+   opnieuw synchroniseren. Dubbele focus/pageshow-events worden gedebounced. */
+(function(){
+  let lastTrigger=0;
+  let backgroundAt=0;
+  const MIN_BACKGROUND_MS=60*1000;
+  const DEBOUNCE_MS=3000;
+
+  function refreshHealthDashboard(){
+    try{if(typeof render==='function')render()}catch(e){}
+    try{if(window.MLRHealthExtra&&typeof window.MLRHealthExtra.render==='function')window.MLRHealthExtra.render()}catch(e){}
+    try{if(typeof lkRunStartupSequence==='function')lkRunStartupSequence()}catch(e){}
+    try{window.dispatchEvent(new CustomEvent('mijnleefritme:healthsynced'))}catch(e){}
+  }
+
+  async function syncNow(reason){
+    if(!window.LeefKrachtHealth)return;
+    const cap=window.LeefKrachtHealth.capability();
+    if(!cap.canReadHealth || !['ios','android'].includes(cap.platform))return;
+    const now=Date.now();
+    if(now-lastTrigger<DEBOUNCE_MS)return;
+    lastTrigger=now;
+    try{
+      const r=await window.LeefKrachtHealth.autoSync({force:true,reason:reason||'app-active'});
+      if(r&&r.ok&&!r.skipped)refreshHealthDashboard();
+    }catch(e){}
+  }
+
+  function onVisible(reason){
+    if(document.visibilityState&&document.visibilityState!=='visible')return;
+    const now=Date.now();
+    if(backgroundAt && now-backgroundAt<MIN_BACKGROUND_MS)return;
+    backgroundAt=0;
+    syncNow(reason);
+  }
+
+  if(document.readyState==='loading')
+    document.addEventListener('DOMContentLoaded',()=>syncNow('app-open'),{once:true});
+  else
+    syncNow('app-open');
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='hidden') backgroundAt=Date.now();
+    else if(document.visibilityState==='visible') onVisible('foreground');
+  });
+  window.addEventListener('pageshow',()=>onVisible('pageshow'));
+  window.addEventListener('focus',()=>onVisible('focus'));
+
+  try{
+    const app=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
+    if(app&&typeof app.addListener==='function'){
+      app.addListener('appStateChange',state=>{
+        if(state&&state.isActive) onVisible('appStateChange');
+        else backgroundAt=Date.now();
+      });
+    }
+  }catch(e){}
 })();
 
 document.addEventListener('DOMContentLoaded', function(){
