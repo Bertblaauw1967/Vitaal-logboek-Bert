@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.10\n\n- Tegels Gewicht, Streefgewicht, Bloeddruk, Hartslag en LeefRitme-score gecentreerd.\n- Titel en inhoud staan nu in het midden van de tegel onder elkaar.\n- Andere tegels behouden de indeling van 39.09.\n- Geen nieuwe functies toegevoegd.\n
