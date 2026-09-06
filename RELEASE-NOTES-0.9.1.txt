@@ -1,0 +1,5 @@
+Mijn LeefRitme 0.9.1
+
+- PLUS-badge verplaatst van Gezondheid koppelen naar Gezondheidskoppeling.
+- Dezelfde oranje PLUS-stijl als bij Voorpagina indelen.
+- Geen andere layout of functionaliteit gewijzigd.
