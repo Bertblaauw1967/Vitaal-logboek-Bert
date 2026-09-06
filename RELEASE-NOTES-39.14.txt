@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.14\n\n- Streefgewicht, BMI en LeefRitme-score verticaal verder fijn afgesteld.\n- De witte hoofdwaarden staan nu hoger en sluiten beter aan op Gewicht, Hartslag en Bloeddruk.\n- Overige tegels gecontroleerd; geen extra functionele wijzigingen toegevoegd.\n
