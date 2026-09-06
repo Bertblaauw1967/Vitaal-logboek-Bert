@@ -1,0 +1,5 @@
+Mijn LeefRitme 39.23
+
+- Alleen Stappen vandaag opnieuw minimaal aangepast.
+- De waarde 5.000 staat nu nog iets lager dan in 39.22.
+- Overige tegels zijn ongewijzigd.
