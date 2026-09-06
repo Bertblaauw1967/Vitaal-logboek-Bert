@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.18\n\n- Stappen vandaag bijgesteld in lijn met LeefRitme-score.\n- Inhoud van de tegel staat nu netter gecentreerd en hoger in de tegel.\n- 7-daags gemiddelde en doelregel zijn rustiger uitgelijnd.\n- Overige tegels ongewijzigd.\n
