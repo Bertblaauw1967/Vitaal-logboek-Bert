@@ -1,0 +1,7 @@
+Mijn LeefRitme 39.12
+
+- BMI, Streefgewicht en LeefRitme-score gelijkgetrokken met Hartslag en Bloeddruk.
+- Koptekst blijft naast het icoon staan.
+- Inhoud staat daaronder gecentreerd in het inhoudsgedeelte van de tegel.
+- Ook Gewicht blijft in dezelfde samenvattende tegelstijl voor consistentie.
+- Geen nieuwe functies toegevoegd.
