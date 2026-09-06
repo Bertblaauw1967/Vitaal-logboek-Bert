@@ -1,0 +1,1 @@
+Mijn LeefRitme 39.13\n\n- De witte hoofdwaarden van Streefgewicht, BMI en LeefRitme-score zijn omhoog gezet.\n- Uitlijning sluit nu beter aan op Gewicht, Hartslag en Bloeddruk.\n- Geen nieuwe functies toegevoegd.\n

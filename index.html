@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="39.12">
+<meta name="app-version" content="39.13">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "39.12";
+const LEEFKRACHT_VERSION = "39.13";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -7426,6 +7426,22 @@ body.mlr-home-edit #home [data-tile-key]{
   #overview .tileBmi>.tileFullRows .bmiStatus,#overview .tileScore>.tileFullRows #scoreTileSub{max-width:145px!important}
 }
 </style>
+
+<style id="mijn-leefritme-3913-summary-values-higher">
+#overview .tileGoal>.tileFullRows,
+#overview .tileBmi>.tileFullRows{justify-content:flex-start!important;padding-top:18px!important;gap:6px!important}
+#overview .tileScore>.tileFullRows{justify-content:flex-start!important;padding-top:42px!important;gap:7px!important}
+#overview .tileGoal>.tileFullRows .value,
+#overview .tileBmi>.tileFullRows .value,
+#overview .tileScore>.tileFullRows .value{margin-top:0!important}
+#overview .tileBmi>.tileFullRows .bmiStatus,
+#overview .tileScore>.tileFullRows #scoreTileSub{max-width:170px!important}
+@media(max-width:390px){
+  #overview .tileGoal>.tileFullRows,
+  #overview .tileBmi>.tileFullRows{padding-top:16px!important}
+  #overview .tileScore>.tileFullRows{padding-top:36px!important}
+}
+</style>
 </head>
 <body>
 <main class="app">
@@ -7938,7 +7954,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.12</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 39.13</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8075,7 +8091,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">39.12</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">39.13</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -11494,7 +11510,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=39.12', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=39.13', {
         scope: './',
         updateViaCache: 'none'
       });
