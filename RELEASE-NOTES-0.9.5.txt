@@ -1,0 +1,8 @@
+Mijn LeefRitme 0.9.5
+
+- Android Health Connect koppelfout 'Unsupported data type: exerciseTime' opgelost.
+- exerciseTime wordt op Android niet meer als toestemming aangevraagd of uitgelezen.
+- Andere Health Connect gegevens blijven gewoon gekoppeld en synchroniseren.
+- Trainingsminuten toont op Android voorlopig 'Niet ondersteund'.
+- iPhone/Apple Health blijft exerciseTime wel ondersteunen.
+- Overige functies en tegel-layout zijn ongewijzigd.

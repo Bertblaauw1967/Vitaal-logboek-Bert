@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#08110d">
-<meta name="app-version" content="0.9.4">
+<meta name="app-version" content="0.9.5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mijn LeefRitme">
@@ -354,7 +354,7 @@ a{color:#d4d8b5}
 </style>
 
 <script>
-const LEEFKRACHT_VERSION = "0.9.4";
+const LEEFKRACHT_VERSION = "0.9.5";
 document.addEventListener("DOMContentLoaded",()=>{
   const meta=document.querySelector('meta[name="app-version"]');
   if(meta) meta.setAttribute("content",LEEFKRACHT_VERSION);
@@ -8059,7 +8059,7 @@ body.mlr-home-edit #home [data-tile-key]{
     </button>
   </div>
 
-  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 0.9.4</div>
+  <div class="moreVersionFooter" aria-label="App-versie">Mijn LeefRitme · versie 0.9.5</div>
 
   <div class="moreGroupLabel">Persoonlijk</div>
 
@@ -8196,7 +8196,7 @@ body.mlr-home-edit #home [data-tile-key]{
     <div class="label">Over Mijn LeefRitme</div>
 
     <div class="aboutRows">
-      <div><span>Versie</span><strong id="aboutVersion">0.9.4</strong></div>
+      <div><span>Versie</span><strong id="aboutVersion">0.9.5</strong></div>
       <div><span>Ontwikkelaar</span><strong>Mijn LeefRitme</strong></div>
       <div><span>Privacyverklaring</span><strong>Beschikbaar</strong></div>
       <div><span>Gebruiksvoorwaarden</span><strong>Beschikbaar</strong></div>
@@ -11641,7 +11641,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 
   window.addEventListener('load', async function(){
     try{
-      const reg = await navigator.serviceWorker.register('./sw.js?v=0.9.4', {
+      const reg = await navigator.serviceWorker.register('./sw.js?v=0.9.5', {
         scope: './',
         updateViaCache: 'none'
       });
@@ -11869,6 +11869,8 @@ window.LeefKrachtHealth = (function(){
   const SOURCE_KEY='leefkracht-health-source-v1';
   const LAST_SYNC_KEY='leefkracht-health-last-sync-v1';
   const METRICS=['steps','weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose','sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','exerciseTime','calories'];
+  const ANDROID_METRICS=METRICS.filter(m=>m!=='exerciseTime');
+  function metricsForPlatform(p){return p==='android'?ANDROID_METRICS.slice():METRICS.slice()}
   const DATA_KEY='vitaal-logboek-v1';
 
   function platform(){
@@ -11906,7 +11908,7 @@ window.LeefKrachtHealth = (function(){
       provider:providerName(),
       native,
       canReadHealth:native && !!hp && (p==='android'||p==='ios'),
-      metrics:METRICS.slice()
+      metrics:metricsForPlatform(p)
     };
   }
 
@@ -11979,13 +11981,14 @@ window.LeefKrachtHealth = (function(){
         if(!availability || !availability.available){
           return {ok:false,unavailable:true,message:'Health Connect is niet beschikbaar op dit toestel.'};
         }
-        const auth=await hp.requestAuthorization({read:METRICS,write:[]});
+        const requested=metricsForPlatform('android');
+        const auth=await hp.requestAuthorization({read:requested,write:[]});
         const authorized=Array.isArray(auth&&auth.readAuthorized)?auth.readAuthorized:[];
         const denied=Array.isArray(auth&&auth.readDenied)?auth.readDenied:[];
         authorized.forEach(m=>setSource(m,'Health Connect'));
         return {
           ok:authorized.length>0,
-          full:METRICS.every(m=>authorized.includes(m)),
+          full:requested.every(m=>authorized.includes(m)),
           provider:'Health Connect',
           authorized,denied
         };
@@ -12017,21 +12020,22 @@ window.LeefKrachtHealth = (function(){
 
   async function check(){
     const c=capability();
-    if(!c.native) return {ok:false,authorized:[],denied:METRICS.slice()};
+    if(!c.native) return {ok:false,authorized:[],denied:metricsForPlatform(c.platform)};
     if(c.platform==='android'){
       const hp=androidPlugin();
-      if(!hp) return {ok:false,authorized:[],denied:METRICS.slice()};
+      if(!hp) return {ok:false,authorized:[],denied:metricsForPlatform('android')};
       try{
         const availability=await hp.isAvailable();
         if(!availability || !availability.available)
-          return {ok:false,authorized:[],denied:METRICS.slice(),unavailable:true};
-        const auth=await hp.checkAuthorization({read:METRICS,write:[]});
+          return {ok:false,authorized:[],denied:metricsForPlatform('android'),unavailable:true};
+        const requested=metricsForPlatform('android');
+        const auth=await hp.checkAuthorization({read:requested,write:[]});
         const authorized=Array.isArray(auth&&auth.readAuthorized)?auth.readAuthorized:[];
         const denied=Array.isArray(auth&&auth.readDenied)?auth.readDenied:[];
         authorized.forEach(m=>setSource(m,'Health Connect'));
         return {ok:authorized.length>0,authorized,denied};
       }catch(e){
-        return {ok:false,authorized:[],denied:METRICS.slice()};
+        return {ok:false,authorized:[],denied:metricsForPlatform('android')};
       }
     }
     return {ok:false,authorized:[],denied:[]};
@@ -12090,7 +12094,7 @@ window.LeefKrachtHealth = (function(){
       }catch(e){}
     }
 
-    for(const type of ['weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose','sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','exerciseTime','calories']){
+    for(const type of ['weight','heartRate','restingHeartRate','bloodPressure','bloodGlucose','sleep','heartRateVariability','respiratoryRate','oxygenSaturation','distance','calories']){
       try{
         const r=await hp.readSamples({
           dataType:type,startDate,endDate,limit:500,ascending:true
@@ -12333,7 +12337,7 @@ window.LeefKrachtHealth = (function(){
 
   return {
     capability,connect,check,sync,autoSync,openSettings,setSource,getSources,lastSync,
-    metrics:METRICS.slice()
+    metrics:metricsForPlatform(platform())
   };
 })();
 
@@ -12434,6 +12438,8 @@ document.addEventListener('DOMContentLoaded', function(){
       else if(denied.includes(metric))setMetricState(metric,'Geen toestemming',false);
       else setMetricState(metric,'Nog niet verbonden',false);
     });
+    const c=window.LeefKrachtHealth.capability();
+    if(c.platform==='android')setMetricState('exerciseTime','Niet ondersteund',false);
   }
 
   async function doSync(showMessage){
