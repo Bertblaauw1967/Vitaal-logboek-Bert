@@ -1,0 +1,8 @@
+Mijn LeefRitme 0.9.7
+
+- Android hartslag-sync haalt nu de nieuwste Health Connect samples eerst op.
+- Dit voorkomt dat de limiet van 500 samples alleen oudere hartslagdata teruggeeft.
+- De nieuwste hartslag van vandaag kan bij een volgende sync worden bijgewerkt.
+- Health Connect-hartslag wordt gemarkeerd als bron zodat actuele data opnieuw mag verversen.
+- Rusthartslag houdt voorrang op gewone hartslag wanneer beide beschikbaar zijn.
+- Overige functies en tegel-layout zijn ongewijzigd.

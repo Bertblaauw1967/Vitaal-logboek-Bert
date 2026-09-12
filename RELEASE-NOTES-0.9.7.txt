@@ -1,0 +1,5 @@
+Mijn LeefRitme 0.9.7
+
+- Slaap-tegel op het overzicht nu netjes gecentreerd zoals de samenvattingstegels.
+- Titel blijft bovenin staan met icoon links, inhoud staat mooier in het midden van de tegel.
+- Geen functionele wijzigingen aan Health Connect-sync.
